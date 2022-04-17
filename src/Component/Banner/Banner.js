@@ -9,7 +9,7 @@ import bannar5 from '../../bannar-img/the-rangamati.jpg'
 
 const Banner = () => {
     return (
-        <div style={{ width: '90%', height: '200px', margin: 'auto', zIndex: '5' }}>
+        <div style={{ width: '90%', margin: 'auto' }}>
             <Carousel>
                 <Carousel.Item>
                     <img
