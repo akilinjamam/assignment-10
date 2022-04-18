@@ -23,7 +23,7 @@ const LocalSpot = ({ localSpot }) => {
 
                         {breakfastHifi}
                     </Card.Text>
-                    <a onClick={() => handleBook(id, name)} className="btn btn-primary">BOOK: {name} </a>
+                    <a onClick={() => handleBook(id, name)} className="btn btn-primary d-block ">BOOK: {name} </a>
                 </Card.Body>
             </Card>
         </div>

@@ -16,7 +16,7 @@ const LocalSpots = () => {
         <div style={{ margin: 'auto', width: '80%' }}>
 
 
-            <h2 className='text-primary mt-5'>Local Spots {localSpotsSliced.length} </h2>
+            <h2 className='text-center text-primary mt-5'>Local Spots {localSpotsSliced.length} </h2>
             <br />
 
             <div className='local-spots'>
