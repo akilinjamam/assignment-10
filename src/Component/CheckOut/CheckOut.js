@@ -5,7 +5,7 @@ const CheckOut = () => {
     return (
         <div>
             <h2 className='text-primary mb-4 text-center'>Please checkout</h2>
-            <div className='w-50 mx-auto border border-secondary rounded p-5'>
+            <div className='w-75 mx-auto border border-secondary rounded p-5'>
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Your Name</Form.Label>
