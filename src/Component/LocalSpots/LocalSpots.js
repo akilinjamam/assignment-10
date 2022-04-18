@@ -31,6 +31,10 @@ const LocalSpots = () => {
             </div>
             <br />
             <Link to='/visitingspot' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+            <br />
+            <br />
+            <hr />
+
 
         </div>
     );

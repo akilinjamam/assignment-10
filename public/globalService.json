@@ -1,0 +1,418 @@
+[
+    {
+        "id": 1,
+        "img": "https://i.ibb.co/8DnWQ21/Angkor-Wat-Cambodia.jpg",
+        "name": "Cox Bazar",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "5000"
+    },
+    {
+        "id": 2,
+        "img": "https://i.ibb.co/BwsKjw6/Great-Wall-of-China.jpg",
+        "name": "Bandarban",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "3500"
+    },
+    {
+        "id": 3,
+        "img": "https://i.ibb.co/9VCjYd0/paris-london.jpg",
+        "name": "Rangamati",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "4000"
+    },
+    {
+        "id": 4,
+        "img": "https://i.ibb.co/T8mzv3t/Petra-Jordan.jpg",
+        "name": "Sajek",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "6000"
+    },
+    {
+        "id": 5,
+        "img": "https://i.ibb.co/JxCSWGX/Pyramids-of-Giza-Egypt.jpg",
+        "name": "Shylet",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "2000"
+    },
+    {
+        "id": 6,
+        "img": "https://i.ibb.co/7SQxxq4/Statue-of-Liberty-New-York-City.jpg",
+        "name": "Saint Martin",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "4500"
+    },
+    {
+        "id": 7,
+        "img": "https://i.ibb.co/Z2MCcp1/The-Acropolis-Athens.jpg",
+        "name": "Rangpur",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "5000"
+    },
+    {
+        "id": 8,
+        "img": "https://i.ibb.co/CQm85pS/The-Taj-Mahal-India.jpg",
+        "name": "Dinajpur",
+        "description": "",
+        "busac": "A/C",
+        "busnoac": "non A/C",
+        "breakfastNormal": [
+            "Egg",
+            "Chicken Bon",
+            "water",
+            "tea"
+        ],
+        "breakfastHifi": [
+            "Egg, ",
+            "Chicken Barger, ",
+            "Sandwitch, ",
+            "water, ",
+            "Coffee, "
+        ],
+        "lunchNormal": [
+            "fried rice",
+            "vegetables",
+            "Rui fish",
+            "Dal",
+            "water"
+        ],
+        "lunchHifi": [
+            "polao rice",
+            "Beef",
+            "RupChanda fish",
+            "Dal",
+            "vorta",
+            "water"
+        ],
+        "dinnerNormal": [
+            "khichuri",
+            "chicken",
+            "Dal",
+            "water"
+        ],
+        "dinnerHifi": [
+            "Mutton Biriany",
+            "desert",
+            "castered",
+            "coffee",
+            "water"
+        ],
+        "stayShort": "2 night 3 days",
+        "stayLong": "4 night 5 days",
+        "price": "3000"
+    }
+]

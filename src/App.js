@@ -10,6 +10,7 @@ import Login from './Component/Login/Login';
 import Register from './Component/Register/Register';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
 import Footer from './Component/Footer/Footer';
+import VisitingGlobalSpot from './Component/VisitingGlobalSpot/VisitingGlobalSpot';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
+        <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
       </Routes>
       <br />
       <Footer></Footer>
