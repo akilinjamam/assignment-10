@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Component/Home/Home';
 import VisitingSpots from './Component/VisitingSpots/VisitingSpots';
 import SpotDetail from './Component/SpotDetail/SpotDetail';
+import CheckOut from './Component/CheckOut/CheckOut';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/spotdetail/:spotdetailId/:nameId' element={<SpotDetail></SpotDetail>}></Route>
+        <Route path='/checkout' element={<CheckOut></CheckOut>}></Route>
         <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
       </Routes>
     </div >

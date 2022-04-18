@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const SpotDetail = () => {
 
@@ -8,9 +8,10 @@ const SpotDetail = () => {
 
     return (
         <div>
-            <h2>this is spot detail  {spotdetailId} {nameId} </h2>
+            <h2 className='text-center text-secondary'> {nameId} </h2>
+            <br />
 
-
+            <Link to='/checkout' className='d-block mx-auto btn btn-primary w-25' >Procced to Checkout</Link>
         </div>
     );
 };

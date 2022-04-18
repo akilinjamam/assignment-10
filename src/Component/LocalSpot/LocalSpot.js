@@ -8,7 +8,8 @@ const LocalSpot = ({ localSpot }) => {
     const { name, img, id, breakfastHifi } = localSpot
 
     const handleBook = (id, name) => {
-        navigate(`spotdetail/ ${id}/ ${name}`)
+        navigate(`/spotdetail/ ${id}/ ${name}`)
+
         console.log(id, name)
 
     }
@@ -22,7 +23,7 @@ const LocalSpot = ({ localSpot }) => {
 
                         {breakfastHifi}
                     </Card.Text>
-                    <a onClick={() => handleBook(id, name)} href="#" className="btn btn-primary">BOOK: {name} </a>
+                    <a onClick={() => handleBook(id, name)} className="btn btn-primary">BOOK: {name} </a>
                 </Card.Body>
             </Card>
         </div>
