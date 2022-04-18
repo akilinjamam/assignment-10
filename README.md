@@ -1,5 +1,16 @@
 # Getting Started with Create React App
 
+## Project Name: Travelbea
+
+## Project url: https://travelbea-80478.firebaseapp.com/
+
+## Bullet Points:
+
+* At first installed react file and installed firebase, bootstrap, react-bootstrap, react-router.
+* Then Created all components in src and linked firebase.init.js
+* Created all elements with applying css in the components and created all athentication necessary elements and pushed in the git hub private repo after every few minutes.
+* Finally verified all the code-processings and deployed it into firebase. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
