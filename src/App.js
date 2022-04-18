@@ -13,6 +13,7 @@ import Footer from './Component/Footer/Footer';
 import VisitingGlobalSpot from './Component/VisitingGlobalSpot/VisitingGlobalSpot';
 import Blogs from './Component/Blogs/Blogs';
 import About from './Component/About/About';
+import NotFound from './Component/NotFound/NotFound';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <br />
       <Footer></Footer>
