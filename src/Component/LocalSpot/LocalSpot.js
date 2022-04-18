@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LocalSpot = ({ localSpot }) => {
     const navigate = useNavigate()
-    const { name, img, id, busac, breakfastHifi } = localSpot
+    const { name, img, id, breakfastHifi } = localSpot
 
     const handleBook = (id, name) => {
         navigate(`spotdetail/ ${id}/ ${name}`)

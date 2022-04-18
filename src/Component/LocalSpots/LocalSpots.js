@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+
+import { Link } from 'react-router-dom';
 import LocalSpot from '../LocalSpot/LocalSpot';
 import './LocalSpots.css'
 
@@ -13,7 +15,9 @@ const LocalSpots = () => {
     return (
         <div style={{ margin: 'auto', width: '80%' }}>
 
+
             <h2 className='text-primary mt-5'>Local Spots {localSpotsSliced.length} </h2>
+            <br />
 
             <div className='local-spots'>
                 {
@@ -22,7 +26,11 @@ const LocalSpots = () => {
                         localSpot={localSpot}
                     ></LocalSpot>)
                 }
+
+
             </div>
+            <br />
+            <Link to='/visitingspot' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
 
         </div>
     );
