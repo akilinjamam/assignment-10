@@ -11,6 +11,8 @@ import Register from './Component/Register/Register';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
 import Footer from './Component/Footer/Footer';
 import VisitingGlobalSpot from './Component/VisitingGlobalSpot/VisitingGlobalSpot';
+import Blogs from './Component/Blogs/Blogs';
+import About from './Component/About/About';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
         <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
       </Routes>
       <br />

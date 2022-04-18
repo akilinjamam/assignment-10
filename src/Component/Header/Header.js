@@ -25,10 +25,11 @@ const Header = () => {
                         <Nav className="me-auto">
                             <CustomLink to="/visitingspot">Local Spot</CustomLink>
                             <CustomLink to="/globalvisiting">Global Spot</CustomLink>
+                            <CustomLink to="/blogs">Blogs</CustomLink>
 
                         </Nav>
                         <Nav>
-                            <CustomLink to="/about">About</CustomLink>
+                            <CustomLink to="/about">About Me</CustomLink>
 
                             {
                                 user ? <CustomLink onClick={handleSignOut} to='/login' >Sign Out</CustomLink> : <CustomLink to="/login">Login</CustomLink>
