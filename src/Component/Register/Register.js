@@ -49,7 +49,7 @@ const Register = () => {
 
 
     return (
-        <div style={{ border: '1px solid lightgray', borderRadius: '10px' }} className='mx-auto w-50 p-4'>
+        <div style={{ border: '1px solid lightgray', borderRadius: '10px' }} className='mx-auto w-75 p-4'>
             <h2 className='text-center text-primary'>Please Register</h2>
             <Form onSubmit={handleRegister}>
 

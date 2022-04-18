@@ -70,7 +70,7 @@ const Login = () => {
         navigate('/register')
     }
     return (
-        <div style={{ border: '1px solid lightgray', borderRadius: '10px' }} className='mx-auto w-50 p-4'>
+        <div style={{ border: '1px solid lightgray', borderRadius: '10px' }} className='mx-auto w-75 p-4 login'>
             <h2 className='text-center text-primary'>Please Login</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
