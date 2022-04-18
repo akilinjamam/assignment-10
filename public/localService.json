@@ -20,11 +20,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -35,10 +35,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -72,11 +72,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -87,10 +87,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -100,7 +100,7 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
+        "stayLong": "2 night 3 days",
         "price": "3500"
     },
     {
@@ -124,11 +124,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -139,10 +139,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -152,7 +152,7 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
+        "stayLong": "3 night 4 days",
         "price": "4000"
     },
     {
@@ -176,11 +176,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -191,10 +191,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -204,7 +204,7 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
+        "stayLong": "5 night 6 days",
         "price": "6000"
     },
     {
@@ -228,11 +228,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -243,10 +243,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -256,8 +256,8 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "2000"
+        "stayLong": "5 night 6 days",
+        "price": "7000"
     },
     {
         "id": 6,
@@ -280,11 +280,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -295,10 +295,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -332,11 +332,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -347,10 +347,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -360,7 +360,7 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
+        "stayLong": "3 night 4 days",
         "price": "5000"
     },
     {
@@ -384,11 +384,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -399,10 +399,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -412,7 +412,7 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "3000"
+        "stayLong": "7 night 8 days",
+        "price": "9000"
     }
 ]

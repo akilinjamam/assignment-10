@@ -13,7 +13,7 @@ const GlobalSpots = () => {
 
     return (
         <div style={{ margin: 'auto', width: '80%' }}>
-            <h2 className='text-center text-primary mt-5'>Global Spots {globalSliced.length} </h2>
+            <h2 className='text-center text-primary mt-5'> Service (Global) {globalSliced.length} </h2>
             <br />
             <br />
 

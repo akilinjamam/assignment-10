@@ -2,9 +2,9 @@
     {
         "id": 1,
         "img": "https://i.ibb.co/8DnWQ21/Angkor-Wat-Cambodia.jpg",
-        "name": "Cox Bazar",
+        "name": "Angkor-Wat-Cambodia",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -20,11 +20,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -35,10 +35,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -48,15 +48,15 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "5000"
+        "stayLong": "6 night 7 days",
+        "price": "250000"
     },
     {
         "id": 2,
         "img": "https://i.ibb.co/BwsKjw6/Great-Wall-of-China.jpg",
-        "name": "Bandarban",
+        "name": "Great-Wall-of-China",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -72,11 +72,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -87,10 +87,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -100,15 +100,15 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "3500"
+        "stayLong": "7 night 8 days",
+        "price": "150000"
     },
     {
         "id": 3,
         "img": "https://i.ibb.co/9VCjYd0/paris-london.jpg",
-        "name": "Rangamati",
+        "name": "paris-london",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -124,11 +124,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -139,10 +139,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -151,16 +151,16 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
+        "stayShort": "5 night 6 days",
         "stayLong": "4 night 5 days",
-        "price": "4000"
+        "price": "450000"
     },
     {
         "id": 4,
         "img": "https://i.ibb.co/T8mzv3t/Petra-Jordan.jpg",
-        "name": "Sajek",
+        "name": "Petra-Jordan",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -176,11 +176,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -191,10 +191,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -205,14 +205,14 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
-        "price": "6000"
+        "price": "400000"
     },
     {
         "id": 5,
         "img": "https://i.ibb.co/JxCSWGX/Pyramids-of-Giza-Egypt.jpg",
-        "name": "Shylet",
+        "name": "Pyramids-of-Giza-Egypt",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -228,11 +228,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -243,10 +243,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -256,15 +256,15 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "2000"
+        "stayLong": "9 night 10 days",
+        "price": "600000"
     },
     {
         "id": 6,
         "img": "https://i.ibb.co/7SQxxq4/Statue-of-Liberty-New-York-City.jpg",
-        "name": "Saint Martin",
+        "name": "Liberty-New-York-City",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -280,11 +280,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -295,10 +295,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -308,15 +308,15 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "4500"
+        "stayLong": "5 night 6 days",
+        "price": "600000"
     },
     {
         "id": 7,
         "img": "https://i.ibb.co/Z2MCcp1/The-Acropolis-Athens.jpg",
-        "name": "Rangpur",
+        "name": "The-Acropolis-Athens",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -332,11 +332,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -347,10 +347,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -360,15 +360,15 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "5000"
+        "stayLong": "5 night 6 days",
+        "price": "500000"
     },
     {
         "id": 8,
         "img": "https://i.ibb.co/CQm85pS/The-Taj-Mahal-India.jpg",
-        "name": "Dinajpur",
+        "name": "The-Taj-Mahal-India",
         "description": "",
-        "busac": "A/C",
+        "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
             "Egg",
@@ -384,11 +384,11 @@
             "Coffee, "
         ],
         "lunchNormal": [
-            "fried rice",
-            "vegetables",
-            "Rui fish",
-            "Dal",
-            "water"
+            "fried rice, ",
+            "vegetables, ",
+            "Rui fish, ",
+            "Dal, ",
+            "water, "
         ],
         "lunchHifi": [
             "polao rice",
@@ -399,10 +399,10 @@
             "water"
         ],
         "dinnerNormal": [
-            "khichuri",
-            "chicken",
-            "Dal",
-            "water"
+            "khichuri, ",
+            "chicken, ",
+            "Dal, ",
+            "water, "
         ],
         "dinnerHifi": [
             "Mutton Biriany",
@@ -412,7 +412,7 @@
             "water"
         ],
         "stayShort": "2 night 3 days",
-        "stayLong": "4 night 5 days",
-        "price": "3000"
+        "stayLong": "7 night 8 days",
+        "price": "40000"
     }
 ]
