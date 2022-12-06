@@ -8,6 +8,7 @@ import bannar5 from '../../bannar-img/the-rangamati.jpg'
 
 
 const Banner = () => {
+    // Banner Section.....
     return (
         <div style={{ width: '90%', margin: 'auto' }}>
             <Carousel>
