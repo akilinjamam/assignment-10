@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Parallax } from 'react-parallax';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +10,7 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import LocalSpot from '../LocalSpot/LocalSpot';
 import './LocalSpots.css'
+import river from '../../background-image/river.jpg'
 
 const LocalSpots = () => {
 
@@ -49,6 +51,8 @@ const LocalSpots = () => {
     };
 
 
+
+
     //   API
     const [localSpots, setLocal] = useState([]);
     const localSpotsSliced = localSpots.slice(0, 8)
@@ -58,30 +62,35 @@ const LocalSpots = () => {
             .then(data => setLocal(data))
     }, [])
     return (
-        <div  >
-            <h2 className='title'>VISIT BANGLADESH</h2>
-            <br />
+
+        <Parallax strength={500} bgImage={river} >
+            <div  >
+                <div data-aos='flip-up' data-aos-duration='1000'>
+                    <h2 style={{ color: 'white' }} className='title'>VISIT BANGLADESH</h2>
+                </div>
+                <br />
 
 
-            <div>
-                <Slider {...settings}>
-                    {
-                        localSpotsSliced.map(localSpot => <LocalSpot
-                            key={localSpot.id}
-                            localSpot={localSpot}
-                        ></LocalSpot>)
-                    }
-                </Slider>
+                <div>
+
+
+                    <Slider {...settings}>
+                        {
+                            localSpotsSliced.map(localSpot => <LocalSpot
+                                key={localSpot.id}
+                                localSpot={localSpot}
+                            ></LocalSpot>)
+                        }
+                    </Slider>
+                </div>
+
+                <br /><br /><br />
+                <Link to='/visitingspot' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+                <br />
+                <br />
             </div>
 
-            <br /><br />
-            <Link to='/visitingspot' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
-            <br />
-            <br />
-            <hr />
-
-
-        </div>
+        </Parallax>
     );
 };
 

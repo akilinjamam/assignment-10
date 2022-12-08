@@ -1,10 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
 import GlobalSpot from '../GlobalSpot/GlobalSpot';
+import { Parallax } from 'react-parallax';
+import winter from '../../background-image/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg'
 
 const GlobalSpots = () => {
+
+    // navigation for react-slick
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 0
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
     const [global, setGlobal] = useState([])
-    const globalSliced = global.slice(0, 3)
+    const globalSliced = global.slice(0, 9)
     useEffect(() => {
         fetch('globalService.json')
             .then(res => res.json())
@@ -12,24 +54,30 @@ const GlobalSpots = () => {
     }, [])
 
     return (
-        <div style={{ margin: 'auto', width: '80%' }}>
-            <h2 className='text-center text-primary mt-5'> Service (Global) {globalSliced.length} </h2>
-            <br />
-            <br />
+        <Parallax strength={400} bgImage={winter} >
+            <div >
+                <div data-aos='flip-up' data-aos-duration='1000'>
+                    <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
+                </div>
+                <br />
+                <br />
 
-            <div className='local-spots'>
-                {
-                    globalSliced.map(globalSpot => <GlobalSpot
-                        key={globalSpot.id}
-                        globalSpot={globalSpot}
-                    ></GlobalSpot>)
-                }
+                <div >
+                    <Slider {...settings}>
+                        {
+                            globalSliced.map(globalSpot => <GlobalSpot
+                                key={globalSpot.id}
+                                globalSpot={globalSpot}
+                            ></GlobalSpot>)
+                        }
+                    </Slider>
+                </div>
+                <br />
+                <Link to='/globalvisiting' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+                <br />
+                <br />
             </div>
-            <br />
-            <Link to='/globalvisiting' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
-            <br />
-            <br />
-        </div>
+        </Parallax>
     );
 };
 
