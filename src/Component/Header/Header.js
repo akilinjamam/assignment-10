@@ -16,7 +16,7 @@ const Header = () => {
         signOut(auth)
     }
     return (
-        <div style={{ position: 'sticky', top: '0', zIndex: '10' }}>
+        <div style={{ zIndex: '20' }}>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand as={Link} to="/"> <img style={{ width: '150px', height: '50px', marginBottom: '10px' }} src={logo} alt="" /> </Navbar.Brand>
@@ -26,6 +26,10 @@ const Header = () => {
                             <CustomLink to="/visitingspot">Local Spot</CustomLink>
                             <CustomLink to="/globalvisiting">Global Spot</CustomLink>
                             <CustomLink to="/blogs">Blogs</CustomLink>
+                            <CustomLink to="/blogs">Pages</CustomLink>
+                            <CustomLink to="/blogs">Destination</CustomLink>
+                            <CustomLink to="/blogs">Tours</CustomLink>
+                            <CustomLink to="/blogs">Elements</CustomLink>
 
                         </Nav>
                         <Nav>

@@ -15,11 +15,12 @@ import Blogs from './Component/Blogs/Blogs';
 import About from './Component/About/About';
 import NotFound from './Component/NotFound/NotFound';
 
+
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <br />
+
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>

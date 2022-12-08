@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.lacalSpotMain {
+    width: 420px;
+    height: 520px;
+    margin: auto;
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+.localSpotImg {
+    width: 400px;
+    height: 170px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.localSpotDetail {
+    text-align: left;
+}
