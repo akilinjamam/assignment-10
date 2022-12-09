@@ -13,6 +13,8 @@ const Banner = () => {
 
     const [counter, setCounter] = useState(0);
 
+
+
     if (counter === 10) {
 
         setCounter(0)

@@ -81,3 +81,91 @@
     color: gray;
     font-style: italic;
 }
+
+
+/* background Two */
+
+.backgroundTwo {
+    position: relative;
+}
+
+.backgroundTwoMain {
+    width: 100%;
+    height: 400px;
+    background-color: yellow;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.backgroundTwoMain p {
+    font-size: 45px;
+    color: black;
+}
+
+.backgroundText {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backgroundText input {
+    width: 130%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid black;
+}
+
+.backgroundText button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+}
+
+.backgroundTwoMainTwo {
+    width: 100%;
+    height: 500px;
+
+}
+
+.backgroundTwoMainTwo h1 {
+    color: yellow;
+    font-weight: 900;
+    font-size: 230px;
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    right: 0;
+    top: 310px;
+}
+
+.backgroundTwoMainTwo h3 {
+    text-align: left;
+}
+
+.backgroundTwoMainTwoText {
+    width: 650px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+}
+
+.backgroundTwoMainTwoText h3 {
+    font-size: 45px;
+    color: black;
+    padding-left: 30px;
+    border-left: 3px solid black;
+}
+
+.backgroundTwoMainTwo p {
+    text-align: left;
+    width: 600px;
+    margin-left: 100px;
+    font-style: italic;
+    color: white;
+    padding: 10px;
+}

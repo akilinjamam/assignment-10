@@ -1,4 +1,5 @@
-
+import { RingLoader } from 'react-spinners';
+import { useState } from "react";
 import './App.css';
 import Header from './Component/Header/Header';
 import { Route, Routes } from 'react-router-dom';
@@ -14,33 +15,58 @@ import VisitingGlobalSpot from './Component/VisitingGlobalSpot/VisitingGlobalSpo
 import Blogs from './Component/Blogs/Blogs';
 import About from './Component/About/About';
 import NotFound from './Component/NotFound/NotFound';
+import { useEffect } from 'react';
+
 
 
 function App() {
-  return (
-    <div className="App">
-      <Header></Header>
 
-      <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/spotdetail/:spotdetailId/:nameId' element={<SpotDetail></SpotDetail>}></Route>
-        <Route path='/checkout' element={
-          <RequireAuth>
-            <CheckOut></CheckOut>
-          </RequireAuth>
-        }></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/register' element={<Register></Register>}></Route>
-        <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
-        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-        <Route path='/about' element={<About></About>}></Route>
-        <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
-        <Route path='*' element={<NotFound></NotFound>}></Route>
-      </Routes>
-      <br />
-      <Footer></Footer>
-    </div >
+  const [loading, setLoading] = useState(true);
+  const [color] = useState("white")
+
+
+  useEffect(() => {
+    // setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+
+  }, [])
+
+  return (
+    <div>
+      {
+        loading ?
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', width: '100%', backgroundColor: '#000233' }}>
+            <div style={{ width: '200px', height: '200px', display: 'block' }}>
+              <RingLoader color={color} size={150} />
+            </div>
+          </div>
+          :
+          <div className="App">
+            <Header></Header>
+            <Routes>
+              <Route path='/' element={<Home></Home>}></Route>
+              <Route path='/home' element={<Home></Home>}></Route>
+              <Route path='/spotdetail/:spotdetailId/:nameId' element={<SpotDetail></SpotDetail>}></Route>
+              <Route path='/checkout' element={
+                <RequireAuth>
+                  <CheckOut></CheckOut>
+                </RequireAuth>
+              }></Route>
+              <Route path='/login' element={<Login></Login>}></Route>
+              <Route path='/register' element={<Register></Register>}></Route>
+              <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
+              <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+              <Route path='/about' element={<About></About>}></Route>
+              <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
+              <Route path='*' element={<NotFound></NotFound>}></Route>
+            </Routes>
+
+            <Footer></Footer>
+          </div >
+      }
+    </div>
 
   );
 }
