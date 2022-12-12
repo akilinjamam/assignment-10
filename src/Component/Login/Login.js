@@ -103,7 +103,7 @@ const Login = () => {
 
                 <div>
                     <p style={{ fontSize: '12px', textAlign: 'center', color: 'red' }} > {errorElement} </p>
-                    {/* <p> {theLoading} </p> */}
+
                 </div>
                 <SignInWith></SignInWith>
                 <ToastContainer />

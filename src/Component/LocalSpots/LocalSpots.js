@@ -63,8 +63,8 @@ const LocalSpots = () => {
     }, [])
     return (
 
-        <Parallax strength={500} bgImage={river} >
-            <div  >
+        <Parallax strength={300} bgImage={river} >
+            <div style={{ width: '100%', overflowX: 'hidden', scrollBehavior: 'smooth' }}  >
                 <div data-aos='flip-up' data-aos-duration='1000'>
                     <h2 style={{ color: 'white' }} className='title'>VISIT BANGLADESH</h2>
                 </div>
@@ -72,8 +72,6 @@ const LocalSpots = () => {
 
 
                 <div>
-
-
                     <Slider {...settings}>
                         {
                             localSpotsSliced.map(localSpot => <LocalSpot

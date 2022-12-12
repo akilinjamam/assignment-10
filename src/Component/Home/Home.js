@@ -9,6 +9,7 @@ import Gallery from '../Gallery/Gallery';
 import GlobalSpots from '../GlobalSpots/GlobalSpots';
 import LocalSpots from '../LocalSpots/LocalSpots';
 import BackgroundTwo from '../Background/BackgroundTwo';
+import FeedBack from '../FeedBack/FeedBack';
 
 
 
@@ -26,6 +27,7 @@ const Home = () => {
             <LocalSpots></LocalSpots>
             <GlobalSpots></GlobalSpots>
             <BackgroundTwo></BackgroundTwo>
+            <FeedBack></FeedBack>
         </div>
     );
 };

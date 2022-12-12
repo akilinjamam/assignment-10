@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './GlobalSpots.css'
 import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +7,7 @@ import Slider from 'react-slick';
 import GlobalSpot from '../GlobalSpot/GlobalSpot';
 import { Parallax } from 'react-parallax';
 import winter from '../../background-image/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg'
+import tree from '../../background-image/Trees.jpg'
 
 const GlobalSpots = () => {
 
@@ -54,11 +56,13 @@ const GlobalSpots = () => {
     }, [])
 
     return (
-        <Parallax strength={400} bgImage={winter} >
-            <div >
-                <div data-aos='flip-up' data-aos-duration='1000'>
+        <Parallax strength={300} bgImage={winter} >
+            <div className='globalSpotMain' style={{ width: '100%', overflowX: 'hidden' }} >
+                <div className='globalSpot' data-aos='flip-up' data-aos-duration='1000'>
                     <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
                 </div>
+
+
                 <br />
                 <br />
 

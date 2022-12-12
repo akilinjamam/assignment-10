@@ -34,15 +34,18 @@ const Background = () => {
 
 
             <div data-aos="fade-right" data-aos-duration="1000" className='textBackground'>
-                <p> <span>Amazing </span> Tour And Fun <br /> Advantures <span> Waiting for</span> <br /> <span> You</span> </p>
+                <p style={{ color: 'black' }}> <span>Amazing </span> Tour And Fun <br /> Advantures <span> Waiting for</span> <br /> <span> You</span> </p>
             </div>
 
-            <Parallax strength={500} bgImage={winter} >
+
+            <div className='detailBackgroundImg'>
+
                 <div style={{ padding: '20px' }} data-aos="zoom-in" data-aos-duration="1000" className='detailBackground'>
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque.
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque.
                 </div>
-            </Parallax>
+            </div>
+
         </div>
     );
 };

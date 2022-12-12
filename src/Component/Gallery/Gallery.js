@@ -1,6 +1,6 @@
 import React from 'react';
 import './Gallery.css';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import 'aos/dist/aos.css';
 
 const Gallery = () => {
     return (
@@ -74,8 +74,3 @@ const Gallery = () => {
 export default Gallery;
 
 
-/* 
-
-https://preview.themeforest.net/item/getaway-an-upbeat-travel-and-tourism-theme/full_screen_preview/20719616?_ga=2.205392976.1908446264.1670340366-301770410.1670340366
-
-*/

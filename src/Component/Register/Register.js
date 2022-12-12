@@ -79,7 +79,7 @@ const Register = () => {
                 <SignInWith></SignInWith>
                 <div className='mx-auto'>
                     <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
-                    {/* <label className={agree ? 'text-primary' : 'text-danger'} style={{ fontSize: '12px', marginLeft: '10px' }} htmlFor="terms">Accepts Genius Cars Terms and Conditions</label> */}
+
                     <label className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`} style={{ fontSize: '12px' }} htmlFor="terms">Accepts Genius Cars Terms and Conditions</label>
                 </div>
 

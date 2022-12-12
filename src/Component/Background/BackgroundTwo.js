@@ -27,14 +27,16 @@ const BackgroundTwo = () => {
                         Tours And</span> Fun <br /> Destinations</h3>
                 </div>
 
-                <Parallax strength={500} bgImage={theImage}>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque.</p>
-                    </div>
-                </Parallax>
+
+                <div>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque.</p>
+                </div>
+
             </div>
         </div>
     );
 };
 
 export default BackgroundTwo;
+
+// injamam joypal nayem

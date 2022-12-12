@@ -38,7 +38,7 @@ function App() {
       {
         loading ?
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', width: '100%', backgroundColor: '#000233' }}>
-            <div style={{ width: '200px', height: '200px', display: 'block' }}>
+            <div style={{ width: '100px', height: '200px', display: 'block', margin: 'auto' }}>
               <RingLoader color={color} size={150} />
             </div>
           </div>

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "img": "https://xsgames.co/randomusers/assets/avatars/male/10.jpg",
+        "name": "Allen Marimon",
+        "feedBacks": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque."
+    },
+    {
+        "id": 2,
+        "img": "https://xsgames.co/randomusers/assets/avatars/male/20.jpg",
+        "name": "Chong Schollaert",
+        "feedBacks": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque."
+    },
+    {
+        "id": 3,
+        "img": "https://xsgames.co/randomusers/assets/avatars/male/21.jpg",
+        "name": "Andreas Lenko",
+        "feedBacks": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque."
+    },
+    {
+        "id": 4,
+        "img": "https://xsgames.co/randomusers/assets/avatars/male/22.jpg",
+        "name": "Deon Pujols",
+        "feedBacks": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque."
+    },
+    {
+        "id": 5,
+        "img": "https://xsgames.co/randomusers/assets/avatars/male/23.jpg",
+        "name": "Gale Hauke",
+        "feedBacks": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque."
+    }
+]

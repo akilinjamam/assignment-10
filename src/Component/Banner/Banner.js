@@ -60,6 +60,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
+                        {counter === 0 && <h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: 'blue' }}>sajek</h3>}
                         {counter === 1 && <h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: 'blue' }}>sajek</h3>}
                         {counter === 2 && <h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: 'green' }}>sajek</h3>}
                         {counter === 3 && <h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: 'red' }}>sajek</h3>}
