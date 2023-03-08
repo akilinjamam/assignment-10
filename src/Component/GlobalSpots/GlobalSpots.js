@@ -16,7 +16,7 @@ const GlobalSpots = () => {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 2,
         initialSlide: 0,
         responsive: [
@@ -57,7 +57,7 @@ const GlobalSpots = () => {
 
     return (
         <Parallax strength={300} bgImage={winter} >
-            <div className='globalSpotMain' style={{ width: '100%', overflowX: 'hidden' }} >
+            <div className='globalSpotsMain' style={{ width: '100%', height: '125vh', overflowX: 'hidden' }} >
                 <div className='globalSpot' data-aos='flip-up' data-aos-duration='1000'>
                     <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
                 </div>

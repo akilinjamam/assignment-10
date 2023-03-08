@@ -1,9 +1,11 @@
 [
     {
-        "id": 1,
+        "id": 9,
         "img": "https://source.unsplash.com/1600x900/?london",
         "name": "Angkor-Wat-Cambodia",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -49,13 +51,16 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "6 night 7 days",
-        "price": "250000"
+        "price": "250000",
+        "tourType": "Family-Tour"
     },
     {
-        "id": 2,
+        "id": 10,
         "img": "https://source.unsplash.com/1600x900/?canada",
         "name": "Great-Wall-of-China",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -101,13 +106,16 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
-        "price": "150000"
+        "price": "150000",
+        "tourType": "Group-Tour"
     },
     {
-        "id": 3,
+        "id": 11,
         "img": "https://source.unsplash.com/1600x900/?brazil",
         "name": "paris-london",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -153,13 +161,16 @@
         ],
         "stayShort": "5 night 6 days",
         "stayLong": "4 night 5 days",
-        "price": "450000"
+        "price": "450000",
+        "tourType": "Couple-Tour"
     },
     {
-        "id": 4,
+        "id": 12,
         "img": "https://source.unsplash.com/1600x900/?alaska",
         "name": "Petra-Jordan",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -205,13 +216,16 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
-        "price": "400000"
+        "price": "400000",
+        "tourType": "Couple-Tour"
     },
     {
-        "id": 5,
+        "id": 13,
         "img": "https://source.unsplash.com/1600x900/?japan",
         "name": "Pyramids-of-Giza-Egypt",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -257,13 +271,16 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "9 night 10 days",
-        "price": "600000"
+        "price": "600000",
+        "tourType": "Couple-Tour"
     },
     {
-        "id": 6,
+        "id": 14,
         "img": "https://source.unsplash.com/1600x900/?netherland",
         "name": "Liberty-New-York-City",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -309,13 +326,16 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
-        "price": "600000"
+        "price": "600000",
+        "tourType": "Couple-Tour"
     },
     {
-        "id": 7,
+        "id": 15,
         "img": "https://source.unsplash.com/1600x900/?german",
         "name": "The-Acropolis-Athens",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -361,13 +381,16 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
-        "price": "500000"
+        "price": "500000",
+        "tourType": "Couple-Tour"
     },
     {
-        "id": 8,
+        "id": 16,
         "img": "https://source.unsplash.com/1600x900/?poland",
         "name": "The-Taj-Mahal-India",
-        "description": "",
+        "description": [
+            ""
+        ],
         "busac": "Air Plane with A/C service",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -413,6 +436,7 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
-        "price": "40000"
+        "price": "40000",
+        "tourType": "Couple-Tour"
     }
 ]

@@ -16,6 +16,9 @@ import Blogs from './Component/Blogs/Blogs';
 import About from './Component/About/About';
 import NotFound from './Component/NotFound/NotFound';
 import { useEffect } from 'react';
+import Packages from './Component/Packages/Packages';
+import Contact from './bannar-img/Contact/Contact';
+import VisaGuilde from './Component/VisaGuide/VisaGuilde';
 
 
 
@@ -48,7 +51,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home></Home>}></Route>
               <Route path='/home' element={<Home></Home>}></Route>
-              <Route path='/spotdetail/:spotdetailId/:nameId' element={<SpotDetail></SpotDetail>}></Route>
+              <Route path='/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
               <Route path='/checkout' element={
                 <RequireAuth>
                   <CheckOut></CheckOut>
@@ -58,6 +61,9 @@ function App() {
               <Route path='/register' element={<Register></Register>}></Route>
               <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
               <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+              <Route path='/packages' element={<Packages></Packages>}></Route>
+              <Route path='/contact' element={<Contact></Contact>}></Route>
+              <Route path='/visaGuide' element={<VisaGuilde></VisaGuilde>}></Route>
               <Route path='/about' element={<About></About>}></Route>
               <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
               <Route path='*' element={<NotFound></NotFound>}></Route>

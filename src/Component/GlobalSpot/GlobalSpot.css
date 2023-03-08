@@ -1,0 +1,9 @@
+.globalSpotMain {
+    width: 320px;
+    height: auto;
+    margin: auto;
+    background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5));
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+}

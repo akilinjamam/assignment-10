@@ -3,7 +3,22 @@
         "id": 1,
         "img": "https://source.unsplash.com/1600x900/?coxbazar",
         "name": "Cox Bazar",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -49,13 +64,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
-        "price": "5000"
+        "price": "5000",
+        "tourType": "Family-Tour"
     },
     {
         "id": 2,
         "img": "https://source.unsplash.com/1600x900/?chittagong",
         "name": "Bandarban",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -101,13 +132,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "2 night 3 days",
-        "price": "3500"
+        "price": "3500",
+        "tourType": "Family-Tour"
     },
     {
         "id": 3,
         "img": "https://source.unsplash.com/1600x900/?tangoar haor",
         "name": "Rangamati",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -153,13 +200,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "3 night 4 days",
-        "price": "4000"
+        "price": "4000",
+        "tourType": "Family-Tour"
     },
     {
         "id": 4,
         "img": "https://source.unsplash.com/1600x900/?rangamati",
         "name": "Sajek",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -205,13 +268,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
-        "price": "6000"
+        "price": "6000",
+        "tourType": "Family-Tour"
     },
     {
         "id": 5,
         "img": "https://source.unsplash.com/1600x900/?sajek",
         "name": "Shylet",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -257,13 +336,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
-        "price": "7000"
+        "price": "7000",
+        "tourType": "Family-Tour"
     },
     {
         "id": 6,
         "img": "https://source.unsplash.com/1600x900/?saint martin",
         "name": "Saint Martin",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -309,13 +404,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
-        "price": "4500"
+        "price": "4500",
+        "tourType": "Family-Tour"
     },
     {
         "id": 7,
         "img": "https://source.unsplash.com/1600x900/?rangpur",
         "name": "Rangpur",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -361,13 +472,29 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "3 night 4 days",
-        "price": "5000"
+        "price": "5000",
+        "tourType": "Family-Tour"
     },
     {
         "id": 8,
         "img": "https://source.unsplash.com/1600x900/?dinajpur",
         "name": "Dinajpur",
-        "description": "",
+        "description": [
+            " Day 01: Transfer From Denpasar Airport to Bali Hotel",
+            "On arrival to Airport, you will be welcomed by our representative. Then you will be transferred to hotel for check in, after check in free time for Leisure.",
+            "Day 02: Full Day Nusa Dua & Uluwatu Temple Tour",
+            "After Early Breakfast, Start a journey for below plan.",
+            "10 Hrs Car with Driver Include: English speaking Bali driver, comfortable car with petrol and AC, mineral water and parking tickets.",
+            "Nusa Dua Watersports",
+            "Nusa Dua Water Blow",
+            "Padang Padang Beach",
+            "Uluwatu Temple",
+            "Jimbaran Beach",
+            "Day 03: Free Day",
+            "Today is your free day. You can spend this day as per your own interest.",
+            "Day 04: Transfer From Bali Hotel to Denpasar Airport ",
+            "After Breakfast, Starts a journey toward Airport from Hotel. Depart Flight to Dhaka."
+        ],
         "busac": "A/C",
         "busnoac": "non A/C",
         "breakfastNormal": [
@@ -413,6 +540,7 @@
         ],
         "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
-        "price": "9000"
+        "price": "9000",
+        "tourType": "Family-Tour"
     }
 ]

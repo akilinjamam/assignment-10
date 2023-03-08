@@ -1,0 +1,125 @@
+.forParallax {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgDiv {
+    background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
+    width: 400px;
+    height: auto;
+}
+
+.forParallax h1 {
+    color: yellow;
+    font-weight: 900;
+}
+
+.forParallax p {
+    color: white;
+    font-weight: bold;
+}
+
+.spotDetailInfo {
+    display: flex;
+    width: 100%;
+    min-height: 70vh;
+}
+
+.outletpart {
+    width: 70%;
+    border: 1px solid lightgray;
+    margin: 10px;
+}
+
+.spotDetailBtn {
+    display: flex;
+}
+
+.spotDetailBtn div {
+    margin: 5px;
+    padding: 5px;
+    width: 20%;
+
+}
+
+.crimson {
+    background-color: crimson;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.yellow {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.outLetInclusion {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.outletItineraries {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidePart {
+    width: 30%;
+    border: 1px solid lightgray;
+    margin: 10px;
+    padding: 5px;
+}
+
+.sidePart h4 {
+    font-weight: bold;
+    width: 100%;
+    background-color: rgb(56, 116, 245);
+    height: 35px;
+    padding-top: 2px;
+    color: white;
+}
+
+.sidepartSummery p {
+    text-align: left;
+}
+
+.sidepartSummery span {
+    font-weight: bold;
+}
+
+.sidepartSelections {
+    font-style: italic;
+    text-align: left;
+}
+
+.sidepartSelections select {
+    margin-top: 10px;
+    width: 90%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+}
+
+.cursors:hover {
+    cursor: not-allowed;
+}
+
+.gray:hover {
+    background-color: gray;
+}
+
+.checkoutBtn {
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    background-color: crimson;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+}

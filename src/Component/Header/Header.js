@@ -23,13 +23,13 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <CustomLink to="/visitingspot">Local Spot</CustomLink>
-                            <CustomLink to="/globalvisiting">Global Spot</CustomLink>
+                            <CustomLink to="/visitingspot">Home Tour</CustomLink>
+                            <CustomLink to="/globalvisiting">World Tour</CustomLink>
                             <CustomLink to="/blogs">Blogs</CustomLink>
-                            <CustomLink to="/blogs">Pages</CustomLink>
-                            <CustomLink to="/blogs">Destination</CustomLink>
-                            <CustomLink to="/blogs">Tours</CustomLink>
-                            <CustomLink to="/blogs">Elements</CustomLink>
+                            <CustomLink to="/contact">Contact</CustomLink>
+                            <CustomLink to="/packages">packages</CustomLink>
+                            <CustomLink to="/visaGuide">visa Guide</CustomLink>
+
 
                         </Nav>
                         <Nav>
