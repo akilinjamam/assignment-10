@@ -1,0 +1,133 @@
+.checkoutMain {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkoutContainer {
+    width: 80%;
+    min-height: 500px;
+    border: 1px solid lightgray;
+    text-align: left;
+    padding: 20px;
+}
+
+.checkoutDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkoutFirstDiv {
+    width: 45%;
+}
+
+.checkoutFirstDiv input {
+    width: 70%;
+    outline: none;
+    padding-left: 5px;
+}
+
+.checkoutFirstDiv p {
+    width: 70%;
+    padding-left: 5px;
+}
+
+.checkoutFirstDiv label {
+    width: 30%;
+}
+
+.checkoutSecondDiv {
+    width: 45%;
+}
+
+.checkoutSecondDiv input {
+    width: 70%;
+    outline: none;
+    padding-left: 5px;
+}
+
+.checkoutSecondDiv p {
+    width: 70%;
+    padding-left: 5px;
+}
+
+.checkoutSecondDiv label {
+    width: 30%;
+}
+
+.checkoutSecondDiv select {
+    width: 70%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.checkoutTourInfo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.infoDivOne {
+    width: 45%;
+}
+
+.infoDivOne label {
+    width: 30%;
+}
+
+
+.infoDivOne input {
+    width: 70%;
+    padding-left: 5px;
+    outline: none;
+}
+
+.infoDivOne p {
+    width: 70%;
+    padding-left: 5px;
+}
+
+.infoDivTwo {
+    width: 45%;
+}
+
+.infoDivTwo label {
+    width: 30%;
+}
+
+.infoDivTwo input {
+    width: 70%;
+    padding-left: 5px;
+    outline: none;
+}
+
+.infoDivTwo p {
+    width: 70%;
+    padding-left: 5px;
+}
+
+.checkoutFormBtn {
+    width: 100%;
+    text-align: right;
+}
+
+.memberMngmntContainer {
+    width: 100%;
+}
+
+.memberManagement {
+    display: flex;
+    width: auto;
+    justify-content: space-around;
+    border: 1px solid gray;
+    padding: 15px 0px;
+}
+
+.memberManagement input {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}

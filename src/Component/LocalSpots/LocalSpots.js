@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import LocalSpot from '../LocalSpot/LocalSpot';
 import './LocalSpots.css'
 import river from '../../background-image/river.jpg'
@@ -50,9 +50,6 @@ const LocalSpots = () => {
         ]
     };
 
-
-
-
     //   API
     const [localSpots, setLocal] = useState([]);
     const localSpotsSliced = localSpots.slice(0, 8)
@@ -60,7 +57,9 @@ const LocalSpots = () => {
         fetch('localService.json')
             .then(res => res.json())
             .then(data => setLocal(data))
-    }, [])
+    }, []);
+
+
     return (
 
         <Parallax strength={300} bgImage={river} >

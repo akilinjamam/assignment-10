@@ -65,6 +65,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
         "price": "5000",
+        "tourArea": "home",
+        "tourLastDate": "05 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -133,6 +135,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "2 night 3 days",
         "price": "3500",
+        "tourArea": "home",
+        "tourLastDate": "06 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -201,6 +205,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "3 night 4 days",
         "price": "4000",
+        "tourArea": "home",
+        "tourLastDate": "07 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -269,6 +275,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
         "price": "6000",
+        "tourArea": "home",
+        "tourLastDate": "08 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -337,6 +345,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
         "price": "7000",
+        "tourArea": "home",
+        "tourLastDate": "09 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -405,6 +415,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
         "price": "4500",
+        "tourArea": "home",
+        "tourLastDate": "10 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -473,6 +485,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "3 night 4 days",
         "price": "5000",
+        "tourArea": "home",
+        "tourLastDate": "11 Apr, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -541,6 +555,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
         "price": "9000",
+        "tourArea": "home",
+        "tourLastDate": "13 Apr, 2023",
         "tourType": "Family-Tour"
     }
 ]

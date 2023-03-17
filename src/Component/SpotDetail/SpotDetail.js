@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import noteContext from '../../Context/noteContext';
 import './SpotDetail.css'
 
 const SpotDetail = () => {
-    const [message, setMessage] = useState('');
     const [outletNumber, setOutletNumber] = useState(1);
-    const [members, setMembers] = useState()
     const [data, setData] = useState([]);
-    console.log(members);
-    console.log(data)
+
     const { spotdetailId } = useParams()
-    console.log(spotdetailId)
+
 
     const routerPath = useLocation();
     const onTop = () => {
@@ -37,10 +35,62 @@ const SpotDetail = () => {
 
 
     const findData = data?.find(i => {
-        return i.id == spotdetailId
+        return i.id === parseInt(spotdetailId)
     });
 
-    console.log(findData);
+
+    const state = useContext(noteContext);
+    const setMembers = state.setMembers;
+    const members = state.members;
+    const lastDate = state?.name?.tourLastDate;
+
+    useEffect(() => {
+        state.setName(findData,)
+    }, [findData, state]);
+
+
+
+    const [timerDays, setTimerDays] = useState(0);
+    const [timerHours, setTimerHours] = useState(0);
+    const [timerMinutes, setTimerMinutes] = useState(0);
+    const [timerSeconds, setTimerSeconds] = useState(0);
+
+
+    let interval;
+
+    const startTimer = (dynamicDate) => {
+        const countDate = new Date(dynamicDate).getTime();
+
+        interval = setInterval(() => {
+            const now = new Date().getTime();
+
+            const distance = countDate - now;
+
+            const days = Math.floor(distance / (24 * 60 * 60 * 1000));
+            const hours = Math.floor(distance % (24 * 60 * 60 * 1000) / (1000 * 60 * 60))
+            const minutes = Math.floor(distance % (60 * 60 * 1000) / (1000 * 60))
+            const seconds = Math.floor(distance % (60 * 1000) / 1000)
+
+            if (distance < 0) {
+                clearInterval(interval.current)
+            } else {
+                setTimerDays(days);
+                setTimerHours(hours);
+                setTimerMinutes(minutes);
+                setTimerSeconds(seconds);
+            }
+        })
+    }
+
+
+
+
+    useEffect(() => {
+        if (findData) {
+            startTimer(findData?.tourLastDate)
+        }
+    })
+
 
 
     return (
@@ -109,6 +159,34 @@ const SpotDetail = () => {
                         <p><span>Tour Name:</span> {findData?.name}</p>
                         <p><span>Tour Type:</span> {findData?.tourType}</p>
                         <p><span>Tour Duration:</span> {findData?.stayLong}</p>
+                        <p><span>Total Tour Cost:</span> {findData?.price}</p>
+                        <p><span>Last Date of Registration:</span> {lastDate}</p>
+
+                        <div className='remainingDatesContainer'>
+                            <h6>REMAINING TIMES OF REGISTRATION :</h6>
+                            <div className='remainingDates'>
+                                <div className='timersDiv'>
+                                    <p className='timers'>{(timerDays.toString()).length === 1 && '0'}{timerDays}</p>
+                                    <p className='timeLetter'>DAYS</p>
+                                </div>
+                                <h5>:</h5>
+                                <div className='timersDiv'>
+                                    <p className='timers'>{(timerHours.toString()).length === 1 && '0'}{timerHours} </p>
+                                    <p className='timeLetter'>HOURS</p>
+                                </div>
+                                <h5>:</h5>
+                                <div className='timersDiv'>
+                                    <span></span>
+                                    <p className='timers'>{(timerMinutes.toString()).length === 1 && '0'}{timerMinutes} </p>
+                                    <p className='timeLetter'>MINUTES</p>
+                                </div>
+                                <h5>:</h5>
+                                <div className='timersDiv'>
+                                    <p className='timers'>{(timerSeconds.toString()).length === 1 && '0'}{timerSeconds}</p>
+                                    <p className='timeLetter'>SECONDS</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br />
                     <h4>PROCCED TO CHECKOUT</h4>
@@ -163,11 +241,11 @@ const SpotDetail = () => {
                                     <option value="8">8</option>
                                     <option value="9">9</option>
                                     <option value="10">10</option>
-                                    <option value="10">11</option>
-                                    <option value="10">12</option>
-                                    <option value="10">13</option>
-                                    <option value="10">14</option>
-                                    <option value="10">15</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
 
                                 </select>
                             </div>
@@ -175,6 +253,7 @@ const SpotDetail = () => {
                     </div>
                     <br /><br />
                     {!members && <p style={{ color: 'red' }}>please select any one option</p>}
+
                     <Link to='/checkout' ><button className={`${members ? '' : 'cursors'} ${!members && 'gray'} checkoutBtn `} disabled={members ? false : true} >NEXT</button></Link>
 
                 </div>
@@ -185,5 +264,3 @@ const SpotDetail = () => {
 };
 
 export default SpotDetail;
-
-// <Link to='/checkout' className='d-block mx-auto btn btn-primary w-25' >Procced to Checkout</Link>

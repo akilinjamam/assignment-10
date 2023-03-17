@@ -9,7 +9,7 @@ const LocalSpot = ({ localSpot }) => {
 
 
     const navigate = useNavigate()
-    const { name, img, id, breakfastHifi, price, lunchNormal, dinnerNormal, stayLong, busac } = localSpot
+    const { name, img, id, price, stayLong } = localSpot
 
     const handleBook = (id, name) => {
         navigate(`/${id}`)

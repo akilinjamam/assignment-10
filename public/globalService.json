@@ -52,6 +52,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "6 night 7 days",
         "price": "250000",
+        "tourArea": "global",
+        "tourLastDate": "29 Mar, 2023",
         "tourType": "Family-Tour"
     },
     {
@@ -107,6 +109,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
         "price": "150000",
+        "tourArea": "global",
+        "tourLastDate": "28 Mar, 2023",
         "tourType": "Group-Tour"
     },
     {
@@ -162,6 +166,8 @@
         "stayShort": "5 night 6 days",
         "stayLong": "4 night 5 days",
         "price": "450000",
+        "tourArea": "global",
+        "tourLastDate": "27 Mar, 2023",
         "tourType": "Couple-Tour"
     },
     {
@@ -217,6 +223,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
         "price": "400000",
+        "tourArea": "global",
+        "tourLastDate": "26 Mar, 2023",
         "tourType": "Couple-Tour"
     },
     {
@@ -272,6 +280,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "9 night 10 days",
         "price": "600000",
+        "tourArea": "global",
+        "tourLastDate": "25 Mar, 2023",
         "tourType": "Couple-Tour"
     },
     {
@@ -327,6 +337,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
         "price": "600000",
+        "tourArea": "global",
+        "tourLastDate": "24 Mar, 2023",
         "tourType": "Couple-Tour"
     },
     {
@@ -382,6 +394,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
         "price": "500000",
+        "tourArea": "global",
+        "tourLastDate": "23 Mar, 2023",
         "tourType": "Couple-Tour"
     },
     {
@@ -437,6 +451,8 @@
         "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
         "price": "40000",
+        "tourArea": "global",
+        "tourLastDate": "22 Mar, 2023",
         "tourType": "Couple-Tour"
     }
 ]

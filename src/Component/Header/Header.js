@@ -16,23 +16,21 @@ const Header = () => {
         signOut(auth)
     }
     return (
-        <div style={{ zIndex: '20' }}>
+        <div style={{ zIndex: '20', position: 'relative' }}>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand as={Link} to="/"> <img style={{ width: '150px', height: '50px', marginBottom: '10px' }} src={logo} alt="" /> </Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/"> <img style={{ width: '150px', height: '50px', marginBottom: '10px', position: 'absolute', top: '0', left: '20px' }} src={logo} alt="" /> </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav style={{ marginLeft: '100px', marginBottom: '10px', marginTop: '5px' }} className="me-auto">
                             <CustomLink to="/visitingspot">Home Tour</CustomLink>
                             <CustomLink to="/globalvisiting">World Tour</CustomLink>
                             <CustomLink to="/blogs">Blogs</CustomLink>
                             <CustomLink to="/contact">Contact</CustomLink>
                             <CustomLink to="/packages">packages</CustomLink>
                             <CustomLink to="/visaGuide">visa Guide</CustomLink>
-
-
                         </Nav>
-                        <Nav>
+                        <Nav style={{ marginBottom: '10px', marginTop: '5px' }}>
                             <CustomLink to="/about">About Me</CustomLink>
 
                             {
