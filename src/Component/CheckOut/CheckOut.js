@@ -35,7 +35,7 @@ const CheckOut = () => {
             mobileNum: e.target.mobileNum.value,
             genderId: gender,
             tourName: c?.name?.name,
-            tourType: c?.name?.tourType,
+            tourType: c?.tourType,
             tourDuration: c?.name?.stayLong,
             tourPrice: c?.name?.price,
             paymentMethod: paymentMethod,
@@ -48,6 +48,12 @@ const CheckOut = () => {
         console.log(formData)
 
 
+        if (members == 1) {
+            memberData = {
+                member1: e.target.name1.value,
+            }
+            setNameData((m) => [...m, memberData]);
+        }
         if (members == 2) {
             memberData = {
                 member1: e.target.name1.value,
@@ -329,7 +335,7 @@ const CheckOut = () => {
                                 <br />
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">TOUR TYPE :</label>
-                                    <input required type="text" name="" id="" value={c?.name?.tourType} />
+                                    <input required type="text" name="" id="" value={c?.tourType} />
                                 </div>
                                 <br />
                                 <div style={{ display: 'flex' }}>
@@ -354,11 +360,13 @@ const CheckOut = () => {
                         <hr />
                         <br />
                         <div className='memberMngmntContainer'>
-                            <p style={{ fontStyle: 'italic' }}>please type all name of members(including you..)</p>
+                            {members > 2 && <p style={{ fontStyle: 'italic' }}>please type all name of members(including you..)</p>}
+                            {members == 1 && <p style={{ fontStyle: 'italic' }}>please Type Your Name here...</p>}
+                            {members == 2 && <p style={{ fontStyle: 'italic' }}>please Type both of your Name here...</p>}
                             {members == 1 &&
                                 <div className="memberManagement">
                                     <div>
-                                        <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
+                                        <input required placeholder='type your name... ' type="text" name="name1" id="" />
 
                                     </div>
                                 </div>

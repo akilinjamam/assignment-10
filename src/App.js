@@ -22,6 +22,8 @@ import VisaGuilde from './Component/VisaGuide/VisaGuilde';
 import NoteState from './Context/NoteState';
 import PdfForm from './Component/PdfForm/PdfForm';
 import PdfFormPay from './Component/PdfForm/PdfFormPay';
+import TourHome from './Component/TourArea/TourHome';
+import TourAbroad from './Component/TourArea/TourAbroad';
 
 
 
@@ -31,7 +33,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [color] = useState("white");
 
-  const firstName = createContext()
+
 
 
   useEffect(() => {
@@ -76,6 +78,8 @@ function App() {
                   <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
                   <Route path='/pdfForm' element={<PdfForm></PdfForm>}></Route>
                   <Route path='/pdfFormPay' element={<PdfFormPay></PdfFormPay>}></Route>
+                  <Route path='/tourHome' element={<TourHome></TourHome>}></Route>
+                  <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
 
                   <Route path='*' element={<NotFound></NotFound>}></Route>
                 </Routes>

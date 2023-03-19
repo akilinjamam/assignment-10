@@ -23,8 +23,8 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav style={{ marginLeft: '100px', marginBottom: '10px', marginTop: '5px' }} className="me-auto">
-                            <CustomLink to="/visitingspot">Home Tour</CustomLink>
-                            <CustomLink to="/globalvisiting">World Tour</CustomLink>
+                            <CustomLink to="/tourHome">Home Tour</CustomLink>
+                            <CustomLink to="/tourAbroad">World Tour</CustomLink>
                             <CustomLink to="/blogs">Blogs</CustomLink>
                             <CustomLink to="/contact">Contact</CustomLink>
                             <CustomLink to="/packages">packages</CustomLink>

@@ -93,8 +93,14 @@
 }
 
 .sidepartSelections {
-    font-style: italic;
     text-align: left;
+
+}
+
+.sidepartSelections label {
+    background-color: lightgray;
+    width: 100%;
+    padding: 5px;
 }
 
 .sidepartSelections select {
@@ -103,6 +109,7 @@
     border: none;
     outline: none;
     border-bottom: 1px solid gray;
+    width: 100%;
 }
 
 .cursors:hover {
@@ -162,4 +169,12 @@
 .timeLetter {
     font-size: 12px;
     font-weight: bold;
+}
+
+.block {
+    display: block;
+}
+
+.none {
+    display: none;
 }

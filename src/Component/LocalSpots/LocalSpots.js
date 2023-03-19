@@ -82,7 +82,7 @@ const LocalSpots = () => {
                 </div>
 
                 <br /><br /><br />
-                <Link to='/visitingspot' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+                <Link to='/tourHome' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
                 <br />
                 <br />
             </div>

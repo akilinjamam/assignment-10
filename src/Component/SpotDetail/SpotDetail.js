@@ -6,8 +6,9 @@ import './SpotDetail.css'
 
 const SpotDetail = () => {
     const [outletNumber, setOutletNumber] = useState(1);
+    // const [tourType, setTourType] = useState('')
     const [data, setData] = useState([]);
-
+    const [timeOver, setTimeOver] = useState(false)
     const { spotdetailId } = useParams()
 
 
@@ -43,6 +44,8 @@ const SpotDetail = () => {
     const setMembers = state.setMembers;
     const members = state.members;
     const lastDate = state?.name?.tourLastDate;
+    const tourType = state.tourType;
+    const setTourType = state.setTourType
 
     useEffect(() => {
         state.setName(findData,)
@@ -72,7 +75,8 @@ const SpotDetail = () => {
             const seconds = Math.floor(distance % (60 * 1000) / 1000)
 
             if (distance < 0) {
-                clearInterval(interval.current)
+                clearInterval(interval.current);
+                setTimeOver(true);
             } else {
                 setTimerDays(days);
                 setTimerHours(hours);
@@ -87,7 +91,8 @@ const SpotDetail = () => {
 
     useEffect(() => {
         if (findData) {
-            startTimer(findData?.tourLastDate)
+            startTimer(findData?.tourLastDate);
+
         }
     })
 
@@ -157,9 +162,8 @@ const SpotDetail = () => {
 
                     <div className='sidepartSummery'>
                         <p><span>Tour Name:</span> {findData?.name}</p>
-                        <p><span>Tour Type:</span> {findData?.tourType}</p>
                         <p><span>Tour Duration:</span> {findData?.stayLong}</p>
-                        <p><span>Total Tour Cost:</span> {findData?.price}</p>
+                        <p><span>Tour Cost/person:</span> {findData?.price}</p>
                         <p><span>Last Date of Registration:</span> {lastDate}</p>
 
                         <div className='remainingDatesContainer'>
@@ -190,72 +194,103 @@ const SpotDetail = () => {
                     </div>
                     <br />
                     <h4>PROCCED TO CHECKOUT</h4>
-                    <div className='sidepartSelections'>
+                    <br />
+                    <div className={`${timeOver ? 'none' : 'block'} sidepartSelections`}>
+                        <label htmlFor="">Please Select Tour Type :</label>
+                        <select name="" id="" onChange={(e) => {
+                            const option = e.target.value;
+                            setTourType(option)
+                        }}>
+                            <option value="">select here...</option>
+                            <option value="Single-Tour">Single-Tour</option>
+                            <option value="Couple-Tour">Couple-Tour</option>
+                            <option value="Family-Tour">Family-Tour</option>
+                            <option value="Group-Tour">Group-Tour"</option>
 
-                        {
-                            findData?.tourType === 'Family-Tour' &&
-                            <div>
-                                <label htmlFor="">Select Number of Family Memebers (including you) :</label>
-                                <select name="" id="" onChange={(e) => {
-                                    const option = e.target.value;
-                                    setMembers(option)
-                                }}>
-                                    <option value="">select here...</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                        }
-                        {
-                            findData?.tourType === 'Couple-Tour' &&
-                            <div>
-                                <label htmlFor="">Select '2' as a couple :</label>
-                                <select name="" id="" onChange={(e) => {
-                                    const option = e.target.value;
-                                    setMembers(option)
-                                }}>
-                                    <option value="">select here...</option>
-                                    <option value="2">2</option>
-
-                                </select>
-                            </div>
-                        }
-                        {
-                            findData?.tourType === 'Group-Tour' &&
-                            <div>
-                                <label htmlFor="">Select Number of Group Memebers (including you) :</label>
-                                <select name="" id="" onChange={(e) => {
-                                    const option = e.target.value;
-                                    setMembers(option)
-                                }}>
-                                    <option value="">select here...</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-
-                                </select>
-                            </div>
-                        }
+                        </select>
                     </div>
-                    <br /><br />
-                    {!members && <p style={{ color: 'red' }}>please select any one option</p>}
+                    <br />
+                    <div className={timeOver ? 'none' : 'block'}>
+                        <div className='sidepartSelections'>
 
-                    <Link to='/checkout' ><button className={`${members ? '' : 'cursors'} ${!members && 'gray'} checkoutBtn `} disabled={members ? false : true} >NEXT</button></Link>
+                            {tourType === 'Single-Tour' &&
+                                <div>
+                                    <label htmlFor=""> Select '1' as a single person  :</label>
+                                    <select name="" id="" onChange={(e) => {
+                                        const option = e.target.value;
+                                        setMembers(option)
+                                    }}>
+                                        <option value="">select here...</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                </div>
+                            }
 
+                            {
+                                tourType === 'Family-Tour' &&
+                                <div>
+                                    <label htmlFor="">Select Number of Family Memebers (including you) :</label>
+                                    <select name="" id="" onChange={(e) => {
+                                        const option = e.target.value;
+                                        setMembers(option)
+                                    }}>
+                                        <option value="">select here...</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            }
+                            {
+                                tourType === 'Couple-Tour' &&
+                                <div>
+                                    <label htmlFor="">Select '2' as a couple :</label>
+                                    <select name="" id="" onChange={(e) => {
+                                        const option = e.target.value;
+                                        setMembers(option)
+                                    }}>
+                                        <option value="">select here...</option>
+                                        <option value="2">2</option>
+
+                                    </select>
+                                </div>
+                            }
+                            {
+                                tourType === 'Group-Tour' &&
+                                <div>
+                                    <label htmlFor="">Select Number of Group Memebers (including you) :</label>
+                                    <select name="" id="" onChange={(e) => {
+                                        const option = e.target.value;
+                                        setMembers(option)
+                                    }}>
+                                        <option value="">select here...</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+
+                                    </select>
+                                </div>
+                            }
+                        </div>
+                        <br /><br />
+                        {!members && <p style={{ color: 'red' }}>please select any one option</p>}
+
+                        <Link to='/checkout' ><button className={`${members ? '' : 'cursors'} ${!members && 'gray'} checkoutBtn `} disabled={members ? false : true} >NEXT</button></Link>
+                    </div>
+                    {timeOver && <p style={{ color: 'red' }}>Sorry! Registration Time is Over</p>}
                 </div>
 
             </div>

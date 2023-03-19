@@ -77,7 +77,7 @@ const GlobalSpots = () => {
                     </Slider>
                 </div>
                 <br />
-                <Link to='/globalvisiting' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+                <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
                 <br />
                 <br />
             </div>
