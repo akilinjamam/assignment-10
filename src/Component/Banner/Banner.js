@@ -56,7 +56,7 @@ const Banner = () => {
 
     // Banner Section.....
     return (
-        <div style={{ width: '100%', margin: 'auto' }}>
+        <div style={{ width: '100%', margin: 'auto', }}>
             <Carousel>
                 <Carousel.Item>
                     <img style={{ height: '500px' }}

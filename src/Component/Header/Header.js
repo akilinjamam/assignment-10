@@ -1,23 +1,100 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../logo-img/assignment-10-logo.png'
 import CustomLink from '../CustomLink/CustomLink';
+import './Header.css';
 
 const Header = () => {
 
+
     const [user] = useAuthState(auth);
+    const [show, setShow] = useState(false);
     console.log(user)
 
     const handleSignOut = () => {
         signOut(auth)
     }
     return (
-        <div style={{ zIndex: '20', position: 'relative' }}>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <div className='HeaderMain'>
+            <section className='headerContainer'>
+                <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
+                <div className='headerCover'>
+                    <div className='headerOne'>
+                        <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
+                        <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
+                        <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
+                        <p> <CustomLink to="/contact">Contact</CustomLink></p>
+                        <p> <CustomLink to="/packages">packages</CustomLink></p>
+                        <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
+                        <p> <CustomLink to="/about">About Me</CustomLink></p>
+                    </div>
+
+                    <div className='headerTwo'>
+
+                        {
+                            <p>
+                                {
+                                    user ? <CustomLink onClick={handleSignOut} to='/login' >Sign Out</CustomLink> : <CustomLink to="/login">Login</CustomLink>
+                                }
+                            </p>
+                        }
+
+                        {
+                            <p>
+                                {
+                                    user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
+                                }
+                            </p>
+                        }
+                    </div>
+
+                </div>
+
+                <div onClick={() => setShow(!show)} className='headerCoverRes'>
+                    <i style={{ color: 'white', position: 'absolute', rigth: '0' }} class="uil uil-bars"></i>
+                </div>
+                <div className={`${show ? 'visible' : 'hidden'} headerMenuContainerRes`}>
+                    <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
+                    <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
+                    <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
+                    <p> <CustomLink to="/contact">Contact</CustomLink></p>
+                    <p> <CustomLink to="/packages">packages</CustomLink></p>
+                    <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
+                    <p> <CustomLink to="/about">About Me</CustomLink></p>
+                    <br />
+
+                    {
+                        <p>
+                            {
+                                user ? <CustomLink onClick={handleSignOut} to='/login' >Sign Out</CustomLink> : <CustomLink to="/login">Login</CustomLink>
+                            }
+                        </p>
+                    }
+
+                    {
+                        <p>
+                            {
+                                user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
+                            }
+                        </p>
+                    }
+                </div>
+            </section>
+
+        </div>
+    );
+};
+
+export default Header;
+
+
+/* 
+
+<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand as={Link} to="/"> <img style={{ width: '150px', height: '50px', marginBottom: '10px', position: 'absolute', top: '0', left: '20px' }} src={logo} alt="" /> </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -29,6 +106,7 @@ const Header = () => {
                             <CustomLink to="/contact">Contact</CustomLink>
                             <CustomLink to="/packages">packages</CustomLink>
                             <CustomLink to="/visaGuide">visa Guide</CustomLink>
+                            <CustomLink to="/about">About Me</CustomLink>
                         </Nav>
                         <Nav style={{ marginBottom: '10px', marginTop: '5px' }}>
                             <CustomLink to="/about">About Me</CustomLink>
@@ -45,8 +123,6 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
-    );
-};
 
-export default Header;
+
+*/

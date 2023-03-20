@@ -53,7 +53,9 @@ const TourAbroad = () => {
 
     return (
         <div className='tourAreaMain'>
+
             <section className='partOne'>
+                <br /><br /><br />
                 <button onClick={handleView} className='btn btn-primary'>VIEW ALL</button>
                 <br />
                 <br />
@@ -114,8 +116,8 @@ const TourAbroad = () => {
                 <br />
                 <br />
             </section>
-
             <section className='partTwo'>
+                <br /><br /><br />
                 <h6>WORLD TOUR</h6>
                 <hr />
 

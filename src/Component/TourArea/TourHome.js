@@ -51,6 +51,7 @@ const TourHome = () => {
     return (
         <div className='tourAreaMain'>
             <section className='partOne'>
+                <br /><br /><br />
                 <button onClick={handleView} className='btn btn-primary'>VIEW ALL</button>
                 <br />
                 <br />
@@ -113,6 +114,7 @@ const TourHome = () => {
             </section>
 
             <section className='partTwo'>
+                <br /><br /><br />
                 <h6>HOME TOUR</h6>
                 <hr />
 
