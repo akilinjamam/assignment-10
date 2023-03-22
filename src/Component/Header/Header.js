@@ -13,6 +13,7 @@ const Header = () => {
 
     const [user] = useAuthState(auth);
     const [show, setShow] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
     console.log(user)
 
     const handleSignOut = () => {
@@ -24,6 +25,11 @@ const Header = () => {
                 <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
                 <div className='headerCover'>
                     <div className='headerOne'>
+                        <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
+
+                    </div>
+
+                    <div className='headerTwo'>
                         <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
                         <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                         <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
@@ -31,9 +37,6 @@ const Header = () => {
                         <p> <CustomLink to="/packages">packages</CustomLink></p>
                         <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
                         <p> <CustomLink to="/about">About Me</CustomLink></p>
-                    </div>
-
-                    <div className='headerTwo'>
 
                         {
                             <p>
@@ -43,13 +46,37 @@ const Header = () => {
                             </p>
                         }
 
+
                         {
-                            <p>
-                                {
-                                    user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
-                                }
-                            </p>
+                            user &&
+                            <div >
+                                <span> <i onClick={() => setShowInfo(!showInfo)} class="uil uil-user"></i></span>
+                                <div onMouseLeave={() => setShowInfo(false)} className={`${showInfo ? 'visibleInfo' : 'hiddenInfo'} userInfo `}>
+
+                                    <p>
+                                        {
+                                            user?.photoURL ? <CustomLink to=""><img className='googlePhoto' src={user?.photoURL} alt="" /></CustomLink> : <i class="uil uil-user-square"></i>
+                                        }
+                                        <br />
+                                        {
+                                            user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
+                                        }
+                                        {
+                                            user?.email && <CustomLink to=''> {user.email} </CustomLink>
+                                        }
+
+                                    </p>
+                                    <p style={{ color: 'white' }}>
+                                        <  hr />
+                                    </p>
+                                    <p>
+                                        <CustomLink to="/dashboard">Control Panel</CustomLink>
+                                    </p>
+                                </div>
+                            </div>
                         }
+
+
                     </div>
 
                 </div>
@@ -57,7 +84,7 @@ const Header = () => {
                 <div onClick={() => setShow(!show)} className='headerCoverRes'>
                     <i style={{ color: 'white', position: 'absolute', rigth: '0' }} class="uil uil-bars"></i>
                 </div>
-                <div className={`${show ? 'visible' : 'hidden'} headerMenuContainerRes`}>
+                <div onMouseLeave={() => setShow(false)} className={`${show ? 'visible' : 'hidden'} headerMenuContainerRes`}>
                     <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
                     <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                     <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
@@ -75,13 +102,24 @@ const Header = () => {
                         </p>
                     }
 
-                    {
-                        <p>
-                            {
-                                user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
-                            }
-                        </p>
-                    }
+                    <p>
+                        {
+                            user?.photoURL ? <CustomLink to=""><img className='googlePhoto' src={user?.photoURL} alt="" /></CustomLink> : <i class="uil uil-user-square"></i>
+                        }
+                        <br />
+                        {
+                            user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
+                        }
+                        {
+                            user?.email && <CustomLink to=''> {user.email} </CustomLink>
+                        }
+
+                    </p>
+
+                    <p>
+                        <CustomLink to="/dashboard">Control Panel</CustomLink>
+                    </p>
+
                 </div>
             </section>
 
@@ -94,35 +132,9 @@ export default Header;
 
 /* 
 
-<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand as={Link} to="/"> <img style={{ width: '150px', height: '50px', marginBottom: '10px', position: 'absolute', top: '0', left: '20px' }} src={logo} alt="" /> </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav style={{ marginLeft: '100px', marginBottom: '10px', marginTop: '5px' }} className="me-auto">
-                            <CustomLink to="/tourHome">Home Tour</CustomLink>
-                            <CustomLink to="/tourAbroad">World Tour</CustomLink>
-                            <CustomLink to="/blogs">Blogs</CustomLink>
-                            <CustomLink to="/contact">Contact</CustomLink>
-                            <CustomLink to="/packages">packages</CustomLink>
-                            <CustomLink to="/visaGuide">visa Guide</CustomLink>
-                            <CustomLink to="/about">About Me</CustomLink>
-                        </Nav>
-                        <Nav style={{ marginBottom: '10px', marginTop: '5px' }}>
-                            <CustomLink to="/about">About Me</CustomLink>
 
-                            {
-                                user ? <CustomLink onClick={handleSignOut} to='/login' >Sign Out</CustomLink> : <CustomLink to="/login">Login</CustomLink>
-                            }
-
-                            {
-                                user?.displayName && <Link className='mt-2 ms-4 text-decoration-none text-white' to=''> {user.displayName} </Link>
-                            }
-
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                       
+        
 
 
 */

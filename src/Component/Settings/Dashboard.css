@@ -1,0 +1,38 @@
+.dashboardMain {
+    width: 100%;
+    height: 100vh;
+}
+
+.dashboardContainer {
+    margin-top: 60px;
+    height: 100vh;
+    display: flex;
+    align-items: baseline;
+}
+
+.dashboardPartOne {
+    width: 20%;
+    height: 98vh;
+    border-right: 1px solid lightgray;
+    text-align: left;
+    background-color: black;
+}
+
+.dashboardPartOne p {
+    margin-left: 15px;
+    color: wheat;
+}
+
+.dashboardPartOne hr {
+    color: white;
+}
+
+.dashboardPartTwo {
+    width: 80%;
+    height: 100vh;
+}
+
+.dashboardPartTwo p {
+    padding: 15px;
+    font-weight: bold;
+}

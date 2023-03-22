@@ -1,0 +1,86 @@
+.addEventsHomeMain {
+    width: 90%;
+    height: 500px;
+    border: 1px solid lightgray;
+    margin: auto;
+    position: relative;
+}
+
+.showStepsHome {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stepHome1,
+.stepHome2,
+.stepHome3,
+.stepHome4,
+.stepHome5 {
+    width: 20%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 5px;
+}
+
+.blue {
+    background-color: rgb(70, 70, 255);
+}
+
+.gray {
+    background-color: gray;
+}
+
+.basicInfo {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.basicInfoPartOne,
+.basicInfoPartTwo {
+    width: 45%;
+    margin: 5px;
+}
+
+.basicInfoPartOne div,
+.basicInfoPartTwo div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basicInfoPartTwo select {
+    width: 195px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.basicInfoPartOne input,
+.basicInfoPartTwo input {
+    padding: 0px 5px;
+    outline: none;
+}
+
+
+.btnHomeBasic,
+.btnHomeDetail {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+
+
+.detailInfo textarea,
+.itinerariesInfo textarea,
+.termsAndConditions textarea,
+.additionalInfo textarea {
+    max-height: 350px;
+    outline: none;
+    padding: 10px;
+}

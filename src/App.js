@@ -24,6 +24,9 @@ import PdfForm from './Component/PdfForm/PdfForm';
 import PdfFormPay from './Component/PdfForm/PdfFormPay';
 import TourHome from './Component/TourArea/TourHome';
 import TourAbroad from './Component/TourArea/TourAbroad';
+import Dashboard from './Component/Settings/Dashboard';
+import AddEventsHome from './Component/Settings/AddEventsHome';
+import AddEventsAbroad from './Component/Settings/AddEventsAbroad';
 
 
 
@@ -63,12 +66,17 @@ function App() {
                 <Routes>
                   <Route path='/' element={<Home></Home>}></Route>
                   <Route path='/home' element={<Home></Home>}></Route>
-                  <Route path='/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
+
                   <Route path='/checkout' element={
                     <RequireAuth>
                       <CheckOut></CheckOut>
                     </RequireAuth>
                   }></Route>
+                  <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
+                    <Route index element={<AddEventsHome></AddEventsHome>}></Route>
+                    <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
+                  </Route>
+                  <Route path='/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
                   <Route path='/login' element={<Login></Login>}></Route>
                   <Route path='/register' element={<Register></Register>}></Route>
                   <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
@@ -82,7 +90,6 @@ function App() {
                   <Route path='/pdfFormPay' element={<PdfFormPay></PdfFormPay>}></Route>
                   <Route path='/tourHome' element={<TourHome></TourHome>}></Route>
                   <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
-
                   <Route path='*' element={<NotFound></NotFound>}></Route>
                 </Routes>
 

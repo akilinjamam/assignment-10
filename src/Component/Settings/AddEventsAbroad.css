@@ -1,0 +1,66 @@
+.addEventsAbroadMain {
+    width: 90%;
+    height: 500px;
+    border: 1px solid lightgray;
+    margin: auto;
+}
+
+.showStepsAbroad {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stepAbroad1,
+.stepAbroad2,
+.stepAbroad3,
+.stepAbroad4,
+.stepAbroad5 {
+    width: 20%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 5px;
+}
+
+.orange {
+    background-color: orange
+}
+
+.gray {
+    background-color: gray;
+}
+
+.basicInfo {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.basicInfoPartOne,
+.basicInfoPartTwo {
+    width: 45%;
+    margin: 5px;
+}
+
+.basicInfoPartOne div,
+.basicInfoPartTwo div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basicInfoPartTwo select {
+    width: 195px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.basicInfoPartOne input,
+.basicInfoPartTwo input {
+    padding: 0px 5px;
+    outline: none;
+}

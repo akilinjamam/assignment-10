@@ -21,25 +21,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -49,12 +36,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -62,12 +43,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
         "price": "5000",
         "tourArea": "home",
         "tourLastDate": "05 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 2,
@@ -91,25 +83,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -119,12 +98,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -132,12 +105,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "2 night 3 days",
         "price": "3500",
         "tourArea": "home",
         "tourLastDate": "06 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 3,
@@ -161,25 +145,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -189,12 +160,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -202,12 +167,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "3 night 4 days",
         "price": "4000",
         "tourArea": "home",
         "tourLastDate": "07 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 4,
@@ -231,25 +207,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -259,12 +222,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -272,12 +229,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
         "price": "6000",
         "tourArea": "home",
         "tourLastDate": "08 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 5,
@@ -301,25 +269,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -329,12 +284,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -342,12 +291,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "5 night 6 days",
         "price": "7000",
         "tourArea": "home",
         "tourLastDate": "09 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 6,
@@ -371,25 +331,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -399,12 +346,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -412,12 +353,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "4 night 5 days",
         "price": "4500",
         "tourArea": "home",
         "tourLastDate": "10 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 7,
@@ -441,25 +393,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -469,12 +408,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -482,12 +415,23 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "3 night 4 days",
         "price": "5000",
         "tourArea": "home",
         "tourLastDate": "11 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     },
     {
         "id": 8,
@@ -511,25 +455,12 @@
         ],
         "busac": "A/C",
         "busnoac": "non A/C",
-        "breakfastNormal": [
-            "Egg",
-            "Chicken Bon",
-            "water",
-            "tea"
-        ],
         "breakfastHifi": [
             "Egg, ",
             "Chicken Barger, ",
             "Sandwitch, ",
             "water, ",
             "Coffee, "
-        ],
-        "lunchNormal": [
-            "fried rice, ",
-            "vegetables, ",
-            "Rui fish, ",
-            "Dal, ",
-            "water "
         ],
         "lunchHifi": [
             "polao rice",
@@ -539,12 +470,6 @@
             "vorta",
             "water"
         ],
-        "dinnerNormal": [
-            "khichuri, ",
-            "chicken, ",
-            "Dal, ",
-            "water "
-        ],
         "dinnerHifi": [
             "Mutton Biriany",
             "desert",
@@ -552,11 +477,22 @@
             "coffee",
             "water"
         ],
-        "stayShort": "2 night 3 days",
         "stayLong": "7 night 8 days",
         "price": "9000",
         "tourArea": "home",
         "tourLastDate": "13 Apr, 2023",
-        "tourType": "Family-Tour"
+        "tourType": "Family-Tour",
+        "inclusion": [
+            ""
+        ],
+        "itineraries": [
+            ""
+        ],
+        "additionalInfo": [
+            ""
+        ],
+        "termsAndConditions": [
+            ""
+        ]
     }
 ]
