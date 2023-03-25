@@ -1,6 +1,8 @@
 .addEventsHomeMain {
     width: 90%;
-    height: 500px;
+    height: 450px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     border: 1px solid lightgray;
     margin: auto;
     position: relative;
@@ -67,20 +69,33 @@
 }
 
 
-.btnHomeBasic,
-.btnHomeDetail {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+
+
+
+
+.detailInfo form,
+.itinerariesInfo form,
+.termsAndConditions form,
+.additionalInfo form {
+    max-height: 350px;
+    outline: none;
+    padding: 10px;
 }
 
 
 
-.detailInfo textarea,
-.itinerariesInfo textarea,
-.termsAndConditions textarea,
-.additionalInfo textarea {
-    max-height: 350px;
-    outline: none;
-    padding: 10px;
+.detailInfo {
+    text-align: left;
+}
+
+.itinerariesInfo {
+    text-align: left;
+}
+
+.termsAndConditions {
+    text-align: left;
+}
+
+.additionalInfo {
+    text-align: left;
 }
