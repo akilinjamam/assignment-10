@@ -14,6 +14,11 @@ const AddEventsHome = () => {
 
     const [allData, setAllData] = useState({})
     const [view, setView] = useState(false);
+    const [fillBasic, setFillBasic] = useState(false);
+    const [fillDes, setFillDes] = useState(false);
+    const [fillItineraries, setFillItineraries] = useState(false);
+    const [fillTerms, setFillTerms] = useState(false);
+    const [fillAdditionIn, setFillAdditionIn] = useState(false);
 
     const [name, setName] = useState('');
     const [img, setImg] = useState('');
@@ -39,7 +44,8 @@ const AddEventsHome = () => {
             setCount(1);
         } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
-            setView(false)
+            setView(false);
+            setFillBasic(true);
         }
 
         if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
@@ -54,7 +60,8 @@ const AddEventsHome = () => {
             setView(true);
         } else {
             setCount(count + 1);
-            setView(false)
+            setView(false);
+            setFillDes(true);
         }
     }
     const handleItiner = (e) => {
@@ -64,7 +71,8 @@ const AddEventsHome = () => {
             setView(true);
         } else {
             setCount(count + 1);
-            setView(false)
+            setView(false);
+            setFillItineraries(true);
         }
     }
     const handleTerms = (e) => {
@@ -75,7 +83,8 @@ const AddEventsHome = () => {
             setView(true);
         } else {
             setCount(count + 1);
-            setView(false)
+            setView(false);
+            setFillTerms(true);
         }
 
 
@@ -87,12 +96,13 @@ const AddEventsHome = () => {
             setCount(5);
 
         } else {
-            setCount(1);
-            setView(false)
+            setCount(count + 1);
+            setFillAdditionIn(true);
         }
 
-        if (addition || inclusion) {
-            setView(true)
+        if (addition === '' || inclusion === '') {
+            setView(true);
+            setCount(5);
         }
 
 
@@ -109,26 +119,78 @@ const AddEventsHome = () => {
             termsAndConditions: terms,
             additionalInfo: addition,
             inclusion: inclusion
-        })
+        });
+
+
+
+    }
+
+
+    const handleFinal = () => {
+
+        if (name && img && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
+            setName('');
+            setImg('');
+            setPrice('');
+            setStayLong('');
+            setTourDate('');
+            setTourArea('');
+            setTourLastDate('');
+            setItineraries('');
+            setDescription('');
+            setTerms('');
+            setAddition('');
+            setInclusion('');
+            setContent('');
+            setContectSecond('');
+            setContentThird('');
+            setContentFourth('');
+            setContentFifth('');
+            setView(false)
+        };
+
+        setFillBasic(false);
+        setFillDes(false);
+        setFillItineraries(false);
+        setFillTerms(false);
+        setFillAdditionIn(false);
+        setCount(1)
     }
 
     return (
         <div className='addEventsHomeMain'>
             <div className='showStepsHome'>
-                <div className={`${count === 1 ? 'blue' : 'gray'} stepHome1`}>
+                <div className={` ${fillBasic ? 'backgroundBlue' : 'gray'} stepHome1`}>
                     <span>Basic Info</span>
                 </div>
-                <div className={`${count === 2 ? 'blue' : 'gray'} stepHome2`}>
+                <div className={` ${fillDes ? 'backgroundBlue' : 'gray'} stepHome2`}>
                     <span>Detail Info</span>
                 </div>
-                <div className={`${count === 3 ? 'blue' : 'gray'} stepHome3`}>
+                <div className={` ${fillItineraries ? 'backgroundBlue' : 'gray'} stepHome3`}>
                     <span>Itineraries</span>
                 </div>
-                <div className={`${count === 4 ? 'blue' : 'gray'} stepHome4`}>
+                <div className={` ${fillTerms ? 'backgroundBlue' : 'gray'} stepHome4`}>
                     <span>Terms & Cond.</span>
                 </div>
-                <div className={`${count === 5 ? 'blue' : 'gray'} stepHome5`}>
+                <div className={` ${fillAdditionIn ? 'backgroundBlue' : 'gray'} stepHome5`}>
                     <span>Additional Info</span>
+                </div>
+            </div>
+            <div className='bottomLine'>
+                <div className={`${count === 1 && 'red'} bottomLine`}>
+
+                </div>
+                <div className={`${count === 2 && 'red'} bottomLine`}>
+
+                </div>
+                <div className={`${count === 3 && 'red'} bottomLine`}>
+
+                </div>
+                <div className={`${count === 4 && 'red'} bottomLine`}>
+
+                </div>
+                <div className={`${count === 5 && 'red'} bottomLine`}>
+
                 </div>
             </div>
             <hr />
@@ -209,8 +271,7 @@ const AddEventsHome = () => {
                                                 setTourArea(option);
                                             }}>
                                                 <option value="">select...</option>
-                                                <option value="home">home</option>
-                                                <option value="global">global</option>
+                                                <option value="home">Home</option>
                                             </select>
 
                                         </div>
@@ -346,6 +407,19 @@ const AddEventsHome = () => {
                             </div>
                             <br />
                         </form>
+                    </div>
+                }
+
+
+                {
+                    count === 6 &&
+                    <div className='finalMessageEvent'>
+                        <form className='lastFormEvent' action="" onSubmit={handleFinal}>
+                            <i class="uil uil-check-circle"></i>
+                            <p>All IInformation Successfully added to Database</p>
+                            <input className='btn btn-primary finalMessageBtn' type="submit" value="ADD NEW EVENT" />
+                        </form>
+
                     </div>
                 }
             </div>
