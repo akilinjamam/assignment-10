@@ -1,9 +1,10 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import CustomLink from '../CustomLink/CustomLink';
 import './Dashboard.css'
 
 const Dashboard = () => {
+
     return (
         <div className='dashboardMain'>
             <div className='dashboardContainer'>
@@ -12,13 +13,11 @@ const Dashboard = () => {
                     <p>MENU</p>
                     <hr />
                     <br />
-                    <CustomLink to="/dashboard">ADD EVENT (HOME)</CustomLink>
+                    <button className='btnDashboard' >ADMIN</button>
                     <br />
-                    <CustomLink to="/dashboard/addToAbroad">ADD EVENT (ABROAD)</CustomLink>
                     <br />
-                    <CustomLink to="1">ADMIN</CustomLink>
+                    <button className='btnDashboard'>STATISTIC</button>
                     <br />
-                    <CustomLink to="2">STATISTIC</CustomLink>
                     <br />
                 </div>
 

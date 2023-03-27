@@ -1,3 +1,7 @@
+.addEventsHome {
+    position: relative;
+}
+
 .addEventsHomeMain {
     width: 90%;
     height: 450px;
@@ -6,6 +10,12 @@
     border: 1px solid lightgray;
     margin: auto;
     position: relative;
+}
+
+.homeTitle {
+    position: absolute;
+    top: -68px;
+    left: 45px;
 }
 
 .showStepsHome {

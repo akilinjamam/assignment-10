@@ -27,6 +27,7 @@ import TourAbroad from './Component/TourArea/TourAbroad';
 import Dashboard from './Component/Settings/Dashboard';
 import AddEventsHome from './Component/Settings/AddEventsHome';
 import AddEventsAbroad from './Component/Settings/AddEventsAbroad';
+import DashboardHome from './Component/Settings/DashboardHome';
 
 
 
@@ -73,7 +74,8 @@ function App() {
                     </RequireAuth>
                   }></Route>
                   <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
-                    <Route index element={<AddEventsHome></AddEventsHome>}></Route>
+                    <Route index element={<DashboardHome></DashboardHome>}></Route>
+                    <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                     <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
                   </Route>
                   <Route path='/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
@@ -92,8 +94,6 @@ function App() {
                   <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
                   <Route path='*' element={<NotFound></NotFound>}></Route>
                 </Routes>
-
-                <Footer></Footer>
               </div >
           }
         </div>

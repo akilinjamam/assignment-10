@@ -1,0 +1,114 @@
+.dashboardHomeContainer {
+    width: 90%;
+    height: 70vh;
+    margin: auto;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+
+.homeEvents {
+    width: 100%;
+    min-height: 32vh;
+    max-height: auto;
+    margin: 10px;
+}
+
+.homeEvents div,
+.globalEvents div {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(rgba(248, 248, 252, 0.5), rgba(255, 255, 255, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.dashboardData {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+}
+
+.dashboardDataContainer {
+    position: relative;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.dashboardData img {
+    width: 180px;
+    height: 180px;
+}
+
+.dashboardDataContainer .dashboardDataP {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    top: 60px;
+    color: white;
+    background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
+}
+
+.dashboardDataContainer .dashboardDataP {
+    display: none;
+}
+
+.dashboardDataContainer :hover .dashboardDataP {
+    display: block;
+}
+
+
+
+.globalEvents {
+    width: 100%;
+    min-height: 32vh;
+    max-height: auto;
+    margin: 10px;
+}
+
+.hrDash {
+    margin: 0;
+    padding: 0;
+    color: white;
+    border: 1px solid white;
+    margin: 0 10px;
+}
+
+h6 {
+    text-align: left;
+    color: white;
+    margin: 10px;
+    width: 160px;
+    padding-bottom: 10px;
+}
+
+.uil-plus {
+    color: white;
+    font-size: 50px;
+}
+
+.uil-edit {
+    position: absolute;
+    top: -60px;
+    left: 5px;
+    font-size: 30px;
+    color: yellow;
+    background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
+    cursor: pointer;
+}
+
+.uil-trash {
+    position: absolute;
+    top: -60px;
+    right: 5px;
+    font-size: 30px;
+    color: red;
+    background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
+    cursor: pointer;
+}
