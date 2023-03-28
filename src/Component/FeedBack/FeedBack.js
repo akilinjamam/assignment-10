@@ -25,7 +25,10 @@ const FeedBack = () => {
     useEffect(() => {
         const url = 'feedBack.json';
         fetch(url).then(res => res.json()).then(res => setFeedBack(res))
-    }, [])
+    }, []);
+
+
+    const sign = '>'
 
     return (
         <div className='feedBackMain'>
@@ -52,6 +55,27 @@ const FeedBack = () => {
                             )
                         }
                     </Slider>
+                </div>
+            </div>
+
+            <div className='writeFeedbacksMain'>
+                <div className="writeFeedbacks">
+                    <h1>RELAX</h1>
+
+                    <div className='symbol'>
+                        <div className='line'>
+
+                        </div>
+                        <div className='sign'>
+                            <p ><i class="uil uil-caret-right"></i></p>
+                        </div>
+                    </div>
+                    <div className='writeFeedbackContainer'>
+                        <p> <span style={{ fontWeight: 'bold' }} >Write Here</span> The <br />Feedback !</p>
+                        <input type="text" name="" id="" />
+                        <br /><br />
+                        <button>Send</button>
+                    </div>
                 </div>
             </div>
         </div>

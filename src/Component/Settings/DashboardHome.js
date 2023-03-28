@@ -25,6 +25,11 @@ const DashboardHome = () => {
             navigate('/dashboard/addToAbroad')
         }
     }
+
+
+    const handleNavigate = (id) => {
+        navigate(`/${id}`)
+    }
     return (
         <div className='dashboardHomeMain'>
             <div className="dashboardHomeContainer">
@@ -43,7 +48,7 @@ const DashboardHome = () => {
                                     <div>
                                         <img src={h.img} alt="" />
                                         <div className='dashboardDataP'>
-                                            <p>{h.name}</p>
+                                            <p onClick={() => handleNavigate(h.id)}>{h.name}</p>
                                             <i class="uil uil-edit"></i>
                                             <i class="uil uil-trash"></i>
                                         </div>
@@ -69,7 +74,7 @@ const DashboardHome = () => {
                                     <div>
                                         <img src={h.img} alt="" />
                                         <div className='dashboardDataP'>
-                                            <p>{h.name}</p>
+                                            <p onClick={() => handleNavigate(h.id)} >{h.name}</p>
                                             <i class="uil uil-edit"></i>
                                             <i class="uil uil-trash"></i>
                                         </div>

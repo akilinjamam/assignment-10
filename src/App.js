@@ -28,6 +28,7 @@ import Dashboard from './Component/Settings/Dashboard';
 import AddEventsHome from './Component/Settings/AddEventsHome';
 import AddEventsAbroad from './Component/Settings/AddEventsAbroad';
 import DashboardHome from './Component/Settings/DashboardHome';
+import DashboardHomeBlogs from './Component/Settings/DashboardHomeBlogs';
 
 
 
@@ -77,6 +78,7 @@ function App() {
                     <Route index element={<DashboardHome></DashboardHome>}></Route>
                     <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                     <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
+                    <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
                   </Route>
                   <Route path='/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
                   <Route path='/login' element={<Login></Login>}></Route>

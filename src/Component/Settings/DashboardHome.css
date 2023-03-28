@@ -9,6 +9,17 @@
 
 }
 
+.dashboardHomeBlogsContainer {
+    width: 90%;
+    height: 70vh;
+    margin: auto;
+    background-color: #4158D0;
+    background-image: linear-gradient(135deg, #FFCF71 10%, #2376DD 100%);
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+
 .homeEvents {
     width: 100%;
     min-height: 32vh;
@@ -39,6 +50,7 @@
     position: relative;
     margin-right: 5px;
     margin-top: 5px;
+
 }
 
 .dashboardData img {
@@ -53,6 +65,7 @@
     top: 60px;
     color: white;
     background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
+    cursor: pointer;
 }
 
 .dashboardDataContainer .dashboardDataP {

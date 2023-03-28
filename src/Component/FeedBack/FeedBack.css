@@ -1,6 +1,6 @@
 .feedBackMain {
     width: 100%;
-    height: 600px;
+    height: 1100px;
     overflow-x: hidden;
 }
 
@@ -52,4 +52,92 @@
     border-radius: 105px;
     border: 3px solid purple;
     margin: auto;
+}
+
+.writeFeedbacksMain {
+    position: relative;
+}
+
+.writeFeedbacks {
+    width: 100%;
+    height: 350px;
+    background-color: yellow;
+}
+
+.writeFeedbacks h1 {
+    position: absolute;
+    bottom: -180px;
+    left: 20px;
+    font-size: 220px;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    color: yellow;
+
+}
+
+.writeFeedbackContainer {
+    width: 600px;
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+}
+
+.writeFeedbackContainer p {
+    font-size: 50px;
+    text-align: left;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.writeFeedbackContainer input {
+    display: block;
+    text-align: left;
+    border: none;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    width: 100%;
+    background: none;
+    outline: none;
+}
+
+.writeFeedbackContainer button {
+    display: block;
+    text-align: left;
+    background-color: black;
+    padding: 10px 30px;
+    color: white;
+    font-weight: bold;
+    outline: none;
+    border: none;
+}
+
+.symbol {
+    width: auto;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.line {
+    width: 350px;
+    height: 10px;
+    background-color: black;
+    transition: 1s ease-in-out;
+}
+
+.line:hover {
+    width: 600px;
+    transition: 1s ease-in-out;
+}
+
+.sign {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.uil-caret-right {
+    font-size: 100px;
+    color: black;
 }
