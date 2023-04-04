@@ -3,6 +3,7 @@ import { useState } from 'react';
 import JoditEditor from 'jodit-react';
 import './AddEventsHome.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddEventsHome = () => {
 
@@ -33,6 +34,9 @@ const AddEventsHome = () => {
     const [terms, setTerms] = useState('')
     const [addition, setAddition] = useState('');
     const [inclusion, setInclusion] = useState('');
+
+    const [message, setMessage] = useState('');
+
 
     console.log(allData)
 
@@ -124,12 +128,29 @@ const AddEventsHome = () => {
             inclusion: inclusion
         });
 
+    };
+
+    const handleReady = async (e) => {
+
+        e.preventDefault();
+
+        // send data to server:
+
+        try {
+            const res = await axios.post('http://localhost:5000/api/v1/homeEvents', allData)
+                .then(res => setMessage(res.data));
+        } catch (error) {
+            console.log(error.response.data);
+            setMessage(error.response.data);
+        };
+
+        setCount(count + 1)
+
+    };
 
 
-    }
-
-
-    const handleFinal = () => {
+    const finalMessage = (e) => {
+        e.preventDefault();
 
         if (name && img && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
             setName('');
@@ -157,8 +178,11 @@ const AddEventsHome = () => {
         setFillItineraries(false);
         setFillTerms(false);
         setFillAdditionIn(false);
-        setCount(1)
+
+
+        setCount(1);
     }
+
 
     return (
         <div className='addEventsHome'>
@@ -285,10 +309,10 @@ const AddEventsHome = () => {
                                         <br />
                                     </div>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '95%', margin: 'auto' }}>
-                                    <input onClick={() => navigate('/dashboard')} className='btn btn-primary' type="submit" value="BACK" />
-                                    <button onClick={handleBasic} className='btn btn-primary btnHomeBasic'>NEXT</button>
-                                </div>
+
+                                <input style={{ position: 'absolute', bottom: '10px', left: '20px' }} onClick={() => navigate('/dashboard')} className='btn btn-primary' type="submit" value="BACK" />
+                                <button style={{ position: 'absolute', bottom: '10px', right: '30px' }} onClick={handleBasic} className='btn btn-primary btnHomeBasic'>NEXT</button>
+
                             </form>
 
                         </div>
@@ -310,9 +334,10 @@ const AddEventsHome = () => {
                                 <br />
                                 <br />
                                 <br />
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '95%', margin: 'auto' }}>
-                                    <input onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
-                                    <input className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
+                                <div>
+                                    <input style={{ position: 'absolute', bottom: '10px', left: '20px' }} onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
+
+                                    <input style={{ position: 'absolute', bottom: '10px', right: '30px' }} className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
                                 </div>
                             </form>
                             {/* <br />
@@ -341,10 +366,10 @@ const AddEventsHome = () => {
                                 <br />
                                 <br />
                                 <br />
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '95%', margin: 'auto' }}>
-                                    <input onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
-                                    <input className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
-                                </div>
+
+                                <input style={{ position: 'absolute', bottom: '10px', left: '20px' }} onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
+                                <input style={{ position: 'absolute', bottom: '10px', right: '30px' }} className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
+
                             </form>
                         </div>
                     }
@@ -365,10 +390,10 @@ const AddEventsHome = () => {
                                 <br />
                                 <br />
                                 <br />
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '95%', margin: 'auto' }}>
-                                    <input onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
-                                    <input className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
-                                </div>
+
+                                <input style={{ position: 'absolute', bottom: '10px', left: '20px' }} onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
+                                <input style={{ position: 'absolute', bottom: '10px', right: '30px' }} className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
+
                             </form>
                         </div>
                     }
@@ -406,10 +431,10 @@ const AddEventsHome = () => {
                                 <br />
                                 <br />
                                 <br />
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '95%', margin: 'auto' }}>
-                                    <input onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
-                                    <input className='btn btn-primary btnHomeBasic' type="submit" value="ADD TO DATABASE" />
-                                </div>
+
+                                <input style={{ position: 'absolute', bottom: '10px', left: '20px' }} onClick={() => setCount(count - 1)} className='btn btn-primary btnHomeBasic' type="submit" value="BACK" />
+                                <input style={{ position: 'absolute', bottom: '10px', right: '30px' }} className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
+
                                 <br />
                             </form>
                         </div>
@@ -419,9 +444,33 @@ const AddEventsHome = () => {
                     {
                         count === 6 &&
                         <div className='finalMessageEvent'>
-                            <form className='lastFormEvent' action="" onSubmit={handleFinal}>
+                            <form className='lastFormEvent' action="" onSubmit={handleReady}>
                                 <i class="uil uil-check-circle"></i>
-                                <p>All IInformation Successfully added to Database</p>
+                                <p>All Information Successfully is ready...</p>
+                                <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
+                                <input className='btn btn-primary finalMessageBtn' type="submit" value="NEXT" />
+                            </form>
+
+                        </div>
+                    }
+
+                    {
+                        count === 7 &&
+                        <div className='finalMessageEvent'>
+                            <form className='lastFormEvent' action="" onSubmit={finalMessage}>
+                                <div>
+
+
+                                    {message.status === 'success' && <i class="uil uil-check-circle"></i>}
+
+                                    {message.status === 'failed' && <i class="uil uil-times-circle"></i>}
+                                </div>
+                                <div>
+                                    {message.message}
+                                </div>
+                                {
+                                    message.status === 'failed' && <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
+                                }
                                 <input className='btn btn-primary finalMessageBtn' type="submit" value="ADD NEW EVENT" />
                             </form>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
 
 import "slick-carousel/slick/slick.css";
@@ -7,10 +7,15 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LocalSpot from '../LocalSpot/LocalSpot';
 import './LocalSpots.css'
 import river from '../../background-image/river.jpg'
+import { useQuery } from 'react-query';
+import fetchHomeData from '../../fetchData/fetchHomeData';
+import Loading from '../../Loading/Loading';
+import noteContext from '../../Context/noteContext';
+
 
 const LocalSpots = () => {
 
@@ -50,17 +55,29 @@ const LocalSpots = () => {
         ]
     };
 
-    //   API
-    const [localSpots, setLocal] = useState([]);
-    const localSpotsSliced = localSpots.slice(0, 8)
-    useEffect(() => {
-        fetch('localService.json')
-            .then(res => res.json())
-            .then(data => setLocal(data))
-    }, []);
+    const state = useContext(noteContext);
 
+
+    // fetch home data:
+
+    const { data, isLoading, } = useQuery("localSpots", () => fetchHomeData(), {
+        cacheTime: true
+    });
+
+
+
+    const homeEvents = data?.data?.result;
+
+    useEffect(() => {
+        state.setHomeData(homeEvents);
+    }, [state, homeEvents]);
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     return (
+
 
         <Parallax strength={300} bgImage={river} >
             <div style={{ width: '100%', overflowX: 'hidden', scrollBehavior: 'smooth' }}  >
@@ -70,16 +87,18 @@ const LocalSpots = () => {
                 <br />
 
 
+
                 <div>
                     <Slider {...settings}>
                         {
-                            localSpotsSliced.map(localSpot => <LocalSpot
-                                key={localSpot.id}
+                            homeEvents.map(localSpot => <LocalSpot
+                                key={localSpot._id}
                                 localSpot={localSpot}
                             ></LocalSpot>)
                         }
                     </Slider>
                 </div>
+
 
                 <br /><br /><br />
                 <Link to='/tourHome' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
@@ -88,6 +107,7 @@ const LocalSpots = () => {
             </div>
 
         </Parallax>
+
     );
 };
 

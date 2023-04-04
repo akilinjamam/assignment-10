@@ -38,7 +38,7 @@
 .tourAreaContainer {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 600px;
+    height: 500px;
 }
 
 .tourAreaSection {
@@ -95,4 +95,8 @@
     background-color: yellow;
     font-weight: bold;
     color: gray;
+}
+
+.viewAllButton {
+    text-align: left;
 }

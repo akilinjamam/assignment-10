@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './GlobalSpot.css'
+import noteContext from '../../Context/noteContext';
 
 const GlobalSpot = ({ globalSpot }) => {
+
+    const state = useContext(noteContext)
     const navigate = useNavigate()
-    const { img, name, id, breakfastHifi, stayLong, lunchNormal, dinnerNormal, busac, price } = globalSpot
+    const { img, name, _id, stayLong, price, tourArea } = globalSpot
 
-    const handleBook = (id, name) => {
+    const handleBook = (id, tourArea) => {
         navigate(`/${id}`)
-
-        console.log(id, name)
+        state.setTourArea(tourArea)
+        console.log(id, tourArea)
 
     }
     return (
@@ -27,7 +30,7 @@ const GlobalSpot = ({ globalSpot }) => {
 
                     <p style={{ fontWeight: 'bold' }} className='text-danger '>Price {price}/person</p>
 
-                    <a onClick={() => handleBook(id, name)} style={{ background: 'crimson', color: 'white', }} className="btn  d-block ">Visit Details</a>
+                    <button onClick={() => handleBook(_id, tourArea)} style={{ background: 'crimson', color: 'white', }} className="btn  d-block ">Visit Details</button>
                 </div>
             </div>
         </div>

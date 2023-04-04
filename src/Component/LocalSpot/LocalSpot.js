@@ -3,18 +3,22 @@ import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './LocalSpot.css'
+import { useContext } from 'react';
+import noteContext from '../../Context/noteContext';
+
 
 
 const LocalSpot = ({ localSpot }) => {
 
+    const state = useContext(noteContext);
 
     const navigate = useNavigate()
-    const { name, img, id, price, stayLong } = localSpot
+    const { name, img, _id, price, stayLong, tourArea } = localSpot
 
-    const handleBook = (id, name) => {
+    const handleBook = (id, tourAreas) => {
         navigate(`/${id}`)
-
-        console.log(id, name)
+        state.setTourArea(tourAreas);
+        console.log(id, tourArea)
 
     }
     return (
@@ -32,7 +36,7 @@ const LocalSpot = ({ localSpot }) => {
 
                     <p style={{ fontWeight: 'bold' }} className='text-danger '>Price {price}/person</p>
 
-                    <button onClick={() => handleBook(id, name)} style={{ background: 'crimson', color: 'white', width: '100%' }} className="btn  d-block ">Visit Details</button>
+                    <button onClick={() => handleBook(_id, tourArea)} style={{ background: 'crimson', color: 'white', width: '100%' }} className="btn  d-block ">Visit Details</button>
                 </div>
             </div>
         </div>

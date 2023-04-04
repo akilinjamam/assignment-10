@@ -1,3 +1,7 @@
+.dashboardHomePlatform {
+    position: relative;
+}
+
 .dashboardHomeContainer {
     width: 90%;
     height: 70vh;
@@ -122,6 +126,29 @@ h6 {
     right: 5px;
     font-size: 30px;
     color: red;
-    background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
+    background: linear-gradient(rgba(55, 55, 255, .2), rgba(230, 4, 4, 0.2));
     cursor: pointer;
+}
+
+.deletePopup {
+    position: absolute;
+    top: 0;
+    left: 55px;
+    width: 90%;
+    height: 70vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(7, 7, 7, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.deletePopup-main {
+    width: 60%;
+    height: 250px;
+    background: linear-gradient(rgba(55, 55, 255, .7), rgba(230, 4, 4, 0.7));
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

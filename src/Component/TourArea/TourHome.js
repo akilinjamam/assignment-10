@@ -52,7 +52,9 @@ const TourHome = () => {
         <div className='tourAreaMain'>
             <section className='partOne'>
                 <br /><br /><br />
-                <button onClick={handleView} className='btn btn-primary'>VIEW ALL</button>
+                <div className='viewAllButton'>
+                    <button onClick={handleView} className='btn btn-primary'>VIEW ALL</button>
+                </div>
                 <br />
                 <br />
                 <div className='partOneFind'>

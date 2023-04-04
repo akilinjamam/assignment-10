@@ -13,7 +13,6 @@ const Banner = () => {
 
     const [counter, setCounter] = useState(0);
     const [dynamicColor, setDynamicColor] = useState('crimson');
-    console.log(dynamicColor);
 
     useEffect(() => {
         if (counter === 0) {

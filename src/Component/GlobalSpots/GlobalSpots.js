@@ -8,6 +8,11 @@ import GlobalSpot from '../GlobalSpot/GlobalSpot';
 import { Parallax } from 'react-parallax';
 import winter from '../../background-image/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg'
 import tree from '../../background-image/Trees.jpg'
+import { useQuery } from 'react-query';
+import fetchGlobalData from '../../fetchData/fetchGlobalData';
+import Loading from '../../Loading/Loading';
+import { useContext } from 'react';
+import noteContext from '../../Context/noteContext';
 
 const GlobalSpots = () => {
 
@@ -47,14 +52,20 @@ const GlobalSpots = () => {
         ]
     };
 
-    const [global, setGlobal] = useState([])
-    const globalSliced = global.slice(0, 9)
-    useEffect(() => {
-        fetch('globalService.json')
-            .then(res => res.json())
-            .then(data => setGlobal(data))
-    }, [])
+    const state = useContext(noteContext);
 
+    const { data, isLoading } = useQuery("globalSpots", () => fetchGlobalData());
+    const global = data?.data?.result;
+
+    useEffect(() => {
+        state.setGlobalData(global)
+    }, [global, state])
+
+    console.log(data?.data?.result);
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <Parallax strength={300} bgImage={winter} >
             <div className='globalSpotsMain' style={{ width: '100%', height: '125vh', overflowX: 'hidden' }} >
@@ -69,8 +80,8 @@ const GlobalSpots = () => {
                 <div >
                     <Slider {...settings}>
                         {
-                            globalSliced.map(globalSpot => <GlobalSpot
-                                key={globalSpot.id}
+                            global?.map(globalSpot => <GlobalSpot
+                                key={globalSpot._id}
                                 globalSpot={globalSpot}
                             ></GlobalSpot>)
                         }

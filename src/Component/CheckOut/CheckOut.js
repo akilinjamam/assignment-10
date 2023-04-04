@@ -258,7 +258,7 @@ const CheckOut = () => {
     return (
         <div>
             <br />
-            <h2 className=''>FILL-UP THE FORM</h2>
+            <h2 className='checkout-title'>FILL-UP THE FORM</h2>
 
             <div className='checkoutMain'>
                 <section className='checkoutContainer'>
