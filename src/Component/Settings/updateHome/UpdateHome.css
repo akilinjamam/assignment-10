@@ -21,6 +21,17 @@
     justify-content: center;
 }
 
+.updatePartGl {
+    width: 20%;
+    height: 50px;
+    margin: 4px;
+    background-color: crimson;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
 .updatePart span {
     color: white;
 }
@@ -38,6 +49,10 @@
 
 .red {
     background-color: red;
+}
+
+.orange {
+    background-color: orange;
 }
 
 .updateFooter {

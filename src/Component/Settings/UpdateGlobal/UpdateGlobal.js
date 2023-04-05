@@ -1,26 +1,25 @@
+import React, { useRef, useState } from 'react';
+import '../updateHome/UpdateHome.css'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { useEffect } from 'react';
 import JoditEditor from 'jodit-react';
-import React, { useRef } from 'react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import './AddEventsAbroad.css';
 import axios from 'axios';
+import fetchGlobalData from '../../../fetchData/fetchGlobalData';
 
-const AddEventsAbroad = () => {
+const UpdateHome = () => {
+
     const editor = useRef(null);
+    const [view, setView] = useState(false);
+    const [count, setCount] = useState(1);
+
     const [content, setContent] = useState('');
     const [contentSecond, setContectSecond] = useState('');
     const [contentThird, setContentThird] = useState('');
     const [contentFourth, setContentFourth] = useState('');
     const [contentFifth, setContentFifth] = useState('');
-
-    const [allData, setAllData] = useState({})
-    const [view, setView] = useState(false);
-    const [fillBasic, setFillBasic] = useState(false);
-    const [fillDes, setFillDes] = useState(false);
-    const [fillItineraries, setFillItineraries] = useState(false);
-    const [fillTerms, setFillTerms] = useState(false);
-    const [fillAdditionIn, setFillAdditionIn] = useState(false);
+    const navigate = useNavigate();
+    const { updateGlobalId } = useParams()
 
     const [name, setName] = useState('');
     const [img, setImg] = useState('');
@@ -34,14 +33,35 @@ const AddEventsAbroad = () => {
     const [terms, setTerms] = useState('')
     const [addition, setAddition] = useState('');
     const [inclusion, setInclusion] = useState('');
+    const [allData, setAllData] = useState({})
 
     const [message, setMessage] = useState('');
 
-    console.log(allData)
+    const { data: updateGlobal } = useQuery("updateGlobal", () => fetchGlobalData());
+    const updateGlobalData = updateGlobal?.data?.result;
+    console.log(updateGlobalData);
 
-    const [count, setCount] = useState(1);
 
-    const navigate = useNavigate();
+    const globalData = updateGlobalData?.find(i => {
+        return i._id === updateGlobalId
+    });
+
+    console.log(globalData);
+
+    useEffect(() => {
+        setName(globalData?.name);
+        setImg(globalData?.img);
+        setPrice(globalData?.price);
+        setStayLong(globalData?.stayLong);
+        setTourDate(globalData?.tourDate);
+        setTourLastDate(globalData?.tourLastDate);
+        setTourArea(globalData?.tourArea);
+        setDescription(globalData?.description);
+        setItineraries(globalData?.itineraries);
+        setTerms(globalData?.termsAndConditions);
+        setAddition(globalData?.additionalInfo);
+        setInclusion(globalData?.inclusion);
+    }, [globalData])
 
     const handleBasic = (e) => {
         e.preventDefault();
@@ -51,13 +71,13 @@ const AddEventsAbroad = () => {
         } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
             setView(false);
-            setFillBasic(true);
+
         }
 
         if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
-    }
+    };
 
     const handleDetail = (e) => {
         e.preventDefault();
@@ -67,9 +87,9 @@ const AddEventsAbroad = () => {
         } else {
             setCount(count + 1);
             setView(false);
-            setFillDes(true);
         }
-    }
+    };
+
     const handleItiner = (e) => {
         e.preventDefault();
         if (itineraries === '') {
@@ -78,9 +98,10 @@ const AddEventsAbroad = () => {
         } else {
             setCount(count + 1);
             setView(false);
-            setFillItineraries(true);
+
         }
     }
+
     const handleTerms = (e) => {
         e.preventDefault();
 
@@ -90,11 +111,11 @@ const AddEventsAbroad = () => {
         } else {
             setCount(count + 1);
             setView(false);
-            setFillTerms(true);
         }
 
 
-    }
+    };
+
     const handleAddition = (e) => {
         e.preventDefault();
 
@@ -103,7 +124,7 @@ const AddEventsAbroad = () => {
 
         } else {
             setCount(count + 1);
-            setFillAdditionIn(true);
+
         }
 
         if (addition === '' || inclusion === '') {
@@ -129,6 +150,7 @@ const AddEventsAbroad = () => {
 
     };
 
+
     const handleReady = async (e) => {
 
         e.preventDefault();
@@ -136,7 +158,7 @@ const AddEventsAbroad = () => {
         // send data to server:
 
         try {
-            const res = await axios.post('http://localhost:5000/api/v1/globalEvents', allData)
+            const res = await axios.patch(`http://localhost:5000/api/v1/globalEvents/${updateGlobalId}`, allData)
                 .then(res => setMessage(res.data));
         } catch (error) {
             console.log(error.response.data);
@@ -172,58 +194,26 @@ const AddEventsAbroad = () => {
             setView(false)
         };
 
-        setFillBasic(false);
-        setFillDes(false);
-        setFillItineraries(false);
-        setFillTerms(false);
-        setFillAdditionIn(false);
-
-
-        setCount(1);
+        navigate('/dashboard')
     }
-
-
     return (
-        <div className='addEventsHome'>
-            <p className='homeTitle'>ADD HOME EVENTS :</p>
-            <div className='addEventsHomeMain'>
-                <div className='showStepsAbroad'>
-                    <div className={` ${fillBasic ? 'backgroundyellow' : 'gray'} stepAbroad1`}>
-                        <span>Basic Info</span>
-                    </div>
-                    <div className={` ${fillDes ? 'backgroundyellow' : 'gray'} stepHome2`}>
-                        <span>Detail Info</span>
-                    </div>
-                    <div className={` ${fillItineraries ? 'backgroundyellow' : 'gray'} stepAbroad3`}>
-                        <span>Itineraries</span>
-                    </div>
-                    <div className={` ${fillTerms ? 'backgroundyellow' : 'gray'} stepAbroad4`}>
-                        <span>Terms & Cond.</span>
-                    </div>
-                    <div className={` ${fillAdditionIn ? 'backgroundyellow' : 'gray'} stepAbroad5`}>
-                        <span>Additional Info</span>
-                    </div>
+        <div>
+            <div className="updateHomeMain">
+                <div className="updateHeading">
+                    <div className="updatePartGl"><span>basic info</span></div>
+                    <div className="updatePartGl"><span>Description</span></div>
+                    <div className="updatePartGl"><span>Itineraries</span></div>
+                    <div className="updatePartGl"><span>Terms & Cond.</span></div>
+                    <div className="updatePartGl"><span>Additional Info</span></div>
                 </div>
-                <div className='bottomLines'>
-                    <div className={`${count === 1 && 'orange'} bottomLines`}>
+                <div className="updateLine">
+                    <div className={`${count === 1 && 'orange'} linePart `}></div>
+                    <div className={`${count === 2 && 'orange'} linePart `}></div>
+                    <div className={`${count === 3 && 'orange'} linePart `}></div>
+                    <div className={`${count === 4 && 'orange'} linePart `}></div>
+                    <div className={`${count === 5 && 'orange'} linePart `}></div>
 
-                    </div>
-                    <div className={`${count === 2 && 'orange'} bottomLines`}>
-
-                    </div>
-                    <div className={`${count === 3 && 'orange'} bottomLines`}>
-
-                    </div>
-                    <div className={`${count === 4 && 'orange'} bottomLines`}>
-
-                    </div>
-                    <div className={`${count === 5 && 'orange'} bottomLines`}>
-
-                    </div>
                 </div>
-
-                <hr />
-
 
                 <div className='addEventsHomeAllInfo'>
                     {
@@ -281,6 +271,8 @@ const AddEventsAbroad = () => {
                                         <br />
                                     </div>
                                     <div className='basicInfoPartTwo'>
+
+
                                         <div>
                                             <label htmlFor="">Tour Registration Last Date :</label>
                                             <input style={{ width: '45%' }} value={tourLastDate} onChange={(e) => setTourLastDate(e.target.value)} type="date" name="" id="" />
@@ -294,8 +286,8 @@ const AddEventsAbroad = () => {
                                                     const option = e.target.value;
                                                     setTourArea(option);
                                                 }}>
-                                                    <option value="">select...</option>
-                                                    <option value="global">global</option>
+                                                    <option value="">{tourArea}</option>
+                                                    <option value="home">Home</option>
                                                 </select>
 
                                             </div>
@@ -320,7 +312,7 @@ const AddEventsAbroad = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={content}
+                                    value={description}
                                     onBlur={newContent => setContent(newContent)}
                                     onChange={newContent => { setDescription(newContent) }}
                                 />
@@ -334,16 +326,10 @@ const AddEventsAbroad = () => {
 
                                     <input style={{ position: 'absolute', bottom: '10px', right: '30px' }} className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
                                 </div>
+
                             </form>
-                            {/* <br />
-                        <div dangerouslySetInnerHTML={{ __html: content }}>
-
-                        </div> */}
-
                         </div>
                     }
-
-
 
                     {
                         count === 3 &&
@@ -352,7 +338,7 @@ const AddEventsAbroad = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentSecond}
+                                    value={itineraries}
                                     onBlur={newContent => setContectSecond(newContent)}
                                     onChange={newContent => { setItineraries(newContent) }}
                                 />
@@ -376,7 +362,7 @@ const AddEventsAbroad = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentThird}
+                                    value={terms}
                                     onBlur={newContent => setContentThird(newContent)}
                                     onChange={newContent => { setTerms(newContent) }}
                                 />
@@ -404,7 +390,7 @@ const AddEventsAbroad = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentFourth}
+                                    value={addition}
                                     onBlur={newContent => setContentFourth(newContent)}
                                     onChange={newContent => { setAddition(newContent) }}
                                 />
@@ -417,7 +403,7 @@ const AddEventsAbroad = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentFifth}
+                                    value={inclusion}
                                     onBlur={newContent => setContentFifth(newContent)}
                                     onChange={newContent => { setInclusion(newContent) }}
                                 />
@@ -435,13 +421,12 @@ const AddEventsAbroad = () => {
                         </div>
                     }
 
-
                     {
                         count === 6 &&
                         <div className='finalMessageEvent'>
                             <form className='lastFormEvent' action="" onSubmit={handleReady}>
                                 <i class="uil uil-check-circle"></i>
-                                <p>All Information Successfully is ready...</p>
+                                <p>if you update all information successfully. then procceed to update</p>
                                 <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
                                 <input className='btn btn-primary finalMessageBtn' type="submit" value="NEXT" />
                             </form>
@@ -466,11 +451,12 @@ const AddEventsAbroad = () => {
                                 {
                                     message.status === 'failed' && <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
                                 }
-                                <input className='btn btn-primary finalMessageBtn' type="submit" value="ADD NEW EVENT" />
+                                <input className='btn btn-primary finalMessageBtn' type="submit" value="GO DASHBOARD" />
                             </form>
 
                         </div>
                     }
+
                 </div>
 
             </div>
@@ -478,4 +464,4 @@ const AddEventsAbroad = () => {
     );
 };
 
-export default AddEventsAbroad;
+export default UpdateHome;

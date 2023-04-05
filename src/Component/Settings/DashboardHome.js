@@ -51,7 +51,7 @@ const DashboardHome = () => {
             navigate(`updateHome/${id}`)
         }
         if (tourArea === 'global') {
-            navigate(`/updateGlobal/${id}`)
+            navigate(`updateGlobal/${id}`)
         }
     }
 
@@ -116,7 +116,7 @@ const DashboardHome = () => {
                                             <img src={h.img} alt="" />
                                             <div className='dashboardDataP'>
                                                 <p onClick={() => handleNavigate(h._id, h.tourArea)} >{h.name}</p>
-                                                <i class="uil uil-edit"></i>
+                                                <i onClick={() => handleUpdate(h._id, h.tourArea)} class="uil uil-edit"></i>
                                                 <i onClick={() => handlePopup(h._id, h.name, h.tourArea)} class="uil uil-trash"></i>
                                             </div>
                                         </div>

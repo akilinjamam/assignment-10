@@ -33,6 +33,8 @@ import AddEventsAbroad from './Component/Settings/AddEventsAbroad';
 import DashboardHome from './Component/Settings/DashboardHome';
 import DashboardHomeBlogs from './Component/Settings/DashboardHomeBlogs';
 import UpdateHome from './Component/Settings/updateHome/UpdateHome';
+import UpdateGlobal from './Component/Settings/UpdateGlobal/UpdateGlobal';
+
 
 
 
@@ -95,6 +97,8 @@ function App() {
                       <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
                       <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
                       <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
+                      <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}></Route>
+
                     </Route>
 
                     <Route path='/login' element={<Login></Login>}></Route>
