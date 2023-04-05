@@ -23,6 +23,7 @@ const UpdateHome = () => {
 
     const [name, setName] = useState('');
     const [img, setImg] = useState('');
+    const [imgContainer, setImgContainer] = useState('');
     const [price, setPrice] = useState('');
     const [stayLong, setStayLong] = useState('');
     const [tourDate, setTourDate] = useState('');
@@ -66,7 +67,7 @@ const UpdateHome = () => {
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
+        if (name === '' && img === '' && imgContainer === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
             setCount(1);
         } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
@@ -74,7 +75,7 @@ const UpdateHome = () => {
 
         }
 
-        if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || img === '' || imgContainer === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
     };
@@ -176,6 +177,7 @@ const UpdateHome = () => {
         if (name && img && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
             setName('');
             setImg('');
+            setImgContainer();
             setPrice('');
             setStayLong('');
             setTourDate('');
@@ -195,7 +197,28 @@ const UpdateHome = () => {
         };
 
         navigate('/dashboard')
-    }
+    };
+
+    useEffect(() => {
+        if (imgContainer) {
+            const imgStorageKey = 'a7d23ad727734bb709b70dc5aa33543f'
+            const formData = new FormData();
+            formData.append('image', imgContainer);
+            const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result?.data?.url);
+                    setImg(result?.data?.url);
+
+                })
+        }
+    }, [imgContainer])
+
+
     return (
         <div>
             <div className="updateHomeMain">
@@ -231,15 +254,7 @@ const UpdateHome = () => {
                                         </div>
                                         {(view && name === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />
-                                        <div>
-                                            <label htmlFor="">Tour Image :</label>
-                                            <div>
-                                                <input required type="text" name="tourImg" value={img} onChange={(e) => setImg(e.target.value)} id="" />
 
-                                            </div>
-                                        </div>
-                                        {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
-                                        <br />
                                         <div>
                                             <label htmlFor="">Tour Price :</label>
                                             <div>
@@ -269,6 +284,23 @@ const UpdateHome = () => {
                                         </div>
                                         {(view && tourDate === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />
+
+                                        <div>
+                                            <label htmlFor="">Tour Image :</label>
+                                            <div>
+
+                                                <input style={{ width: '200px' }} type="file" onChange={(e) => {
+                                                    const imgFile = e.target.files[0];
+                                                    setImgContainer(imgFile);
+                                                }} id="" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <div></div>
+                                            {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file....</p>}
+
+                                        </div>
                                     </div>
                                     <div className='basicInfoPartTwo'>
 

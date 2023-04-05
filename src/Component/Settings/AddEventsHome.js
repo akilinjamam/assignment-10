@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import JoditEditor from 'jodit-react';
 import './AddEventsHome.css';
@@ -24,6 +24,7 @@ const AddEventsHome = () => {
 
     const [name, setName] = useState('');
     const [img, setImg] = useState('');
+    const [imgContainer, setImgContainer] = useState();
     const [price, setPrice] = useState('');
     const [stayLong, setStayLong] = useState('');
     const [tourDate, setTourDate] = useState('');
@@ -47,18 +48,20 @@ const AddEventsHome = () => {
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
+        if (name === '' && price === '' && img === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '' && imgContainer === '') {
             setCount(1);
-        } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
+        } else if (name && price && img && tourDate && tourLastDate && tourArea && stayLong && imgContainer) {
             setCount(count + 1);
             setView(false);
             setFillBasic(true);
         }
 
-        if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || img === '' || imgContainer === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
-        }
-    }
+        };
+    };
+
+    console.log(imgContainer)
 
     const handleDetail = (e) => {
         e.preventDefault();
@@ -152,9 +155,10 @@ const AddEventsHome = () => {
     const finalMessage = (e) => {
         e.preventDefault();
 
-        if (name && img && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
+        if (name && img && imgContainer && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
             setName('');
             setImg('');
+            setImgContainer('');
             setPrice('');
             setStayLong('');
             setTourDate('');
@@ -181,8 +185,32 @@ const AddEventsHome = () => {
 
 
         setCount(1);
-    }
+    };
 
+
+    useEffect(() => {
+        if (imgContainer) {
+            const imgStorageKey = 'a7d23ad727734bb709b70dc5aa33543f'
+            const formData = new FormData();
+            formData.append('image', imgContainer);
+            const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result?.data?.url);
+                    setImg(result?.data?.url);
+
+                })
+        }
+    }, [imgContainer])
+
+
+
+
+    console.log(img)
 
     return (
         <div className='addEventsHome'>
@@ -242,15 +270,6 @@ const AddEventsHome = () => {
                                         {(view && name === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />
                                         <div>
-                                            <label htmlFor="">Tour Image :</label>
-                                            <div>
-                                                <input required type="text" name="tourImg" value={img} onChange={(e) => setImg(e.target.value)} id="" />
-
-                                            </div>
-                                        </div>
-                                        {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
-                                        <br />
-                                        <div>
                                             <label htmlFor="">Tour Price :</label>
                                             <div>
                                                 <input required type="text" name="tourPrice" value={price
@@ -279,10 +298,25 @@ const AddEventsHome = () => {
                                         </div>
                                         {(view && tourDate === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />
+                                        <div>
+                                            <label htmlFor="">Tour Image :</label>
+                                            <div>
+
+                                                <input style={{ width: '200px' }} type="file" onChange={(e) => {
+                                                    const imgFile = e.target.files[0];
+                                                    setImgContainer(imgFile);
+                                                }} id="" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <div></div>
+                                            {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file....</p>}
+
+                                        </div>
+
                                     </div>
                                     <div className='basicInfoPartTwo'>
-
-
                                         <div>
                                             <label htmlFor="">Tour Registration Last Date :</label>
                                             <input style={{ width: '45%' }} value={tourLastDate} onChange={(e) => setTourLastDate(e.target.value)} type="date" name="" id="" />
@@ -304,6 +338,7 @@ const AddEventsHome = () => {
                                         </div>
                                         {(view && tourArea === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please choose any option...</p>}
                                         <br />
+
                                     </div>
                                 </div>
 
@@ -474,3 +509,7 @@ const AddEventsHome = () => {
 };
 
 export default AddEventsHome;
+
+
+
+
