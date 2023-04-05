@@ -67,32 +67,31 @@ const GlobalSpots = () => {
         return <Loading></Loading>
     }
     return (
-        <Parallax strength={300} bgImage={winter} >
-            <div className='globalSpotsMain' style={{ width: '100%', height: '125vh', overflowX: 'hidden' }} >
-                <div className='globalSpot' data-aos='flip-up' data-aos-duration='1000'>
-                    <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
-                </div>
 
-
-                <br />
-                <br />
-
-                <div >
-                    <Slider {...settings}>
-                        {
-                            global?.map(globalSpot => <GlobalSpot
-                                key={globalSpot._id}
-                                globalSpot={globalSpot}
-                            ></GlobalSpot>)
-                        }
-                    </Slider>
-                </div>
-                <br />
-                <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
-                <br />
-                <br />
+        <div className='globalSpotsMain' style={{ width: '100%', height: '125vh', overflowX: 'hidden' }} >
+            <div className='globalSpot' data-aos='flip-up' data-aos-duration='1000'>
+                <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
             </div>
-        </Parallax>
+
+
+            <br />
+            <br />
+
+            <div >
+                <Slider {...settings}>
+                    {
+                        global?.map(globalSpot => <GlobalSpot
+                            key={globalSpot._id}
+                            globalSpot={globalSpot}
+                        ></GlobalSpot>)
+                    }
+                </Slider>
+            </div>
+            <br />
+            <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+            <br />
+            <br />
+        </div>
     );
 };
 

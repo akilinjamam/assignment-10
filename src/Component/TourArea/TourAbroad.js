@@ -3,6 +3,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TourArea.css'
+import { useQuery } from 'react-query';
+import fetchGlobalData from '../../fetchData/fetchGlobalData';
+import { useContext } from 'react';
+import noteContext from '../../Context/noteContext';
 
 const TourAbroad = () => {
 
@@ -18,7 +22,9 @@ const TourAbroad = () => {
     }, [routerPath])
 
 
-    const [data, setData] = useState([])
+    const { data: globalQuery } = useQuery("globalQuery", () => fetchGlobalData());
+
+    const data = globalQuery?.data?.result;
 
 
     const [findDate, setFindDate] = useState('');
@@ -35,10 +41,7 @@ const TourAbroad = () => {
         return i.price === findPrice
     });
 
-    useEffect(() => {
-        const data = 'globalService.json';
-        fetch(data).then(res => res.json()).then(res => setData(res))
-    }, [])
+
 
     const handleView = () => {
 
@@ -47,8 +50,11 @@ const TourAbroad = () => {
         setFindPrice('');
     }
 
-    const handleViewDetail = (id) => {
-        navigate(`/${id}`)
+    const state = useContext(noteContext);
+
+    const handleViewDetail = (id, tourArea) => {
+        navigate(`/spotDetail/${id}`);
+        state.setTourArea(tourArea)
     }
 
     return (
@@ -73,7 +79,7 @@ const TourAbroad = () => {
                     }}>
                         <option value="">Select Place....</option>
                         {
-                            data.map(d => <option value={d.name}>{d.name}</option>)
+                            data?.map(d => <option value={d.name}>{d.name}</option>)
                         }
                     </select>
                 </div>
@@ -91,7 +97,7 @@ const TourAbroad = () => {
                         setFindPrice('');
                     }}>  <option value="">Select Date....</option>
                         {
-                            data.map(d => <option value={d.tourLastDate}>{d.tourLastDate}</option>)
+                            data?.map(d => <option value={d.tourLastDate}>{d.tourLastDate}</option>)
                         }
                     </select>
                 </div>
@@ -110,7 +116,7 @@ const TourAbroad = () => {
                     }}>
                         <option value="">Select Price....</option>
                         {
-                            data.map(d => <option value={d.price}>{d.price}</option>)
+                            data?.map(d => <option value={d.price}>{d.price}</option>)
                         }
                     </select>
                 </div>
@@ -128,7 +134,7 @@ const TourAbroad = () => {
                         (findDate || findPlace || findPrice) === '' &&
                         <div>
                             {
-                                data.map(d => {
+                                data?.map(d => {
                                     return (
                                         <div key={d.id} className='tourAreaSection'>
 
@@ -142,7 +148,7 @@ const TourAbroad = () => {
                                                     <p><span>Tour Duration</span> : {d.stayLong} </p>
                                                     <p><span>Last Date of  Registration</span> : {d.tourLastDate} </p>
                                                     <p><span>Tour Price</span> : {d.price} </p>
-                                                    <button onClick={() => handleViewDetail(d.id)} className=''>VIEW DETAIL</button>
+                                                    <button onClick={() => handleViewDetail(d._id, d.tourArea)} className=''>VIEW DETAIL</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +173,7 @@ const TourAbroad = () => {
                                     <p><span>Tour Duration</span> : {findDataPlace.stayLong} </p>
                                     <p><span>Last Date of  Registration</span> : {findDataPlace.tourLastDate} </p>
                                     <p><span>Tour Price</span> : {findDataPlace.price} </p>
-                                    <button onClick={() => handleViewDetail(findDataPlace.id)} className=''>VIEW DETAIL</button>
+                                    <button onClick={() => handleViewDetail(findDataPlace._id, findDataPlace.tourArea)} className=''>VIEW DETAIL</button>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +192,7 @@ const TourAbroad = () => {
                                     <p><span>Tour Duration</span> : {findDataDate.stayLong} </p>
                                     <p><span>Last Date of  Registration</span> : {findDataDate.tourLastDate} </p>
                                     <p><span>Tour Price</span> : {findDataDate.price} </p>
-                                    <button onClick={() => handleViewDetail(findDataDate.id)} className=''>VIEW DETAIL</button>
+                                    <button onClick={() => handleViewDetail(findDataDate._id, findDataDate.tourArea)} className=''>VIEW DETAIL</button>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +211,7 @@ const TourAbroad = () => {
                                     <p><span>Tour Duration</span> : {findDataPrice.stayLong} </p>
                                     <p><span>Last Date of  Registration</span> : {findDataPrice.tourLastDate} </p>
                                     <p><span>Tour Price</span> : {findDataPrice.price} </p>
-                                    <button onClick={() => handleViewDetail(findDataPrice.id)} className=''>VIEW DETAIL</button>
+                                    <button onClick={() => handleViewDetail(findDataPrice._id, findDataPrice.tourArea)} className=''>VIEW DETAIL</button>
                                 </div>
                             </div>
                         </div>

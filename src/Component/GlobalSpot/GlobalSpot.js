@@ -30,7 +30,7 @@ const GlobalSpot = ({ globalSpot }) => {
 
                     <p style={{ fontWeight: 'bold' }} className='text-danger '>Price {price}/person</p>
 
-                    <button onClick={() => handleBook(_id, tourArea)} style={{ background: 'crimson', color: 'white', }} className="btn  d-block ">Visit Details</button>
+                    <button onClick={() => handleBook(_id, tourArea)} style={{ background: 'crimson', color: 'white', width: '100%' }} className="btn  d-block ">Visit Details</button>
                 </div>
             </div>
         </div>

@@ -2,8 +2,7 @@
     width: 320px;
     height: auto;
     margin: auto;
-    background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5));
+    background: linear-gradient(rgb(229, 255, 0), rgb(229, 255, 0));
     padding: 10px;
-    border-radius: 10px;
     font-family: 'Poppins', sans-serif;
 }

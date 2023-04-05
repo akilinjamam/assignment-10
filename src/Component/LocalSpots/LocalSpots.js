@@ -79,34 +79,31 @@ const LocalSpots = () => {
     return (
 
 
-        <Parallax strength={300} bgImage={river} >
-            <div style={{ width: '100%', overflowX: 'hidden', scrollBehavior: 'smooth' }}  >
-                <div data-aos='flip-up' data-aos-duration='1000'>
-                    <h2 style={{ color: 'white' }} className='title'>VISIT BANGLADESH</h2>
-                </div>
-                <br />
+        <div style={{ width: '100%', overflowX: 'hidden', scrollBehavior: 'smooth' }}  >
+            <div data-aos='flip-up' data-aos-duration='1000'>
+                <h2 style={{ color: 'gray' }} className='title'>VISIT BANGLADESH</h2>
+            </div>
+            <br />
 
-
-
-                <div>
-                    <Slider {...settings}>
-                        {
-                            homeEvents.map(localSpot => <LocalSpot
-                                key={localSpot._id}
-                                localSpot={localSpot}
-                            ></LocalSpot>)
-                        }
-                    </Slider>
-                </div>
-
-
-                <br /><br /><br />
-                <Link to='/tourHome' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
-                <br />
-                <br />
+            <div>
+                <Slider {...settings}>
+                    {
+                        homeEvents.map(localSpot => <LocalSpot
+                            key={localSpot._id}
+                            localSpot={localSpot}
+                        ></LocalSpot>)
+                    }
+                </Slider>
             </div>
 
-        </Parallax>
+
+            <br /><br /><br />
+            <Link to='/tourHome' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+            <br />
+            <br />
+        </div>
+
+
 
     );
 };

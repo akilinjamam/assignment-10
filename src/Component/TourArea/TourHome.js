@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TourArea.css';
+import { useQuery } from 'react-query';
+import fetchHomeData from '../../fetchData/fetchHomeData';
+import noteContext from '../../Context/noteContext';
 const TourHome = () => {
 
     const navigate = useNavigate();
@@ -14,8 +17,9 @@ const TourHome = () => {
         onTop()
     }, [routerPath])
 
+    const { data: homeQuery } = useQuery("homeQuery", () => fetchHomeData());
+    const data = homeQuery?.data?.result
 
-    const [data, setData] = useState([]);
     const [findDate, setFindDate] = useState('');
     const [findPlace, setFindPlace] = useState('');
     const [findPrice, setFindPrice] = useState('');
@@ -30,12 +34,8 @@ const TourHome = () => {
         return i.price === findPrice
     });
 
+    const state = useContext(noteContext);
 
-
-    useEffect(() => {
-        const data = 'localService.json';
-        fetch(data).then(res => res.json()).then(res => setData(res))
-    }, [])
 
     const handleView = () => {
         setFindDate('');
@@ -43,8 +43,9 @@ const TourHome = () => {
         setFindPrice('');
     }
 
-    const handleViewDetail = (id) => {
-        navigate(`/${id}`)
+    const handleViewDetail = (id, tourArea) => {
+        navigate(`/spotDetail/${id}`);
+        state.setTourArea(tourArea)
     }
 
 
@@ -69,7 +70,7 @@ const TourHome = () => {
                     }}>
                         <option value="">Select Place....</option>
                         {
-                            data.map(d => <option value={d.name}>{d.name}</option>)
+                            data?.map(d => <option value={d.name}>{d.name}</option>)
                         }
                     </select>
                 </div>
@@ -87,7 +88,7 @@ const TourHome = () => {
                         setFindPrice('');
                     }}>  <option value="">Select Date....</option>
                         {
-                            data.map(d => <option value={d.tourLastDate}>{d.tourLastDate}</option>)
+                            data?.map(d => <option value={d.tourLastDate}>{d.tourLastDate}</option>)
                         }
                     </select>
                 </div>
@@ -106,7 +107,7 @@ const TourHome = () => {
                     }}>
                         <option value="">Select Price....</option>
                         {
-                            data.map(d => <option value={d.price}>{d.price}</option>)
+                            data?.map(d => <option value={d.price}>{d.price}</option>)
                         }
                     </select>
                 </div>
@@ -125,7 +126,7 @@ const TourHome = () => {
                         (findDate || findPlace || findPrice) === '' &&
                         <div>
                             {
-                                data.map(d => {
+                                data?.map(d => {
                                     return (
                                         <div key={d.id} className='tourAreaSection'>
 
@@ -139,7 +140,7 @@ const TourHome = () => {
                                                     <p><span>Tour Duration</span> : {d.stayLong} </p>
                                                     <p><span>Last Date of  Registration</span> : {d.tourLastDate} </p>
                                                     <p><span>Tour Price</span> : {d.price} </p>
-                                                    <button onClick={() => handleViewDetail(d.id)} className=''>VIEW DETAIL</button>
+                                                    <button onClick={() => handleViewDetail(d._id, d.tourArea)} className=''>VIEW DETAIL</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,7 +165,7 @@ const TourHome = () => {
                                     <p><span>Tour Duration</span> : {findDataPlace.stayLong} </p>
                                     <p><span>Last Date of  Registration</span> : {findDataPlace.tourLastDate} </p>
                                     <p><span>Tour Price</span> : {findDataPlace.price} </p>
-                                    <button onClick={() => handleViewDetail(findDataPlace.id)} className=''>VIEW DETAIL</button>
+                                    <button onClick={() => handleViewDetail(findDataPlace._id, findDataPlace.tourArea)} className=''>VIEW DETAIL</button>
                                 </div>
                             </div>
                         </div>
@@ -183,7 +184,7 @@ const TourHome = () => {
                                     <p><span>Tour Duration</span> : {findDataDate.stayLong} </p>
                                     <p><span>Last Date of  Registration</span> : {findDataDate.tourLastDate} </p>
                                     <p><span>Tour Price</span> : {findDataDate.price} </p>
-                                    <button onClick={() => handleViewDetail(findDataDate.id)} className=''>VIEW DETAIL</button>
+                                    <button onClick={() => handleViewDetail(findDataDate._id, findDataDate.tourArea)} className=''>VIEW DETAIL</button>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +203,7 @@ const TourHome = () => {
                                     <p><span>Tour Duration</span> : {findDataPrice.stayLong} </p>
                                     <p><span>Last Date of  Registration</span> : {findDataPrice.tourLastDate} </p>
                                     <p><span>Tour Price</span> : {findDataPrice.price} </p>
-                                    <button onClick={() => handleViewDetail(findDataPrice.id)} className=''>VIEW DETAIL</button>
+                                    <button onClick={() => handleViewDetail(findDataPrice._id, findDataPrice.tourArea)} className=''>VIEW DETAIL</button>
                                 </div>
                             </div>
                         </div>
