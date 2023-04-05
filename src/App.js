@@ -32,6 +32,7 @@ import AddEventsHome from './Component/Settings/AddEventsHome';
 import AddEventsAbroad from './Component/Settings/AddEventsAbroad';
 import DashboardHome from './Component/Settings/DashboardHome';
 import DashboardHomeBlogs from './Component/Settings/DashboardHomeBlogs';
+import UpdateHome from './Component/Settings/updateHome/UpdateHome';
 
 
 
@@ -93,6 +94,7 @@ function App() {
                       <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                       <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
                       <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
+                      <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
                     </Route>
 
                     <Route path='/login' element={<Login></Login>}></Route>
@@ -108,7 +110,7 @@ function App() {
                     <Route path='/pdfFormPay' element={<PdfFormPay></PdfFormPay>}></Route>
                     <Route path='/tourHome' element={<TourHome></TourHome>}></Route>
                     <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
-                    <Route path='/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
+                    <Route path='/spotDetail/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
                     <Route path='*' element={<NotFound></NotFound>}></Route>
                   </Routes>
                 </QueryClientProvider>

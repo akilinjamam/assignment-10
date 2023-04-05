@@ -1,26 +1,26 @@
-import React, { useRef } from 'react';
-import { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import './UpdateHome.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+
+import { useEffect } from 'react';
+import fetchHomeData from '../../../fetchData/fetchHomeData';
 import JoditEditor from 'jodit-react';
-import './AddEventsHome.css';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const AddEventsHome = () => {
+const UpdateHome = () => {
 
     const editor = useRef(null);
+    const [view, setView] = useState(false);
+    const [count, setCount] = useState(1);
+
     const [content, setContent] = useState('');
     const [contentSecond, setContectSecond] = useState('');
     const [contentThird, setContentThird] = useState('');
     const [contentFourth, setContentFourth] = useState('');
     const [contentFifth, setContentFifth] = useState('');
-
-    const [allData, setAllData] = useState({})
-    const [view, setView] = useState(false);
-    const [fillBasic, setFillBasic] = useState(false);
-    const [fillDes, setFillDes] = useState(false);
-    const [fillItineraries, setFillItineraries] = useState(false);
-    const [fillTerms, setFillTerms] = useState(false);
-    const [fillAdditionIn, setFillAdditionIn] = useState(false);
+    const navigate = useNavigate();
+    const { updateHomeId } = useParams()
 
     const [name, setName] = useState('');
     const [img, setImg] = useState('');
@@ -34,15 +34,35 @@ const AddEventsHome = () => {
     const [terms, setTerms] = useState('')
     const [addition, setAddition] = useState('');
     const [inclusion, setInclusion] = useState('');
+    const [allData, setAllData] = useState({})
 
     const [message, setMessage] = useState('');
 
+    const { data: updateHome } = useQuery("updateHome", () => fetchHomeData());
+    const updateHomeData = updateHome?.data?.result;
+    console.log(updateHomeData);
 
-    console.log(tourLastDate);
 
-    const [count, setCount] = useState(1);
+    const homeData = updateHomeData?.find(i => {
+        return i._id === updateHomeId
+    });
 
-    const navigate = useNavigate();
+    console.log(homeData);
+
+    useEffect(() => {
+        setName(homeData?.name);
+        setImg(homeData?.img);
+        setPrice(homeData?.price);
+        setStayLong(homeData?.stayLong);
+        setTourDate(homeData?.tourDate);
+        setTourLastDate(homeData?.tourLastDate);
+        setTourArea(homeData?.tourArea);
+        setDescription(homeData?.description);
+        setItineraries(homeData?.itineraries);
+        setTerms(homeData?.termsAndConditions);
+        setAddition(homeData?.additionalInfo);
+        setInclusion(homeData?.inclusion);
+    }, [homeData])
 
     const handleBasic = (e) => {
         e.preventDefault();
@@ -52,13 +72,13 @@ const AddEventsHome = () => {
         } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
             setView(false);
-            setFillBasic(true);
+
         }
 
         if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
-    }
+    };
 
     const handleDetail = (e) => {
         e.preventDefault();
@@ -68,9 +88,9 @@ const AddEventsHome = () => {
         } else {
             setCount(count + 1);
             setView(false);
-            setFillDes(true);
         }
-    }
+    };
+
     const handleItiner = (e) => {
         e.preventDefault();
         if (itineraries === '') {
@@ -79,9 +99,10 @@ const AddEventsHome = () => {
         } else {
             setCount(count + 1);
             setView(false);
-            setFillItineraries(true);
+
         }
     }
+
     const handleTerms = (e) => {
         e.preventDefault();
 
@@ -91,11 +112,11 @@ const AddEventsHome = () => {
         } else {
             setCount(count + 1);
             setView(false);
-            setFillTerms(true);
         }
 
 
-    }
+    };
+
     const handleAddition = (e) => {
         e.preventDefault();
 
@@ -104,7 +125,7 @@ const AddEventsHome = () => {
 
         } else {
             setCount(count + 1);
-            setFillAdditionIn(true);
+
         }
 
         if (addition === '' || inclusion === '') {
@@ -130,6 +151,7 @@ const AddEventsHome = () => {
 
     };
 
+
     const handleReady = async (e) => {
 
         e.preventDefault();
@@ -137,7 +159,7 @@ const AddEventsHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.post('http://localhost:5000/api/v1/homeEvents', allData)
+            const res = await axios.patch(`http://localhost:5000/api/v1/homeEvents/${updateHomeId}`, allData)
                 .then(res => setMessage(res.data));
         } catch (error) {
             console.log(error.response.data);
@@ -173,57 +195,26 @@ const AddEventsHome = () => {
             setView(false)
         };
 
-        setFillBasic(false);
-        setFillDes(false);
-        setFillItineraries(false);
-        setFillTerms(false);
-        setFillAdditionIn(false);
-
-
-        setCount(1);
+        navigate('/dashboard')
     }
-
-
     return (
-        <div className='addEventsHome'>
-            <p className='homeTitle'>ADD HOME EVENTS :</p>
-            <div className='addEventsHomeMain'>
-                <div className='showStepsHome'>
-                    <div className={` ${fillBasic ? 'backgroundBlue' : 'gray'} stepHome1`}>
-                        <span>Basic Info</span>
-                    </div>
-                    <div className={` ${fillDes ? 'backgroundBlue' : 'gray'} stepHome2`}>
-                        <span>Detail Info</span>
-                    </div>
-                    <div className={` ${fillItineraries ? 'backgroundBlue' : 'gray'} stepHome3`}>
-                        <span>Itineraries</span>
-                    </div>
-                    <div className={` ${fillTerms ? 'backgroundBlue' : 'gray'} stepHome4`}>
-                        <span>Terms & Cond.</span>
-                    </div>
-                    <div className={` ${fillAdditionIn ? 'backgroundBlue' : 'gray'} stepHome5`}>
-                        <span>Additional Info</span>
-                    </div>
+        <div>
+            <div className="updateHomeMain">
+                <div className="updateHeading">
+                    <div className="updatePart"><span>basic info</span></div>
+                    <div className="updatePart"><span>Description</span></div>
+                    <div className="updatePart"><span>Itineraries</span></div>
+                    <div className="updatePart"><span>Terms & Cond.</span></div>
+                    <div className="updatePart"><span>Additional Info</span></div>
                 </div>
-                <div className='bottomLine'>
-                    <div className={`${count === 1 && 'red'} bottomLine`}>
+                <div className="updateLine">
+                    <div className={`${count === 1 && 'red'} linePart `}></div>
+                    <div className={`${count === 2 && 'red'} linePart `}></div>
+                    <div className={`${count === 3 && 'red'} linePart `}></div>
+                    <div className={`${count === 4 && 'red'} linePart `}></div>
+                    <div className={`${count === 5 && 'red'} linePart `}></div>
 
-                    </div>
-                    <div className={`${count === 2 && 'red'} bottomLine`}>
-
-                    </div>
-                    <div className={`${count === 3 && 'red'} bottomLine`}>
-
-                    </div>
-                    <div className={`${count === 4 && 'red'} bottomLine`}>
-
-                    </div>
-                    <div className={`${count === 5 && 'red'} bottomLine`}>
-
-                    </div>
                 </div>
-                <hr />
-
 
                 <div className='addEventsHomeAllInfo'>
                     {
@@ -296,7 +287,7 @@ const AddEventsHome = () => {
                                                     const option = e.target.value;
                                                     setTourArea(option);
                                                 }}>
-                                                    <option value="">select...</option>
+                                                    <option value="">{tourArea}</option>
                                                     <option value="home">Home</option>
                                                 </select>
 
@@ -322,7 +313,7 @@ const AddEventsHome = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={content}
+                                    value={description}
                                     onBlur={newContent => setContent(newContent)}
                                     onChange={newContent => { setDescription(newContent) }}
                                 />
@@ -336,6 +327,7 @@ const AddEventsHome = () => {
 
                                     <input style={{ position: 'absolute', bottom: '10px', right: '30px' }} className='btn btn-primary btnHomeBasic' type="submit" value="NEXT" />
                                 </div>
+
                             </form>
                         </div>
                     }
@@ -347,7 +339,7 @@ const AddEventsHome = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentSecond}
+                                    value={itineraries}
                                     onBlur={newContent => setContectSecond(newContent)}
                                     onChange={newContent => { setItineraries(newContent) }}
                                 />
@@ -371,7 +363,7 @@ const AddEventsHome = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentThird}
+                                    value={terms}
                                     onBlur={newContent => setContentThird(newContent)}
                                     onChange={newContent => { setTerms(newContent) }}
                                 />
@@ -399,7 +391,7 @@ const AddEventsHome = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentFourth}
+                                    value={addition}
                                     onBlur={newContent => setContentFourth(newContent)}
                                     onChange={newContent => { setAddition(newContent) }}
                                 />
@@ -412,7 +404,7 @@ const AddEventsHome = () => {
                                 <JoditEditor
 
                                     ref={editor}
-                                    value={contentFifth}
+                                    value={inclusion}
                                     onBlur={newContent => setContentFifth(newContent)}
                                     onChange={newContent => { setInclusion(newContent) }}
                                 />
@@ -430,13 +422,12 @@ const AddEventsHome = () => {
                         </div>
                     }
 
-
                     {
                         count === 6 &&
                         <div className='finalMessageEvent'>
                             <form className='lastFormEvent' action="" onSubmit={handleReady}>
                                 <i class="uil uil-check-circle"></i>
-                                <p>All Information Successfully is ready...</p>
+                                <p>if you update all information successfully. then procceed to update</p>
                                 <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
                                 <input className='btn btn-primary finalMessageBtn' type="submit" value="NEXT" />
                             </form>
@@ -461,11 +452,12 @@ const AddEventsHome = () => {
                                 {
                                     message.status === 'failed' && <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
                                 }
-                                <input className='btn btn-primary finalMessageBtn' type="submit" value="ADD NEW EVENT" />
+                                <input className='btn btn-primary finalMessageBtn' type="submit" value="GO DASHBOARD" />
                             </form>
 
                         </div>
                     }
+
                 </div>
 
             </div>
@@ -473,4 +465,4 @@ const AddEventsHome = () => {
     );
 };
 
-export default AddEventsHome;
+export default UpdateHome;

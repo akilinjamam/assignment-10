@@ -30,6 +30,12 @@ const Dashboard = () => {
                     <button onClick={() => handleNavigate(2)} className='btnDashboard'>BLOGS</button>
                     <br />
                     <br />
+                    <button className='btnDashboard' >BANNER</button>
+                    <br />
+                    <br />
+                    <button className='btnDashboard' >REVIEW</button>
+                    <br />
+                    <br />
                     <button className='btnDashboard' >ADMIN</button>
                     <br />
                     <br />

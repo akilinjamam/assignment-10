@@ -273,7 +273,7 @@ const AddEventsAbroad = () => {
                                         <div>
                                             <label htmlFor="">Tour Date :</label>
                                             <div>
-                                                <input required type="text" name="tourDate" value={tourDate} onChange={(e) => setTourDate(e.target.value)} placeholder='01 Jan, 2023' id="" />
+                                                <input style={{ width: '195px' }} value={tourDate} onChange={(e) => setTourDate(e.target.value)} type="date" name="" id="" />
 
                                             </div>
                                         </div>
@@ -281,14 +281,9 @@ const AddEventsAbroad = () => {
                                         <br />
                                     </div>
                                     <div className='basicInfoPartTwo'>
-
-
                                         <div>
                                             <label htmlFor="">Tour Registration Last Date :</label>
-                                            <div>
-                                                <input required type="text" name="tourLastDate" value={tourLastDate} onChange={(e) => setTourLastDate(e.target.value)} placeholder='04 Jan, 2023' id="" />
-
-                                            </div>
+                                            <input style={{ width: '45%' }} value={tourDate} onChange={(e) => setTourLastDate(e.target.value)} type="date" name="" id="" />
                                         </div>
                                         {(view && tourLastDate === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />

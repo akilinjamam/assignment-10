@@ -23,15 +23,13 @@ const SpotDetail = () => {
         onTop()
     }, [routerPath]);
 
-    const homeQuery = useQuery({ queryKey: ['fetchHomeData'], queryFn: () => fetchHomeData() },);
+    const homeQuery = useQuery({ queryKey: ['fetchHomeData'], queryFn: () => fetchHomeData() });
     const globalQuery = useQuery({ queryKey: ['fetchGlobalData'], queryFn: () => fetchGlobalData() })
     // const homeData = data?.data?.result
 
     const homeDatas = homeQuery?.data?.data?.result
     const globalDatas = globalQuery?.data?.data?.result
-
-    console.log(homeDatas)
-    console.log(globalDatas)
+    console.log(findData?.tourData);
 
     const state = useContext(noteContext);
     const setMembers = state.setMembers;
@@ -178,7 +176,8 @@ const SpotDetail = () => {
                             <p><span>Tour Name:</span> {findData?.name}</p>
                             <p><span>Tour Duration:</span> {findData?.stayLong}</p>
                             <p><span>Tour Cost/person:</span> {findData?.price}</p>
-                            <p><span>Last Date of Registration:</span> {lastDate}</p>
+                            <p><span>Tour Date(yy/mm/dd) :</span> {findData?.tourDate}</p>
+                            <p><span>Last Date of Registration(yy/mm/dd) :</span> {lastDate}</p>
 
                             <div className='remainingDatesContainer'>
                                 <h6>REMAINING TIMES OF REGISTRATION :</h6>

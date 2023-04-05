@@ -11,7 +11,7 @@ const GlobalSpot = ({ globalSpot }) => {
     const { img, name, _id, stayLong, price, tourArea } = globalSpot
 
     const handleBook = (id, tourArea) => {
-        navigate(`/${id}`)
+        navigate(`/spotDetail/${id}`)
         state.setTourArea(tourArea)
         console.log(id, tourArea)
 
