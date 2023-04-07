@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import fetchHomeData from '../../../fetchData/fetchHomeData';
 import JoditEditor from 'jodit-react';
 import axios from 'axios';
+import fetchBannerData from '../../../fetchData/fetchBannerData';
 
 const UpdateHome = () => {
 
@@ -39,9 +40,15 @@ const UpdateHome = () => {
 
     const [message, setMessage] = useState('');
 
-    const { data: updateHome } = useQuery("updateHome", () => fetchHomeData());
+    const { data: updateHome, refetch } = useQuery("updateHome", () => fetchHomeData());
     const updateHomeData = updateHome?.data?.result;
-    console.log(updateHomeData);
+
+    const { data: bannerUpdateForHome } = useQuery("bannerUpdateForHome", () => fetchBannerData());
+    const bannerForUpdate = bannerUpdateForHome?.data?.result;
+
+    const findBannerForUpdate = bannerForUpdate?.find(b => {
+        return b.eventLink === updateHomeId
+    })
 
 
     const homeData = updateHomeData?.find(i => {
@@ -162,6 +169,17 @@ const UpdateHome = () => {
         try {
             const res = await axios.patch(`http://localhost:5000/api/v1/homeEvents/${updateHomeId}`, allData)
                 .then(res => setMessage(res.data));
+
+            if (findBannerForUpdate?._id) {
+                const res = await axios.patch(`http://localhost:5000/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
+                    name: name,
+                    bannerImg: img
+                })
+                    .then(res => setMessage(res.data));
+            }
+
+            refetch();
+
         } catch (error) {
             console.log(error.response.data);
             setMessage(error.response.data);

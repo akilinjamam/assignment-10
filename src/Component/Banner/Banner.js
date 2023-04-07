@@ -8,11 +8,20 @@ import bannar3 from '../../bannar-img/the-bandarban.jpg'
 import bannar4 from '../../bannar-img/the-tangoar-haor.jpg'
 import bannar5 from '../../bannar-img/the-rangamati.jpg'
 import './Banner.css'
+import { useQuery } from 'react-query';
+import fetchHomeData from '../../fetchData/fetchHomeData';
+import fetchGlobalData from '../../fetchData/fetchGlobalData';
 
 const Banner = () => {
 
     const [counter, setCounter] = useState(0);
+    const [bannerCounter, setBannerCounter] = useState(1);
+
     const [dynamicColor, setDynamicColor] = useState('crimson');
+
+    const { data: bannerHome } = useQuery("bannerHome", () => fetchHomeData());
+    const bannerHomeData = bannerHome?.data?.result
+
 
     useEffect(() => {
         if (counter === 0) {
@@ -36,14 +45,16 @@ const Banner = () => {
         } else if (counter === 9) {
             setDynamicColor('crimson')
         }
-    }, [counter, setDynamicColor])
+    }, [counter, setDynamicColor]);
 
 
     if (counter === 10) {
         setCounter(0)
     }
 
-
+    if (bannerCounter === 3) {
+        setBannerCounter(1)
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -57,69 +68,24 @@ const Banner = () => {
     return (
         <div style={{ width: '100%', margin: 'auto', }}>
             <Carousel>
-                <Carousel.Item>
-                    <img style={{ height: '500px' }}
-                        className="d-block w-100"
-                        src="https://source.unsplash.com/1600x900/?coxbazar"
-                        alt="First slide"
-                    />
-                    <Carousel.Caption>
-                        {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>Cox Bazar</h3>}
+                {
+                    bannerHomeData?.map(b => {
+                        return (
+                            <Carousel.Item key={b._id}>
+                                <img style={{ height: '500px' }}
+                                    className="d-block w-100"
+                                    src={b.img}
+                                    alt="First slide"
+                                />
+                                <Carousel.Caption>
+                                    {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>{b.name}</h3>}
 
-                        <p> Enjoy 4 night 5 days</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img style={{ height: '500px' }}
-                        className="d-block w-100"
-                        src="https://source.unsplash.com/1600x900/?sajek valley"
-                        alt="Second slide"
-                    />
-
-                    <Carousel.Caption>
-                        {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>sajek</h3>}
-
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img style={{ height: '500px' }}
-                        className="d-block w-100"
-                        src="https://source.unsplash.com/1600x900/?maountain"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>Bandarban</h3>}
-
-                        <p>Enjoy 2 night 3 days</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img style={{ height: '500px' }}
-                        className="d-block w-100  "
-                        src="https://source.unsplash.com/1600x900/?tangoar haor"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>Tangoar Haor</h3>}
-
-                        <p>Enjoy 3 night 4 day</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img style={{ height: '500px' }}
-                        className="d-block w-100"
-                        src="https://source.unsplash.com/1600x900/?rangamati"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>Rangamati</h3>}
-
-                        <p>Enjoy 3 days 4 night</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
+                                    <p> Enjoy 4 night 5 days</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        )
+                    })
+                }
             </Carousel>
         </div>
     );

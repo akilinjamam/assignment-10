@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import axios from 'axios';
 import fetchGlobalData from '../../../fetchData/fetchGlobalData';
+import fetchBannerData from '../../../fetchData/fetchBannerData';
 
 const UpdateHome = () => {
 
@@ -38,9 +39,15 @@ const UpdateHome = () => {
 
     const [message, setMessage] = useState('');
 
-    const { data: updateGlobal } = useQuery("updateGlobal", () => fetchGlobalData());
+    const { data: updateGlobal, refetch } = useQuery("updateGlobal", () => fetchGlobalData());
     const updateGlobalData = updateGlobal?.data?.result;
-    console.log(updateGlobalData);
+
+    const { data: bannerUpdateForHome } = useQuery("bannerUpdateForHome", () => fetchBannerData());
+    const bannerForUpdate = bannerUpdateForHome?.data?.result;
+
+    const findBannerForUpdate = bannerForUpdate?.find(b => {
+        return b.eventLink === updateGlobalId
+    })
 
 
     const globalData = updateGlobalData?.find(i => {
@@ -161,6 +168,17 @@ const UpdateHome = () => {
         try {
             const res = await axios.patch(`http://localhost:5000/api/v1/globalEvents/${updateGlobalId}`, allData)
                 .then(res => setMessage(res.data));
+
+            if (findBannerForUpdate?._id) {
+                const res = await axios.patch(`http://localhost:5000/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
+                    name: name,
+                    bannerImg: img
+                })
+                    .then(res => setMessage(res.data));
+            }
+
+            refetch();
+
         } catch (error) {
             console.log(error.response.data);
             setMessage(error.response.data);

@@ -6,6 +6,7 @@ import noteContext from '../../Context/noteContext';
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
+import fetchBannerData from '../../fetchData/fetchBannerData';
 
 const DashboardHome = () => {
 
@@ -20,6 +21,9 @@ const DashboardHome = () => {
         refetchInterval: 1000,
         refetchIntervalInBackground: true
     });
+
+    const { data: bannerGet } = useQuery("bannerGet", () => fetchBannerData())
+    const allBannerData = bannerGet?.data?.result;
 
     const [view, setView] = useState(false)
     const [info, setInfo] = useState('');
@@ -36,13 +40,31 @@ const DashboardHome = () => {
     const handleDelete = (id, tourArea) => {
 
 
-        if (tourArea === 'home')
+        if (tourArea === 'home') {
             fetchHomeData(id);
-        setView(false);
 
-        if (tourArea === 'global')
+            const findBannerData = allBannerData?.find(a => {
+                return a.eventLink === id
+            });
+
+            if (findBannerData?.eventLink) {
+                fetchBannerData(findBannerData?._id)
+            }
+            setView(false);
+        }
+
+        if (tourArea === 'global') {
             fetchGlobalData(id);
-        setView(false);
+
+            const findBannerData = allBannerData?.find(a => {
+                return a.eventLink === id
+            });
+            if (findBannerData?.eventLink) {
+                fetchBannerData(findBannerData?._id)
+            }
+            setView(false)
+        }
+
 
     };
 

@@ -4,6 +4,9 @@ import JoditEditor from 'jodit-react';
 import './AddEventsHome.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useQuery } from 'react-query';
+import fetchHomeData from '../../fetchData/fetchHomeData';
+import fetchBannerData from '../../fetchData/fetchBannerData';
 
 const AddEventsHome = () => {
 
@@ -37,6 +40,7 @@ const AddEventsHome = () => {
     const [inclusion, setInclusion] = useState('');
 
     const [message, setMessage] = useState('');
+    const [bannerMessage, setBannerMessage] = useState('');
 
 
     console.log(tourLastDate);
@@ -44,6 +48,16 @@ const AddEventsHome = () => {
     const [count, setCount] = useState(1);
 
     const navigate = useNavigate();
+
+    const { data: getForBanner, refetch } = useQuery("getForBanner", () => fetchHomeData())
+    const { data: getBanner } = useQuery("getBanner", () => fetchBannerData())
+    const [processing, setProcessing] = useState(false)
+    const eventBanner = getBanner?.data?.result;
+    console.log(eventBanner);
+    const eventForBanner = getForBanner?.data?.result;
+    const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length))
+
+
 
     const handleBasic = (e) => {
         e.preventDefault();
@@ -142,10 +156,13 @@ const AddEventsHome = () => {
         try {
             const res = await axios.post('http://localhost:5000/api/v1/homeEvents', allData)
                 .then(res => setMessage(res.data));
+
         } catch (error) {
             console.log(error.response.data);
             setMessage(error.response.data);
         };
+
+
 
         setCount(count + 1)
 
@@ -207,10 +224,36 @@ const AddEventsHome = () => {
         }
     }, [imgContainer])
 
+    const addToBanner = async (e) => {
+        e.preventDefault();
+        // send data to banner server:
 
+        try {
+            const resBanner = await axios.post('http://localhost:5000/api/v1/bannerEvents', {
+                name: lastEventForBanner[0].name,
+                bannerImg: lastEventForBanner[0].img,
+                tourType: lastEventForBanner[0].tourArea,
+                eventLink: lastEventForBanner[0]._id
+            }).then(res => setBannerMessage(res.data));
 
+        } catch (error) {
+            console.log(error.response.data);
+            setBannerMessage(error.response.data);
+        };
 
-    console.log(img)
+    };
+
+    useEffect(() => {
+        if (count === 7) {
+            setProcessing(true);
+            refetch();
+            setTimeout(() => {
+                setProcessing(false);
+                refetch();
+            }, 4000)
+        }
+    }, [count, refetch]);
+    console.log(processing);
 
     return (
         <div className='addEventsHome'>
@@ -482,22 +525,38 @@ const AddEventsHome = () => {
                     {
                         count === 7 &&
                         <div className='finalMessageEvent'>
-                            <form className='lastFormEvent' action="" onSubmit={finalMessage}>
-                                <div>
+                            {
+                                processing ?
+                                    <div>
+                                        <p>processing....</p>
+                                    </div>
+                                    :
+                                    <form className='lastFormEvent' action="" onSubmit={finalMessage}>
+                                        <div>
 
 
-                                    {message.status === 'success' && <i class="uil uil-check-circle"></i>}
+                                            {message.status === 'success' && <i class="uil uil-check-circle"></i>}
 
-                                    {message.status === 'failed' && <i class="uil uil-times-circle"></i>}
-                                </div>
-                                <div>
-                                    {message.message}
-                                </div>
-                                {
-                                    message.status === 'failed' && <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
-                                }
-                                <input className='btn btn-primary finalMessageBtn' type="submit" value="ADD NEW EVENT" />
-                            </form>
+                                            {message.status === 'failed' && <i class="uil uil-times-circle"></i>}
+                                        </div>
+                                        <div>
+                                            {message.message}
+                                        </div>
+                                        {
+                                            message.status === 'failed' && <input onClick={() => setCount(count - 1)} className='btn btn-primary finalMessageBackBtn' type="submit" value="BACK" />
+                                        }
+                                        {
+                                            message.status === 'success' &&
+                                            <div className='bannerOkBtn'>
+                                                <span style={{ marginRight: '10px', fontStyle: 'italic', color: 'crimson' }}>if you want to add this event to Banner Section, press ok</span>
+                                                <button onClick={addToBanner} className='btn btn-secondary btn-sm '>OK</button>
+                                                {bannerMessage.status === 'success' && <span style={{ marginLeft: '20px', color: 'green' }}>{bannerMessage.message}</span>}
+
+                                            </div>
+                                        }
+                                        <input className='btn btn-primary finalMessageBtn' type="submit" value="ADD NEW EVENT" />
+                                    </form>
+                            }
 
                         </div>
                     }
