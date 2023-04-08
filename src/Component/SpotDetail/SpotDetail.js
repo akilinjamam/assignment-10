@@ -29,7 +29,6 @@ const SpotDetail = () => {
 
     const homeDatas = homeQuery?.data?.data?.result
     const globalDatas = globalQuery?.data?.data?.result
-    console.log(findData?.tourData);
 
     const state = useContext(noteContext);
     const setMembers = state.setMembers;
@@ -37,9 +36,7 @@ const SpotDetail = () => {
     const lastDate = state?.name?.tourLastDate;
     const tourType = state.tourType;
     const setTourType = state.setTourType;
-    const tourArea = state.tourArea;
-    // const findDatasGlobal = state?.globalData;
-    // const findDatas = state?.homeData
+
 
 
     const homeData = homeDatas?.find(i => {
@@ -49,19 +46,22 @@ const SpotDetail = () => {
         return i._id === spotdetailId
     });
 
+    console.log(homeData)
+    console.log(globalData)
+
 
     useEffect(() => {
         state.setName(findData,)
     }, [findData, state]);
 
     useEffect(() => {
-        if (tourArea === 'home') {
+        if (homeData?.tourArea === 'home') {
             setFindData(homeData)
         }
-        if (tourArea === 'global') {
+        if (globalData?.tourArea === 'global') {
             setFindData(globalData)
         }
-    }, [homeData, tourArea, globalData])
+    }, [homeData, globalData])
 
     const [timerDays, setTimerDays] = useState(0);
     const [timerHours, setTimerHours] = useState(0);

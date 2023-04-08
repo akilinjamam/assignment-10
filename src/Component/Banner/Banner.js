@@ -11,15 +11,37 @@ import './Banner.css'
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
+import fetchBannerData from '../../fetchData/fetchBannerData';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import noteContext from '../../Context/noteContext';
 
 const Banner = () => {
+
+    const state = useContext(noteContext)
+
+    const navigate = useNavigate();
+
+    const handleNavigate = (eventLink, tourArea) => {
+
+        if (tourArea === 'home') {
+            navigate(`spotDetail/${eventLink}`);
+            state.setTourArea(tourArea)
+        }
+        if (tourArea === 'global') {
+            navigate(`spotDetail/${eventLink}`);
+            state.setTourArea(tourArea)
+        }
+
+
+    }
 
     const [counter, setCounter] = useState(0);
     const [bannerCounter, setBannerCounter] = useState(1);
 
     const [dynamicColor, setDynamicColor] = useState('crimson');
 
-    const { data: bannerHome } = useQuery("bannerHome", () => fetchHomeData());
+    const { data: bannerHome } = useQuery("bannerHome", () => fetchBannerData());
     const bannerHomeData = bannerHome?.data?.result
 
 
@@ -71,7 +93,7 @@ const Banner = () => {
                 {
                     bannerHomeData?.map(b => {
                         return (
-                            <Carousel.Item key={b._id}>
+                            <Carousel.Item onClick={() => handleNavigate(b.eventLink, b.tourArea)} key={b._id}>
                                 <img style={{ height: '500px' }}
                                     className="d-block w-100"
                                     src={b.img}
@@ -80,7 +102,7 @@ const Banner = () => {
                                 <Carousel.Caption>
                                     {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>{b.name}</h3>}
 
-                                    <p> Enjoy 4 night 5 days</p>
+
                                 </Carousel.Caption>
                             </Carousel.Item>
                         )

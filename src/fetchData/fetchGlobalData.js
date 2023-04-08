@@ -1,10 +1,11 @@
 import axios from "axios"
 
-const fetchGlobalData = async (id) => {
+const fetchGlobalData = async (id, refetchGlobal) => {
 
     if (id) {
         const response = await axios.delete(`http://localhost:5000/api/v1/globalEvents/${id}`)
         const globalData = response;
+        refetchGlobal();
         return globalData;
     }
 

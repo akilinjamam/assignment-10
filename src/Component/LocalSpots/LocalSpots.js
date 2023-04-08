@@ -15,6 +15,7 @@ import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import Loading from '../../Loading/Loading';
 import noteContext from '../../Context/noteContext';
+import { fetchProvider } from '../Banner/Banner';
 
 
 const LocalSpots = () => {
@@ -60,16 +61,13 @@ const LocalSpots = () => {
 
     // fetch home data:
 
-    const { data, isLoading, } = useQuery("localSpots", () => fetchHomeData(), {
-        cacheTime: true
-    });
-
-
+    const { data, isLoading } = useQuery("localSpots", () => fetchHomeData());
 
     const homeEvents = data?.data?.result;
 
     useEffect(() => {
         state.setHomeData(homeEvents);
+
     }, [state, homeEvents]);
 
     if (isLoading) {

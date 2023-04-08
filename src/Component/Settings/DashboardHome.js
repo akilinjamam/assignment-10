@@ -13,14 +13,8 @@ const DashboardHome = () => {
 
     const navigate = useNavigate();
 
-    const { data: homeDatas } = useQuery("homeDatas", () => fetchHomeData(), {
-        refetchInterval: 1000,
-        refetchIntervalInBackground: true
-    });
-    const { data: globalDatas } = useQuery("globalDatas", () => fetchGlobalData(), {
-        refetchInterval: 1000,
-        refetchIntervalInBackground: true
-    });
+    const { data: homeDatas, refetch: refetchHome } = useQuery("homeDatas", () => fetchHomeData());
+    const { data: globalDatas, refetch: refetchGlobal } = useQuery("globalDatas", () => fetchGlobalData());
 
     const { data: bannerGet } = useQuery("bannerGet", () => fetchBannerData())
     const allBannerData = bannerGet?.data?.result;
@@ -41,7 +35,7 @@ const DashboardHome = () => {
 
 
         if (tourArea === 'home') {
-            fetchHomeData(id);
+            fetchHomeData(id, refetchHome);
 
             const findBannerData = allBannerData?.find(a => {
                 return a.eventLink === id
@@ -54,7 +48,7 @@ const DashboardHome = () => {
         }
 
         if (tourArea === 'global') {
-            fetchGlobalData(id);
+            fetchGlobalData(id, refetchGlobal);
 
             const findBannerData = allBannerData?.find(a => {
                 return a.eventLink === id
