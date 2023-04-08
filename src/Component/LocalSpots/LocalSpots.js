@@ -84,23 +84,16 @@ const LocalSpots = () => {
             <br />
 
             {
-                homeEvents ?
-                    <div>
-                        <Slider {...settings}>
-                            {
-                                homeEvents?.map(localSpot => <LocalSpot
-                                    key={localSpot._id}
-                                    localSpot={localSpot}
-                                ></LocalSpot>)
-                            }
-                        </Slider>
-                    </div>
-
-                    :
-
-                    <div>
-                        <p style={{ color: 'red' }}>Data not found yet...</p>
-                    </div>
+                <div>
+                    <Slider {...settings}>
+                        {
+                            homeEvents?.map(localSpot => <LocalSpot
+                                key={localSpot._id}
+                                localSpot={localSpot}
+                            ></LocalSpot>)
+                        }
+                    </Slider>
+                </div>
             }
 
 

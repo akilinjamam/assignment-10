@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
-import AOS from 'aos';
+
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import bannar1 from '../../bannar-img/the-innani-beach.jpg'
-import bannar2 from '../../bannar-img/the-sajek-valley.jpg'
-import bannar3 from '../../bannar-img/the-bandarban.jpg'
-import bannar4 from '../../bannar-img/the-tangoar-haor.jpg'
-import bannar5 from '../../bannar-img/the-rangamati.jpg'
+
 import './Banner.css'
 import { useQuery } from 'react-query';
-import fetchHomeData from '../../fetchData/fetchHomeData';
-import fetchGlobalData from '../../fetchData/fetchGlobalData';
 import fetchBannerData from '../../fetchData/fetchBannerData';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import noteContext from '../../Context/noteContext';
+import Loading from '../../Loading/Loading';
 
 const Banner = () => {
 
@@ -41,8 +36,10 @@ const Banner = () => {
 
     const [dynamicColor, setDynamicColor] = useState('crimson');
 
-    const { data: bannerHome } = useQuery("bannerHome", () => fetchBannerData());
-    const bannerHomeData = bannerHome?.data?.result
+    const { data: bannerHome, isLoading } = useQuery("bannerHome", () => fetchBannerData());
+    const bannerHomeData = bannerHome?.data?.result;
+
+
 
 
     useEffect(() => {
@@ -85,6 +82,11 @@ const Banner = () => {
 
         return () => clearInterval(interval);
     }, []);
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
 
     // Banner Section.....
     return (

@@ -7,14 +7,15 @@ import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
 import fetchBannerData from '../../fetchData/fetchBannerData';
+import Loading from '../../Loading/Loading';
 
 const DashboardHome = () => {
 
 
     const navigate = useNavigate();
 
-    const { data: homeDatas, refetch: refetchHome } = useQuery("homeDatas", () => fetchHomeData());
-    const { data: globalDatas, refetch: refetchGlobal } = useQuery("globalDatas", () => fetchGlobalData());
+    const { data: homeDatas, refetch: refetchHome, isLoading: loadingHome } = useQuery("homeDatas", () => fetchHomeData());
+    const { data: globalDatas, refetch: refetchGlobal, isLoading: loadingGlobal } = useQuery("globalDatas", () => fetchGlobalData());
 
     const { data: bannerGet } = useQuery("bannerGet", () => fetchBannerData())
     const allBannerData = bannerGet?.data?.result;
@@ -85,7 +86,13 @@ const DashboardHome = () => {
     const handleNavigate = (id, tourArea) => {
         navigate(`/spotDetail/${id}`);
         state.setTourArea(tourArea)
+    };
+
+    if (loadingHome || loadingGlobal) {
+        return <Loading></Loading>
     }
+
+
     return (
         <div className='dashboardHomePlatform'>
             <div className='dashboardHomeMain'>

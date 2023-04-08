@@ -25,10 +25,11 @@ const SpotDetail = () => {
 
     const homeQuery = useQuery({ queryKey: ['fetchHomeData'], queryFn: () => fetchHomeData() });
     const globalQuery = useQuery({ queryKey: ['fetchGlobalData'], queryFn: () => fetchGlobalData() })
-    // const homeData = data?.data?.result
+    console.log(homeQuery)
 
     const homeDatas = homeQuery?.data?.data?.result
     const globalDatas = globalQuery?.data?.data?.result
+
 
     const state = useContext(noteContext);
     const setMembers = state.setMembers;

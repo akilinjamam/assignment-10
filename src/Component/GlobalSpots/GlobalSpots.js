@@ -77,24 +77,19 @@ const GlobalSpots = () => {
             <br />
             <br />
 
-            {
-                global ?
 
-                    <div >
-                        <Slider {...settings}>
-                            {
-                                global?.map(globalSpot => <GlobalSpot
-                                    key={globalSpot._id}
-                                    globalSpot={globalSpot}
-                                ></GlobalSpot>)
-                            }
-                        </Slider>
-                    </div>
-                    :
-                    <div>
-                        <p style={{ color: 'red' }}>Data not found yet...</p>
-                    </div>
-            }
+            <div >
+                <Slider {...settings}>
+                    {
+                        global?.map(globalSpot => <GlobalSpot
+                            key={globalSpot._id}
+                            globalSpot={globalSpot}
+                        ></GlobalSpot>)
+                    }
+                </Slider>
+            </div>
+
+
             <br />
             <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
             <br />
