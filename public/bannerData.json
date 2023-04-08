@@ -1,0 +1,50 @@
+[
+    {
+        "eventLink": "642d16fa51c01df5934a7029",
+        "name": "cox-bazar",
+        "bannerImg": "https://i.ibb.co/dgHtC49/cox-bazar.jpg",
+        "tourArea": "home"
+    },
+    {
+        "eventLink": "642d18dd51c01df5934a704d",
+        "name": "sundarban",
+        "bannerImg": "https://i.ibb.co/McQDwyS/sundarban.jpg",
+        "tourArea": "home"
+    },
+    {
+        "eventLink": "642d1a6851c01df5934a706e",
+        "name": "rangamati",
+        "bannerImg": "https://i.ibb.co/wBRv72b/rangamati.jpg",
+        "tourArea": "home"
+    },
+    {
+        "eventLink": "642d1c0e51c01df5934a709b",
+        "name": "bandarban",
+        "bannerImg": "https://i.ibb.co/hDm9rDm/bandarban.jpg",
+        "tourArea": "home"
+    },
+    {
+        "eventLink": "642d29a751c01df5934a71f6",
+        "name": "indonesi",
+        "bannerImg": "https://i.ibb.co/XVQjCH8/indonesia.jpg",
+        "tourArea": "global"
+    },
+    {
+        "eventLink": "642d3082629d232b5ed68958",
+        "name": "vietnam",
+        "bannerImg": "https://i.ibb.co/2Fftfxy/vietnam.jpg",
+        "tourArea": "global"
+    },
+    {
+        "eventLink": "642d322a629d232b5ed68970",
+        "name": "malaysiaa",
+        "bannerImg": "https://i.ibb.co/xg4cZh1/malasia.jpg",
+        "tourArea": "global"
+    },
+    {
+        "eventLink": "642d337a629d232b5ed6898c",
+        "name": "bhutan",
+        "bannerImg": "https://i.ibb.co/6FVVRLd/bhutan.jpg",
+        "tourArea": "global"
+    }
+]

@@ -4,7 +4,6 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import noteContext from '../../Context/noteContext';
 import './SpotDetail.css'
 import { useQuery } from 'react-query';
-import Loading from '../../Loading/Loading';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
 
@@ -37,7 +36,7 @@ const SpotDetail = () => {
     const lastDate = state?.name?.tourLastDate;
     const tourType = state.tourType;
     const setTourType = state.setTourType;
-
+    const tourArea = state?.tourArea
 
 
     const homeData = homeDatas?.find(i => {

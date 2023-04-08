@@ -74,7 +74,7 @@ const UpdateHome = () => {
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && imgContainer === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
+        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
             setCount(1);
         } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
@@ -82,7 +82,7 @@ const UpdateHome = () => {
 
         }
 
-        if (name === '' || img === '' || imgContainer === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
     };

@@ -75,15 +75,15 @@ const UpdateHome = () => {
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && imgContainer === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
+        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
             setCount(1);
-        } else if (name && img && imgContainer && price && tourDate && tourLastDate && tourArea && stayLong) {
+        } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
             setView(false);
 
         }
 
-        if (name === '' || img === '' || imgContainer === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
     };
@@ -159,6 +159,7 @@ const UpdateHome = () => {
 
     };
 
+    console.log(imgContainer)
 
     const handleReady = async (e) => {
 

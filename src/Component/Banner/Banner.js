@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import 'aos/dist/aos.css';
 
 import './Banner.css'
 import { useQuery } from 'react-query';
@@ -9,7 +9,6 @@ import fetchBannerData from '../../fetchData/fetchBannerData';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import noteContext from '../../Context/noteContext';
-import Loading from '../../Loading/Loading';
 
 const Banner = () => {
 
@@ -17,17 +16,9 @@ const Banner = () => {
 
     const navigate = useNavigate();
 
-    const handleNavigate = (eventLink, tourArea) => {
+    const handleNavigate = (eventLink) => {
 
-        if (tourArea === 'home') {
-            navigate(`spotDetail/${eventLink}`);
-            state.setTourArea(tourArea)
-        }
-        if (tourArea === 'global') {
-            navigate(`spotDetail/${eventLink}`);
-            state.setTourArea(tourArea)
-        }
-
+        navigate(`spotDetail/${eventLink}`);
 
     }
 
@@ -36,8 +27,8 @@ const Banner = () => {
 
     const [dynamicColor, setDynamicColor] = useState('crimson');
 
-    const { data: bannerHome, isLoading } = useQuery("bannerHome", () => fetchBannerData());
-    const bannerHomeData = bannerHome?.data?.result;
+    const { data: bannerHome } = useQuery("bannerHome", () => fetchBannerData());
+    console.log('banner :', bannerHome?.data?.result?.eventLink);
 
 
 
@@ -83,9 +74,9 @@ const Banner = () => {
         return () => clearInterval(interval);
     }, []);
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
 
 
     // Banner Section.....
@@ -93,12 +84,12 @@ const Banner = () => {
         <div style={{ width: '100%', margin: 'auto', }}>
             <Carousel>
                 {
-                    bannerHomeData?.map(b => {
+                    bannerHome?.data?.result?.map(b => {
                         return (
-                            <Carousel.Item onClick={() => handleNavigate(b.eventLink, b.tourArea)} key={b._id}>
+                            <Carousel.Item onClick={() => handleNavigate(b.eventLink)} key={b._id}>
                                 <img style={{ height: '500px' }}
                                     className="d-block w-100"
-                                    src={b.img}
+                                    src={b.bannerImg}
                                     alt="First slide"
                                 />
                                 <Carousel.Caption>
