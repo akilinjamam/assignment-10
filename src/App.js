@@ -34,6 +34,7 @@ import DashboardHome from './Component/Settings/DashboardHome';
 import DashboardHomeBlogs from './Component/Settings/DashboardHomeBlogs';
 import UpdateHome from './Component/Settings/updateHome/UpdateHome';
 import UpdateGlobal from './Component/Settings/UpdateGlobal/UpdateGlobal';
+import AddToCart from './Component/CheckOut/AddToCart';
 
 
 
@@ -89,6 +90,11 @@ function App() {
                     <Route path='/checkout' element={
                       <RequireAuth>
                         <CheckOut></CheckOut>
+                      </RequireAuth>
+                    }></Route>
+                    <Route path='/addToCart' element={
+                      <RequireAuth>
+                        <AddToCart></AddToCart>
                       </RequireAuth>
                     }></Route>
                     <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>

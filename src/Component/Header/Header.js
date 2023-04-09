@@ -45,6 +45,13 @@ const Header = () => {
                                 }
                             </p>
                         }
+                        {
+                            <p>
+                                {
+                                    user && <CustomLink to='' ><i style={{ color: 'white', }} class="uil uil-shopping-cart"></i></CustomLink>
+                                }
+                            </p>
+                        }
 
 
                         {
@@ -85,6 +92,7 @@ const Header = () => {
                     <i style={{ color: 'white', position: 'absolute', rigth: '0' }} class="uil uil-bars"></i>
                 </div>
                 <div onMouseLeave={() => setShow(false)} className={`${show ? 'visible' : 'hidden'} headerMenuContainerRes`}>
+
                     <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
                     <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                     <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
@@ -92,7 +100,9 @@ const Header = () => {
                     <p> <CustomLink to="/packages">packages</CustomLink></p>
                     <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
                     <p> <CustomLink to="/about">About Me</CustomLink></p>
+
                     <br />
+
 
                     {
                         <p>
@@ -101,6 +111,8 @@ const Header = () => {
                             }
                         </p>
                     }
+
+
 
                     <p>
                         {

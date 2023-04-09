@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
+import Loading from '../../Loading/Loading'
 
 import 'aos/dist/aos.css';
 
@@ -25,11 +26,7 @@ const Banner = () => {
 
     const [dynamicColor, setDynamicColor] = useState('crimson');
 
-    const { data: bannerHome } = useQuery("bannerHome", () => fetchBannerData());
-    console.log('banner :', bannerHome?.data?.result?.eventLink);
-
-
-
+    const { data: bannerHome, isLoading } = useQuery("bannerHome", () => fetchBannerData());
 
     useEffect(() => {
         if (counter === 0) {
@@ -72,9 +69,9 @@ const Banner = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // if (isLoading) {
-    //     return <Loading></Loading>
-    // }
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
 
     // Banner Section.....

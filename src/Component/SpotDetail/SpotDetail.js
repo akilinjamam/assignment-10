@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import noteContext from '../../Context/noteContext';
 import './SpotDetail.css'
 import { useQuery } from 'react-query';
@@ -9,7 +9,8 @@ import fetchGlobalData from '../../fetchData/fetchGlobalData';
 
 const SpotDetail = () => {
     const [outletNumber, setOutletNumber] = useState(1);
-    const [timeOver, setTimeOver] = useState(false)
+    const [timeOver, setTimeOver] = useState(false);
+    const navigate = useNavigate();
     const { spotdetailId } = useParams()
     const [findData, setFindData] = useState()
 
@@ -24,7 +25,7 @@ const SpotDetail = () => {
 
     const homeQuery = useQuery({ queryKey: ['fetchHomeData'], queryFn: () => fetchHomeData() });
     const globalQuery = useQuery({ queryKey: ['fetchGlobalData'], queryFn: () => fetchGlobalData() })
-    console.log(homeQuery)
+
 
     const homeDatas = homeQuery?.data?.data?.result
     const globalDatas = globalQuery?.data?.data?.result
@@ -206,7 +207,8 @@ const SpotDetail = () => {
                             </div>
                         </div>
                         <br />
-                        <h4>PROCCED TO CHECKOUT</h4>
+
+                        <h4>BOOK EVENT</h4>
                         <br />
                         <div className={`${timeOver ? 'none' : 'block'} sidepartSelections`}>
                             <label htmlFor="">Please Select Tour Type :</label>
@@ -301,7 +303,18 @@ const SpotDetail = () => {
                             <br /><br />
                             {!members && <p style={{ color: 'red' }}>please select any one option</p>}
 
-                            <Link to='/checkout' ><button className={`${members ? '' : 'cursors'} ${!members && 'gray'} checkoutBtn `} disabled={members ? false : true} >NEXT</button></Link>
+
+                            <button onClick={() => navigate('/addToCart')}
+                                className={`${members ? '' : 'cursors'} ${!members && 'gray'} checkoutBtn `}
+                                disabled={members ? false : true}
+                                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                            >
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '38%' }}>
+                                    <span><i className="uil uil-shopping-cart"></i></span>
+                                    <span>ADD TO CART</span>
+                                </div>
+                            </button>
+
                         </div>
                         {timeOver && <p style={{ color: 'red' }}>Sorry! Registration Time is Over</p>}
                     </div>
