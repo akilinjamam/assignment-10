@@ -166,11 +166,11 @@ const UpdateHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.patch(`http://localhost:5000/api/v1/globalEvents/${updateGlobalId}`, allData)
+            const res = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/globalEvents/${updateGlobalId}`, allData)
                 .then(res => setMessage(res.data));
 
             if (findBannerForUpdate?._id) {
-                const res = await axios.patch(`http://localhost:5000/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
+                const res = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
                     bannerImg: img
                 })

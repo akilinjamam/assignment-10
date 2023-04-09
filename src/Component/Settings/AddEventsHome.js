@@ -154,7 +154,7 @@ const AddEventsHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.post('http://localhost:5000/api/v1/homeEvents', allData)
+            const res = await axios.post('https://asssignment-10-server-production.up.railway.app/api/v1/homeEvents', allData)
                 .then(res => setMessage(res.data));
 
         } catch (error) {
@@ -229,7 +229,7 @@ const AddEventsHome = () => {
         // send data to banner server:
 
         try {
-            const resBanner = await axios.post('http://localhost:5000/api/v1/bannerEvents', {
+            const resBanner = await axios.post('https://asssignment-10-server-production.up.railway.app/api/v1/bannerEvents', {
                 name: lastEventForBanner[0].name,
                 bannerImg: lastEventForBanner[0].img,
                 tourType: lastEventForBanner[0].tourArea,

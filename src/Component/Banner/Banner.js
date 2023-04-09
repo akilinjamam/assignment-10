@@ -7,12 +7,10 @@ import './Banner.css'
 import { useQuery } from 'react-query';
 import fetchBannerData from '../../fetchData/fetchBannerData';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import noteContext from '../../Context/noteContext';
+
 
 const Banner = () => {
 
-    const state = useContext(noteContext)
 
     const navigate = useNavigate();
 
@@ -86,7 +84,7 @@ const Banner = () => {
                 {
                     bannerHome?.data?.result?.map(b => {
                         return (
-                            <Carousel.Item onClick={() => handleNavigate(b.eventLink)} key={b._id}>
+                            <Carousel.Item style={{ cursor: 'pointer' }} onClick={() => handleNavigate(b.eventLink)} key={b._id}>
                                 <img style={{ height: '500px' }}
                                     className="d-block w-100"
                                     src={b.bannerImg}
