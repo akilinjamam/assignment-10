@@ -82,6 +82,23 @@
     display: none;
 }
 
+;
+
+.cart {
+    position: relative;
+}
+
+.cartNumber {
+    position: absolute;
+    top: 5px;
+    right: 8.5%;
+    font-weight: bold;
+    background-color: red;
+    width: 20px;
+    height: 25px;
+    border-radius: 50px;
+}
+
 
 
 @media screen and (max-width: 991px) {

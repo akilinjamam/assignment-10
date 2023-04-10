@@ -6,15 +6,24 @@ import './SpotDetail.css'
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import axios from 'axios';
 
 const SpotDetail = () => {
+    const [user] = useAuthState(auth);
+    const email = user?.email;
+    const emailName = user?.displayName;
+    console.log(user?.email)
     const [outletNumber, setOutletNumber] = useState(1);
     const [timeOver, setTimeOver] = useState(false);
     const navigate = useNavigate();
     const { spotdetailId } = useParams()
-    const [findData, setFindData] = useState()
+    const [findData, setFindData] = useState();
+    console.log(findData);
 
     const routerPath = useLocation();
+
     const onTop = () => {
         window.scrollTo(0, 0);
     }
@@ -37,7 +46,6 @@ const SpotDetail = () => {
     const lastDate = state?.name?.tourLastDate;
     const tourType = state.tourType;
     const setTourType = state.setTourType;
-    const tourArea = state?.tourArea
 
 
     const homeData = homeDatas?.find(i => {
@@ -102,7 +110,37 @@ const SpotDetail = () => {
         if (findData) {
             startTimer(findData?.tourLastDate);
         }
-    })
+    });
+
+
+    const handleCart = async (e) => {
+        e.preventDefault();
+        navigate('/addToCart')
+        try {
+            const result = await axios.post('http://localhost:5000/api/v1/userCarts', {
+                email: email,
+                emailName: emailName,
+                tourName: findData?.name,
+                tourImg: findData?.img,
+                tourArea: findData?.tourArea,
+                tourType: tourType,
+                tourPrice: findData?.price,
+                tourLastDate: findData?.tourLastDate,
+                totalMember: members,
+                tourDuration: findData?.stayLong
+            })
+                .then(response => console.log(response));
+            console.log(result);
+        } catch (error) {
+            console.log(error.message)
+        }
+
+        setMembers('');
+
+
+    };
+
+    console.log(findData)
 
 
     return (
@@ -304,7 +342,7 @@ const SpotDetail = () => {
                             {!members && <p style={{ color: 'red' }}>please select any one option</p>}
 
 
-                            <button onClick={() => navigate('/addToCart')}
+                            <button onClick={handleCart}
                                 className={`${members ? '' : 'cursors'} ${!members && 'gray'} checkoutBtn `}
                                 disabled={members ? false : true}
                                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}

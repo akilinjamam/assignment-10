@@ -1,6 +1,5 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -8,8 +7,10 @@ import logo from '../../logo-img/assignment-10-logo.png'
 import CustomLink from '../CustomLink/CustomLink';
 import './Header.css';
 
-const Header = () => {
+import { useQuery } from 'react-query';
+import fetchUserCartData from '../../fetchData/fetchUserCartData';
 
+const Header = () => {
 
     const [user] = useAuthState(auth);
     const [show, setShow] = useState(false);
@@ -18,7 +19,15 @@ const Header = () => {
 
     const handleSignOut = () => {
         signOut(auth)
+    };
+
+    const { data: queryCartNumber, refetch } = useQuery("queryCartNumber", () => fetchUserCartData(user?.email));
+
+    if (queryCartNumber) {
+        refetch()
     }
+    const queryCartNumberData = queryCartNumber?.data?.result?.length;
+    console.log('qart: ', queryCartNumberData);
     return (
         <div className='HeaderMain'>
             <section className='headerContainer'>
@@ -48,7 +57,18 @@ const Header = () => {
                         {
                             <p>
                                 {
-                                    user && <CustomLink to='' ><i style={{ color: 'white', }} class="uil uil-shopping-cart"></i></CustomLink>
+                                    user &&
+                                    <CustomLink to='/addToCart' >
+                                        <span className='cart'>
+                                            <i style={{ color: 'white', }}
+                                                class="uil uil-shopping-cart"
+                                            >
+                                            </i>
+                                            <span className={`${queryCartNumberData === 0 ? 'none' : 'block'} cartNumber`}>
+                                                {queryCartNumberData}
+                                            </span>
+                                        </span>
+                                    </CustomLink>
                                 }
                             </p>
                         }

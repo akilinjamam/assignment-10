@@ -9,7 +9,10 @@ const NoteState = (props) => {
     const [members, setMembers] = useState();
     const [tourType, setTourType] = useState('');
     const [nameData, setNameData] = useState([]);
-    const [formPersonal, setFormPersonal] = useState([])
+    const [formPersonal, setFormPersonal] = useState([]);
+
+
+    console.log(name)
 
     return (
         <NoteContext.Provider value={{
@@ -28,7 +31,7 @@ const NoteState = (props) => {
             globalData: globalData,
             setGlobalData: setGlobalData,
             homeData: homeData,
-            setHomeData: setHomeData
+            setHomeData: setHomeData,
         }}>
             {props.children}
         </NoteContext.Provider>
