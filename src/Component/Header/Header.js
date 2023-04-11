@@ -15,7 +15,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const [show, setShow] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
-    console.log(user)
+
 
     const handleSignOut = () => {
         signOut(auth)
@@ -27,7 +27,6 @@ const Header = () => {
         refetch()
     }
     const queryCartNumberData = queryCartNumber?.data?.result?.length;
-    console.log('qart: ', queryCartNumberData);
     return (
         <div className='HeaderMain'>
             <section className='headerContainer'>

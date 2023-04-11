@@ -73,3 +73,9 @@ th {
     font-size: 25px;
     color: green;
 }
+
+.uil-ban {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
