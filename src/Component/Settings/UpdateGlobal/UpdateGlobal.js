@@ -7,6 +7,7 @@ import JoditEditor from 'jodit-react';
 import axios from 'axios';
 import fetchGlobalData from '../../../fetchData/fetchGlobalData';
 import fetchBannerData from '../../../fetchData/fetchBannerData';
+import fetchCartData from '../../../fetchData/fetchCartData';
 
 const UpdateHome = () => {
 
@@ -55,6 +56,20 @@ const UpdateHome = () => {
     });
 
     console.log(globalData);
+
+    const { data: queryCartForUpdate } = useQuery("queryCartForUpdate", () => fetchCartData());
+    console.log('update : ', queryCartForUpdate?.data?.result);
+    const queryCartForUpdateData = queryCartForUpdate?.data?.result
+
+
+    const filteringCartData = queryCartForUpdateData?.filter(f => {
+        return f.tourName === globalData?.name
+    });
+
+    const mappedFiltered = filteringCartData?.map(obj => obj._id);
+    console.log(mappedFiltered);
+
+
 
     useEffect(() => {
         setName(globalData?.name);
@@ -176,6 +191,15 @@ const UpdateHome = () => {
                 })
                     .then(res => setMessage(res.data));
             }
+
+            const updateCart = axios.patch('http://localhost:5000/api/v1/userCarts/bulk-update', {
+                ids: mappedFiltered,
+                data: {
+                    tourName: name,
+                    tourLastDate: tourLastDate,
+                    tourPrice: price,
+                }
+            })
 
             refetch();
 

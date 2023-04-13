@@ -8,6 +8,8 @@ import fetchHomeData from '../../../fetchData/fetchHomeData';
 import JoditEditor from 'jodit-react';
 import axios from 'axios';
 import fetchBannerData from '../../../fetchData/fetchBannerData';
+import fetchUserCartData from '../../../fetchData/fetchUserCartData';
+import fetchCartData from '../../../fetchData/fetchCartData';
 
 const UpdateHome = () => {
 
@@ -55,7 +57,20 @@ const UpdateHome = () => {
         return i._id === updateHomeId
     });
 
-    console.log(homeData);
+
+    const { data: queryCartForUpdate } = useQuery("queryCartForUpdate", () => fetchCartData());
+    console.log('update : ', queryCartForUpdate?.data?.result);
+    const queryCartForUpdateData = queryCartForUpdate?.data?.result
+
+
+    const filteringCartData = queryCartForUpdateData?.filter(f => {
+        return f.tourName === homeData?.name
+    });
+
+    const mappedFiltered = filteringCartData?.map(obj => obj._id);
+    console.log(mappedFiltered);
+
+    // console.log('filter', filteringCartData[1]?._id);
 
     useEffect(() => {
         setName(homeData?.name);
@@ -170,6 +185,7 @@ const UpdateHome = () => {
         try {
             const res = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/homeEvents/${updateHomeId}`, allData)
                 .then(res => setMessage(res.data));
+            console.log(res);
 
             if (findBannerForUpdate?._id) {
                 const res = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
@@ -177,7 +193,22 @@ const UpdateHome = () => {
                     bannerImg: img
                 })
                     .then(res => setMessage(res.data));
+                console.log(res);
             }
+
+            const updateCart = axios.patch('http://localhost:5000/api/v1/userCarts/bulk-update', {
+                ids: mappedFiltered,
+                data: {
+                    tourName: name,
+                    tourLastDate: tourLastDate,
+                    tourPrice: price,
+                }
+            }
+            )
+                .then(res => console.log(res));
+            console.log(updateCart);
+
+
 
             refetch();
 

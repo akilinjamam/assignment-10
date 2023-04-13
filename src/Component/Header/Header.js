@@ -90,6 +90,9 @@ const Header = () => {
                                         {
                                             user?.email && <CustomLink to=''> {user.email} </CustomLink>
                                         }
+                                        {
+                                            user?.email && <CustomLink to=''>Your Profile</CustomLink>
+                                        }
 
                                     </p>
                                     <p style={{ color: 'white' }}>
@@ -143,6 +146,9 @@ const Header = () => {
                         }
                         {
                             user?.email && <CustomLink to=''> {user.email} </CustomLink>
+                        }
+                        {
+                            user?.email && <CustomLink to=''>Your Profile</CustomLink>
                         }
 
                     </p>

@@ -1,21 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './AddToCart.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import fetchUserCartData from '../../fetchData/fetchUserCartData';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import noteContext from '../../Context/noteContext';
 
 const AddToCart = () => {
 
     const [user] = useAuthState(auth);
-    const [timerCount, setTimerCount] = useState()
+
     const email = user?.email;
 
 
     const nowTime = new Date().getTime();
 
-    console.log(nowTime);
+
 
     const { data: queryUserCart, refetch } = useQuery("queryUserCart", () => fetchUserCartData(email), {
         refetchInterval: 1000,
@@ -29,10 +30,17 @@ const AddToCart = () => {
         refetch();
     }, [refetch]);
 
+    const state = useContext(noteContext);
 
 
     const handleNavigate = () => {
         navigate('/checkout');
+    }
+
+    const handleEdit = (id, tourType, totalMember) => {
+        navigate(`/updateCart/${id}`);
+        state.setTourType(tourType);
+        state.setMembers(totalMember);
     }
 
     return (
@@ -54,6 +62,7 @@ const AddToCart = () => {
                             <th>Remaining</th>
                             <th>Duration</th>
                             <th>Checkout</th>
+                            <th>Status</th>
                             <th>Edit</th>
                         </tr>
                         {
@@ -155,6 +164,8 @@ const AddToCart = () => {
 
                                         }
 
+                                        <td>unpaid</td>
+
                                         {((
                                             Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))
                                         )
@@ -174,10 +185,8 @@ const AddToCart = () => {
                                             ?
                                             <td ><i class="uil uil-ban"></i></td>
                                             :
-                                            <td><i class="uil uil-edit-alt"></i></td>
-
+                                            <td><i onClick={() => handleEdit(q?._id, q?.tourType, q?.totalMember)} class="uil uil-edit-alt"></i></td>
                                         }
-                                        {/* <td><i class="uil uil-edit-alt"></i></td> */}
                                     </tr>
                                 )
                             })

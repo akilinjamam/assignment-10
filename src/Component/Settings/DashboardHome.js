@@ -8,6 +8,8 @@ import fetchHomeData from '../../fetchData/fetchHomeData';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
 import fetchBannerData from '../../fetchData/fetchBannerData';
 import Loading from '../../Loading/Loading';
+import fetchCartData from '../../fetchData/fetchCartData';
+import fetchCartDataDelete from '../../fetchData/fetchCartDataDelete';
 
 const DashboardHome = () => {
 
@@ -20,20 +22,37 @@ const DashboardHome = () => {
     const { data: bannerGet } = useQuery("bannerGet", () => fetchBannerData())
     const allBannerData = bannerGet?.data?.result;
 
+    const { data: forDeleteCartData } = useQuery("forDeleteCartData", () => fetchCartData());
+    console.log(forDeleteCartData?.data?.result)
+
     const [view, setView] = useState(false)
     const [info, setInfo] = useState('');
     const [tourArea, setTourArea] = useState('');
     const [id, setId] = useState('');
+    const [tourNames, setTourNames] = useState();
+    console.log(tourNames);
+
+
 
     const handlePopup = (id, name, tourAreas) => {
         setView(true);
         setInfo(name);
         setTourArea(tourAreas);
-        setId(id)
+        setId(id);
+        setTourNames(name);
     };
 
     const handleDelete = (id, tourArea) => {
 
+        const filteredCartData = forDeleteCartData?.data?.result?.filter(f => {
+            return f.tourName === tourNames;
+        });
+
+        const mappedFiltered = filteredCartData?.map(m => m._id);
+        console.log(mappedFiltered)
+
+
+        fetchCartDataDelete(mappedFiltered)
 
         if (tourArea === 'home') {
             fetchHomeData(id, refetchHome);
