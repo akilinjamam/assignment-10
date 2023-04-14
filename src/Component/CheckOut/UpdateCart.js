@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './UpdateCart.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import noteContext from '../../Context/noteContext'
 import { useEffect } from 'react'
@@ -70,6 +70,7 @@ const UpdateCart = () => {
                             <td>{updatedTourType ? updatedTourType : tourType}</td>
                             <td>{updatedMember ? updatedMember : members}</td>
                             <td><i class="uil uil-file-edit-alt"></i></td>
+                            <td><i class="uil uil-previous"></i></td>
                         </tr>
                         <tr>
                             <td>
@@ -79,6 +80,18 @@ const UpdateCart = () => {
                                         const option = e.target.value;
                                         setTourType(option);
                                         setUpdatedTourType(option);
+                                        if (option === 'Single-Tour') {
+                                            setUpdatedMember(1);
+                                        }
+                                        if (option === 'Couple-Tour') {
+                                            setUpdatedMember(2)
+                                        }
+                                        if (option === 'Family-Tour') {
+                                            setUpdatedMember(3)
+                                        }
+                                        if (option === 'Group-Tour') {
+                                            setUpdatedMember(5)
+                                        }
 
                                     }}>
                                         <option value="">select type...</option>
@@ -169,6 +182,9 @@ const UpdateCart = () => {
                             </td>
                             <td>
                                 <button className='btn btn-primary' onClick={handleUpdate}>UPDATE</button>
+                            </td>
+                            <td>
+                                <Link to='/addToCart'><button className='btn btn-danger'>CANCEL</button></Link>
                             </td>
                         </tr>
                     </table>

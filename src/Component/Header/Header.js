@@ -101,7 +101,9 @@ const Header = () => {
                                     <p>
                                         <CustomLink to="/dashboard">Control Panel</CustomLink>
                                     </p>
+
                                 </div>
+                                <br />
                             </div>
                         }
 
@@ -140,7 +142,6 @@ const Header = () => {
                         {
                             user?.photoURL ? <CustomLink to=""><img className='googlePhoto' src={user?.photoURL} alt="" /></CustomLink> : <i class="uil uil-user-square"></i>
                         }
-                        <br />
                         {
                             user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
                         }
