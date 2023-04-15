@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../../Loading/Loading';
 import SignInWith from '../SignInWith/SignInWith';
+import { useQuery } from 'react-query';
+import fetchUserControllData from '../../fetchData/fetchUserControllData';
 
 const Register = () => {
 
@@ -18,7 +20,9 @@ const Register = () => {
 
     const [updateProfile, updating, error] = useUpdateProfile(auth);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+
 
     if (updating) {
         return <Loading></Loading>
@@ -43,9 +47,12 @@ const Register = () => {
         console.log('user', user)
     }
 
-    const handleNavigate = event => {
+    const handleNavigate = () => {
         navigate('/login')
     }
+
+
+
 
 
     return (

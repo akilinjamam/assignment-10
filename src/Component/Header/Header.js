@@ -9,6 +9,8 @@ import './Header.css';
 
 import { useQuery } from 'react-query';
 import fetchUserCartData from '../../fetchData/fetchUserCartData';
+import fetchUserControllData from '../../fetchData/fetchUserControllData';
+import axios from 'axios';
 
 const Header = () => {
 
@@ -16,6 +18,40 @@ const Header = () => {
     const [show, setShow] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
 
+    const { data: queryUserControll } = useQuery("queryUserControll", () => fetchUserControllData());
+    console.log(queryUserControll?.data?.result);
+
+
+    const findUser = queryUserControll?.data?.result?.find(u => {
+        return u.email === user?.email;
+    });
+    const findEmail = findUser?.email;
+    console.log(findEmail);
+
+
+    // sending user info to database
+
+    useEffect(() => {
+        const postUserInfo = async () => {
+
+
+            try {
+                if (user?.email) {
+                    if (!findEmail) {
+                        const response = await axios.post('http://localhost:5000/api/v1/userControll', {
+                            email: user?.email,
+                            emailName: user?.displayName
+                        }).then(res => console.log(res))
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+
+        postUserInfo();
+    }, [user, findEmail])
 
     const handleSignOut = () => {
         signOut(auth)

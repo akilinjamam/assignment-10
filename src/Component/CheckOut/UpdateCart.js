@@ -109,7 +109,7 @@ const UpdateCart = () => {
                                     <div>
                                         <select name="" id="" onChange={(e) => {
                                             const option = e.target.value;
-                                            setMembers(option);
+
                                             setUpdatedMember(option)
                                         }}>
                                             <option value="">select member..</option>
@@ -117,14 +117,13 @@ const UpdateCart = () => {
                                         </select>
                                     </div>
                                 }
-
                                 {
                                     tourType === 'Family-Tour' &&
                                     <div>
 
                                         <select name="" id="" onChange={(e) => {
                                             const option = e.target.value;
-                                            setMembers(option);
+
                                             setUpdatedMember(option)
                                         }}>
                                             <option value="">select member..</option>
@@ -145,7 +144,7 @@ const UpdateCart = () => {
 
                                         <select name="" id="" onChange={(e) => {
                                             const option = e.target.value;
-                                            setMembers(option);
+
                                             setUpdatedMember(option)
                                         }}>
                                             <option value="">select member..</option>
@@ -160,7 +159,7 @@ const UpdateCart = () => {
 
                                         <select name="" id="" onChange={(e) => {
                                             const option = e.target.value;
-                                            setMembers(option);
+
                                             setUpdatedMember(option)
                                         }}>
                                             <option value="">select member..</option>

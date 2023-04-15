@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { Button, Form, ToastContainer } from 'react-bootstrap';
 import SignInWith from '../SignInWith/SignInWith';
 
+
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -26,7 +27,12 @@ const Login = () => {
 
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
-        auth)
+        auth);
+
+
+    // get user controll data from server;
+
+
 
     // const handleForgetPassword = async () => {
     //     const email = emailRef.current.value
