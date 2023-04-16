@@ -37,8 +37,9 @@
 
 .uil-user {
     color: white;
-    margin: 10px;
-    font-size: 30px;
+    position: absolute;
+    top: 8px;
+    font-size: 27px;
     cursor: pointer;
 }
 
@@ -90,12 +91,12 @@
 
 .cartNumber {
     position: absolute;
-    top: 5px;
-    right: 8.5%;
+    top: 3px;
     font-weight: bold;
+    font-size: 13px;
     background-color: red;
-    width: 20px;
-    height: 25px;
+    width: 15px;
+    height: 20px;
     border-radius: 50px;
 }
 

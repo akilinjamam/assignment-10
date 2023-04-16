@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import CustomLink from '../CustomLink/CustomLink';
 import './Dashboard.css'
 
 const Dashboard = () => {
+
+    const [slider, setSlider] = useState(true)
 
     const navigate = useNavigate()
 
@@ -14,6 +16,9 @@ const Dashboard = () => {
         if (value === 2) {
             navigate('/dashboard/dashboardHomeBlogs');
         }
+        if (value === 3) {
+            navigate('/dashboard/userControll')
+        }
     }
 
     return (
@@ -23,26 +28,36 @@ const Dashboard = () => {
                     <br />
                     <p>MENU</p>
                     <hr />
-                    <br />
-                    <button onClick={() => handleNavigate(1)} className='btnDashboard'>EVENTS</button>
-                    <br />
-                    <br />
-                    <button onClick={() => handleNavigate(2)} className='btnDashboard'>BLOGS</button>
-                    <br />
-                    <br />
-                    <button className='btnDashboard' >BANNER</button>
-                    <br />
-                    <br />
-                    <button className='btnDashboard' >REVIEW</button>
-                    <br />
-                    <br />
-                    <button className='btnDashboard' >ADMIN</button>
-                    <br />
-                    <br />
+                    <div className={`${slider ? 'leftSlide' : 'rightSlide'} sectionContainer`}>
+                        <div className="editorSection">
+                            <br />
+                            <button onClick={() => handleNavigate(1)} className='btnDashboard'>EVENTS</button>
+                            <br />
+                            <br />
+                            <button onClick={() => handleNavigate(2)} className='btnDashboard'>BLOGS</button>
+                            <br />
+                            <br />
+                            <button className='btnDashboard' >REVIEW</button>
+                            <br />
+                            <br />
+                            <button onClick={() => setSlider(false)} className='btnDashboard' >ADMIN</button>
+                            <br />
+                            <br />
+                        </div>
+                        <div className="adminSection">
+                            <br />
+                            <br />
+                            <button onClick={() => handleNavigate(3)} className='btnDashboard' >USER CONTROLL</button>
+                            <br />
+                            <br />
+                            <button className='btnDashboard' >STATISTIC</button>
+                            <br />
+                            <br />
+                            <hr />
 
-                    <button className='btnDashboard'>STATISTIC</button>
-                    <br />
-                    <br />
+                            <button onClick={() => setSlider(true)} className='btnDashboard'> BACK </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div className='dashboardPartTwo'>

@@ -36,6 +36,7 @@ import UpdateHome from './Component/Settings/updateHome/UpdateHome';
 import UpdateGlobal from './Component/Settings/UpdateGlobal/UpdateGlobal';
 import AddToCart from './Component/CheckOut/AddToCart';
 import UpdateCart from './Component/CheckOut/UpdateCart';
+import UserControll from './Component/Settings/Admin/UserControll';
 
 
 
@@ -108,6 +109,7 @@ function App() {
                       <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                       <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
                       <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
+                      <Route path='userControll' element={<UserControll></UserControll>}></Route>
                       <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
                       <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}></Route>
 

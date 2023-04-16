@@ -15,43 +15,49 @@ import axios from 'axios';
 const Header = () => {
 
     const [user] = useAuthState(auth);
+
     const [show, setShow] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
 
-    const { data: queryUserControll } = useQuery("queryUserControll", () => fetchUserControllData());
-    console.log(queryUserControll?.data?.result);
+    const { data: queryUserControll, refetch: refetchUserControl } = useQuery("queryUserControll", () => fetchUserControllData());
+
 
 
     const findUser = queryUserControll?.data?.result?.find(u => {
         return u.email === user?.email;
     });
     const findEmail = findUser?.email;
-    console.log(findEmail);
+
 
 
     // sending user info to database
 
     useEffect(() => {
-        const postUserInfo = async () => {
+        setTimeout(() => {
+            const postUserInfo = async () => {
 
-
-            try {
-                if (user?.email) {
-                    if (!findEmail) {
-                        const response = await axios.post('http://localhost:5000/api/v1/userControll', {
-                            email: user?.email,
-                            emailName: user?.displayName
-                        }).then(res => console.log(res))
+                try {
+                    if (user?.email) {
+                        if (!findEmail) {
+                            const response = await axios.post('http://localhost:5000/api/v1/userControll', {
+                                email: user?.email,
+                                emailName: user?.displayName,
+                                userPhoto: user?.photoURL
+                            }).then(res => console.log(res));
+                            refetchUserControl();
+                        }
                     }
+                } catch (error) {
+                    console.log(error);
                 }
-            } catch (error) {
-                console.log(error);
-            }
-        };
+            };
+
+            postUserInfo();
+        }, 3000)
 
 
-        postUserInfo();
-    }, [user, findEmail])
+
+    }, [user, findEmail, refetchUserControl])
 
     const handleSignOut = () => {
         signOut(auth)
@@ -111,7 +117,7 @@ const Header = () => {
 
                         {
                             user &&
-                            <div >
+                            <p >
                                 <span> <i onClick={() => setShowInfo(!showInfo)} class="uil uil-user"></i></span>
                                 <div onMouseLeave={() => setShowInfo(false)} className={`${showInfo ? 'visibleInfo' : 'hiddenInfo'} userInfo `}>
 
@@ -140,7 +146,7 @@ const Header = () => {
 
                                 </div>
                                 <br />
-                            </div>
+                            </p>
                         }
 
 

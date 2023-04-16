@@ -172,7 +172,7 @@ const DashboardHome = () => {
             </div>
 
             <div className={`${view ? 'block' : 'none'}`}>
-                <div className={`${view ? 'block' : 'none'} deletePopup`}>
+                <div className=' deletePopup'>
                     <div className='deletePopup-main'>
                         <div>
                             <p style={{ color: 'white', fontWeight: '400' }}>Are you sure to delete the event " {info} " </p>
