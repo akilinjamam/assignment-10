@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const fetchCartData = async () => {
-    const response = await axios.get('http://localhost:5000/api/v1/userCarts/getAll')
+    const response = await axios.get('https://asssignment-10-server-production.up.railway.app/api/v1/userCarts/getAll')
     return response;
 }
 

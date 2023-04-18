@@ -55,7 +55,7 @@ const AddToCart = () => {
     const handleDelete = async () => {
 
         try {
-            const response = await axios.delete(`http://localhost:5000/api/v1/userCarts/${id}`)
+            const response = await axios.delete(`https://asssignment-10-server-production.up.railway.app/api/v1/userCarts/${id}`)
                 .then(res => console.log(res))
         } catch (error) {
             console.log(error.message);

@@ -100,6 +100,49 @@
     border-radius: 50px;
 }
 
+.headerPopup {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.headerPopupContainer {
+    width: 40%;
+    height: 200px;
+    border: 1px solid white;
+    background: linear-gradient(rgba(55, 55, 255, .7), rgba(230, 4, 4, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.crossPopupHeader {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.uil-times {
+    color: white;
+    font-weight: bold;
+}
+
 
 
 @media screen and (max-width: 991px) {

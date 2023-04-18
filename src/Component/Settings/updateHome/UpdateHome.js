@@ -196,7 +196,7 @@ const UpdateHome = () => {
                 console.log(res);
             }
 
-            const updateCart = axios.patch('http://localhost:5000/api/v1/userCarts/bulk-update', {
+            const updateCart = axios.patch('https://asssignment-10-server-production.up.railway.app/api/v1/userCarts/bulk-update', {
                 ids: mappedFiltered,
                 data: {
                     tourName: name,

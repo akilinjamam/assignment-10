@@ -37,6 +37,8 @@ import UpdateGlobal from './Component/Settings/UpdateGlobal/UpdateGlobal';
 import AddToCart from './Component/CheckOut/AddToCart';
 import UpdateCart from './Component/CheckOut/UpdateCart';
 import UserControll from './Component/Settings/Admin/UserControll';
+import RequireAdminEditor from './Component/RequireAuth/RequireAdminEditor';
+import RequireAdmin from './Component/RequireAuth/RequireAdmin';
 
 
 
@@ -104,12 +106,12 @@ function App() {
                         <UpdateCart ></UpdateCart>
                       </RequireAuth>
                     }></Route>
-                    <Route path='/dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
+                    <Route path='/dashboard' element={<RequireAdminEditor><Dashboard></Dashboard></RequireAdminEditor>}>
                       <Route index element={<DashboardHome></DashboardHome>}></Route>
                       <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                       <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
                       <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
-                      <Route path='userControll' element={<UserControll></UserControll>}></Route>
+                      <Route path='userControll' element={<RequireAdmin><UserControll></UserControll></RequireAdmin>}></Route>
                       <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
                       <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}></Route>
 

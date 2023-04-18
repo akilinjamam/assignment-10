@@ -117,7 +117,7 @@ const SpotDetail = () => {
         e.preventDefault();
         navigate('/addToCart')
         try {
-            const result = await axios.post('http://localhost:5000/api/v1/userCarts', {
+            const result = await axios.post('https://asssignment-10-server-production.up.railway.app/api/v1/userCarts', {
                 email: email,
                 emailName: emailName,
                 tourName: findData?.name,

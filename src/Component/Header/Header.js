@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import logo from '../../logo-img/assignment-10-logo.png'
 import CustomLink from '../CustomLink/CustomLink';
@@ -15,8 +15,10 @@ import axios from 'axios';
 const Header = () => {
 
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
 
     const { data: queryUserControll, refetch: refetchUserControl } = useQuery("queryUserControll", () => fetchUserControllData());
@@ -29,6 +31,16 @@ const Header = () => {
     const findEmail = findUser?.email;
 
 
+    const handleControlPanel = () => {
+
+        if (findUser?.userRoll === 'normal') {
+            setShowPopup(true)
+        } else {
+            navigate('/dashboard')
+        }
+
+    }
+
 
     // sending user info to database
 
@@ -39,7 +51,7 @@ const Header = () => {
                 try {
                     if (user?.email) {
                         if (!findEmail) {
-                            const response = await axios.post('http://localhost:5000/api/v1/userControll', {
+                            const response = await axios.post('https://asssignment-10-server-production.up.railway.app/api/v1/userControll', {
                                 email: user?.email,
                                 emailName: user?.displayName,
                                 userPhoto: user?.photoURL
@@ -141,7 +153,7 @@ const Header = () => {
                                         <  hr />
                                     </p>
                                     <p>
-                                        <CustomLink to="/dashboard">Control Panel</CustomLink>
+                                        <p style={{ color: 'white', cursor: 'pointer' }} onClick={handleControlPanel} >Control Panel</p>
                                     </p>
 
                                 </div>
@@ -202,19 +214,18 @@ const Header = () => {
 
                 </div>
             </section>
-
+            <div className={`${showPopup ? 'block' : 'none'}`}>
+                <div className="headerPopup">
+                    <div className="headerPopupContainer">
+                        <div className='crossPopupHeader'>
+                            <i onClick={() => setShowPopup(false)} class="uil uil-times"></i>
+                        </div>
+                        <p style={{ color: 'white' }}>sorry <span style={{ color: 'yellow' }}>{user?.displayName} !</span> you have no access to controll panel !</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
 
 export default Header;
-
-
-/* 
-
-
-                       
-        
-
-
-*/
