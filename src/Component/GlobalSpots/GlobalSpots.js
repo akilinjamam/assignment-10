@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './GlobalSpots.css'
 import { Link } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import GlobalSpot from '../GlobalSpot/GlobalSpot';
-import { Parallax } from 'react-parallax';
-import winter from '../../background-image/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg'
-import tree from '../../background-image/Trees.jpg'
+
 import { useQuery } from 'react-query';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
 import Loading from '../../Loading/Loading';
@@ -19,11 +17,12 @@ const GlobalSpots = () => {
     // navigation for react-slick
     const settings = {
         dots: true,
-        infinite: false,
-        speed: 500,
+        infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 2,
-        initialSlide: 0,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
         responsive: [
             {
                 breakpoint: 1024,
@@ -50,6 +49,7 @@ const GlobalSpots = () => {
                 }
             }
         ]
+
     };
 
     const state = useContext(noteContext);
@@ -68,7 +68,7 @@ const GlobalSpots = () => {
     }
     return (
 
-        <div className='globalSpotsMain' style={{ width: '100%', height: '125vh', overflowX: 'hidden' }} >
+        <div className='globalSpotsMain' style={{ width: '100%', height: 'auto', overflowX: 'hidden' }} >
             <div className='globalSpot' data-aos='flip-up' data-aos-duration='1000'>
                 <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
             </div>
@@ -89,7 +89,8 @@ const GlobalSpots = () => {
                 </Slider>
             </div>
 
-
+            <br />
+            <br />
             <br />
             <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
             <br />

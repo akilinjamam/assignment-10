@@ -23,11 +23,12 @@ const LocalSpots = () => {
     // navigation for react-slick
     const settings = {
         dots: true,
-        infinite: false,
-        speed: 500,
+        infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 2,
-        initialSlide: 0,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
         responsive: [
             {
                 breakpoint: 1024,

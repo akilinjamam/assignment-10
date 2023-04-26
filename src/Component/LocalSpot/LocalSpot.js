@@ -45,6 +45,3 @@ const LocalSpot = ({ localSpot }) => {
 };
 
 export default LocalSpot;
-
-
-

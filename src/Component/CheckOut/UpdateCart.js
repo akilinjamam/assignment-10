@@ -31,7 +31,7 @@ const UpdateCart = () => {
 
         try {
             if (updatedMember && updatedTourType) {
-                const updateCartInfo = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/userCarts/${updateCart}`, {
+                const updateCartInfo = await axios.patch(`https://assignment-10-server.onrender.com/api/v1/userCarts/${updateCart}`, {
                     tourType: updatedTourType,
                     totalMember: updatedMember
                 })

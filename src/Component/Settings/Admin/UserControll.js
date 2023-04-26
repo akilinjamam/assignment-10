@@ -3,18 +3,20 @@ import './UserControll.css';
 import { useQuery } from 'react-query';
 import fetchUserControllData from '../../../fetchData/fetchUserControllData';
 import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const UserControll = () => {
     const { data: queryUserController, refetch } = useQuery("queryUserController", () => fetchUserControllData());
 
-
+    const [user] = useAuthState(auth)
 
     const handleRole = async (id, role) => {
         console.log(role);
 
         if (id) {
             try {
-                const response = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/userControll/${id}`, {
+                const response = await axios.patch(`https://assignment-10-server.onrender.com/api/v1/userControll/${id}`, {
                     userRoll: role
                 })
                     .then(response => console.log(response));
@@ -57,9 +59,22 @@ const UserControll = () => {
                                             }
                                         </td>
                                         <td>{u?.email}</td>
+
                                         <td><button onClick={() => handleRole(u?._id, 'admin')} style={{ width: '70%' }} type="button" className="btn btn-outline-warning"><span style={{ fontSize: '13px' }}>ADMIN</span></button></td>
-                                        <td><button onClick={() => handleRole(u?._id, 'editor')} style={{ width: '70%' }} type="button" className="btn btn-outline-success"><span style={{ fontSize: '13px' }}>EDITOR</span></button></td>
-                                        <td><button onClick={() => handleRole(u?._id, 'normal')} style={{ width: '70%' }} type="button" className="btn btn-outline-info"><span style={{ fontSize: '13px' }}>USER</span></button></td>
+
+                                        <td>
+                                            {
+                                                u?.email !== 'akilinjamam@gmail.com' &&
+                                                <button onClick={() => handleRole(u?._id, 'editor')} style={{ width: '70%' }} type="button" className="btn btn-outline-success"><span style={{ fontSize: '13px' }}>EDITOR</span></button>
+                                            }
+                                        </td>
+
+                                        <td>
+                                            {
+                                                u?.email !== 'akilinjamam@gmail.com' &&
+                                                <button onClick={() => handleRole(u?._id, 'normal')} style={{ width: '70%' }} type="button" className="btn btn-outline-info"><span style={{ fontSize: '13px' }}>USER</span></button>
+                                            }
+                                        </td>
                                         <td>{u?.userRoll}</td>
                                     </tr>
                                 )

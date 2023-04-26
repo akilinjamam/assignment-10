@@ -51,7 +51,7 @@ const Header = () => {
                 try {
                     if (user?.email) {
                         if (!findEmail) {
-                            const response = await axios.post('https://asssignment-10-server-production.up.railway.app/api/v1/userControll', {
+                            const response = await axios.post('https://assignment-10-server.onrender.com/api/v1/userControll', {
                                 email: user?.email,
                                 emailName: user?.displayName,
                                 userPhoto: user?.photoURL
@@ -96,9 +96,9 @@ const Header = () => {
                         <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                         <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
                         <p> <CustomLink to="/contact">Contact</CustomLink></p>
-                        <p> <CustomLink to="/packages">packages</CustomLink></p>
+                        {/* <p> <CustomLink to="/packages">packages</CustomLink></p>
                         <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
-                        <p> <CustomLink to="/about">About Me</CustomLink></p>
+                        <p> <CustomLink to="/about">About Me</CustomLink></p> */}
 
                         {
                             <p>
@@ -175,9 +175,9 @@ const Header = () => {
                     <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                     <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
                     <p> <CustomLink to="/contact">Contact</CustomLink></p>
-                    <p> <CustomLink to="/packages">packages</CustomLink></p>
+                    {/* <p> <CustomLink to="/packages">packages</CustomLink></p>
                     <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
-                    <p> <CustomLink to="/about">About Me</CustomLink></p>
+                    <p> <CustomLink to="/about">About Me</CustomLink></p> */}
 
                     <br />
 

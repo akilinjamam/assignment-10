@@ -20,7 +20,7 @@
 }
 
 .headerOne {
-    width: 20%;
+    width: 40%;
     height: 65px;
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@
 
 .headerTwo {
     height: 65px;
-    width: 60%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: space-between;

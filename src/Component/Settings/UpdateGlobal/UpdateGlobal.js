@@ -181,18 +181,18 @@ const UpdateHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/globalEvents/${updateGlobalId}`, allData)
+            const res = await axios.patch(`https://assignment-10-server.onrender.com/api/v1/globalEvents/${updateGlobalId}`, allData)
                 .then(res => setMessage(res.data));
 
             if (findBannerForUpdate?._id) {
-                const res = await axios.patch(`https://asssignment-10-server-production.up.railway.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
+                const res = await axios.patch(`https://assignment-10-server.onrender.com/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
                     bannerImg: img
                 })
                     .then(res => setMessage(res.data));
             }
 
-            const updateCart = axios.patch('https://asssignment-10-server-production.up.railway.app/api/v1/userCarts/bulk-update', {
+            const updateCart = axios.patch('https://assignment-10-server.onrender.com/api/v1/userCarts/bulk-update', {
                 ids: mappedFiltered,
                 data: {
                     tourName: name,
