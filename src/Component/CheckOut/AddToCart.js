@@ -36,8 +36,8 @@ const AddToCart = () => {
     const state = useContext(noteContext);
 
 
-    const handleNavigate = () => {
-        navigate('/checkout');
+    const handleNavigate = (id) => {
+        navigate(`/checkout/${id}`);
     }
 
     const handleEdit = (id, tourType, totalMember) => {
@@ -81,68 +81,74 @@ const AddToCart = () => {
 
                             <table>
                                 <tr>
-                                    <th>Delete</th>
-                                    <th>Name</th>
-                                    <th>Tour-Type</th>
-                                    <th>Members</th>
-                                    <th>Price</th>
-                                    <th>Last-Date</th>
-                                    <th>Remaining</th>
-                                    <th>Duration</th>
-                                    <th>Checkout</th>
-                                    <th>Status</th>
-                                    <th>Edit</th>
+                                    <th> <p className='cartHeading'>Delete</p></th>
+                                    <th> <p className='cartHeading'>Name</p></th>
+                                    <th> <p className='cartHeading'>Tour-Type</p></th>
+                                    <th> <p className='cartHeading'>Members</p></th>
+                                    <th> <p className='cartHeading'>Total Price</p></th>
+                                    <th> <p className='cartHeading'>Price / p</p></th>
+                                    <th> <p className='cartHeading'>30% for Booking</p></th>
+                                    <th> <p className='cartHeading'>Tour-Date</p></th>
+                                    <th> <p className='cartHeading'>Last-Date</p></th>
+                                    <th> <p className='cartHeading'>Remaining</p></th>
+                                    <th> <p className='cartHeading'>Duration</p></th>
+                                    <th> <p className='cartHeading'>Checkout</p></th>
+                                    <th> <p className='cartHeading'>Status</p></th>
+                                    <th> <p className='cartHeading'>Edit</p></th>
                                 </tr>
                                 {
                                     queryUserCartData?.map(q => {
                                         return (
                                             <tr key={q._id}>
                                                 <td><i onClick={() => handlePopup(q?._id, q?.tourName)} class="uil uil-cancel"></i></td>
-                                                <td>{q?.tourName}</td>
-                                                <td>{q?.tourType}</td>
-                                                <td>{q?.totalMember}</td>
-                                                <td>{q?.tourPrice}</td>
-                                                <td>{q?.tourLastDate}</td>
+                                                <td> <span className='cartDetail'>{q?.tourName}</span></td>
+                                                <td> <span className='cartDetail'>{q?.tourType}</span></td>
+                                                <td> <span className='cartDetail'>{q?.totalMember}</span></td>
+                                                <td> <span className='cartDetail'>{q?.tourPrice * q?.totalMember}</span></td>
+                                                <td> <span className='cartDetail'>{q?.tourPrice}</span></td>
+                                                <td> <span className='cartDetail'>{((q?.tourPrice * q?.totalMember) * 30) / 100}</span></td>
+                                                <td> <span className='cartDetail'>{q?.tourDate}</span></td>
+                                                <td> <span className='cartDetail'>{q?.tourLastDate}</span></td>
                                                 <td>
-                                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100px', color: 'red' }}>
-                                                        <span>
+                                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100px', color: 'red', margin: 'auto' }}>
+                                                        <span className='cartDetail'>
                                                             {
                                                                 (Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))) < 10 &&
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                             }
                                                             {(Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))) < 0
                                                                 ?
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                                 :
-                                                                <span>
+                                                                <span className='cartDetail'>
                                                                     {Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))}
                                                                 </span>
                                                             }
                                                         </span>
-                                                        <span style={{ fontWeight: 'bold' }}>:</span>
-                                                        <span>
+                                                        <span className='cartDetail' style={{ fontWeight: 'bold' }}>:</span>
+                                                        <span className='cartDetail'>
                                                             {
                                                                 (Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (24 * 60 * 60 * 1000) / (1000 * 60 * 60))) < 10 &&
                                                                 <span>0</span>
                                                             }
                                                             {(Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (24 * 60 * 60 * 1000) / (1000 * 60 * 60))) < 0
                                                                 ?
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                                 :
-                                                                <span>
+                                                                <span className='cartDetail'>
                                                                     {Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (24 * 60 * 60 * 1000) / (1000 * 60 * 60))}
                                                                 </span>
                                                             }
                                                         </span>
-                                                        <span style={{ fontWeight: 'bold' }}>:</span>
-                                                        <span>
+                                                        <span className='cartDetail' style={{ fontWeight: 'bold' }}>:</span>
+                                                        <span className='cartDetail'>
                                                             {
                                                                 (Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (60 * 60 * 1000) / (1000 * 60))) < 10 &&
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                             }
                                                             {(Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (60 * 60 * 1000) / (1000 * 60))) < 0
                                                                 ?
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                                 :
                                                                 <span>
                                                                     {Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (60 * 60 * 1000) / (1000 * 60))}
@@ -150,17 +156,17 @@ const AddToCart = () => {
                                                             }
 
                                                         </span>
-                                                        <span style={{ fontWeight: 'bold' }}>:</span>
-                                                        <span>
+                                                        <span className='cartDetail' style={{ fontWeight: 'bold' }}>:</span>
+                                                        <span className='cartDetail'>
                                                             {
                                                                 (Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (60 * 1000) / 1000)) < 10 &&
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                             }
                                                             {(Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (60 * 1000) / 1000)) < 0
                                                                 ?
-                                                                <span>0</span>
+                                                                <span className='cartDetail'>0</span>
                                                                 :
-                                                                <span>
+                                                                <span className='cartDetail'>
                                                                     {Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) % (60 * 1000) / 1000)}
                                                                 </span>
                                                             }
@@ -168,7 +174,7 @@ const AddToCart = () => {
                                                     </div>
 
                                                 </td>
-                                                <td>{q?.tourDuration}</td>
+                                                <td><span className='cartDetail'>{q?.tourDuration}</span></td>
                                                 {((
                                                     Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))
                                                 )
@@ -186,13 +192,13 @@ const AddToCart = () => {
                                                     )
                                                 ) < 0
                                                     ?
-                                                    <td style={{ color: 'red' }}>checkout time over</td>
+                                                    <td style={{ color: 'red' }}> <span className='cartDetail'>checkout time over</span> </td>
                                                     :
-                                                    <td><button onClick={handleNavigate} className='btn-outline'>Procced to checkout</button></td>
+                                                    <td><button onClick={() => handleNavigate(q._id)} className='btn-outline'> <span className='cartDetail'>Procced to checkout</span> </button></td>
 
                                                 }
 
-                                                <td>unpaid</td>
+                                                <td><span className='cartDetail'>{q?.paymentStatus}</span></td>
 
                                                 {((
                                                     Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))
@@ -221,8 +227,6 @@ const AddToCart = () => {
                                 }
                             </table>
 
-                            {/* ${viewPopup ? 'block' : 'none'} */}
-
                         </div>
 
                         <div className={` ${viewPopup ? 'block' : 'none'}`}>
@@ -243,7 +247,6 @@ const AddToCart = () => {
                     </div>
             }
 
-            {/* <Link to='/checkout'>checkout</Link> */}
         </div >
     );
 };

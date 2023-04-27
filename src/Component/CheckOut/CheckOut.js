@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import './CheckOut.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import noteContext from '../../Context/noteContext';
 
 import { useState } from 'react';
+import { useQuery } from 'react-query';
+import fetchUserCartDataById from '../../fetchData/fetchUserCartDataById';
 const CheckOut = () => {
 
+    const { checkoutId } = useParams();
     const [gender, setGender] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('')
     const navigate = useNavigate();
@@ -19,6 +22,10 @@ const CheckOut = () => {
         window.scrollTo(0, 0);
     }
 
+
+    const { data: getUserCartByIdForCheckout } = useQuery("getUserCartByIdForCheckout", () => fetchUserCartDataById(checkoutId));
+    console.log(getUserCartByIdForCheckout?.data?.result);
+    const cartInfo = getUserCartByIdForCheckout?.data?.result
     useEffect(() => {
         onTop()
     }, [routerPath])
@@ -34,13 +41,13 @@ const CheckOut = () => {
             nidNum: e.target.nidNum.value,
             mobileNum: e.target.mobileNum.value,
             genderId: gender,
-            tourName: c?.name?.name,
-            tourType: c?.tourType,
-            tourDuration: c?.name?.stayLong,
-            tourPrice: c?.name?.price,
+            tourName: cartInfo?.tourName,
+            tourType: cartInfo.tourType,
+            tourDuration: cartInfo?.tourDuration,
+            tourPrice: cartInfo?.tourPrice,
             paymentMethod: paymentMethod,
             address: e.target.address.value,
-            member: members,
+            member: cartInfo?.totalMember,
         }
 
         setFormPersonal((s) => [...s, formData])
@@ -48,13 +55,13 @@ const CheckOut = () => {
         console.log(formData)
 
 
-        if (members == 1) {
+        if (cartInfo?.totalMember == 1) {
             memberData = {
                 member1: e.target.name1.value,
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 2) {
+        if (cartInfo?.totalMember == 2) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -62,7 +69,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 3) {
+        if (cartInfo?.totalMember == 3) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -70,7 +77,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 4) {
+        if (cartInfo?.totalMember == 4) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -80,7 +87,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 5) {
+        if (cartInfo?.totalMember == 5) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -90,7 +97,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 6) {
+        if (cartInfo?.totalMember == 6) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -101,7 +108,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 7) {
+        if (cartInfo?.totalMember == 7) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -113,7 +120,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 8) {
+        if (cartInfo?.totalMember == 8) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -126,7 +133,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 9) {
+        if (cartInfo?.totalMember == 9) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -140,7 +147,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 10) {
+        if (cartInfo?.totalMember == 10) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -155,7 +162,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 11) {
+        if (cartInfo?.totalMember == 11) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -171,7 +178,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 12) {
+        if (cartInfo?.totalMember == 12) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -188,7 +195,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 13) {
+        if (cartInfo?.totalMember == 13) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -206,7 +213,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 14) {
+        if (cartInfo?.totalMember == 14) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -225,7 +232,7 @@ const CheckOut = () => {
             }
             setNameData((m) => [...m, memberData]);
         }
-        if (members == 15) {
+        if (cartInfo?.totalMember == 15) {
             memberData = {
                 member1: e.target.name1.value,
                 member2: e.target.name2.value,
@@ -258,8 +265,8 @@ const CheckOut = () => {
     return (
         <div>
             <br />
-            <h2 className='checkout-title'>FILL-UP THE FORM</h2>
-
+            <h3 className='checkout-title'>FILL-UP THE FORM</h3>
+            <br />
             <div className='checkoutMain'>
                 <section className='checkoutContainer'>
                     <form onSubmit={handleSubmit} action="">
@@ -316,8 +323,8 @@ const CheckOut = () => {
                                         setPaymentMethod(option)
                                     }} >
                                         <option value="">SELECT PAYMENT METHOD</option>
-                                        <option value="onSpotPayment">ON-SPOT-PAYMENT</option>
-                                        <option value="online">BKASH/ROCKET/NOGOD</option>
+                                        {/* <option value="onSpotPayment">ON-SPOT-PAYMENT</option> */}
+                                        <option value="online">ONLINE</option>
 
                                     </select>
                                 </div>
@@ -330,29 +337,29 @@ const CheckOut = () => {
                             <div className='infoDivOne'>
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">TOUR NAME :</label>
-                                    <input required type="text" name="" id="" value={c?.name?.name} />
+                                    <input required type="text" name="" id="" value={cartInfo?.tourName} />
                                 </div>
                                 <br />
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">TOUR TYPE :</label>
-                                    <input required type="text" name="" id="" value={c?.tourType} />
+                                    <input required type="text" name="" id="" value={cartInfo?.tourType} />
                                 </div>
                                 <br />
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">TOUR DURATION :</label>
-                                    <input required type="text" name="" id="" value={c?.name?.stayLong} />
+                                    <input required type="text" name="" id="" value={cartInfo?.tourDuration} />
                                 </div>
                             </div>
                             <br />
                             <div className='infoDivTwo'>
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">TOUR MEMBERS :</label>
-                                    <input required type="text" name="" id="" value={c?.members} />
+                                    <input required type="text" name="" id="" value={cartInfo?.totalMember} />
                                 </div>
                                 <br />
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">Tour Cost :</label>
-                                    <input required type="text" name="" id="" value={c?.name?.price} />
+                                    <input required type="text" name="" id="" value={cartInfo?.tourPrice} />
                                 </div>
                             </div>
                         </div>
@@ -361,9 +368,9 @@ const CheckOut = () => {
                         <br />
                         <div className='memberMngmntContainer'>
                             {members > 2 && <p style={{ fontStyle: 'italic' }}>please type all name of members(including you..)</p>}
-                            {members == 1 && <p style={{ fontStyle: 'italic' }}>please Type Your Name here...</p>}
-                            {members == 2 && <p style={{ fontStyle: 'italic' }}>please Type both of your Name here...</p>}
-                            {members == 1 &&
+                            {cartInfo?.totalMember == 1 && <p style={{ fontStyle: 'italic' }}>please Type Your Name here...</p>}
+                            {cartInfo?.totalMember == 2 && <p style={{ fontStyle: 'italic' }}>please Type both of your Name here...</p>}
+                            {cartInfo?.totalMember == 1 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type your name... ' type="text" name="name1" id="" />
@@ -371,7 +378,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 2 &&
+                            {cartInfo?.totalMember == 2 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -381,7 +388,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 3 &&
+                            {cartInfo?.totalMember == 3 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -393,7 +400,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 4 &&
+                            {cartInfo?.totalMember == 4 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -407,7 +414,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 5 &&
+                            {cartInfo?.totalMember == 5 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -423,7 +430,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 6 &&
+                            {cartInfo?.totalMember == 6 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -444,7 +451,7 @@ const CheckOut = () => {
 
                                 </div>
                             }
-                            {members == 7 &&
+                            {cartInfo?.totalMember == 7 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -467,7 +474,7 @@ const CheckOut = () => {
 
                                 </div>
                             }
-                            {members == 8 &&
+                            {cartInfo?.totalMember == 8 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -492,7 +499,7 @@ const CheckOut = () => {
 
                                 </div>
                             }
-                            {members == 9 &&
+                            {cartInfo?.totalMember == 9 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -519,7 +526,7 @@ const CheckOut = () => {
 
                                 </div>
                             }
-                            {members == 10 &&
+                            {cartInfo?.totalMember == 10 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -547,7 +554,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 11 &&
+                            {cartInfo?.totalMember == 11 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -579,7 +586,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 12 &&
+                            {cartInfo?.totalMember == 12 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -613,7 +620,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 13 &&
+                            {cartInfo?.totalMember == 13 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -649,7 +656,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 14 &&
+                            {cartInfo?.totalMember == 14 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
@@ -687,7 +694,7 @@ const CheckOut = () => {
                                     </div>
                                 </div>
                             }
-                            {members == 15 &&
+                            {cartInfo?.totalMember == 15 &&
                                 <div className="memberManagement">
                                     <div>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />

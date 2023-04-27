@@ -38,7 +38,7 @@ const SpotDetail = () => {
 
     const homeDatas = homeQuery?.data?.data?.result
     const globalDatas = globalQuery?.data?.data?.result
-
+    console.log(homeDatas)
 
     const state = useContext(noteContext);
     const setMembers = state.setMembers;
@@ -126,6 +126,7 @@ const SpotDetail = () => {
                 tourType: tourType,
                 tourPrice: findData?.price,
                 tourLastDate: findData?.tourLastDate,
+                tourDate: findData?.tourDate,
                 totalMember: members,
                 tourDuration: findData?.stayLong
             })

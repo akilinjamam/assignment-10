@@ -1,7 +1,12 @@
-.addToCartMain {
+.addToCartMainss {
     width: 100%;
     height: auto;
+}
 
+.cartHeading,
+.cartDetail {
+    font-size: 13px;
+    text-align: center;
 }
 
 .cartTitle {
@@ -13,7 +18,7 @@
 
 .addToCartContainer {
     position: relative;
-    width: 90%;
+    width: 95%;
     margin: auto;
     height: auto;
     margin-top: 140px;
@@ -145,4 +150,5 @@ th {
 
 .uil-cancel {
     cursor: pointer;
+    font-size: 25px;
 }
