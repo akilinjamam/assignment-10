@@ -79,7 +79,7 @@ const LocalSpots = () => {
 
 
         <div style={{ width: '100%', overflowX: 'hidden', scrollBehavior: 'smooth' }}  >
-            <div data-aos='flip-up' data-aos-duration='1000'>
+            <div >
                 <h2 style={{ color: 'gray' }} className='title'>VISIT BANGLADESH</h2>
             </div>
             <br />
@@ -99,7 +99,7 @@ const LocalSpots = () => {
 
 
             <br /><br /><br />
-            <Link to='/tourHome' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+            <Link to='/tourHome' className='d-block mx-auto btn btn-primary localSpotsDetailBtn' >Visit More Spots</Link>
             <br />
             <br />
         </div>

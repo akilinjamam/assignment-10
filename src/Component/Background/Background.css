@@ -104,7 +104,7 @@
 }
 
 .backgroundText {
-    width: 600px;
+    width: 40%;
     height: 400px;
     display: flex;
     justify-content: center;
@@ -168,4 +168,65 @@
     font-style: italic;
     color: gray;
     padding: 10px;
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+    .mainBackground {
+        height: auto;
+    }
+
+
+    .go,
+    .textBackground,
+    .detailBackgroundImg,
+    .backgroundTwoMainTwoText,
+    .backgroundTwoDetailText,
+    .away {
+        display: none;
+    }
+
+    .input {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .input div {
+        margin: auto;
+    }
+
+    .input div input {
+        text-align: center;
+    }
+
+    .button {
+        margin-top: 30px;
+    }
+
+    .backgroundTwoMainTwo {
+        height: auto;
+    }
+
+    .backgroundText {
+        width: 100%;
+    }
+
+    .backgroundText p {
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .backgroundText input {
+        width: 100%;
+    }
+
+    .backgroundTwoSubscribeBtn {
+        width: 100%;
+        /* margin: auto; */
+    }
+
+
 }

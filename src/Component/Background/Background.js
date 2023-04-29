@@ -20,7 +20,7 @@ const Background = () => {
                         <input placeholder='month' type="datetime" name="" id="" />
                     </div>
                     <div>
-                        <input placeholder=' Travel Type' type="text" name="" id="" />
+                        <input placeholder='Travel Type' type="text" name="" id="" />
                     </div>
 
                     <button className='button'>Find Now</button>

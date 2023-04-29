@@ -2,4 +2,13 @@
 
 .fontStyle {
     font-family: 'Monoton', cursive;
+    font-size: 100px;
+    margin-bottom: 200px;
+}
+
+
+@media screen and (max-width: 480px) {
+    .fontStyle {
+        font-size: 30px;
+    }
 }

@@ -88,7 +88,7 @@ const Banner = () => {
                                     alt="First slide"
                                 />
                                 <Carousel.Caption>
-                                    {<h3 className='fontStyle' style={{ fontSize: '100px', marginBottom: '200px', color: `${dynamicColor}`, transition: '1s ease-in-out' }}>{b.name}</h3>}
+                                    {<h3 className='fontStyle' style={{ color: `${dynamicColor}`, transition: '1s ease-in-out' }}>{b.name}</h3>}
 
 
                                 </Carousel.Caption>

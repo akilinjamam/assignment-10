@@ -12,13 +12,13 @@ const BackgroundTwo = () => {
                         <p> <span style={{ fontWeight: 'bold' }} >Subscribe To</span> The <br />Newsletter</p>
                         <input type="text" name="" id="" />
                         <br /><br />
-                        <button>Subscribe</button>
+                        <button className='backgroundTwoSubscribeBtn'>Subscribe</button>
                     </div>
                 </div>
             </div>
 
             <div className='backgroundTwoMainTwo'>
-                <div>
+                <div className='away'>
                     <h1>AWAY</h1>
                 </div>
 
@@ -28,7 +28,7 @@ const BackgroundTwo = () => {
                 </div>
 
 
-                <div>
+                <div className='backgroundTwoDetailText'>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa cum sociis Theme natoque.</p>
                 </div>
 

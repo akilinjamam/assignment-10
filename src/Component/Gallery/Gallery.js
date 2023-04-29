@@ -5,13 +5,13 @@ import 'aos/dist/aos.css';
 const Gallery = () => {
     return (
         <div className='galleryMain' >
-            <div data-aos='flip-up' data-aos-duration='1000'>
+            <div>
                 <p className='title' >BLOGS</p>
             </div>
             <div class="containerrr">
 
                 <div class="gallery-container w-3 h-2">
-                    <div data-aos='zoom-in' data-aos-duration='1000' class="gallery-item">
+                    <div class="gallery-item">
                         <div class="image">
                             <img src="https://source.unsplash.com/1600x900/?nature" alt="nature" />
                         </div>
@@ -20,7 +20,7 @@ const Gallery = () => {
                 </div>
 
                 <div class="gallery-container w-3 h-3">
-                    <div data-aos='zoom-in' data-aos-duration='1000' class="gallery-item">
+                    <div class="gallery-item">
                         <div class="image">
                             <img src="https://source.unsplash.com/1600x900/?people" alt="people" />
                         </div>
@@ -29,7 +29,7 @@ const Gallery = () => {
                 </div>
 
                 <div class="gallery-container h-2">
-                    <div data-aos='zoom-in' data-aos-duration='1000' class="gallery-item">
+                    <div class="gallery-item">
                         <div class="image">
                             <img src="https://source.unsplash.com/1600x900/?sport" alt="sport" />
                         </div>
@@ -38,7 +38,7 @@ const Gallery = () => {
                 </div>
 
                 <div class="gallery-container w-2">
-                    <div data-aos='zoom-in' data-aos-duration='1000' class="gallery-item">
+                    <div class="gallery-item">
                         <div class="image">
                             <img src="https://source.unsplash.com/1600x900/?fitness" alt="fitness" />
                         </div>
@@ -47,7 +47,7 @@ const Gallery = () => {
                 </div>
 
                 <div class="gallery-container w-4 h-1">
-                    <div data-aos='zoom-in' data-aos-duration='1000' class="gallery-item">
+                    <div class="gallery-item">
                         <div class="image">
                             <img src="https://source.unsplash.com/1600x900/?food" alt="food" />
                         </div>
@@ -56,7 +56,7 @@ const Gallery = () => {
                 </div>
 
                 <div class="gallery-container">
-                    <div data-aos='zoom-in' data-aos-duration='1000' class="gallery-item">
+                    <div class="gallery-item">
                         <div class="image">
                             <img src="https://source.unsplash.com/1600x900/?travel" alt="travel" />
                         </div>

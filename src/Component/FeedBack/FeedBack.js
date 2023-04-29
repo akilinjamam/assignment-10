@@ -60,7 +60,7 @@ const FeedBack = () => {
 
             <div className='writeFeedbacksMain'>
                 <div className="writeFeedbacks">
-                    <h1>RELAX</h1>
+                    <h1 className='relax'>RELAX</h1>
 
                     <div className='symbol'>
                         <div className='line'>
@@ -72,7 +72,7 @@ const FeedBack = () => {
                     </div>
                     <div className='writeFeedbackContainer'>
                         <p> <span style={{ fontWeight: 'bold' }} >Write Here</span> The <br />Feedback !</p>
-                        <input type="text" name="" id="" />
+                        <input className='writeFeedbackContainerInputs' type="text" name="" id="" />
                         <br /><br />
                         <button>Send</button>
                     </div>

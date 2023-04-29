@@ -4,6 +4,7 @@
 .galleryMain {
     width: 98%;
     margin: auto;
+    height: auto;
 }
 
 body {
@@ -126,7 +127,7 @@ body {
 
 
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:480px) {
     .containerrr {
         grid-template-columns: repeat(1, 1fr);
     }

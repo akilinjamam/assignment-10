@@ -69,8 +69,9 @@ const GlobalSpots = () => {
     return (
 
         <div className='globalSpotsMain' style={{ width: '100%', height: 'auto', overflowX: 'hidden' }} >
-            <div className='globalSpot' data-aos='flip-up' data-aos-duration='1000'>
-                <h2 style={{ color: 'pink' }} className='title'>VISIT WORLD</h2>
+            <div className='globalSpot'>
+                <h2 style={{ color: 'pink', fontSize: '50px', fontWeight: 'bold' }} className='title'>VISIT WORLD</h2>
+                <hr />
             </div>
 
 
@@ -92,7 +93,7 @@ const GlobalSpots = () => {
             <br />
             <br />
             <br />
-            <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary w-25' >Visit More Spots</Link>
+            <Link to='/tourAbroad' className='d-block mx-auto btn btn-primary globalSpotsDetailBtn ' >Visit More Spots</Link>
             <br />
             <br />
         </div>

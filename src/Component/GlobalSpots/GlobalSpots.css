@@ -2,4 +2,16 @@
     scroll-behavior: smooth;
 }
 
+.globalSpotsDetailBtn {
+    width: 25%;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+@media screen and (max-width: 480px) {
+    .globalSpotsDetailBtn {
+        width: 100%;
+    }
+
+}
