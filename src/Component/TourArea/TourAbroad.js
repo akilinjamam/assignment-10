@@ -126,7 +126,7 @@ const TourAbroad = () => {
             </section>
             <section className='partTwo'>
                 <br /><br /><br />
-                <h6>WORLD TOUR</h6>
+                <h6 style={{ color: 'black' }}>WORLD TOUR</h6>
                 <hr />
 
                 <div className='tourAreaContainer'>

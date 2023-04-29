@@ -146,7 +146,7 @@ const SpotDetail = () => {
 
     return (
         <div>
-            <div id='#' >
+            <div className='spotDetailMain' id='#' >
                 <Parallax className='forParallax' strength={300} bgImage={findData?.img}>
                     <div className='imgDiv'>
                         <h1>{(findData?.name?.toUpperCase())}</h1>
@@ -165,7 +165,7 @@ const SpotDetail = () => {
                             <div onClick={() => setOutletNumber(5)} className={outletNumber === 5 ? 'crimson' : 'yellow'}>Terms & Conditions</div>
                         </section>
                         <br />
-                        <section>
+                        <section className='outletPartDetail'>
                             {
                                 outletNumber === 1 &&
                                 <div style={{ padding: '10px' }}>

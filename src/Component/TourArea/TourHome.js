@@ -7,7 +7,6 @@ import noteContext from '../../Context/noteContext';
 const TourHome = () => {
 
     const navigate = useNavigate();
-
     const routerPath = useLocation();
     const onTop = () => {
         window.scrollTo(0, 0);
@@ -118,7 +117,7 @@ const TourHome = () => {
 
             <section className='partTwo'>
                 <br /><br /><br />
-                <h6>HOME TOUR</h6>
+                <h6 style={{ color: 'black' }}>HOME TOUR</h6>
                 <hr />
 
                 <div className='tourAreaContainer'>

@@ -52,7 +52,6 @@
     justify-content: space-between;
 }
 
-.tourAreaBoarder {}
 
 .tourAreaImg {
     width: 30%;
@@ -99,4 +98,57 @@
 
 .viewAllButton {
     text-align: left;
+}
+
+
+@media screen and (max-width: 480px) {
+    .tourAreaMain {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        height: auto
+    }
+
+    .partOne,
+    .partTwo {
+        width: 100%;
+    }
+
+    .tourAreaSection {
+        width: 95%;
+    }
+
+    .tourAreaContainer {
+        height: auto;
+    }
+
+    .tourAreaImg {
+        display: flex;
+        justify-content: center;
+        align-items: first baseline;
+    }
+
+    .tourAreaImg img {
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .tourAreaInfo p {
+        margin-bottom: 0;
+    }
+
+    .tourAreaInfoContainer button {
+        margin-top: 15px;
+    }
+
+    .viewAllButton {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tourAreaInfoContainer {
+        margin-bottom: 10px;
+    }
+
 }

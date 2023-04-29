@@ -184,3 +184,39 @@
 .none {
     display: none;
 }
+
+
+@media screen and (max-width: 480px) {
+
+    .forParallax {
+        height: 60vh;
+    }
+
+    .spotDetailInfo {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+    .sidePart {
+        width: 100%;
+    }
+
+    .outletpart {
+        width: 100%;
+    }
+
+    .spotDetailMain {
+        width: 100%;
+    }
+
+    .spotDetailBtn div {
+        width: 97%;
+    }
+
+    .spotDetailBtn {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

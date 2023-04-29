@@ -191,7 +191,6 @@
     .input {
         display: flex;
         flex-wrap: wrap;
-        width: 100%;
     }
 
     .input div {
