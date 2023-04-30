@@ -6,6 +6,7 @@ import './Login.css'
 import Loading from '../../Loading/Loading';
 import { Form, ToastContainer } from 'react-bootstrap';
 import SignInWith from '../SignInWith/SignInWith';
+import loginImg from '../../images/login-img.png';
 
 
 const Login = () => {
@@ -75,53 +76,59 @@ const Login = () => {
         navigate('/register')
     }
     return (
-        <div >
-            <h3 className='loginTitle'>PLEASE LOGIN</h3>
+        <div className='loginPlatform'>
             <div className='loginInfoContainer'>
-                <div className="loginInfoMain">
-                    <Form onSubmit={handleSubmit}>
-                        <div className='loginInfo' >
-                            <label>Email address: </label>
-                            <input ref={emailRef} type="email" placeholder="Enter email" required />
-                        </div>
+                <div className="loginImgPart">
+                    <img src={loginImg} alt="" />
+                </div>
+                <div className='loginMain'>
+                    <h5 className='loginTitle'>Login Form</h5>
+                    <div className="loginInfoMain">
 
-                        <div className='loginInfo'>
-                            <label>Password: </label>
-                            <input ref={passwordRef} type="password" placeholder="Password" required />
-                        </div>
+                        <Form onSubmit={handleSubmit}>
+                            <div className='loginInfo' >
+                                <label>Email address: </label>
+                                <input ref={emailRef} type="email" placeholder="Enter email" required />
+                            </div>
 
-                        <div className='loginOther'>
-                            <p> <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={handleNavigate}  > Register </span> </p>
+                            <div className='loginInfo'>
+                                <label>Password: </label>
+                                <input ref={passwordRef} type="password" placeholder="Password" required />
+                            </div>
 
-
-                            <p>
-                                <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={async () => {
-                                    const email = emailRef.current.value
-
-                                    if (email) {
-                                        await sendPasswordResetEmail(email);
-                                        // toast('Sent email to your Gmail Account. please check it');
-                                        alert('sent to your gmail account')
-                                    } else {
-                                        // toast('please enter your email address')
-                                        alert('please enter your email address')
-                                    }
-                                }}   > create new password
-                                </span>
-                            </p>
-                        </div>
+                            <div className='loginOther'>
+                                <p> <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={handleNavigate}  > Register </span> </p>
 
 
-                        <div>
-                            <p style={{ fontSize: '12px', textAlign: 'center', color: 'red' }} > {errorElement} </p>
+                                <p>
+                                    <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={async () => {
+                                        const email = emailRef.current.value
 
-                        </div>
-                        <SignInWith></SignInWith>
-                        <ToastContainer />
+                                        if (email) {
+                                            await sendPasswordResetEmail(email);
+                                            // toast('Sent email to your Gmail Account. please check it');
+                                            alert('sent to your gmail account')
+                                        } else {
+                                            // toast('please enter your email address')
+                                            alert('please enter your email address')
+                                        }
+                                    }}   > create new password
+                                    </span>
+                                </p>
+                            </div>
 
-                        <button className='btn btn-primary w-100' type='submit'>LOGIN</button>
 
-                    </Form >
+                            <div>
+                                <p style={{ fontSize: '12px', textAlign: 'center', color: 'red' }} > {errorElement} </p>
+
+                            </div>
+                            <SignInWith></SignInWith>
+                            <ToastContainer />
+
+                            <button className='btn btn-primary w-100' type='submit'>LOGIN</button>
+
+                        </Form >
+                    </div>
                 </div>
             </div>
         </div >

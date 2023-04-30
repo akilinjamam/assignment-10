@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../../Loading/Loading';
 import SignInWith from '../SignInWith/SignInWith';
-import { useQuery } from 'react-query';
-import fetchUserControllData from '../../fetchData/fetchUserControllData';
+import signupImg from '../../images/signup-form-img.png'
+
+
 
 const Register = () => {
 
@@ -51,49 +52,50 @@ const Register = () => {
         navigate('/login')
     }
 
-
-
-
-
     return (
-        <div>
-            <h2 className='loginTitle'>Please Register</h2>
+        <div className='loginPlatform'>
             <div className='loginInfoContainer'>
-                <div className="loginInfoMain">
-                    <Form onSubmit={handleRegister}>
+                <div className="loginImgPart">
+                    <img src={signupImg} alt="" />
+                </div>
+                <div className='loginMain'>
+                    <h5 className='loginTitle'>Registration Form</h5>
+                    <div className="loginInfoMain">
+                        <Form onSubmit={handleRegister}>
 
-                        <div className='loginInfo'>
-                            <label>Name</label>
-                            <input type="text" name='name' placeholder="Enter name" required />
+                            <div className='loginInfo'>
+                                <label>Name</label>
+                                <input type="text" name='name' placeholder="Enter name" required />
 
-                        </div>
+                            </div>
 
-                        <div className='loginInfo'>
-                            <label>Email address</label>
-                            <input type="email" name='email' placeholder="Enter email" required />
+                            <div className='loginInfo'>
+                                <label>Email address</label>
+                                <input type="email" name='email' placeholder="Enter email" required />
 
-                        </div>
+                            </div>
 
-                        <div className='loginInfo'>
-                            <label>Password</label>
-                            <input type="password" name='password' placeholder="Password" required />
-                        </div>
+                            <div className='loginInfo'>
+                                <label>Password</label>
+                                <input type="password" name='password' placeholder="Password" required />
+                            </div>
 
-                        <p style={{ fontSize: '12px' }}>Already Account in Genius Car? <span style={{ cursor: 'pointer' }} className='text-danger' onClick={handleNavigate}  > Login </span> </p>
+                            <p style={{ fontSize: '12px' }}>Already Account in Genius Car? <span style={{ cursor: 'pointer' }} className='text-danger' onClick={handleNavigate}  > Login </span> </p>
 
-                        <SignInWith></SignInWith>
-                        <div className='mx-auto'>
-                            <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                            <SignInWith></SignInWith>
+                            <div className='mx-auto'>
+                                <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
 
-                            <label className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`} style={{ fontSize: '12px' }} htmlFor="terms">Accepts Genius Cars Terms and Conditions</label>
-                        </div>
-
-
-                        <button disabled={!agree} className='btn btn-primary w-100' type='submit'>REGISTER</button>
+                                <label className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`} style={{ fontSize: '12px' }} htmlFor="terms">Accepts Genius Cars Terms and Conditions</label>
+                            </div>
 
 
+                            <button disabled={!agree} className='btn btn-primary w-100' type='submit'>REGISTER</button>
 
-                    </Form>
+
+
+                        </Form>
+                    </div>
                 </div>
             </div>
         </div>
