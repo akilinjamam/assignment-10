@@ -30,7 +30,7 @@ const PdfForm = () => {
             <div>
                 <div className='pdfFormMain' id='content' >
                     <section className=''>
-                        <div>
+                        <div className='pdfArea'>
                             {
                                 formPersonalSliced.map(f => (
                                     <div>

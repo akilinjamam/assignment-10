@@ -76,56 +76,49 @@ const Login = () => {
         navigate('/register')
     }
     return (
-        <div style={{ border: '1px solid lightgray', borderRadius: '10px' }} className='mx-auto w-75 p-4 login'>
-            <h2 className='text-center text-primary'>Please Login</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+        <div >
+            <h3 className='loginTitle'>PLEASE LOGIN</h3>
+            <div className='loginInfoContainer'>
+                <div className="loginInfoMain">
+                    <Form onSubmit={handleSubmit}>
+                        <div className='loginInfo' >
+                            <label>Email address: </label>
+                            <input ref={emailRef} type="email" placeholder="Enter email" required />
+                        </div>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
-                </Form.Group>
-                <p>New to Genius Car? <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={handleNavigate}  > Register </span> </p>
-
-
-                <p> forget your password? <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={async () => {
-                    const email = emailRef.current.value
-
-                    if (email) {
-                        await sendPasswordResetEmail(email);
-                        toast('Sent email to your Gmail Account. please check it');
-                    } else {
-                        toast('please enter your email address')
-                    }
-                }}   > create new password </span> </p>
+                        <div className='loginInfo'>
+                            <label>Password: </label>
+                            <input ref={passwordRef} type="password" placeholder="Password" required />
+                        </div>
+                        <div className='loginOther'>
+                            <p> <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={handleNavigate}  > Register </span> </p>
 
 
+                            <p> <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={async () => {
+                                const email = emailRef.current.value
 
-                <div>
-                    <p style={{ fontSize: '12px', textAlign: 'center', color: 'red' }} > {errorElement} </p>
+                                if (email) {
+                                    await sendPasswordResetEmail(email);
+                                    toast('Sent email to your Gmail Account. please check it');
+                                } else {
+                                    toast('please enter your email address')
+                                }
+                            }}   > create new password </span> </p>
+                        </div>
 
+
+                        <div>
+                            <p style={{ fontSize: '12px', textAlign: 'center', color: 'red' }} > {errorElement} </p>
+
+                        </div>
+                        <SignInWith></SignInWith>
+                        <ToastContainer />
+
+                        <button className='btn btn-primary w-100' type='submit'>LOGIN</button>
+
+                    </Form >
                 </div>
-                <SignInWith></SignInWith>
-                <ToastContainer />
-
-
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-
-                <Button className='d-block mx-auto' variant="primary" type="submit">
-                    Submit
-                </Button>
-
-
-
-            </Form >
+            </div>
         </div >
     );
 };

@@ -135,3 +135,64 @@
     border-bottom: 1px solid black;
     outline: none;
 }
+
+
+@media screen and (max-width: 480px) {
+
+    .checkoutContainer {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .checkoutDiv {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .checkoutFirstDiv,
+    .checkoutSecondDiv {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .checkoutFirstDiv input,
+    .checkoutSecondDiv input {
+        width: 65%;
+        margin: auto;
+        border: none;
+        border-bottom: 1px solid gray;
+    }
+
+    .checkoutTourInfo {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .infoDivOne,
+    .infoDivTwo {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .infoDivOne input,
+    .infoDivTwo input {
+        width: 65%;
+        margin: auto;
+        border: none;
+        border-bottom: 1px solid gray;
+    }
+
+    .memberManagement {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .controllWidthMemberMngmnt {
+        width: 100%;
+    }
+
+    .memberManagement input {
+        margin: auto;
+        display: block;
+    }
+}

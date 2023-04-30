@@ -69,29 +69,11 @@ const SignInWith = () => {
             </div>
 
             <div>
-                <button onClick={handleGoogleSingIn} style={{ border: 'none', padding: '10px', display: 'block', margin: 'auto', marginBottom: '10px', width: '230px' }}>
+                <button onClick={handleGoogleSingIn} style={{ border: 'none', padding: '10px', display: 'block', margin: 'auto', marginBottom: '10px', width: '100%' }}>
 
                     <img style={{ height: '30px', width: '30px', marginRight: '10px' }} src={logo} alt="" />
 
                     Sign in with Google
-                </button>
-            </div>
-
-            <div>
-                <button onClick={handleGithubSignIn} style={{ border: 'none', padding: '10px', display: 'block', margin: 'auto', marginBottom: '10px', width: '230px' }}>
-
-                    <img style={{ height: '30px', width: '30px', marginRight: '10px' }} src={logo2} alt="" />
-
-                    Sign in with Github
-                </button>
-            </div>
-
-            <div>
-                <button style={{ border: 'none', padding: '10px', display: 'block', margin: 'auto', marginBottom: '10px', width: '230px' }}>
-
-                    <img style={{ height: '30px', width: '30px', marginRight: '10px' }} src={logo3} alt="" />
-
-                    Sign in with Facebook
                 </button>
             </div>
         </div>

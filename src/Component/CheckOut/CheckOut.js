@@ -372,7 +372,7 @@ const CheckOut = () => {
                             {cartInfo?.totalMember == 2 && <p style={{ fontStyle: 'italic' }}>please Type both of your Name here...</p>}
                             {cartInfo?.totalMember == 1 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type your name... ' type="text" name="name1" id="" />
 
                                     </div>
@@ -380,7 +380,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 2 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -390,7 +390,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 3 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -402,7 +402,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 4 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -416,7 +416,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 5 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -432,7 +432,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 6 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -444,7 +444,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                     </div>
@@ -453,7 +453,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 7 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -465,7 +465,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -476,7 +476,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 8 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -488,7 +488,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -501,7 +501,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 9 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -513,7 +513,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -528,7 +528,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 10 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -540,7 +540,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -556,7 +556,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 11 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -568,7 +568,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -580,7 +580,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 10' type="text" name="name10" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 11' type="text" name="name11" id="" />
                                         <br /><br />
                                     </div>
@@ -588,7 +588,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 12 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -600,7 +600,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -612,7 +612,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 10' type="text" name="name10" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 11' type="text" name="name11" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 12' type="text" name="name12" id="" />
@@ -622,7 +622,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 13 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -634,7 +634,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -646,7 +646,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 10' type="text" name="name10" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 11' type="text" name="name11" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 12' type="text" name="name12" id="" />
@@ -658,7 +658,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 14 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -670,7 +670,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -682,7 +682,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 10' type="text" name="name10" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 11' type="text" name="name11" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 12' type="text" name="name12" id="" />
@@ -696,7 +696,7 @@ const CheckOut = () => {
                             }
                             {cartInfo?.totalMember == 15 &&
                                 <div className="memberManagement">
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 1 ' type="text" name="name1" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 2 ' type="text" name="name2" id="" />
@@ -708,7 +708,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 5 ' type="text" name="name5" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 6 ' type="text" name="name6" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 7 ' type="text" name="name7" id="" />
@@ -720,7 +720,7 @@ const CheckOut = () => {
                                         <input required placeholder='type member name 10' type="text" name="name10" id="" />
                                         <br /><br />
                                     </div>
-                                    <div>
+                                    <div className='controllWidthMemberMngmnt'>
                                         <input required placeholder='type member name 11' type="text" name="name11" id="" />
                                         <br /><br />
                                         <input required placeholder='type member name 12' type="text" name="name12" id="" />

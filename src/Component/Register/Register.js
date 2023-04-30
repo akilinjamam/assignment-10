@@ -56,48 +56,46 @@ const Register = () => {
 
 
     return (
-        <div style={{ border: '1px solid lightgray', borderRadius: '10px' }} className='mx-auto w-75 p-4'>
-            <h2 className='text-center text-primary'>Please Register</h2>
-            <Form onSubmit={handleRegister}>
+        <div>
+            <h2 className='loginTitle'>Please Register</h2>
+            <div className='loginInfoContainer'>
+                <div className="loginInfoMain">
+                    <Form onSubmit={handleRegister}>
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name='name' placeholder="Enter name" required />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+                        <div className='loginInfo'>
+                            <label>Name</label>
+                            <input type="text" name='name' placeholder="Enter name" required />
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="Enter email" required />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+                        </div>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name='password' placeholder="Password" required />
-                </Form.Group>
+                        <div className='loginInfo'>
+                            <label>Email address</label>
+                            <input type="email" name='email' placeholder="Enter email" required />
 
-                <p>Already Account in Genius Car? <span style={{ cursor: 'pointer' }} className='text-danger' onClick={handleNavigate}  > Login </span> </p>
+                        </div>
 
-                <SignInWith></SignInWith>
-                <div className='mx-auto'>
-                    <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                        <div className='loginInfo'>
+                            <label>Password</label>
+                            <input type="password" name='password' placeholder="Password" required />
+                        </div>
 
-                    <label className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`} style={{ fontSize: '12px' }} htmlFor="terms">Accepts Genius Cars Terms and Conditions</label>
+                        <p style={{ fontSize: '12px' }}>Already Account in Genius Car? <span style={{ cursor: 'pointer' }} className='text-danger' onClick={handleNavigate}  > Login </span> </p>
+
+                        <SignInWith></SignInWith>
+                        <div className='mx-auto'>
+                            <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+
+                            <label className={`ps-2 ${agree ? 'text-primary' : 'text-danger'}`} style={{ fontSize: '12px' }} htmlFor="terms">Accepts Genius Cars Terms and Conditions</label>
+                        </div>
+
+
+                        <button disabled={!agree} className='btn btn-primary w-100' type='submit'>REGISTER</button>
+
+
+
+                    </Form>
                 </div>
-
-
-                <Button disabled={!agree} className='d-block mx-auto' variant="primary" type="submit">
-                    Submit
-                </Button>
-
-
-
-            </Form>
+            </div>
         </div>
     );
 };
