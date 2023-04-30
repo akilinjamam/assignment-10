@@ -26,6 +26,7 @@ const CheckOut = () => {
     const { data: getUserCartByIdForCheckout } = useQuery("getUserCartByIdForCheckout", () => fetchUserCartDataById(checkoutId));
     console.log(getUserCartByIdForCheckout?.data?.result);
     const cartInfo = getUserCartByIdForCheckout?.data?.result
+    console.log(cartInfo);
     useEffect(() => {
         onTop()
     }, [routerPath])
@@ -48,6 +49,7 @@ const CheckOut = () => {
             paymentMethod: paymentMethod,
             address: e.target.address.value,
             member: cartInfo?.totalMember,
+            tourDate: cartInfo?.tourDate,
         }
 
         setFormPersonal((s) => [...s, formData])
@@ -265,7 +267,7 @@ const CheckOut = () => {
     return (
         <div>
             <br />
-            <h3 className='checkout-title'>FILL-UP THE FORM</h3>
+            <h4 className='checkout-title'>FILL-UP THE FORM</h4>
             <br />
             <div className='checkoutMain'>
                 <section className='checkoutContainer'>
@@ -360,6 +362,11 @@ const CheckOut = () => {
                                 <div style={{ display: 'flex' }}>
                                     <label htmlFor="">Tour Cost :</label>
                                     <input required type="text" name="" id="" value={cartInfo?.tourPrice} />
+                                </div>
+                                <br />
+                                <div style={{ display: 'flex' }}>
+                                    <label htmlFor="">Tour Date :</label>
+                                    <input required type="text" name="" id="" value={cartInfo?.tourDate} />
                                 </div>
                             </div>
                         </div>

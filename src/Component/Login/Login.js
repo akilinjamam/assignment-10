@@ -4,8 +4,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import auth from '../../firebase.init';
 import './Login.css'
 import Loading from '../../Loading/Loading';
-import { toast } from 'react-toastify';
-import { Button, Form, ToastContainer } from 'react-bootstrap';
+import { Form, ToastContainer } from 'react-bootstrap';
 import SignInWith from '../SignInWith/SignInWith';
 
 
@@ -90,20 +89,26 @@ const Login = () => {
                             <label>Password: </label>
                             <input ref={passwordRef} type="password" placeholder="Password" required />
                         </div>
+
                         <div className='loginOther'>
                             <p> <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={handleNavigate}  > Register </span> </p>
 
 
-                            <p> <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={async () => {
-                                const email = emailRef.current.value
+                            <p>
+                                <span style={{ cursor: 'pointer', fontSize: '13px' }} className='text-danger' onClick={async () => {
+                                    const email = emailRef.current.value
 
-                                if (email) {
-                                    await sendPasswordResetEmail(email);
-                                    toast('Sent email to your Gmail Account. please check it');
-                                } else {
-                                    toast('please enter your email address')
-                                }
-                            }}   > create new password </span> </p>
+                                    if (email) {
+                                        await sendPasswordResetEmail(email);
+                                        // toast('Sent email to your Gmail Account. please check it');
+                                        alert('sent to your gmail account')
+                                    } else {
+                                        // toast('please enter your email address')
+                                        alert('please enter your email address')
+                                    }
+                                }}   > create new password
+                                </span>
+                            </p>
                         </div>
 
 

@@ -96,9 +96,7 @@ const Header = () => {
                         <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                         <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
                         <p> <CustomLink to="/contact">Contact</CustomLink></p>
-                        {/* <p> <CustomLink to="/packages">packages</CustomLink></p>
-                        <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
-                        <p> <CustomLink to="/about">About Me</CustomLink></p> */}
+
 
                         {
                             <p>
@@ -175,10 +173,6 @@ const Header = () => {
                     <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                     <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
                     <p> <CustomLink to="/contact">Contact</CustomLink></p>
-                    {/* <p> <CustomLink to="/packages">packages</CustomLink></p>
-                    <p> <CustomLink to="/visaGuide">visa Guide</CustomLink></p>
-                    <p> <CustomLink to="/about">About Me</CustomLink></p> */}
-
                     <br />
 
 
@@ -208,9 +202,24 @@ const Header = () => {
 
                     </p>
 
-                    <p>
-                        <CustomLink to="/dashboard">Control Panel</CustomLink>
-                    </p>
+                    {
+                        <p>
+                            {
+                                user &&
+                                <CustomLink to='/addToCart' >
+                                    <span className='cart'>
+                                        <i style={{ color: 'white', }}
+                                            class="uil uil-shopping-cart"
+                                        >
+                                        </i>
+                                        <span className={`${queryCartNumberData === 0 ? 'none' : 'block'} cartNumber`}>
+                                            {queryCartNumberData}
+                                        </span>
+                                    </span>
+                                </CustomLink>
+                            }
+                        </p>
+                    }
 
                 </div>
             </section>
