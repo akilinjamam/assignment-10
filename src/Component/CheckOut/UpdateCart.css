@@ -30,3 +30,32 @@ td {
 .uil-previous {
     font-size: 1.875em
 }
+
+
+@media screen and (max-width: 480px) {
+
+    .updateCartContainer {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1260px) {
+
+    .updateCartContainer {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 850px) {
+
+    .updateCartContainer {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+
+    .updateCartContainer {
+        width: 100%;
+    }
+}

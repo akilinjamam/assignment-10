@@ -1,6 +1,4 @@
 import React from 'react';
-import { Parallax } from 'react-parallax';
-import theImage from '../../background-image/sergey-pesterev-JV78PVf3gGI-unsplash.jpg'
 
 const BackgroundTwo = () => {
     return (
@@ -38,5 +36,3 @@ const BackgroundTwo = () => {
 };
 
 export default BackgroundTwo;
-
-// injamam joypal nayem

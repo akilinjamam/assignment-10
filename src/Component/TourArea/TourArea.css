@@ -101,7 +101,7 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 779px) {
     .tourAreaMain {
         display: flex;
         flex-wrap: wrap-reverse;
@@ -151,4 +151,16 @@
         margin-bottom: 10px;
     }
 
+}
+
+
+@media screen and (min-width: 780px) and (max-width: 1300px) {
+    .tourAreaSection {
+        width: 100%;
+    }
+
+    .partTwo {
+        width: 100%;
+        min-height: 100vh;
+    }
 }

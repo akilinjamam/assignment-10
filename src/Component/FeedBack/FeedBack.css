@@ -76,7 +76,7 @@
 }
 
 .writeFeedbackContainer {
-    width: 600px;
+    width: 50%;
     position: absolute;
     right: 0;
     bottom: 30px;
@@ -110,21 +110,21 @@
 }
 
 .symbol {
-    width: auto;
+    width: 50%;
     display: flex;
     align-items: center;
     padding-top: 100px;
 }
 
 .line {
-    width: 350px;
+    width: 50%;
     height: 10px;
     background-color: black;
     transition: 1s ease-in-out;
 }
 
 .line:hover {
-    width: 600px;
+    width: 80%;
     transition: 1s ease-in-out;
 }
 
@@ -204,5 +204,59 @@
         text-align: center;
     }
 
+
+}
+
+
+@media screen and (min-width: 481px) and (max-width: 991px) {
+    .relax {
+        display: none;
+    }
+
+    .feedBackMain {
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 760px) {
+    .writeFeedbackContainer p {
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .symbol {
+        display: none;
+    }
+
+    .writeFeedbackContainer {
+        width: 90%;
+    }
+
+    .writeFeedbackContainer input {
+        width: 90%;
+    }
+
+    .feedBack {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .feedBackImage {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .feedBackDetail {
+        width: 100%;
+    }
+
+    .feedBackImage img {
+        width: 350px;
+    }
+
+    .feedBackMain {
+        height: auto;
+        width: 100%;
+    }
 
 }
