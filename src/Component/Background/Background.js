@@ -25,7 +25,19 @@ const Background = () => {
 
                     <button className='button'>Find Now</button>
                 </div>
+                <div className='adminEditor' >
+                    <span>
+                        <p>Admin Access:</p>
+                        <p>Email: belal@gmail.com</p>
+                        <p>Password: 123456</p>
+                    </span>
 
+                    <span>
+                        <p>Editor Access:</p>
+                        <p>Email: jamal@gmail.com</p>
+                        <p>Password: 123456</p>
+                    </span>
+                </div>
             </div>
 
             <div >

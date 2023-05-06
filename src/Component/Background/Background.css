@@ -173,11 +173,29 @@
     padding: 10px;
 }
 
+.adminEditor {
+    text-align: left;
+    font-size: 13px;
+    font-weight: bold;
+    margin: auto;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
 
+.adminEditor p {
+    margin: 0;
+}
 
 @media screen and (max-width: 480px) {
 
     .mainBackground {
+        height: auto;
+    }
+
+    .background {
         height: auto;
     }
 
@@ -229,6 +247,12 @@
         width: 100%;
     }
 
+    .adminEditor {
+        display: flex;
+        flex-wrap: wrap;
+        height: 200px;
+        margin-top: 50px;
+    }
 
 }
 
