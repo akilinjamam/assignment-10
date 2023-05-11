@@ -35,6 +35,20 @@
     outline: none;
 }
 
+.suggession-borderline {
+    position: relative;
+}
+
+.suggession {
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    margin-top: 5px;
+    position: absolute;
+    top: 40px;
+    left: 19px;
+}
+
 .background button {
 
     background-color: black;
@@ -83,6 +97,34 @@
     margin-left: 90px;
     color: gray;
     font-style: italic;
+}
+
+.popupBackground {
+    position: fixed;
+    top: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+
+}
+
+.popupBackground-main {
+    width: 70%;
+    height: 500px;
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.background-delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 
