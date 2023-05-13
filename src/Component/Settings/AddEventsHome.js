@@ -233,7 +233,10 @@ const AddEventsHome = () => {
                 name: lastEventForBanner[0].name,
                 bannerImg: lastEventForBanner[0].img,
                 tourType: lastEventForBanner[0].tourArea,
-                eventLink: lastEventForBanner[0]._id
+                eventLink: lastEventForBanner[0]._id,
+                tourPrice: lastEventForBanner[0].price,
+                tourData: lastEventForBanner[0].tourData,
+                tourLastDate: lastEventForBanner[0].tourLastDate
             }).then(res => setBannerMessage(res.data));
 
         } catch (error) {

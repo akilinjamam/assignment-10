@@ -114,7 +114,7 @@
 
 .popupBackground-main {
     width: 70%;
-    height: 500px;
+    height: 400px;
     background-color: white;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -125,6 +125,36 @@
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+
+.popupFilteredBackgroundData {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid lightGray;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+.imgDivBackground {
+    width: 25%;
+    height: 210px;
+}
+
+.detailDivBackground {
+    width: 70%;
+    height: 210px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.imgDivBackground img {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -218,13 +248,14 @@
 .adminEditor {
     text-align: left;
     font-size: 13px;
-    font-weight: bold;
     margin: auto;
     width: 350px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 .adminEditor p {
@@ -296,6 +327,33 @@
         margin-top: 50px;
     }
 
+    .popupFilteredBackgroundData {
+        width: 100%;
+        height: 150px;
+    }
+
+    .popupBackground-main {
+        width: 100%;
+    }
+
+    .detailDivBackground {
+        height: 160px;
+    }
+
+    .detailDivBackground p {
+        margin: 0;
+    }
+
+    .imgDivBackground {
+        height: 160px;
+    }
+
+    .imgDivBackground img {
+        width: 100%;
+        height: 80%;
+    }
+
+
 }
 
 
@@ -333,5 +391,20 @@
         width: 80%;
     }
 
+    .popupBackground-main {
+        width: 90%;
+    }
+
+    .popupFilteredBackgroundData {
+        width: 95%;
+    }
+
+    .imgDivBackground {
+        width: 35%;
+    }
+
+    .detailDivBackground {
+        width: 60%;
+    }
 
 }

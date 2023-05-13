@@ -190,7 +190,10 @@ const UpdateHome = () => {
             if (findBannerForUpdate?._id) {
                 const res = await axios.patch(`https://assignment-10-server.onrender.com/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
-                    bannerImg: img
+                    bannerImg: img,
+                    tourPrice: price,
+                    tourDate: tourDate,
+                    tourLastDate: tourLastDate
                 })
                     .then(res => setMessage(res.data));
                 console.log(res);

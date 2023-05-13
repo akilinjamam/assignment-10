@@ -6,10 +6,12 @@ import { Parallax } from 'react-parallax';
 import winter from '../../background-image/ricardo-gomez-angel-cp8hPQ8cjG0-unsplash.jpg'
 import { useQuery } from 'react-query';
 import fetchBannerData from '../../fetchData/fetchBannerData';
+import { useNavigate } from 'react-router-dom';
 // ..
 AOS.init();
 
 const Background = () => {
+    const navigate = useNavigate();
     const [popupBackground, setPopupBackground] = useState(false);
     const [filterValue, setFilterValue] = useState('');
     const [storeName, setStoreName] = useState('');
@@ -120,13 +122,23 @@ const Background = () => {
             <div className={popupBackground ? 'block' : 'none'}>
                 <div className='popupBackground'>
                     <div className='popupBackground-main'>
-                        <button onClick={handleCancelPopup} className='btn btn-danger background-delete-btn'>cancel</button>
-                        <div>
+                        <button style={{ width: '100px' }} onClick={handleCancelPopup} className='btn btn-danger background-delete-btn'>cancel</button>
+                        <br /><br /><br />
+                        <div >
                             {
                                 filteredData?.map(f =>
-                                    <div>
-                                        <p>{f.name}</p>
-                                        <p>{f.tourArea}</p>
+                                    <div className='popupFilteredBackgroundData'>
+                                        <div className="imgDivBackground">
+                                            <img src={f.bannerImg} alt="" />
+                                        </div>
+                                        <div className="detailDivBackground">
+                                            <p>Tour Name: {f.name} </p>
+                                            <p>Tour Area: {f.tourArea}</p>
+                                            <p>Tour Price: {f.tourPrice}</p>
+                                            <p>Tour Date: {f.tourDate}</p>
+                                            <p>Tour Last Date: {f.tourLastDate}</p>
+                                            <button onClick={() => navigate(`/spotDetail/${f.eventLink}`)} style={{ width: '100px' }} class="btn btn-primary btn-sm">view details</button>
+                                        </div>
                                     </div>
                                 )
                             }
