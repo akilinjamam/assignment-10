@@ -34,7 +34,7 @@ const Background = () => {
     const filteredData = getBannerForFilterCountry?.data?.result?.filter(item => item.name.toLowerCase().startsWith(filterValue.toLowerCase()));
 
     console.log(storeName?.length)
-
+    console.log(filteredData);
     const handleInputChange = (event) => {
         setFilterValue(event.target.value.trim());
 
@@ -126,8 +126,8 @@ const Background = () => {
                         <br /><br /><br />
                         <div >
                             {
-                                filteredData?.map(f =>
-                                    <div className='popupFilteredBackgroundData'>
+                                filteredData?.length !== 0 ? filteredData?.map(f =>
+                                    <div key={f._id} className='popupFilteredBackgroundData'>
                                         <div className="imgDivBackground">
                                             <img src={f.bannerImg} alt="" />
                                         </div>
@@ -141,6 +141,10 @@ const Background = () => {
                                         </div>
                                     </div>
                                 )
+
+                                    :
+
+                                    <p style={{ color: 'red' }}>nothing found here by search...</p>
                             }
                         </div>
 

@@ -7,8 +7,18 @@ import imgOne from '../../background-image/feedBackOne.png'
 import imgTwo from '../../background-image/feedBackTwo.png'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { useQuery } from 'react-query';
 
 const FeedBack = () => {
+
+    const [review, setReview] = useState('');
+    const [user] = useAuthState(auth);
+    const [view, setView] = useState('');
+    const [message, setMessage] = useState('');
+    const [img, setImg] = useState('');
 
     const settings = {
         dots: true,
@@ -20,15 +30,49 @@ const FeedBack = () => {
         pauseOnHover: true
     };
 
-    const [feedBack, setFeedBack] = useState([]);
-    console.log(feedBack)
+
+
+    const fetchReviewData = async () => {
+        const response = await fetch('https://assignment-10-server.onrender.com/api/v1/reviews');
+        const data = await response.json();
+        return data;
+    }
+
+    const { data: reviewsForFeedback, refetch } = useQuery('reviewsForFeedback', fetchReviewData);
+    console.log(reviewsForFeedback);
+
     useEffect(() => {
-        const url = 'feedBack.json';
-        fetch(url).then(res => res.json()).then(res => setFeedBack(res))
-    }, []);
+        if (user?.photoURL) {
+            setImg(user?.photoURL)
+        } else {
+            setImg('https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg')
+        }
+    }, [user])
 
+    // post to server...
 
-    const sign = '>'
+    const handleReviews = async () => {
+        if (user?.email) {
+            try {
+                const response = await axios.post(`https://assignment-10-server.onrender.com/api/v1/reviews`, {
+                    email: user?.email,
+                    photoUrl: img,
+                    review: review
+                });
+                refetch();
+                setReview('');
+                setView(true);
+                setMessage('review added successfully');
+                setTimeout(() => {
+                    setView(false);
+                    setMessage('')
+                }, 3000)
+                console.log(response);
+            } catch (error) {
+                console.log(error.message)
+            }
+        }
+    }
 
     return (
         <div className='feedBackMain'>
@@ -43,13 +87,13 @@ const FeedBack = () => {
                 <div className='feedBackDetail'>
                     <Slider {...settings} >
                         {
-                            feedBack.map(f =>
+                            reviewsForFeedback?.result?.map(f =>
 
-                                <div>
-                                    <img src={f.img} alt="" />
+                                <div key={f?._id}>
+                                    <img src={f?.photoUrl} alt="" />
                                     <br />
-                                    <p>{f.name}</p>
-                                    <p>{f.feedBacks}</p>
+                                    <p>{f?.email}</p>
+                                    <p>{f?.review}</p>
                                 </div>
 
                             )
@@ -72,9 +116,11 @@ const FeedBack = () => {
                     </div>
                     <div className='writeFeedbackContainer'>
                         <p> <span style={{ fontWeight: 'bold' }} >Write Here</span> The <br />Feedback !</p>
-                        <input className='writeFeedbackContainerInputs' type="text" name="" id="" />
+                        <input onChange={(e) => setReview(e.target.value)} className='writeFeedbackContainerInputs' type="text" name="" id="" />
                         <br /><br />
-                        <button>Send</button>
+                        {view ? <p style={{ fontSize: '11px', color: 'blue' }}>{message}</p> : ''}
+                        <br />
+                        <button onClick={handleReviews}>Send</button>
                     </div>
                 </div>
             </div>

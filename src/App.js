@@ -39,6 +39,7 @@ import UpdateCart from './Component/CheckOut/UpdateCart';
 import UserControll from './Component/Settings/Admin/UserControll';
 import RequireAdminEditor from './Component/RequireAuth/RequireAdminEditor';
 import RequireAdmin from './Component/RequireAuth/RequireAdmin';
+import FeedbackDash from './Component/Settings/feedbackDash/feedbackDash';
 
 
 
@@ -109,6 +110,7 @@ function App() {
                     <Route path='/dashboard' element={<RequireAdminEditor><Dashboard></Dashboard></RequireAdminEditor>}>
                       <Route index element={<DashboardHome></DashboardHome>}></Route>
                       <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
+                      <Route path='feedbackDash' element={<FeedbackDash></FeedbackDash>}></Route>
                       <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
                       <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
                       <Route path='userControll' element={<RequireAdmin><UserControll></UserControll></RequireAdmin>}></Route>

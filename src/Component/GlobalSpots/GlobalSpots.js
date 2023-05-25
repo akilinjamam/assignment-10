@@ -71,7 +71,6 @@ const GlobalSpots = () => {
         <div className='globalSpotsMain' style={{ width: '100%', height: 'auto', overflowX: 'hidden' }} >
             <div className='globalSpot'>
                 <h2 style={{ color: 'pink', fontSize: '50px', fontWeight: 'bold' }} className='title'>VISIT WORLD</h2>
-                <hr />
             </div>
 
 

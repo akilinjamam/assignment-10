@@ -65,6 +65,7 @@ const UpdateHome = () => {
     const filteringCartData = queryCartForUpdateData?.filter(f => {
         return f.tourName === globalData?.name
     });
+    console.log(filteringCartData)
 
     const mappedFiltered = filteringCartData?.map(obj => obj._id);
     console.log(mappedFiltered);
