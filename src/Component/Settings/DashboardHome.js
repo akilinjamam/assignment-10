@@ -21,7 +21,7 @@ const DashboardHome = () => {
 
     const { data: bannerGet } = useQuery("bannerGet", () => fetchBannerData())
     const allBannerData = bannerGet?.data?.result;
-
+    
     const { data: forDeleteCartData } = useQuery("forDeleteCartData", () => fetchCartData());
     console.log(forDeleteCartData?.data?.result)
 
