@@ -7,10 +7,10 @@ import fetchUserControllData from "../../fetchData/fetchUserControllData";
 
 const RequireAdminEditor = ({ children }) => {
     const [user, loading] = useAuthState(auth);
-    console.log(user);
+
 
     const { data: queryUserControlForAuth } = useQuery("queryUserControlForAuth", () => fetchUserControllData());
-    console.log('requireAdmin', queryUserControlForAuth);
+
 
     const findUser = queryUserControlForAuth?.data?.result?.find(q => {
         return q?.email === user?.email
@@ -19,7 +19,7 @@ const RequireAdminEditor = ({ children }) => {
 
 
     const location = useLocation();
-    console.log(user)
+
 
 
     if (loading) {

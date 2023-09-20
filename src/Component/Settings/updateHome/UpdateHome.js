@@ -59,7 +59,7 @@ const UpdateHome = () => {
 
 
     const { data: queryCartForUpdate } = useQuery("queryCartForUpdate", () => fetchCartData());
-    console.log('update : ', queryCartForUpdate?.data?.result);
+
     const queryCartForUpdateData = queryCartForUpdate?.data?.result
 
 
@@ -68,9 +68,9 @@ const UpdateHome = () => {
     });
 
     const mappedFiltered = filteringCartData?.map(obj => obj._id);
-    console.log(mappedFiltered);
 
-    // console.log('filter', filteringCartData[1]?._id);
+
+
 
     useEffect(() => {
         setName(homeData?.name);
@@ -174,7 +174,7 @@ const UpdateHome = () => {
 
     };
 
-    console.log(imgContainer)
+
 
     const handleReady = async (e) => {
 
@@ -185,7 +185,7 @@ const UpdateHome = () => {
         try {
             const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents/${updateHomeId}`, allData)
                 .then(res => setMessage(res.data));
-            console.log(res);
+
 
             if (findBannerForUpdate?._id) {
                 const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
@@ -196,7 +196,7 @@ const UpdateHome = () => {
                     tourLastDate: tourLastDate
                 })
                     .then(res => setMessage(res.data));
-                console.log(res);
+
             }
 
             const updateCart = axios.patch('https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/bulk-update', {
@@ -208,15 +208,15 @@ const UpdateHome = () => {
                 }
             }
             )
-                .then(res => console.log(res));
-            console.log(updateCart);
+                .then();
+
 
 
 
             refetch();
 
         } catch (error) {
-            console.log(error.response.data);
+
             setMessage(error.response.data);
         };
 
@@ -265,7 +265,7 @@ const UpdateHome = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result?.data?.url);
+
                     setImg(result?.data?.url);
 
                 })

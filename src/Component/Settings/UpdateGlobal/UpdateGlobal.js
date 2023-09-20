@@ -55,20 +55,20 @@ const UpdateHome = () => {
         return i._id === updateGlobalId
     });
 
-    console.log(globalData);
+
 
     const { data: queryCartForUpdate } = useQuery("queryCartForUpdate", () => fetchCartData());
-    console.log('update : ', queryCartForUpdate?.data?.result);
+
     const queryCartForUpdateData = queryCartForUpdate?.data?.result
 
 
     const filteringCartData = queryCartForUpdateData?.filter(f => {
         return f.tourName === globalData?.name
     });
-    console.log(filteringCartData)
+
 
     const mappedFiltered = filteringCartData?.map(obj => obj._id);
-    console.log(mappedFiltered);
+
 
 
 
@@ -208,7 +208,7 @@ const UpdateHome = () => {
             refetch();
 
         } catch (error) {
-            console.log(error.response.data);
+
             setMessage(error.response.data);
         };
 
@@ -257,7 +257,7 @@ const UpdateHome = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result?.data?.url);
+
                     setImg(result?.data?.url);
 
                 })

@@ -18,7 +18,7 @@ const LocalSpot = ({ localSpot }) => {
     const handleBook = (id, tourAreas) => {
         navigate(`/spotDetail/${id}`)
         state.setTourArea(tourAreas);
-        console.log(id, tourArea)
+
 
     }
     return (

@@ -21,7 +21,7 @@ const Dashboard = () => {
         return a?.email === user?.email
     });
 
-    console.log(findUserAdmin);
+
 
     const handleNavigate = (value) => {
         if (value === 1) {

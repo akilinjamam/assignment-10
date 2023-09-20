@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import noteContext from '../../Context/noteContext';
 import './SpotDetail.css'
 import { useQuery } from 'react-query';
@@ -14,13 +14,12 @@ const SpotDetail = () => {
     const [user] = useAuthState(auth);
     const email = user?.email;
     const emailName = user?.displayName;
-    console.log(user?.email)
-    const [outletNumber, setOutletNumber] = useState(1);
-    const [timeOver, setTimeOver] = useState(false);
+
+    const [outletNumber, setOutletNumber] = useState(1); const [timeOver, setTimeOver] = useState(false);
     const navigate = useNavigate();
     const { spotdetailId } = useParams()
     const [findData, setFindData] = useState();
-    console.log(findData);
+
 
     const routerPath = useLocation();
 
@@ -38,7 +37,6 @@ const SpotDetail = () => {
 
     const homeDatas = homeQuery?.data?.data?.result
     const globalDatas = globalQuery?.data?.data?.result
-    console.log(homeDatas)
 
     const state = useContext(noteContext);
     const setMembers = state.setMembers;
@@ -55,8 +53,6 @@ const SpotDetail = () => {
         return i._id === spotdetailId
     });
 
-    console.log(homeData)
-    console.log(globalData)
 
 
     useEffect(() => {
@@ -130,18 +126,13 @@ const SpotDetail = () => {
                 totalMember: members,
                 tourDuration: findData?.stayLong
             })
-                .then(response => console.log(response));
-            console.log(result);
-        } catch (error) {
-            console.log(error.message)
+                .then();
+
+        } catch (erro) {
         }
-
         setMembers('');
-
-
     };
 
-    console.log(findData)
 
 
     return (

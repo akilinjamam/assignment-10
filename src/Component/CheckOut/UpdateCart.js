@@ -21,10 +21,10 @@ const UpdateCart = () => {
     const [viewMembers, setViewMembers] = useState('');
     const [viewBoth, setViewBoth] = useState('');
 
-    console.log(updatedTourType);
-    console.log(updatedMember);
-    console.log(members);
-    console.log(tourType);
+
+
+
+
 
 
     const handleUpdate = async () => {
@@ -35,7 +35,7 @@ const UpdateCart = () => {
                     tourType: updatedTourType,
                     totalMember: updatedMember
                 })
-                    .then(res => console.log(res));
+                    .then();
 
                 nevigate('/addToCart')
             } else if (updatedMember === '' && updatedTourType === '') {
@@ -57,7 +57,7 @@ const UpdateCart = () => {
 
 
         } catch (error) {
-            console.log(error?.response?.status);
+
         }
     }
 

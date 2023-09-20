@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './Background.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { Parallax } from 'react-parallax';
-import winter from '../../background-image/ricardo-gomez-angel-cp8hPQ8cjG0-unsplash.jpg'
 import { useQuery } from 'react-query';
 import fetchBannerData from '../../fetchData/fetchBannerData';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +13,6 @@ const Background = () => {
     const [popupBackground, setPopupBackground] = useState(false);
     const [filterValue, setFilterValue] = useState('');
     const [storeName, setStoreName] = useState('');
-    console.log(filterValue.length);
 
     const handleCancelPopup = () => {
         setPopupBackground(false)
@@ -27,14 +24,13 @@ const Background = () => {
         setStoreName(name);
     }
 
-    console.log(filterValue);
     const { data: getBannerForFilterCountry } = useQuery("getBannerForFilterCountry", () => fetchBannerData());
-    console.log(getBannerForFilterCountry?.data?.result);
+
 
     const filteredData = getBannerForFilterCountry?.data?.result?.filter(item => item.name.toLowerCase().startsWith(filterValue.toLowerCase()));
 
-    console.log(storeName?.length)
-    console.log(filteredData);
+
+
     const handleInputChange = (event) => {
         setFilterValue(event.target.value.trim());
 

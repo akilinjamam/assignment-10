@@ -7,7 +7,6 @@ const fetchGlobalDataById = async (id) => {
         const globalData = response
         return globalData
     } catch (error) {
-        console.log(error.message);
     }
 };
 

@@ -10,8 +10,6 @@ const PdfForm = () => {
     const formPersonal = state.formPersonal;
     const formPersonalSliced = formPersonal.slice((formPersonal.length - 1), (formPersonal.length));
     const nameDataSliced = nameData.slice((nameData.length - 1), (nameData.length))
-    console.log('sliced :', formPersonalSliced);
-
 
     const handlePdf = () => {
         const doc = jsPDF('p', 'pt', 'a4');

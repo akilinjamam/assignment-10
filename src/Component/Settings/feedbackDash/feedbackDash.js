@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 const FeedbackDash = () => {
     const [reviewData, setReviewData] = useState([]);
-    console.log(reviewData);
     useEffect(() => {
         const url = 'https://asssignment-10-server-delta.vercel.app/api/v1/reviews';
         fetch(url).then(res => res.json()).then(res => setReviewData(res))

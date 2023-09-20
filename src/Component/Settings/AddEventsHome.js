@@ -43,20 +43,20 @@ const AddEventsHome = () => {
     const [bannerMessage, setBannerMessage] = useState('');
 
 
-    console.log(tourLastDate);
+
 
     const [count, setCount] = useState(1);
 
     const navigate = useNavigate();
 
     const { data: getForBanner, refetch } = useQuery("getForBanner", () => fetchHomeData())
-    const { data: getBanner } = useQuery("getBanner", () => fetchBannerData())
+
     const [processing, setProcessing] = useState(false)
-    const eventBanner = getBanner?.data?.result;
-    console.log(eventBanner);
+
+
     const eventForBanner = getForBanner?.data?.result;
     const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length));
-    console.log(lastEventForBanner)
+
 
     const handleBasic = (e) => {
         e.preventDefault();
@@ -74,7 +74,7 @@ const AddEventsHome = () => {
         };
     };
 
-    console.log(imgContainer)
+
 
     const handleDetail = (e) => {
         e.preventDefault();
@@ -157,7 +157,7 @@ const AddEventsHome = () => {
                 .then(res => setMessage(res.data));
 
         } catch (error) {
-            console.log(error.response.data);
+
             setMessage(error.response.data);
         };
 
@@ -216,7 +216,7 @@ const AddEventsHome = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result?.data?.url);
+
                     setImg(result?.data?.url);
 
                 })
@@ -239,7 +239,7 @@ const AddEventsHome = () => {
             }).then(res => setBannerMessage(res.data));
 
         } catch (error) {
-            console.log(error.response.data);
+
             setBannerMessage(error.response.data);
         };
 
@@ -255,7 +255,7 @@ const AddEventsHome = () => {
             }, 4000)
         }
     }, [count, refetch]);
-    console.log(processing);
+
 
     return (
         <div className='addEventsHome'>

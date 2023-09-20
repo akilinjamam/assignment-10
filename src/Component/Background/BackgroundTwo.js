@@ -9,33 +9,33 @@ import axios from 'axios';
 const BackgroundTwo = () => {
     const [user] = useAuthState(auth);
     const [message, setMessage] = useState('');
-    console.log(message)
+
     const [view, setView] = useState(false)
 
     const { data: getUserControllForNewsLetter } = useQuery('getUserControllForNewsLetter', () => fetchUserControllData());
-    console.log(getUserControllForNewsLetter?.data?.result);
+
 
     const userControllData = getUserControllForNewsLetter?.data?.result;
     const findEmailForNewsLetter = userControllData?.find(f => {
         return f.email === user?.email;
     })
 
-    console.log(findEmailForNewsLetter?._id);
+
 
     const [verifyEmail, setVerifyEmail] = useState(false)
     const [userEmail, setUserEmail] = useState('');
-    console.log(userEmail);
-    console.log(verifyEmail);
+
+
 
     const handleNewsLetter = async () => {
 
         if (user?.email) {
             if (verifyEmail) {
                 try {
-                    const response = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/userControll/${findEmailForNewsLetter?._id}`, {
+                    await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/userControll/${findEmailForNewsLetter?._id}`, {
                         newsLetter: 'yes'
                     });
-                    console.log(response);
+
 
                     if (findEmailForNewsLetter?.newsLetter === 'yes') {
                         setView(true);
@@ -46,7 +46,7 @@ const BackgroundTwo = () => {
                         }, 3000)
                     }
                 } catch (error) {
-                    console.log(error.message);
+
                 }
             } else {
                 setView(true);

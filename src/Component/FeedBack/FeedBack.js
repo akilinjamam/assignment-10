@@ -39,7 +39,7 @@ const FeedBack = () => {
     }
 
     const { data: reviewsForFeedback, refetch } = useQuery('reviewsForFeedback', fetchReviewData);
-    console.log(reviewsForFeedback);
+
 
     useEffect(() => {
         if (user?.photoURL) {
@@ -67,9 +67,9 @@ const FeedBack = () => {
                     setView(false);
                     setMessage('')
                 }, 3000)
-                console.log(response);
+
             } catch (error) {
-                console.log(error.message)
+
             }
         }
     }

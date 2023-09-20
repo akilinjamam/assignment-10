@@ -12,7 +12,7 @@ const fetchBannerData = async (id) => {
 
     const response = await axios.get('https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents');
     const bannerData = response;
-    console.log(bannerData);
+
     return bannerData;
 }
 

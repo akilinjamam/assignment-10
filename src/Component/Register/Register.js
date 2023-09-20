@@ -40,13 +40,11 @@ const Register = () => {
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        console.log('Updated profile');
+
         navigate('/home')
     }
 
-    if (user) {
-        console.log('user', user)
-    }
+
 
     const handleNavigate = () => {
         navigate('/login')

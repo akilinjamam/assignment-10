@@ -107,7 +107,10 @@ function App() {
                         <UpdateCart ></UpdateCart>
                       </RequireAuth>
                     }></Route>
-                    <Route path='/dashboard' element={<RequireAdminEditor><Dashboard></Dashboard></RequireAdminEditor>}>
+                    <Route path='/dashboard' element={
+                      <RequireAdminEditor>
+                        <Dashboard></Dashboard>
+                      </RequireAdminEditor>}>
                       <Route index element={<DashboardHome></DashboardHome>}></Route>
                       <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                       <Route path='feedbackDash' element={<FeedbackDash></FeedbackDash>}></Route>
@@ -116,7 +119,6 @@ function App() {
                       <Route path='userControll' element={<RequireAdmin><UserControll></UserControll></RequireAdmin>}></Route>
                       <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
                       <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}></Route>
-
                     </Route>
 
                     <Route path='/login' element={<Login></Login>}></Route>

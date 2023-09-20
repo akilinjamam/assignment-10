@@ -61,8 +61,6 @@ const GlobalSpots = () => {
         state.setGlobalData(global)
     }, [global, state])
 
-    console.log(data?.data?.result);
-
     if (isLoading) {
         return <Loading></Loading>
     }

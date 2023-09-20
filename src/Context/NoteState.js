@@ -11,9 +11,6 @@ const NoteState = (props) => {
     const [nameData, setNameData] = useState([]);
     const [formPersonal, setFormPersonal] = useState([]);
 
-
-    console.log(name)
-
     return (
         <NoteContext.Provider value={{
             name: name,

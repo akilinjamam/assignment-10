@@ -12,11 +12,11 @@ const UserControll = () => {
     const [user] = useAuthState(auth)
 
     const handleRole = async (id, role) => {
-        console.log(role);
+
 
         if (id) {
             try {
-                const response = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/userControll/${id}`, {
+                await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/userControll/${id}`, {
                     userRoll: role
                 })
                     .then(response => console.log(response));

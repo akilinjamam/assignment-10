@@ -21,16 +21,14 @@ const DashboardHome = () => {
 
     const { data: bannerGet } = useQuery("bannerGet", () => fetchBannerData())
     const allBannerData = bannerGet?.data?.result;
-    
+
     const { data: forDeleteCartData } = useQuery("forDeleteCartData", () => fetchCartData());
-    console.log(forDeleteCartData?.data?.result)
 
     const [view, setView] = useState(false)
     const [info, setInfo] = useState('');
     const [tourArea, setTourArea] = useState('');
     const [id, setId] = useState('');
-    const [tourNames, setTourNames] = useState();
-    console.log(tourNames);
+    const [tourNames, setTourNames] = useState();;
 
 
 
@@ -49,7 +47,7 @@ const DashboardHome = () => {
         });
 
         const mappedFiltered = filteredCartData?.map(m => m._id);
-        console.log(mappedFiltered)
+
 
 
         fetchCartDataDelete(mappedFiltered)

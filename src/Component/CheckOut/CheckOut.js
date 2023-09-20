@@ -24,9 +24,9 @@ const CheckOut = () => {
 
 
     const { data: getUserCartByIdForCheckout } = useQuery("getUserCartByIdForCheckout", () => fetchUserCartDataById(checkoutId));
-    console.log(getUserCartByIdForCheckout?.data?.result);
+    ;
     const cartInfo = getUserCartByIdForCheckout?.data?.result
-    console.log(cartInfo);
+        ;
     useEffect(() => {
         onTop()
     }, [routerPath])
@@ -54,7 +54,7 @@ const CheckOut = () => {
 
         setFormPersonal((s) => [...s, formData])
 
-        console.log(formData)
+
 
 
         if (cartInfo?.totalMember == 1) {

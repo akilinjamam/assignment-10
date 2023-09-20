@@ -56,7 +56,7 @@ const AddToCart = () => {
     const handleDelete = async () => {
 
         try {
-            const response = await axios.delete(`https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/${id}`)
+            await axios.delete(`https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/${id}`)
                 .then(res => console.log(res))
         } catch (error) {
             console.log(error.message);

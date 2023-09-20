@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './GlobalSpot.css'
 import noteContext from '../../Context/noteContext';
@@ -13,7 +12,7 @@ const GlobalSpot = ({ globalSpot }) => {
     const handleBook = (id, tourArea) => {
         navigate(`/spotDetail/${id}`)
         state.setTourArea(tourArea)
-        console.log(id, tourArea)
+
 
     }
     return (

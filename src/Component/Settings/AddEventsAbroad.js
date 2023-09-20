@@ -42,7 +42,7 @@ const AddEventsAbroad = () => {
 
     const [message, setMessage] = useState('');
     const [bannerMessage, setBannerMessage] = useState('');
-    console.log(allData)
+
 
     const [count, setCount] = useState(1);
 
@@ -52,7 +52,7 @@ const AddEventsAbroad = () => {
     const { data: getBanner } = useQuery("getBanner", () => fetchBannerData())
     const [processing, setProcessing] = useState(false)
     const eventBanner = getBanner?.data?.result;
-    console.log(eventBanner);
+    ;
     const eventForBanner = getForBanner?.data?.result;
     const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length))
 
@@ -153,7 +153,7 @@ const AddEventsAbroad = () => {
             await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/globalEvents', allData)
                 .then(res => setMessage(res.data));
         } catch (error) {
-            console.log(error.response.data);
+            ;
             setMessage(error.response.data);
         };
 
@@ -174,7 +174,7 @@ const AddEventsAbroad = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result?.data?.url);
+                    ;
                     setImg(result?.data?.url);
 
                 })
@@ -233,7 +233,7 @@ const AddEventsAbroad = () => {
             }).then(res => setBannerMessage(res.data));
 
         } catch (error) {
-            console.log(error.response.data);
+            ;
             setBannerMessage(error.response.data);
         };
 
@@ -249,7 +249,7 @@ const AddEventsAbroad = () => {
             }, 4000)
         }
     }, [count, refetch]);
-    console.log(processing);
+    ;
 
 
 
