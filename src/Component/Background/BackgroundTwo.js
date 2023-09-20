@@ -32,7 +32,7 @@ const BackgroundTwo = () => {
         if (user?.email) {
             if (verifyEmail) {
                 try {
-                    const response = await axios.patch(`https://assignment-10-server.onrender.com/api/v1/userControll/${findEmailForNewsLetter?._id}`, {
+                    const response = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/userControll/${findEmailForNewsLetter?._id}`, {
                         newsLetter: 'yes'
                     });
                     console.log(response);

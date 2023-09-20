@@ -33,7 +33,7 @@ const FeedBack = () => {
 
 
     const fetchReviewData = async () => {
-        const response = await fetch('https://assignment-10-server.onrender.com/api/v1/reviews');
+        const response = await fetch('https://asssignment-10-server-delta.vercel.app/api/v1/reviews');
         const data = await response.json();
         return data;
     }
@@ -54,7 +54,7 @@ const FeedBack = () => {
     const handleReviews = async () => {
         if (user?.email) {
             try {
-                const response = await axios.post(`https://assignment-10-server.onrender.com/api/v1/reviews`, {
+                const response = await axios.post(`https://asssignment-10-server-delta.vercel.app/api/v1/reviews`, {
                     email: user?.email,
                     photoUrl: img,
                     review: review

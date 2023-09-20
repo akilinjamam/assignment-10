@@ -3,11 +3,11 @@ import axios from "axios"
 const fetchUserControllData = async (id) => {
 
     if (id) {
-        const response = await axios.get(`https://assignment-10-server.onrender.com/api/v1/userControll/${id}`)
+        const response = await axios.get(`https://asssignment-10-server-delta.vercel.app/api/v1/userControll/${id}`)
         return response;
     }
 
-    const response = await axios.get('https://assignment-10-server.onrender.com/api/v1/userControll');
+    const response = await axios.get('https://asssignment-10-server-delta.vercel.app/api/v1/userControll');
     return response;
 
 }

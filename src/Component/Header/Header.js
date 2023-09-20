@@ -51,7 +51,7 @@ const Header = () => {
                 try {
                     if (user?.email) {
                         if (!findEmail) {
-                            const response = await axios.post('https://assignment-10-server.onrender.com/api/v1/userControll', {
+                            const response = await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/userControll', {
                                 email: user?.email,
                                 emailName: user?.displayName,
                                 userPhoto: user?.photoURL
