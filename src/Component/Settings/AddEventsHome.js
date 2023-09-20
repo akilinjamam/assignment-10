@@ -55,9 +55,8 @@ const AddEventsHome = () => {
     const eventBanner = getBanner?.data?.result;
     console.log(eventBanner);
     const eventForBanner = getForBanner?.data?.result;
-    const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length))
-
-
+    const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length));
+    console.log(lastEventForBanner)
 
     const handleBasic = (e) => {
         e.preventDefault();
@@ -154,7 +153,7 @@ const AddEventsHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents', allData)
+            await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents', allData)
                 .then(res => setMessage(res.data));
 
         } catch (error) {
@@ -229,13 +228,13 @@ const AddEventsHome = () => {
         // send data to banner server:
 
         try {
-            const resBanner = await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents', {
+            await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents', {
                 name: lastEventForBanner[0].name,
                 bannerImg: lastEventForBanner[0].img,
                 tourType: lastEventForBanner[0].tourArea,
                 eventLink: lastEventForBanner[0]._id,
                 tourPrice: lastEventForBanner[0].price,
-                tourData: lastEventForBanner[0].tourData,
+                tourDate: lastEventForBanner[0].tourDate,
                 tourLastDate: lastEventForBanner[0].tourLastDate
             }).then(res => setBannerMessage(res.data));
 

@@ -62,17 +62,17 @@
 }
 
 .rightSlide {
-    left: -272px;
+    left: -100%;
 }
 
 
 .editorSection {
-    width: 272px;
+    width: 50%;
     background-color: rgb(51, 51, 51);
 }
 
 .adminSection {
-    width: 272px;
+    width: 50%;
     background-color: rgb(0, 0, 46);
 }
 
