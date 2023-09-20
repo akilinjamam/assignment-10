@@ -78,12 +78,7 @@ const Background = () => {
                             </div>
                         }
                     </div>
-                    <div>
-                        <input placeholder='month' type="datetime" name="" id="" />
-                    </div>
-                    <div>
-                        <input placeholder='Travel Type' type="text" name="" id="" />
-                    </div>
+
 
                     <button onClick={() => setPopupBackground(filterValue.length === 0 ? false : true)} className='button'>Find Now</button>
                 </div>
