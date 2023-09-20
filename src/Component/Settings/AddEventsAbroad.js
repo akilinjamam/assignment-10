@@ -150,7 +150,7 @@ const AddEventsAbroad = () => {
         // send data to server:
 
         try {
-            const res = await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/globalEvents', allData)
+            await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/globalEvents', allData)
                 .then(res => setMessage(res.data));
         } catch (error) {
             console.log(error.response.data);
