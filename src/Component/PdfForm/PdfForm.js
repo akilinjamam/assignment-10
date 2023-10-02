@@ -2,24 +2,62 @@ import React, { useContext } from 'react';
 import jsPDF from 'jspdf';
 import './PdfForm.css';
 import noteContext from '../../Context/noteContext';
+import { useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import axios from 'axios';
 
 const PdfForm = () => {
+    const user = useAuthState(auth);
+    console.log(user)
     const state = useContext(noteContext);
-
+    // const navigate = useNavigate();
     const nameData = state.nameData;
     const formPersonal = state.formPersonal;
     const formPersonalSliced = formPersonal.slice((formPersonal.length - 1), (formPersonal.length));
-    const nameDataSliced = nameData.slice((nameData.length - 1), (nameData.length))
+    const nameDataSliced = nameData.slice((nameData.length - 1), (nameData.length));
 
-    const handlePdf = () => {
-        const doc = jsPDF('p', 'pt', 'a4');
-        doc.html(document.querySelector('#content'), {
-            callback: function (pdf) {
-                const pageCount = doc.internal.getNumberOfPages();
-                pdf.deletePage(pageCount);
-                pdf.save('registrationForm.pdf')
-            }
-        })
+    const findFormData = formPersonalSliced?.find(f => {
+        return f
+    });
+
+    console.log(findFormData);
+
+    // const handlePdf = () => {
+    //     const doc = jsPDF('p', 'pt', 'a4');
+    //     doc.html(document.querySelector('#content'), {
+    //         callback: function (pdf) {
+    //             const pageCount = doc.internal.getNumberOfPages();
+    //             pdf.deletePage(pageCount);
+    //             pdf.save('registrationForm.pdf')
+    //         }
+    //     })
+    // }
+
+    const handlePayment = async () => {
+
+        const paymentData = {
+            total_amount: findFormData.tourPrice,
+            currency: 'BDT',
+            cus_name: findFormData.name,
+            cus_email: user?.[0]?.email,
+            cus_add1: findFormData.address,
+            cus_city: 'chittagong',
+            cus_postcode: '4000',
+            cus_country: 'Bangladesh',
+            cus_phone: findFormData.mobileNum,
+            tourName: findFormData?.tourName
+        }
+
+        await axios.post('http://localhost:5000/api/v1/payment/create-payment', paymentData)
+            .then(res => {
+                window.location.replace(res?.data?.url);
+            })
+            .catch(error => console.log(error))
+
+
+
+
     }
 
 
@@ -108,8 +146,9 @@ const PdfForm = () => {
                     </section>
                 </div>
                 <br />
-                <div className=''>
-                    <button onClick={handlePdf} className='btn btn-primary'>DOWNLOAD PDF</button>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    {/* <button onClick={handlePdf} className='btn btn-primary'>DOWNLOAD PDF</button> */}
+                    <button onClick={handlePayment} className='btn btn-primary'>PROCCED</button>
                 </div>
             </div>
 
@@ -118,101 +157,3 @@ const PdfForm = () => {
 };
 
 export default PdfForm;
-
-
-/* 
-
-  <div className='pdfArea'>
-                            {
-                                formPersonalSliced.map(f => (
-                                    <div key={f.id}>
-                                        <h2>Travelbea</h2>
-                                        <hr />
-                                        <div className='pdfFormAllInfo'>
-                                            <div className="">
-                                                <div className="pera">
-                                                    <p>Your Name :</p>
-                                                    <p>{f.name}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Father's Name :</p>
-                                                    <p>{f.fatherName}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Mother's Name :</p>
-                                                    <p>{f.motherName}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Address :</p>
-                                                    <p>{f.address}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Nid No :</p>
-                                                    <p>{f.nidNum}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Mobile No :</p>
-                                                    <p>{f.mobileNum}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Gender :</p>
-                                                    <p>{f.genderId}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Payment System :</p>
-                                                    <p>{f.paymentMethod}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Tour Name :</p>
-                                                    <p>{f.tourName}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Tour Type :</p>
-                                                    <p>{f.tourType}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Tour Duration :</p>
-                                                    <p>{f.tourDuration}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Tour Members :</p>
-                                                    <p>{f.member}</p>
-                                                </div>
-                                                <div className="pera">
-                                                    <p>Total Cost :</p>
-                                                    <p>{f.tourPrice}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-
-
-                            {
-                                nameDataSliced.map(n =>
-                                    <div className='pdfFormMembers'>
-                                        <p>All-Members Name :</p>
-                                        <div>
-                                            {n.member1 && <span>{n.member1} |</span>}
-                                            {n.member2 && <span> {n.member2} |</span>}
-                                            {n.member3 && <span> {n.member3} |</span>}
-                                            {n.member4 && <span> {n.member4} |</span>}
-                                            {n.member5 && <span> {n.member5} |</span>}
-                                            {n.member6 && <span> {n.member6} |</span>}
-                                            {n.member7 && <span> {n.member7} |</span>}
-                                            {n.member8 && <span> {n.member8} |</span>}
-                                            {n.member9 && <span> {n.member9} |</span>}
-                                            {n.member10 && <span> {n.member10} |</span>}
-                                            {n.member11 && <span> {n.member11} |</span>}
-                                            {n.member12 && <span> {n.member12} |</span>}
-                                            {n.member13 && <span> {n.member13} |</span>}
-                                            {n.member14 && <span> {n.member14} |</span>}
-                                            {n.member15 && <span> {n.member15} |</span>}
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </div>
-
-*/

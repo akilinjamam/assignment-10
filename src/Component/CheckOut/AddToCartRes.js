@@ -80,7 +80,6 @@ const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, han
                 })
             }
 
-
             <div className={` ${viewPopup ? 'block' : 'none'}`}>
                 <div className='popupCart'>
                     <div className="popupContainer">

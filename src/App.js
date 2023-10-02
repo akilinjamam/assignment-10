@@ -40,6 +40,7 @@ import UserControll from './Component/Settings/Admin/UserControll';
 import RequireAdminEditor from './Component/RequireAuth/RequireAdminEditor';
 import RequireAdmin from './Component/RequireAuth/RequireAdmin';
 import FeedbackDash from './Component/Settings/feedbackDash/feedbackDash';
+import Payment from './Component/payment/Payment';
 
 
 
@@ -132,6 +133,7 @@ function App() {
                     <Route path='/globalvisiting' element={<VisitingGlobalSpot></VisitingGlobalSpot>}></Route>
                     <Route path='/pdfForm' element={<PdfForm></PdfForm>}></Route>
                     <Route path='/pdfFormPay' element={<PdfFormPay></PdfFormPay>}></Route>
+                    <Route path='/payment/success' element={<Payment></Payment>}></Route>
                     <Route path='/tourHome' element={<TourHome></TourHome>}></Route>
                     <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
                     <Route path='/spotDetail/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>

@@ -8,6 +8,7 @@ import auth from '../../firebase.init';
 import noteContext from '../../Context/noteContext';
 import axios from 'axios';
 import AddToCartRes from './AddToCartRes';
+import fetchGetPaymentData from '../../fetchData/fetchPaymentData';
 
 const AddToCart = () => {
 
@@ -28,6 +29,12 @@ const AddToCart = () => {
     });
 
     const queryUserCartData = queryUserCart?.data?.result;
+
+    const { data: getPaymentData } = useQuery("getPaymentData", () => fetchGetPaymentData());
+    const getAllPaymentData = getPaymentData?.data?.result;
+
+    console.log(getAllPaymentData);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,7 +44,9 @@ const AddToCart = () => {
     const state = useContext(noteContext);
 
 
-    const handleNavigate = (id) => {
+    const handleNavigate = (id, tourNameById) => {
+        setId(id);
+        setTourName(tourNameById);
         navigate(`/checkout/${id}`);
     }
 
@@ -54,7 +63,6 @@ const AddToCart = () => {
     }
 
     const handleDelete = async () => {
-
         try {
             await axios.delete(`https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/${id}`)
                 .then(res => console.log(res))
@@ -196,11 +204,27 @@ const AddToCart = () => {
                                                         ?
                                                         <td style={{ color: 'red' }}> <span className='cartDetail'>checkout time over</span> </td>
                                                         :
-                                                        <td><button onClick={() => handleNavigate(q._id)} className='btn-outline'> <span className='cartDetail'>Procced to checkout</span> </button></td>
+                                                        <td>
+                                                            {
+                                                                (getAllPaymentData?.find(f => {
+                                                                    return f?.tourName === q?.tourName
+                                                                })?.isPaid === true)
+                                                                    ?
+                                                                    <span style={{ fontSize: '13px' }}>done</span>
+                                                                    :
+                                                                    <button onClick={() => handleNavigate(q?._id, q?.tourName)} className='btn-outline'>
+                                                                        <span className='cartDetail'>
+                                                                            Procced to checkout
+                                                                        </span>
+                                                                    </button>
+                                                            }
+                                                        </td>
 
                                                     }
 
-                                                    <td><span className='cartDetail'>{q?.paymentStatus}</span></td>
+                                                    <td><span className='cartDetail'>{(getAllPaymentData?.find(f => {
+                                                        return f?.tourName === q?.tourName
+                                                    })?.isPaid === true) ? <span>paid</span> : <span>unpaid</span>}</span></td>
 
                                                     {((
                                                         Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))
@@ -221,7 +245,20 @@ const AddToCart = () => {
                                                         ?
                                                         <td ><i class="uil uil-ban"></i></td>
                                                         :
-                                                        <td><i onClick={() => handleEdit(q?._id, q?.tourType, q?.totalMember)} class="uil uil-edit-alt"></i></td>
+                                                        <td>
+                                                            {
+                                                                (
+                                                                    getAllPaymentData?.find(f => {
+                                                                        return f?.tourName === q?.tourName
+                                                                    })?.isPaid === true
+                                                                )
+                                                                    ?
+                                                                    <i class="uil uil-ban"></i>
+                                                                    :
+                                                                    <i onClick={() => handleEdit(q?._id, q?.tourType, q?.totalMember)} class="uil uil-edit-alt">
+                                                                    </i>
+                                                            }
+                                                        </td>
                                                     }
                                                 </tr>
                                             )

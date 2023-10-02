@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import './CheckOut.css'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import noteContext from '../../Context/noteContext';
 
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import fetchUserCartDataById from '../../fetchData/fetchUserCartDataById';
-const CheckOut = () => {
 
+
+const CheckOut = () => {
     const { checkoutId } = useParams();
     const [gender, setGender] = useState('');
     const [paymentMethod, setPaymentMethod] = useState('')
@@ -24,9 +25,8 @@ const CheckOut = () => {
 
 
     const { data: getUserCartByIdForCheckout } = useQuery("getUserCartByIdForCheckout", () => fetchUserCartDataById(checkoutId));
-    ;
-    const cartInfo = getUserCartByIdForCheckout?.data?.result
-        ;
+
+    const cartInfo = getUserCartByIdForCheckout?.data?.result;
     useEffect(() => {
         onTop()
     }, [routerPath])
@@ -255,11 +255,12 @@ const CheckOut = () => {
             setNameData((m) => [...m, memberData]);
         }
 
-        if (paymentMethod === 'onSpotPayment') {
-            navigate('/pdfForm')
-        }
+        // if (paymentMethod === 'onSpotPayment') {
+        //     navigate('/pdfForm')
+        // }
+
         if (paymentMethod === 'online') {
-            navigate('/pdfFormPay')
+            navigate('/pdfForm')
         }
     }
 
