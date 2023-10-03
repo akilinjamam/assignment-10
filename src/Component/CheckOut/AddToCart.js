@@ -31,9 +31,7 @@ const AddToCart = () => {
     const queryUserCartData = queryUserCart?.data?.result;
 
     const { data: getPaymentData } = useQuery("getPaymentData", () => fetchGetPaymentData());
-    const getAllPaymentData = getPaymentData?.data?.result;
-
-    console.log(getAllPaymentData);
+    const getAllPaymentData = getPaymentData?.data?.result
 
     const navigate = useNavigate();
 

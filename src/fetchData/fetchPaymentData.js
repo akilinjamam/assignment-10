@@ -2,7 +2,7 @@ import axios from "axios"
 
 const fetchGetPaymentData = async () => {
     try {
-        const result = await axios.get('http://localhost:5000/api/v1/payment/');
+        const result = await axios.get('https://asssignment-10-server-delta.vercel.app/api/v1/payment/');
         return result;
     } catch (error) {
 
