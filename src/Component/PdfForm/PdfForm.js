@@ -61,10 +61,11 @@ const PdfForm = () => {
             tourId: findFormData?.tourId
         }
 
-        await axios.post('http://localhost:5000/api/v1/payment/create-payment', paymentData)
+        await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/payment/create-payment', paymentData)
             .then(res => {
                 window.location.replace(res?.data?.url);
             })
+
             .catch(error => console.log(error))
 
     }
