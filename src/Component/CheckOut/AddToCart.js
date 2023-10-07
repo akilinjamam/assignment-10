@@ -205,7 +205,7 @@ const AddToCart = () => {
                                                         <td>
                                                             {
                                                                 (getAllPaymentData?.find(f => {
-                                                                    return f?.tourName === q?.tourName
+                                                                    return f?.tourId === q?._id
                                                                 })?.isPaid === true)
                                                                     ?
                                                                     <span style={{ fontSize: '13px' }}>done</span>
@@ -221,8 +221,22 @@ const AddToCart = () => {
                                                     }
 
                                                     <td><span className='cartDetail'>{(getAllPaymentData?.find(f => {
-                                                        return f?.tourName === q?.tourName
-                                                    })?.isPaid === true) ? <span>paid</span> : <span>unpaid</span>}</span></td>
+                                                        return f?.tourId === q?._id
+                                                    })?.isPaid === true)
+                                                        ?
+                                                        <span
+                                                            onClick={() => navigate('/addToCart/paidDoc')}
+                                                            style={{
+                                                                fontStyle: 'italic', fontSize: '12px', color: 'green', fontWeight: 'bold',
+                                                                cursor: 'pointer'
+                                                            }}
+                                                        >paid</span>
+                                                        :
+                                                        <span
+                                                            style={{
+                                                                fontStyle: 'italic', fontSize: '12px', color: 'red', fontWeight: 'bold'
+                                                            }}
+                                                        >unpaid</span>}</span></td>
 
                                                     {((
                                                         Math.floor(((new Date(q?.tourLastDate).getTime()) - (nowTime)) / (24 * 60 * 60 * 1000))
@@ -295,6 +309,8 @@ const AddToCart = () => {
                                 setViewPopup={setViewPopup}
                                 handleDelete={handleDelete}
                                 tourName={tourName}
+                                getAllPaymentData={getAllPaymentData}
+                                navigate={navigate}
                             >
 
                             </AddToCartRes>

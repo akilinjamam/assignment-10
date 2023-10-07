@@ -46,17 +46,26 @@ const PdfForm = () => {
             cus_postcode: '4000',
             cus_country: 'Bangladesh',
             cus_phone: findFormData.mobileNum,
-            tourName: findFormData?.tourName
+            tourName: findFormData?.tourName,
+
+            fatherName: findFormData?.fatherName,
+            motherName: findFormData?.motherName,
+            nidNum: findFormData?.nidNum,
+            genderId: findFormData?.genderId,
+            tourType: findFormData?.tourType,
+            tourDuration: findFormData?.tourDuration,
+            paymentMethod: findFormData?.paymentMethod,
+            member: findFormData?.member,
+            tourDate: findFormData?.tourDate,
+            nameData: nameData,
+            tourId: findFormData?.tourId
         }
 
-        await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/payment/create-payment', paymentData)
+        await axios.post('http://localhost:5000/api/v1/payment/create-payment', paymentData)
             .then(res => {
                 window.location.replace(res?.data?.url);
             })
             .catch(error => console.log(error))
-
-
-
 
     }
 

@@ -50,6 +50,7 @@ const CheckOut = () => {
             address: e.target.address.value,
             member: cartInfo?.totalMember,
             tourDate: cartInfo?.tourDate,
+            tourId: checkoutId
         }
 
         setFormPersonal((s) => [...s, formData])

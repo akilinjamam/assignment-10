@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, handleNavigate, user, setViewPopup, viewPopup, handleDelete, tourName }) => {
+const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, handleNavigate, user, setViewPopup, viewPopup, handleDelete, tourName, getAllPaymentData, navigate }) => {
     return (
         <div className='addToCartMainResContainer'>
             <div>
@@ -47,7 +47,24 @@ const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, han
                                     <p>Duration : <span>{q?.tourDuration}</span></p>
                                     <p>Tour-Date : <span >{q?.tourDate}</span></p>
                                     <p>Last-Date : <span >{q?.tourLastDate}</span></p>
-                                    <p>Status : <span >{q?.paymentStatus}</span></p>
+                                    <p>Status : <span>{
+                                        (getAllPaymentData?.find(f => {
+                                            return f?.tourId === q?._id
+                                        })?.isPaid === true)
+                                            ?
+                                            <span
+                                                onClick={() => navigate('/addToCart/paidDoc')}
+                                                style={{
+                                                    fontStyle: 'italic', fontSize: '12px', color: 'green', fontWeight: 'bold', cursor: 'pointer'
+                                                }}
+                                            >paid</span>
+                                            :
+                                            <span
+                                                style={{
+                                                    fontStyle: 'italic', fontSize: '12px', color: 'red', fontWeight: 'bold'
+                                                }}
+                                            >unpaid</span>
+                                    }</span></p>
                                 </div>
                             </section>
 
@@ -71,7 +88,22 @@ const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, han
                                     ?
                                     <p style={{ color: 'red' }}> <span className='cartDetail'>checkout time over</span> </p>
                                     :
-                                    <p><button onClick={() => handleNavigate(q._id)} className='btn-outline'> <span className='cartDetail'>Procced to checkout</span> </button></p>
+                                    <p><button onClick={() => handleNavigate(q._id)} className='btn-outline'> <span className='cartDetail'>
+                                        {
+                                            (getAllPaymentData?.find(f => {
+                                                return f?.tourId === q?._id
+                                            })?.isPaid === true)
+                                                ?
+                                                <span style={{ fontSize: '13px' }}>done</span>
+                                                :
+                                                <span
+                                                    onClick={() => handleNavigate(q?._id, q?.tourName)}
+                                                    className='cartDetail'>
+                                                    Procced to checkout
+                                                </span>
+
+                                        }
+                                    </span> </button></p>
 
                                 }
                             </section>

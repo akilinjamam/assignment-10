@@ -41,10 +41,7 @@ import RequireAdminEditor from './Component/RequireAuth/RequireAdminEditor';
 import RequireAdmin from './Component/RequireAuth/RequireAdmin';
 import FeedbackDash from './Component/Settings/feedbackDash/feedbackDash';
 import Payment from './Component/payment/Payment';
-
-
-
-
+import PaidDoc from './Component/CheckOut/PaidDoc';
 
 function App() {
 
@@ -59,7 +56,6 @@ function App() {
     }
   })
 
-
   useEffect(() => {
     // setLoading(true)
     setTimeout(() => {
@@ -68,12 +64,8 @@ function App() {
 
   }, []);
 
-
-
-
   return (
     <>
-
       <NoteState>
         <div>
           {
@@ -101,6 +93,11 @@ function App() {
                     <Route path='/addToCart' element={
                       <RequireAuth>
                         <AddToCart></AddToCart>
+                      </RequireAuth>
+                    }></Route>
+                    <Route path='/addToCart/paidDoc' element={
+                      <RequireAuth>
+                        <PaidDoc></PaidDoc>
                       </RequireAuth>
                     }></Route>
                     <Route path='/updateCart/:updateCart' element={
