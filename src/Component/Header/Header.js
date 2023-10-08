@@ -82,7 +82,7 @@ const Header = () => {
     }
     const queryCartNumberData = queryCartNumber?.data?.result?.length;
     return (
-        <div className='HeaderMain'>
+        <div className='HeaderMain d-print-none'>
             <section className='headerContainer'>
                 <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
                 <div className='headerCover'>

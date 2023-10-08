@@ -71,6 +71,11 @@ const AddToCart = () => {
         setViewPopup(false);
     }
 
+
+    const handlePaidDoc = (cartId) => {
+        navigate(`/addToCart/paidDoc/${cartId}`);
+    }
+
     return (
         <div>
             {
@@ -225,7 +230,7 @@ const AddToCart = () => {
                                                     })?.isPaid === true)
                                                         ?
                                                         <span
-                                                            onClick={() => navigate('/addToCart/paidDoc')}
+                                                            onClick={() => handlePaidDoc(q?._id)}
                                                             style={{
                                                                 fontStyle: 'italic', fontSize: '12px', color: 'green', fontWeight: 'bold',
                                                                 cursor: 'pointer'
@@ -310,7 +315,7 @@ const AddToCart = () => {
                                 handleDelete={handleDelete}
                                 tourName={tourName}
                                 getAllPaymentData={getAllPaymentData}
-                                navigate={navigate}
+                                handlePaidDoc={handlePaidDoc}
                             >
 
                             </AddToCartRes>

@@ -95,7 +95,7 @@ function App() {
                         <AddToCart></AddToCart>
                       </RequireAuth>
                     }></Route>
-                    <Route path='/addToCart/paidDoc' element={
+                    <Route path='/addToCart/paidDoc/:cartId' element={
                       <RequireAuth>
                         <PaidDoc></PaidDoc>
                       </RequireAuth>

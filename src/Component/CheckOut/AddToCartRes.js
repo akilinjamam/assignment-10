@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, handleNavigate, user, setViewPopup, viewPopup, handleDelete, tourName, getAllPaymentData, navigate }) => {
+const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, handleNavigate, user, setViewPopup, viewPopup, handleDelete, tourName, getAllPaymentData, handlePaidDoc }) => {
     return (
         <div className='addToCartMainResContainer'>
             <div>
@@ -53,7 +53,7 @@ const AddToCartRes = ({ queryUserCartData, handlePopup, handleEdit, nowTime, han
                                         })?.isPaid === true)
                                             ?
                                             <span
-                                                onClick={() => navigate('/addToCart/paidDoc')}
+                                                onClick={() => handlePaidDoc(q?._id)}
                                                 style={{
                                                     fontStyle: 'italic', fontSize: '12px', color: 'green', fontWeight: 'bold', cursor: 'pointer'
                                                 }}
