@@ -6,12 +6,17 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import axios from 'axios';
+import { useQuery } from 'react-query';
+import fetchGetPaymentData from '../../fetchData/fetchPaymentData';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const PdfForm = () => {
+    const [orderNumber, setOrderNumber] = useState('');
     const user = useAuthState(auth);
     console.log(user)
     const state = useContext(noteContext);
-    // const navigate = useNavigate();
+
     const nameData = state.nameData;
     const formPersonal = state.formPersonal;
     const formPersonalSliced = formPersonal.slice((formPersonal.length - 1), (formPersonal.length));
@@ -21,18 +26,35 @@ const PdfForm = () => {
         return f
     });
 
-    console.log(findFormData);
+    const { data: getPaymentData } = useQuery("getPaymentData", () => fetchGetPaymentData());
 
-    // const handlePdf = () => {
-    //     const doc = jsPDF('p', 'pt', 'a4');
-    //     doc.html(document.querySelector('#content'), {
-    //         callback: function (pdf) {
-    //             const pageCount = doc.internal.getNumberOfPages();
-    //             pdf.deletePage(pageCount);
-    //             pdf.save('registrationForm.pdf')
-    //         }
-    //     })
-    // }
+    const allPaymentData = getPaymentData?.data?.result;
+
+    const lastPaymentData = allPaymentData?.slice((allPaymentData?.length - 1) - allPaymentData?.length);
+
+    const findLastPaymentData = lastPaymentData?.find(f => {
+        return f
+    })
+
+    const date = new Date().getDate();
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1;
+
+    useEffect(() => {
+        if (findLastPaymentData?.orderDate === date.toString()) {
+            const lastDigit = (parseInt(findLastPaymentData?.orderNumber?.slice(6)) + 1)?.toString();
+
+            const newOrderNumber = `${year?.toString()?.slice(2, 4)}${month?.toString()?.length === 2 ? month?.toString() : '0' + month?.toString()}${date?.toString()?.length === 2 ? date?.toString() : '0' + date?.toString()}${lastDigit}`;
+            setOrderNumber(newOrderNumber);
+
+
+        } else {
+            const newOrderNumber = `${year?.toString()?.slice(2, 4)}${month?.toString()?.length === 2 ? month?.toString() : '0' + month?.toString()}${date?.toString()?.length === 2 ? date?.toString() : '0' + date?.toString()}1`;
+
+            setOrderNumber(newOrderNumber);
+        }
+    }, [findLastPaymentData, date, year, month]);
+
 
     const handlePayment = async () => {
 
@@ -58,7 +80,9 @@ const PdfForm = () => {
             member: findFormData?.member,
             tourDate: findFormData?.tourDate,
             nameData: nameData,
-            tourId: findFormData?.tourId
+            tourId: findFormData?.tourId,
+            orderDate: date,
+            orderNumber: orderNumber
         }
 
         await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/payment/create-payment', paymentData)

@@ -29,6 +29,7 @@ const PaidDoc = () => {
                         <div>
                             <div className="pdfFormPersonalInfo">
                                 <div className="pdfFormPersonalInfoPart1">
+                                    <p>Order No : <span>{findPaymentDataByTourId?.orderNumber}</span></p>
                                     <p>Your Name : <span>{findPaymentDataByTourId?.cus_name}</span></p>
                                     <p>Father's Name : <span>{findPaymentDataByTourId?.fatherName}</span></p>
                                     <p>Mother's Name : <span>{findPaymentDataByTourId?.motherName}</span></p>
