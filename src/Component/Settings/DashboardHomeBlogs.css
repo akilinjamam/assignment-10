@@ -1,0 +1,22 @@
+.blogTitles p{
+    text-align: left;
+    margin: 0px;
+    font-weight: 400;
+    color: white;
+    font-style: italic;
+}
+
+.editBlog, .deleteBlog{
+    display: none;
+}
+
+
+.blogTitle:hover .editBlog{
+    display: inline;
+    cursor: pointer;
+}
+
+.blogTitle:hover .deleteBlog{
+    display: inline;
+    cursor: pointer;
+}

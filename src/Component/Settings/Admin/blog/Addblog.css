@@ -1,0 +1,24 @@
+.blogMain {
+    width: 80%;
+    margin: auto;
+    height: 550px;
+    border: 1px solid lightGray;
+    position: relative;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.allblogInputFields{
+    text-align: left;
+}
+
+.blogLabel{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.blogInput {
+    margin-bottom: 20px;
+    outline: none;
+    width: 400px;
+}

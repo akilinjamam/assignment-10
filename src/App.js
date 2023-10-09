@@ -42,6 +42,8 @@ import RequireAdmin from './Component/RequireAuth/RequireAdmin';
 import FeedbackDash from './Component/Settings/feedbackDash/feedbackDash';
 import Payment from './Component/payment/Payment';
 import PaidDoc from './Component/CheckOut/PaidDoc';
+import AddBlog from './Component/Settings/Admin/blog/AddBlog';
+import UpdateBlog from './Component/Settings/Admin/blog/UpdateBlog';
 
 function App() {
 
@@ -113,10 +115,14 @@ function App() {
                       <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>
                       <Route path='feedbackDash' element={<FeedbackDash></FeedbackDash>}></Route>
                       <Route path='addToAbroad' element={<AddEventsAbroad></AddEventsAbroad>}></Route>
+                      <Route path='addToBlog' element={<AddBlog></AddBlog>}></Route>
                       <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
                       <Route path='userControll' element={<RequireAdmin><UserControll></UserControll></RequireAdmin>}></Route>
                       <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
-                      <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}></Route>
+                      <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}>
+                      </Route>
+                      <Route path='updateBlog/:updateBlogId' element={<UpdateBlog></UpdateBlog>}>
+                      </Route>
                     </Route>
 
                     <Route path='/login' element={<Login></Login>}></Route>
