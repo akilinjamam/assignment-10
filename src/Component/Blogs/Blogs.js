@@ -1,25 +1,145 @@
-import React from 'react';
+import React, { useState } from 'react';
+import blog from './Blog.module.css';
+import { useQuery } from 'react-query';
+import { fetchGetBlogData } from '../../fetchData/fetchBlogData';
+import { fetchDeleteLikeData, fetchGetLikeData, fetchPostLikeData } from '../../fetchData/fetchLikeData';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
+
 
 const Blogs = () => {
+    const navigate = useNavigate();
+    const [user] = useAuthState(auth);
+    const { data: getBlogs } = useQuery("getBlogs", () => fetchGetBlogData());
+    const allBlogs = getBlogs?.data?.result;
+    const [popup, setPopup] = useState(false);
+
+    const { data: getLikeData, refetch } = useQuery("getLikeData", () => fetchGetLikeData());
+    const getAllLike = getLikeData?.data?.result;
+
+    console.log(getAllLike)
+
+
+    const handleLike = async (blogLink) => {
+        const likeData = {
+            likerEmail: user?.email,
+            blogLink: blogLink
+        }
+
+        const filterLikedId = getAllLike?.filter(f => {
+            return f?.blogLink === blogLink
+        })
+
+        const findLikedId = filterLikedId?.find(f => {
+            return f?.likerEmail === user?.email
+        })
+
+
+        if (user?.email) {
+            if (!findLikedId?.likerEmail) {
+                await fetchPostLikeData(likeData)
+                    .then(res => {
+                        console.log(res)
+                        refetch();
+                    })
+                    .catch(err => console.log(err));
+            } else {
+                await fetchDeleteLikeData(findLikedId?._id, refetch)
+                    .then(res => console.log(res));
+            }
+        } else {
+            navigate('/login')
+        }
+
+    }
+
+    if (getBlogs?.data?.status !== 'success') {
+        return (
+            <div style={{ width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <p>Loading...</p>
+            </div>
+        )
+    }
+
     return (
-        <div style={{ width: '80%', border: '1px solid gray', borderRadius: '10px', padding: '20px', margin: 'auto' }}>
-            <h1 className='text-center text-primary mb-5'>Question and Answer</h1>
-            <h3>Difference between Authorization and Authentication
+        <div className={blog.main}>
+            <section className={blog.blogPart}>
+                {
+                    allBlogs?.slice()?.reverse()?.map(blogData => {
+                        return (
+                            <div key={blogData?._id} className={blog.blogContainer}>
+                                <img src={blogData?.blogImg} alt="" />
+                                <div className={blog.detailPart}>
+                                    <h5>{blogData.title}</h5>
+                                    <br />
+                                    <p dangerouslySetInnerHTML={{ __html: blogData.description }}></p>
+                                    <br />
+                                    <br />
+                                    <span style={{ marginRight: '20px' }}><i class="uil uil-thumbs-up"></i> {
+                                        getAllLike?.filter(f => {
+                                            return f?.blogLink === blogData?._id
+                                        })?.length
+                                    }
+                                    </span>
+                                    <span style={{ marginRight: '20px' }}><i class="uil uil-comment"></i> 0</span>
+                                    <span><i class="uil uil-share"></i></span>
+                                    <br />
+                                    <br />
+                                    <div className={blog.likeComment}>
+                                        <section className={blog.like}>
+                                            <div
+                                                onClick={() => handleLike(blogData?._id)}
+                                                style={{ cursor: 'pointer' }}
+                                                className={
+                                                    (getAllLike?.filter(f => {
+                                                        return f?.blogLink === blogData?._id
+                                                    })?.find(f => {
+                                                        return f?.likerEmail === user?.email
+                                                    }))
 
-            </h3>
-            <p>Authentication and Authorization are both common term and often use in websites security system. Although their name name implementation almost similar they are not the same think. Authentication means confirming your own identity by validating your personal credential like your Name/User Name and Password. Once you enter your credentials the system checks your info and then if it matches it grants permission which is referred as Authorization. Authorization occurs when you successfully authenticated by the system. After validation the the system decides if you are authorized to access the system or resources.In simple terms, authorization determines your ability to access the system and up to what extent.</p>
+                                                        ?
+                                                        'text-primary'
+                                                        :
+                                                        'text-dark'
+                                                }
+                                            >
+                                                <span style={{ marginRight: '10px', fontSize: '16px' }}><i class="uil uil-thumbs-up"></i></span>
+                                                <span>Like</span>
+                                            </div>
+                                        </section>
+                                        <section className={blog.comment}>
+                                            <div
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => setPopup(true)}
+                                            >
+                                                <span style={{ marginRight: '10px', fontSize: '16px' }}><i class="uil uil-comment"></i></span>
+                                                <span>Comment</span>
+                                            </div>
+                                        </section>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </section>
+            <div className={popup ? `${blog.block}` : `${blog.none}`}>
+                <div className={blog.commentPopup}>
+                    <div className={blog.commentContainer}>
+                        <i
+                            onClick={() => setPopup(false)}
+                            className={`uil uil-times-circle ${blog.cancelComment}`}></i>
+                        <div className={blog.commentDetail}>
 
-            <br />
-            <br />
-            <h3>Why are you using firebase? What other options do you have to implement authentication?</h3>
-            <p>Firebase is now often used in building mobile and web applications.Because it has a large range of services and features like Fast and safe hosting ,Reliable and extensive Database, Google Analytics ,Multi-platform firebase authentication. It is also very beginner friendly. It has a very good and rich documentation. Its also easy to set up and integrate. Besides firebase there are many other available systems to implement authentication like Okta , Auth0 , Salesforce ,OneLogin ,Parse etc.</p>
-            <br />
-            <br />
+                        </div>
+                        <div className={blog.sendComment}>
 
-            <h3>What other services does firebase provide other than authentication</h3>
-            <p>Firebase is often used to Implement Authentication System. But beside this it also provides some powerful services. It works under google so it has very reliable and powerful database. Another advantage of Firebase is its Cloud Fire store. This NoSQL database makes it easy for programmers to transfer and store data for front and backend development. Firebase also provides fast and secure hosting which supports all kind of content type. It also provides Google Analytics, with the help of analytic solution reports the developers how users are behaving towards their mobile and web applications. Firebase Analytics is also beneficial to improve retention and engagement rates of users for your application. It also provides other useful services like Cloud Storage, Prediction ,Cloud Messaging etc.</p>
-            <br />
-
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

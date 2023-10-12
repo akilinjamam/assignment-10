@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import CustomLink from '../CustomLink/CustomLink';
 import './Dashboard.css'
 import { useQuery } from 'react-query';
@@ -8,10 +8,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Dashboard = () => {
-    const [user] = useAuthState(auth)
-
+    const location = useLocation();
+    console.log(location?.pathname)
+    const [user] = useAuthState(auth);
     const [slider, setSlider] = useState(true);
     const [view, setView] = useState(false);
+
+    console.log(window.history)
 
     const navigate = useNavigate();
 
@@ -22,30 +25,12 @@ const Dashboard = () => {
     });
 
 
-
-    const handleNavigate = (value) => {
-        if (value === 1) {
-            navigate('/dashboard')
-        }
-        if (value === 2) {
-            navigate('/dashboard/dashboardHomeBlogs');
-        }
-        if (value === 3) {
-            navigate('/dashboard/userControll')
-        }
-        if (value === 4) {
-            navigate('/dashboard/feedbackDash')
-        }
-    };
-
     const handleAdmin = () => {
-
         if (findUserAdmin?.userRoll === 'admin') {
             setSlider(false);
         } else {
             setView(true)
         }
-
     }
 
     return (
@@ -58,13 +43,38 @@ const Dashboard = () => {
                     <div className={`${slider ? 'leftSlide' : 'rightSlide'} sectionContainer`}>
                         <div className="editorSection">
                             <br />
-                            <button onClick={() => handleNavigate(1)} className='btnDashboard'>EVENTS</button>
+                            <button
+                                onClick={() => navigate('/dashboard')}
+                                className={`${(location?.pathname === '/dashboard')
+                                    ||
+                                    (location?.pathname === '/dashboard/addToHome')
+                                    ||
+                                    (location?.pathname === '/dashboard/addToAbroad')
+                                    ||
+                                    (location?.pathname?.slice(0, 21) === '/dashboard/updateHome')
+                                    ||
+                                    (location?.pathname?.slice(0, 23) === '/dashboard/updateGlobal')
+                                    ?
+                                    'text-info'
+                                    :
+                                    'text-light'
+                                    } btnDashboard`}>EVENTS</button>
                             <br />
                             <br />
-                            <button onClick={() => handleNavigate(2)} className='btnDashboard'>BLOGS</button>
+                            <button
+                                onClick={() => navigate('/dashboard/dashboardHomeBlogs')} className={`${(location?.pathname === '/dashboard/dashboardHomeBlogs')
+                                    ||
+                                    (location?.pathname === '/dashboard/addToblog')
+                                    ||
+                                    (location?.pathname?.slice(0, 21) === '/dashboard/updateBlog')
+                                    ?
+                                    'text-info'
+                                    :
+                                    'text-light'
+                                    } btnDashboard`}>BLOGS</button>
                             <br />
                             <br />
-                            <button onClick={() => handleNavigate(4)} className='btnDashboard' >REVIEW</button>
+                            <button onClick={() => navigate('/dashboard/feedbackDash')} className={`${location?.pathname === '/dashboard/feedbackDash' ? 'text-info' : 'text-light'} btnDashboard`} >REVIEW</button>
                             <br />
                             <br />
                             <button onClick={handleAdmin} className='btnDashboard' >ADMIN</button>
@@ -74,10 +84,10 @@ const Dashboard = () => {
                         <div className="adminSection">
                             <br />
                             <br />
-                            <button onClick={() => handleNavigate(3)} className='btnDashboard' >USER CONTROLL</button>
+                            <button onClick={() => navigate('/dashboard/userControll')} className={`${location?.pathname === '/dashboard/userControll' ? 'text-info' : 'text-light'} btnDashboard`} >USER CONTROLL</button>
                             <br />
                             <br />
-                            <button className='btnDashboard' >STATISTIC</button>
+                            <button className='btnDashboard' >TRANSECTION</button>
                             <br />
                             <br />
                             <hr />

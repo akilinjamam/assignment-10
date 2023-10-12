@@ -54,7 +54,7 @@ const FeedBack = () => {
     const handleReviews = async () => {
         if (user?.email) {
             try {
-                const response = await axios.post(`https://asssignment-10-server-delta.vercel.app/api/v1/reviews`, {
+                await axios.post(`https://asssignment-10-server-delta.vercel.app/api/v1/reviews`, {
                     email: user?.email,
                     photoUrl: img,
                     review: review
