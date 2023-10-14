@@ -6,6 +6,7 @@ import { fetchDeleteLikeData, fetchGetLikeData, fetchPostLikeData } from '../../
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import { fetchGetcommentData, fetchPostcommentData } from '../../fetchData/fetchCommentData';
 
 
 const Blogs = () => {
@@ -14,12 +15,21 @@ const Blogs = () => {
     const { data: getBlogs } = useQuery("getBlogs", () => fetchGetBlogData());
     const allBlogs = getBlogs?.data?.result;
     const [popup, setPopup] = useState(false);
+    const [comment, setComment] = useState('');
+    const [blogIdContainer, setBlogIdContainer] = useState('')
 
     const { data: getLikeData, refetch } = useQuery("getLikeData", () => fetchGetLikeData());
     const getAllLike = getLikeData?.data?.result;
 
-    console.log(getAllLike)
+    const { data: getCommentData, refetch: refetchComment } = useQuery("getCommentData", () => fetchGetcommentData());
 
+    const allCommentData = getCommentData?.data?.result;
+    console.log(allCommentData)
+
+
+    const filterCommentData = allCommentData?.filter(f => {
+        return f?.blogLink === blogIdContainer;
+    })
 
     const handleLike = async (blogLink) => {
         const likeData = {
@@ -54,6 +64,31 @@ const Blogs = () => {
 
     }
 
+    const handlePopup = (id) => {
+        setBlogIdContainer(id);
+        setPopup(true)
+    }
+
+
+    const handleCommentData = async () => {
+        const commentData = {
+            commenterEmail: user?.email,
+            blogLink: blogIdContainer,
+            comment,
+        }
+
+        if (user?.email) {
+            await fetchPostcommentData(commentData, refetchComment).then(res => {
+                if (res?.status === 'success') {
+                    console.log(res)
+                }
+                setComment('');
+            })
+        } else {
+            navigate('/login')
+        }
+    }
+
     if (getBlogs?.data?.status !== 'success') {
         return (
             <div style={{ width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -82,7 +117,11 @@ const Blogs = () => {
                                         })?.length
                                     }
                                     </span>
-                                    <span style={{ marginRight: '20px' }}><i class="uil uil-comment"></i> 0</span>
+                                    <span style={{ marginRight: '20px' }}><i class="uil uil-comment"></i> {
+                                        allCommentData?.filter(f => {
+                                            return f?.blogLink === blogData?._id
+                                        })?.length
+                                    }</span>
                                     <span><i class="uil uil-share"></i></span>
                                     <br />
                                     <br />
@@ -111,7 +150,7 @@ const Blogs = () => {
                                         <section className={blog.comment}>
                                             <div
                                                 style={{ cursor: 'pointer' }}
-                                                onClick={() => setPopup(true)}
+                                                onClick={() => handlePopup(blogData?._id)}
                                             >
                                                 <span style={{ marginRight: '10px', fontSize: '16px' }}><i class="uil uil-comment"></i></span>
                                                 <span>Comment</span>
@@ -128,15 +167,38 @@ const Blogs = () => {
             <div className={popup ? `${blog.block}` : `${blog.none}`}>
                 <div className={blog.commentPopup}>
                     <div className={blog.commentContainer}>
-                        <i
-                            onClick={() => setPopup(false)}
-                            className={`uil uil-times-circle ${blog.cancelComment}`}></i>
-                        <div className={blog.commentDetail}>
 
+                        <div className={blog.commentDetail}>
+                            {
+                                filterCommentData?.map((cData, index) => {
+                                    return (
+                                        <div>
+                                            <p>{index + 1}. {cData?.commenterEmail}</p>
+                                            <p>{cData?.comment}</p>
+                                            <hr />
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div className={blog.sendComment}>
-
+                            <input className={blog.sendCommentInput} type="text"
+                                onChange={(e) => {
+                                    setComment(e.target.value);
+                                }}
+                                value={comment}
+                            />
+                            {
+                                comment &&
+                                <i onClick={handleCommentData} style={{ cursor: 'pointer' }} className="uil uil-message fs-2 text-dark-emphasis"></i>
+                            }
                         </div>
+                        <br />
+                        <button
+                            onClick={() => setPopup(false)}
+                            className={`btn btn-primary ${blog.cancelComment}`}>
+                            cancel
+                        </button>
                     </div>
                 </div>
             </div>

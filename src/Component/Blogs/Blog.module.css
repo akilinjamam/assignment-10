@@ -79,20 +79,23 @@
  }
 
  .cancelComment{
-   color:gray;
-   font-size: 25px;
+   font-size: 15px;
    position: absolute;
    right: 10px;
-   top: 5px;
+   bottom: 10px;
    cursor: pointer;
  }
 
  .commentDetail{
-   margin-top: 35px;
    width: 100%;
-   height: 80%;
+   height: 75%;
    border: 1px solid lightgray;
+   padding: 10px;
    overflow-x: hidden;
+   text-align: left;
+   font-size: 13px;
+   font-style: italic;
+   color: gray;
  }
 
  .sendComment{
@@ -101,4 +104,14 @@
    border: 1px solid lightgray;
    border-radius: 20px;
    margin-top: 10px;
+   padding: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+ }
+
+ .sendCommentInput{
+   width: 95%;
+   outline: none;
+   border: none;
  }
