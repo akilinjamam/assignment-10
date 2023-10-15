@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import blog from './Blog.module.css';
+import { fetchGetcommentData, fetchPostcommentData } from '../../fetchData/fetchCommentData';
+import { fetchDeleteLikeData, fetchGetLikeData, fetchPostLikeData } from '../../fetchData/fetchLikeData';
 import { useQuery } from 'react-query';
 import { fetchGetBlogData } from '../../fetchData/fetchBlogData';
-import { fetchDeleteLikeData, fetchGetLikeData, fetchPostLikeData } from '../../fetchData/fetchLikeData';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useNavigate } from 'react-router-dom';
-import { fetchGetcommentData, fetchPostcommentData } from '../../fetchData/fetchCommentData';
-import LoadingBlog from '../../Loading/LoadingBlog';
-import { useContext } from 'react';
-import NoteState from '../../Context/NoteState';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate, useParams } from 'react-router-dom';
 import noteContext from '../../Context/noteContext';
+import LoadingBlog from '../../Loading/LoadingBlog';
 
-
-const Blogs = () => {
+const BlogDetail = () => {
+    const { blogId } = useParams();
     const state = useContext(noteContext)
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
@@ -24,7 +22,7 @@ const Blogs = () => {
     const [blogIdContainer, setBlogIdContainer] = useState('');
 
     const filteredBlog = allBlogs?.filter(f => {
-        return f?._id === state?.blogIdContainer
+        return f?._id === blogId
     })
 
     const { data: getLikeData, refetch } = useQuery("getLikeData", () => fetchGetLikeData());
@@ -106,7 +104,7 @@ const Blogs = () => {
         <div className={blog.main}>
             <section className={blog.blogPart}>
                 {
-                    allBlogs?.slice()?.reverse()?.map(blogData => {
+                    filteredBlog?.slice()?.reverse()?.map(blogData => {
                         return (
                             <div key={blogData?._id} className={blog.blogContainer}>
                                 <img src={blogData?.blogImg} alt="" />
@@ -163,6 +161,9 @@ const Blogs = () => {
                                         </section>
                                     </div>
                                     <hr />
+                                    <p
+                                        style={{ color: 'blue', fontSize: '13px', fontStyle: 'italic', cursor: 'pointer' }}
+                                        onClick={() => navigate('/blogs')}>view more blogs</p>
                                 </div>
                             </div>
                         )
@@ -211,4 +212,4 @@ const Blogs = () => {
     );
 };
 
-export default Blogs;
+export default BlogDetail;

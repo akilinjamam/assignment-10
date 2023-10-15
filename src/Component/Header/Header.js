@@ -23,8 +23,6 @@ const Header = () => {
 
     const { data: queryUserControll, refetch: refetchUserControl } = useQuery("queryUserControll", () => fetchUserControllData());
 
-
-
     const findUser = queryUserControll?.data?.result?.find(u => {
         return u.email === user?.email;
     });
@@ -95,9 +93,7 @@ const Header = () => {
                         <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
                         <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                         <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
-                        <p> <CustomLink to="/contact">Contact</CustomLink></p>
-
-
+                        {/* <p> <CustomLink to="/contact">Contact</CustomLink></p> */}
                         {
                             <p>
                                 {
@@ -142,9 +138,9 @@ const Header = () => {
                                         {
                                             user?.email && <CustomLink to=''> {user.email} </CustomLink>
                                         }
-                                        {
+                                        {/* {
                                             user?.email && <CustomLink to=''>Your Profile</CustomLink>
-                                        }
+                                        } */}
 
                                     </p>
                                     <p style={{ color: 'white' }}>
@@ -196,9 +192,9 @@ const Header = () => {
                         {
                             user?.email && <CustomLink to=''> {user.email} </CustomLink>
                         }
-                        {
+                        {/* {
                             user?.email && <CustomLink to=''>Your Profile</CustomLink>
-                        }
+                        } */}
 
                     </p>
 

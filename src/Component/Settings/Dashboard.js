@@ -87,7 +87,9 @@ const Dashboard = () => {
                             <button onClick={() => navigate('/dashboard/userControll')} className={`${location?.pathname === '/dashboard/userControll' ? 'text-info' : 'text-light'} btnDashboard`} >USER CONTROLL</button>
                             <br />
                             <br />
-                            <button className='btnDashboard' >TRANSECTION</button>
+                            <button
+                                onClick={() => navigate('/dashboard/transection')}
+                                className={`${location?.pathname === '/dashboard/transection' ? 'text-info' : 'text-light'} btnDashboard`} >TRANSECTION</button>
                             <br />
                             <br />
                             <hr />

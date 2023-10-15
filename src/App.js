@@ -44,6 +44,8 @@ import Payment from './Component/payment/Payment';
 import PaidDoc from './Component/CheckOut/PaidDoc';
 import AddBlog from './Component/Settings/Admin/blog/AddBlog';
 import UpdateBlog from './Component/Settings/Admin/blog/UpdateBlog';
+import Transection from './Component/transection/Transection';
+import BlogDetail from './Component/Blogs/BlogDetail';
 
 function App() {
 
@@ -123,12 +125,15 @@ function App() {
                       </Route>
                       <Route path='updateBlog/:updateBlogId' element={<UpdateBlog></UpdateBlog>}>
                       </Route>
+                      <Route path='transection' element={<Transection></Transection>}>
+                      </Route>
                     </Route>
 
                     <Route path='/login' element={<Login></Login>}></Route>
                     <Route path='/register' element={<Register></Register>}></Route>
                     <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
                     <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+                    <Route path='/blogsDetail/:blogId' element={<BlogDetail />}></Route>
                     <Route path='/packages' element={<Packages></Packages>}></Route>
                     <Route path='/contact' element={<Contact></Contact>}></Route>
                     <Route path='/visaGuide' element={<VisaGuilde></VisaGuilde>}></Route>
