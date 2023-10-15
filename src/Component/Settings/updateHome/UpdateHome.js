@@ -38,7 +38,8 @@ const UpdateHome = () => {
     const [terms, setTerms] = useState('')
     const [addition, setAddition] = useState('');
     const [inclusion, setInclusion] = useState('');
-    const [allData, setAllData] = useState({})
+    const [allData, setAllData] = useState({});
+    console.log(allData);
 
     const [message, setMessage] = useState('');
 
@@ -184,7 +185,10 @@ const UpdateHome = () => {
 
         try {
             const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents/${updateHomeId}`, allData)
-                .then(res => setMessage(res.data));
+                .then(res => {
+                    setMessage(res.data);
+                    console.log(res)
+                });
 
 
             if (findBannerForUpdate?._id) {

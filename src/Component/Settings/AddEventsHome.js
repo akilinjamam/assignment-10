@@ -236,7 +236,10 @@ const AddEventsHome = () => {
                 tourPrice: lastEventForBanner[0].price,
                 tourDate: lastEventForBanner[0].tourDate,
                 tourLastDate: lastEventForBanner[0].tourLastDate
-            }).then(res => setBannerMessage(res.data));
+            }).then(res => {
+                setBannerMessage(res.data);
+                console.log(res)
+            });
 
         } catch (error) {
 

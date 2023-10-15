@@ -8,6 +8,10 @@ const Transection = () => {
     const { data: getTransection, refetch } = useQuery("getTransection", () => fetchGetPaymentData());
     const allTransections = getTransection?.data?.result;
 
+    const filteredTransection = allTransections?.filter(f => {
+        return f?.isPaid === true;
+    })
+
     const handleUpdatePayment = async (id) => {
 
         const findPayment = allTransections?.find(f => {
@@ -41,7 +45,7 @@ const Transection = () => {
                         <th>Total</th>
                     </tr>
                     {
-                        allTransections?.slice()?.reverse()?.map((transData) => {
+                        filteredTransection?.slice()?.reverse()?.map((transData) => {
                             return (
                                 <tr>
                                     <td>{transData?.orderNumber}</td>
