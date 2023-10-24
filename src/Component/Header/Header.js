@@ -83,10 +83,10 @@ const Header = () => {
         <div className='HeaderMain d-print-none'>
             <section className='headerContainer'>
                 <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
+
                 <div className='headerCover'>
                     <div className='headerOne'>
                         <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
-
                     </div>
 
                     <div className='headerTwo'>
@@ -170,8 +170,6 @@ const Header = () => {
                     <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
                     <p> <CustomLink to="/contact">Contact</CustomLink></p>
                     <br />
-
-
                     {
                         <p>
                             {
@@ -179,8 +177,6 @@ const Header = () => {
                             }
                         </p>
                     }
-
-
 
                     <p>
                         {
