@@ -49,7 +49,7 @@ const Header = () => {
                 try {
                     if (user?.email) {
                         if (!findEmail) {
-                            const response = await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/userControll', {
+                            await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/userControll', {
                                 email: user?.email,
                                 emailName: user?.displayName,
                                 userPhoto: user?.photoURL
@@ -93,7 +93,6 @@ const Header = () => {
                         <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
                         <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
                         <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
-                        {/* <p> <CustomLink to="/contact">Contact</CustomLink></p> */}
                         {
                             <p>
                                 {
@@ -102,7 +101,7 @@ const Header = () => {
                             </p>
                         }
                         {
-                            <p>
+                            <p style={{ position: 'relative' }}>
                                 {
                                     user &&
                                     <CustomLink to='/addToCart' >
@@ -111,15 +110,31 @@ const Header = () => {
                                                 class="uil uil-shopping-cart"
                                             >
                                             </i>
-                                            <span className={`${queryCartNumberData === 0 ? 'none' : 'block'} cartNumber`}>
+
+                                        </span>
+                                        {
+                                            queryCartNumberData > 0
+                                            &&
+                                            <span
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '5px',
+                                                    right: '-20px',
+                                                    width: '22px',
+                                                    height: '22px',
+                                                    backgroundColor: 'red',
+                                                    borderRadius: '50%',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center'
+                                                }}>
                                                 {queryCartNumberData}
                                             </span>
-                                        </span>
+                                        }
                                     </CustomLink>
                                 }
                             </p>
                         }
-
 
                         {
                             user &&
@@ -138,9 +153,6 @@ const Header = () => {
                                         {
                                             user?.email && <CustomLink to=''> {user.email} </CustomLink>
                                         }
-                                        {/* {
-                                            user?.email && <CustomLink to=''>Your Profile</CustomLink>
-                                        } */}
 
                                     </p>
                                     <p style={{ color: 'white' }}>
@@ -188,30 +200,32 @@ const Header = () => {
                         {
                             user?.email && <CustomLink to=''> {user.email} </CustomLink>
                         }
-                        {/* {
-                            user?.email && <CustomLink to=''>Your Profile</CustomLink>
-                        } */}
-
                     </p>
 
-                    {
-                        <p>
-                            {
-                                user &&
-                                <CustomLink to='/addToCart' >
-                                    <span className='cart'>
-                                        <i style={{ color: 'white', }}
-                                            class="uil uil-shopping-cart"
-                                        >
-                                        </i>
-                                        <span className={`${queryCartNumberData === 0 ? 'none' : 'block'} cartNumber`}>
+                    <div className='cart_container'>
+                        {
+                            user &&
+                            <CustomLink to='/addToCart' >
+                                <span className='cart'>
+                                    <i style={{ color: 'white' }}
+                                        class="uil uil-shopping-cart"
+                                    >
+                                    </i>
+                                </span>
+                                {
+                                    queryCartNumberData > 0
+                                    &&
+                                    <div className='cartNo'>
+                                        <span  >
                                             {queryCartNumberData}
                                         </span>
-                                    </span>
-                                </CustomLink>
-                            }
-                        </p>
-                    }
+                                    </div>
+                                }
+
+                            </CustomLink>
+                        }
+
+                    </div>
 
                 </div>
             </section>

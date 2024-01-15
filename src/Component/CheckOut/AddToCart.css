@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 .addToCartMain {
+    font-family: "Oswald", sans-serif;
     width: 100%;
     height: auto;
 }
@@ -43,7 +45,7 @@
 
 
 table {
-    font-family: arial, sans-serif;
+    font-family: "Oswald", sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -137,6 +139,7 @@ th {
 
 
 .alt-div {
+    font-family: "Oswald", sans-serif;
     width: 90%;
     height: 400px;
     margin: auto;

@@ -142,6 +142,7 @@
 }
 
 .remainingDatesContainer h6 {
+    color:brown;
     position: absolute;
     top: 10px;
     font-size: 12px;
@@ -151,6 +152,7 @@
 }
 
 .remainingDates {
+    color: brown;
     display: flex;
     width: 80%;
     align-items: center;
@@ -168,7 +170,7 @@
 
 .timers {
     font-size: 40px;
-    color: white;
+    color: black;
     font-weight: bold;
 }
 

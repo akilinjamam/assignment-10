@@ -47,6 +47,7 @@ import UpdateBlog from './Component/Settings/Admin/blog/UpdateBlog';
 import Transection from './Component/transection/Transection';
 import BlogDetail from './Component/Blogs/BlogDetail';
 import fetchBannerData from './fetchData/fetchBannerData';
+import Testmail from './Component/testmail/Testmail';
 
 function App() {
 
@@ -129,6 +130,7 @@ function App() {
               <Route path='/tourHome' element={<TourHome></TourHome>}></Route>
               <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
               <Route path='/spotDetail/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
+              <Route path='/testmail' element={<Testmail></Testmail>}></Route>
               <Route path='*' element={<NotFound></NotFound>}></Route>
             </Routes>
           </div >
