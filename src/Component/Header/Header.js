@@ -39,7 +39,6 @@ const Header = () => {
 
     }
 
-
     // sending user info to database
 
     useEffect(() => {
@@ -79,163 +78,153 @@ const Header = () => {
         refetch()
     }
     const queryCartNumberData = queryCartNumber?.data?.result?.length;
+
     return (
-        <div className='HeaderMain d-print-none'>
-            <section className='headerContainer'>
-                <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
+        <div>
 
-                <div className='headerCover'>
-                    <div className='headerOne'>
-                        <Link to='/'> <img style={{ width: '147px', height: '47px', marginBottom: '10px', position: 'absolute', top: '0', left: '30px' }} src={logo} alt="" /></Link>
-                    </div>
+            <div onClick={(e) => {
+                if (e.target.className !== 'uil uil-user') {
+                    setShow(false)
+                }
 
-                    <div className='headerTwo'>
-                        <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
-                        <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
-                        <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
-                        {
-                            <p>
-                                {
-                                    user ? <CustomLink onClick={handleSignOut} to='/login' >Sign Out</CustomLink> : <CustomLink to="/login">Login</CustomLink>
-                                }
-                            </p>
-                        }
-                        {
-                            <p style={{ position: 'relative' }}>
-                                {
-                                    user &&
-                                    <CustomLink to='/addToCart' >
-                                        <span className='cart'>
-                                            <i style={{ color: 'white', }}
-                                                class="uil uil-shopping-cart"
-                                            >
-                                            </i>
-
-                                        </span>
-                                        {
-                                            queryCartNumberData > 0
-                                            &&
-                                            <span
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '5px',
-                                                    right: '-20px',
-                                                    width: '22px',
-                                                    height: '22px',
-                                                    backgroundColor: 'red',
-                                                    borderRadius: '50%',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center'
-                                                }}>
-                                                {queryCartNumberData}
-                                            </span>
-                                        }
-                                    </CustomLink>
-                                }
-                            </p>
-                        }
-
-                        {
-                            user &&
-                            <p >
-                                <span> <i onClick={() => setShowInfo(!showInfo)} class="uil uil-user"></i></span>
-                                <div onMouseLeave={() => setShowInfo(false)} className={`${showInfo ? 'visibleInfo' : 'hiddenInfo'} userInfo `}>
-
-                                    <p>
-                                        {
-                                            user?.photoURL ? <CustomLink to=""><img className='googlePhoto' src={user?.photoURL} alt="" /></CustomLink> : <i class="uil uil-user-square"></i>
-                                        }
-                                        <br />
-                                        {
-                                            user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
-                                        }
-                                        {
-                                            user?.email && <CustomLink to=''> {user.email} </CustomLink>
-                                        }
-
-                                    </p>
-                                    <p style={{ color: 'white' }}>
-                                        <  hr />
-                                    </p>
-                                    <p>
-                                        <p style={{ color: 'white', cursor: 'pointer' }} onClick={handleControlPanel} >Control Panel</p>
-                                    </p>
-
-                                </div>
-                                <br />
-                            </p>
-                        }
-
-
-                    </div>
-
-                </div>
-
-                <div onClick={() => setShow(!show)} className='headerCoverRes'>
-                    <i style={{ color: 'white', position: 'absolute', rigth: '0' }} class="uil uil-bars"></i>
-                </div>
-                <div onMouseLeave={() => setShow(false)} className={`${show ? 'visible' : 'hidden'} headerMenuContainerRes`}>
-
-                    <p> <CustomLink to="/tourHome">Home Tour</CustomLink></p>
-                    <p> <CustomLink to="/tourAbroad">World Tour</CustomLink></p>
-                    <p> <CustomLink to="/blogs">Blogs</CustomLink></p>
-                    <p> <CustomLink to="/contact">Contact</CustomLink></p>
-                    <br />
-                    {
-                        <p>
-                            {
-                                user ? <CustomLink onClick={handleSignOut} to='/login' >Sign Out</CustomLink> : <CustomLink to="/login">Login</CustomLink>
-                            }
-                        </p>
-                    }
-
-                    <p>
-                        {
-                            user?.photoURL ? <CustomLink to=""><img className='googlePhoto' src={user?.photoURL} alt="" /></CustomLink> : <i class="uil uil-user-square"></i>
-                        }
-                        {
-                            user?.displayName && <CustomLink to=''> {user.displayName} </CustomLink>
-                        }
-                        {
-                            user?.email && <CustomLink to=''> {user.email} </CustomLink>
-                        }
-                    </p>
-
-                    <div className='cart_container'>
-                        {
-                            user &&
-                            <CustomLink to='/addToCart' >
-                                <span className='cart'>
-                                    <i style={{ color: 'white' }}
-                                        class="uil uil-shopping-cart"
-                                    >
-                                    </i>
-                                </span>
-                                {
-                                    queryCartNumberData > 0
-                                    &&
-                                    <div className='cartNo'>
-                                        <span  >
-                                            {queryCartNumberData}
-                                        </span>
-                                    </div>
-                                }
-
-                            </CustomLink>
-                        }
-
-                    </div>
-
-                </div>
-            </section>
-            <div className={`${showPopup ? 'block' : 'none'}`}>
-                <div className="headerPopup">
-                    <div className="headerPopupContainer">
-                        <div className='crossPopupHeader'>
-                            <i onClick={() => setShowPopup(false)} class="uil uil-times"></i>
+                if (e.target.className === 'user_popup' || e.target.className === 'user_popup_text' || e.target.className === 'uil uil-bars') {
+                    setShow(true)
+                }
+                console.log(e.target.className)
+            }} className='navMain'>
+                <section className='navContainer'>
+                    <div className='navConOne'>
+                        <div className='navConOneLeft'>
+                            <img onClick={() => navigate('/')} style={{ width: '147px', height: '47px' }} src={logo} alt='' />
                         </div>
-                        <p style={{ color: 'white' }}>sorry <span style={{ color: 'yellow' }}>{user?.displayName} !</span> you have no access to controll panel !</p>
+                        <div className='navConOneRight'>
+
+                            {
+                                <div>
+                                    {
+                                        user ? <CustomLink onClick={handleSignOut} to='/login' ><i style={{ fontSize: '18px' }} class="uil uil-signout"></i>  Logout</CustomLink> : <CustomLink to="/login">Login</CustomLink>
+                                    }
+                                </div>
+                            }
+                            {
+                                <div style={{ position: 'relative' }}>
+                                    {
+                                        user &&
+                                        <CustomLink to='/addToCart' >
+                                            <span className='cart'>
+                                                <i style={{ color: 'white', }}
+                                                    className="uil uil-shopping-cart"
+                                                >
+                                                </i>
+
+                                            </span>
+                                            {
+                                                queryCartNumberData > 0
+                                                &&
+                                                <span
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '5px',
+                                                        right: '-20px',
+                                                        width: '22px',
+                                                        height: '22px',
+                                                        backgroundColor: 'red',
+                                                        borderRadius: '50%',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center'
+                                                    }}>
+                                                    {queryCartNumberData}
+                                                </span>
+                                            }
+                                        </CustomLink>
+                                    }
+                                </div>
+                            }
+                            {
+                                user &&
+                                <div >
+                                    <i
+                                        onClick={() => {
+                                            setShow(!show)
+                                        }}
+                                        style={{ marginTop: '5px', marginLeft: '20px' }} className='uil uil-user'></i>
+                                    <div style={{ height: 'auto', width: '190px', position: 'absolute', top: '70px', right: '97px', zIndex: '20', borderRadius: '10px', border: '1px solid green', backgroundColor: 'white', display: `${show ? 'block' : 'none'}` }}>
+
+                                        <div className='user_popup' style={{ textAlign: 'left', padding: '5px 10px' }}>
+                                            <p className='user_popup_text' style={{ cursor: 'pointer' }}><i class="uil uil-users-alt"></i> Profile</p>
+                                            <p className='user_popup_text' style={{ cursor: 'pointer' }} onClick={handleControlPanel}><i className="uil uil-create-dashboard"></i> Dashboard</p>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div className='navConOneRightRes'>
+                            <div>
+
+                                <i onClick={() => setShow(!show)} style={{ color: 'white', cursor: 'pointer' }} class="uil uil-bars"></i>
+                                <div style={{ display: `${show ? 'block' : 'none'}` }} className='navConOneRightResPopup'>
+                                    <CustomLink to='/tourHome'>
+                                        <span style={{ color: 'black' }} ><i style={{ fontSize: '18px' }} class="uil uil-estate"></i> Home Tour</span>
+                                    </CustomLink>
+                                    <CustomLink to='/tourAbroad'>
+                                        <span style={{ color: 'black' }} ><i style={{ fontSize: '18px' }} class="uil uil-globe"></i> World Tour</span>
+                                    </CustomLink>
+                                    <CustomLink to='/blogs'>
+                                        <span style={{ color: 'black' }} ><i style={{ fontSize: '18px' }} class="uil uil-document-layout-right"></i> Blogs</span>
+                                    </CustomLink>
+                                    <hr />
+                                    {
+                                        <div>
+                                            {
+                                                user ? <CustomLink onClick={handleSignOut} to='/login' ><i style={{ fontSize: '18px', color: 'black' }} class="uil uil-signout"></i>  <span style={{ color: 'black' }}>Logout</span> </CustomLink> : <CustomLink to="/login"> <i style={{ color: 'black' }} class="uil uil-signin"></i> <span style={{ color: 'black' }}>Login</span></CustomLink>
+                                            }
+                                        </div>
+                                    }
+
+                                    <div style={{ cursor: 'pointer' }} onClick={() => navigate('/addToCart')}>
+                                        <i style={{ color: 'black', fontSize: '18px', marginLeft: '15px', }} className="uil  uil-shopping-cart"></i> <span>Your Cart - {queryCartNumberData}</span>
+                                    </div>
+                                    <div style={{ cursor: 'pointer' }}>
+                                        <i style={{ color: 'black', fontSize: '18px', marginLeft: '15px', }} class="uil uil-users-alt"></i>
+                                        <span> Profile</span>
+                                    </div>
+                                    <div style={{ cursor: 'pointer' }} onClick={handleControlPanel}>
+                                        <i style={{ color: 'black', fontSize: '18px', marginLeft: '15px', }} class="uil uil-create-dashboard"></i>
+                                        <span> Dashboard</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='navConTwo'>
+                        <div style={{ width: '400px', height: '60px', color: 'white', display: 'flex', alignItems: 'baseline', justifyContent: 'flex-start' }}>
+
+                            <div style={{ display: 'flex' }}>
+                                <CustomLink to='/tourHome'>
+                                    <span ><i style={{ fontSize: '18px' }} class="uil uil-estate"></i> Home Tour</span>
+                                </CustomLink>
+                                <CustomLink to='/tourAbroad'>
+                                    <span style={{ marginLeft: '15px' }} ><i style={{ fontSize: '18px' }} class="uil uil-globe"></i> World Tour</span>
+                                </CustomLink>
+                                <CustomLink to='/blogs'>
+                                    <span style={{ marginLeft: '15px' }} ><i style={{ fontSize: '18px' }} class="uil uil-document-layout-right"></i> Blogs</span>
+                                </CustomLink>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div className={`${showPopup ? 'block' : 'none'}`}>
+                    <div className="headerPopup">
+                        <div className="headerPopupContainer">
+                            <div className='crossPopupHeader'>
+                                <i onClick={() => setShowPopup(false)} className="uil uil-times"></i>
+                            </div>
+                            <p style={{ color: 'white' }}>sorry <span style={{ color: 'yellow' }}>{user?.displayName} !</span> you have no access to controll panel !</p>
+                        </div>
                     </div>
                 </div>
             </div>

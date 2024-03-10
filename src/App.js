@@ -2,7 +2,7 @@ import { RiseLoader } from 'react-spinners';
 import { useState } from "react";
 import './App.css';
 
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { useQuery } from 'react-query';
 
 import Header from './Component/Header/Header';
 import { Route, Routes } from 'react-router-dom';
@@ -13,12 +13,12 @@ import CheckOut from './Component/CheckOut/CheckOut';
 import Login from './Component/Login/Login';
 import Register from './Component/Register/Register';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
-import Footer from './Component/Footer/Footer';
+
 import VisitingGlobalSpot from './Component/VisitingGlobalSpot/VisitingGlobalSpot';
 import Blogs from './Component/Blogs/Blogs';
 import About from './Component/About/About';
 import NotFound from './Component/NotFound/NotFound';
-import { useEffect } from 'react';
+
 import Packages from './Component/Packages/Packages';
 import Contact from './bannar-img/Contact/Contact';
 import VisaGuilde from './Component/VisaGuide/VisaGuilde';
@@ -48,6 +48,7 @@ import Transection from './Component/transection/Transection';
 import BlogDetail from './Component/Blogs/BlogDetail';
 import fetchBannerData from './fetchData/fetchBannerData';
 import Testmail from './Component/testmail/Testmail';
+import Test from './Component/test/Test';
 
 function App() {
 
@@ -72,7 +73,7 @@ function App() {
 
             <Routes>
               <Route path='/' element={<Home></Home>}></Route>
-              <Route path='/home' element={<Home></Home>}></Route>
+              {/* <Route path='/home' element={<Home></Home>}></Route> */}
 
               <Route path='/checkout/:checkoutId' element={
                 <RequireAuth>
@@ -131,6 +132,7 @@ function App() {
               <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
               <Route path='/spotDetail/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
               <Route path='/testmail' element={<Testmail></Testmail>}></Route>
+              <Route path='/test' element={<Test />}></Route>
               <Route path='*' element={<NotFound></NotFound>}></Route>
             </Routes>
           </div >

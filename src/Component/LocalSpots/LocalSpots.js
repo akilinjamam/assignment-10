@@ -1,71 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Parallax } from 'react-parallax';
-
+import React, { useContext, useEffect } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-import Slider from "react-slick";
-
-import { Link } from 'react-router-dom';
-import LocalSpot from '../LocalSpot/LocalSpot';
 import './LocalSpots.css'
-import river from '../../background-image/river.jpg'
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import Loading from '../../Loading/Loading';
 import noteContext from '../../Context/noteContext';
-import { fetchProvider } from '../Banner/Banner';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const LocalSpots = () => {
 
-    // navigation for react-slick
-    const settings = {
-        dots: true,
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        pauseOnHover: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 0
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
-
     const state = useContext(noteContext);
-
-
+    const navigate = useNavigate();
     // fetch home data:
-
     const { data, isLoading } = useQuery("localSpots", () => fetchHomeData());
-
     const homeEvents = data?.data?.result;
-
     useEffect(() => {
         state.setHomeData(homeEvents);
 
@@ -76,37 +27,75 @@ const LocalSpots = () => {
     }
 
     return (
-
-
-        <div style={{ width: '100%', overflowX: 'hidden', scrollBehavior: 'smooth' }}  >
-            <div >
-                <h2 style={{ color: 'gray' }} className='title'>VISIT BANGLADESH</h2>
-            </div>
-            <br />
-
-            {
-                <div>
-                    <Slider {...settings}>
-                        {
-                            homeEvents?.map(localSpot => <LocalSpot
-                                key={localSpot._id}
-                                localSpot={localSpot}
-                            ></LocalSpot>)
-                        }
-                    </Slider>
+        <div className='local_spot_main'>
+            <main className='local_spot_container'>
+                <div className='local_spot_title'>
+                    <h3>Local Trending Spot</h3>
+                    <p>most visiting place in Bangladesh</p>
+                    <hr style={{ height: '3px' }} />
                 </div>
-            }
-
-
-            <br /><br /><br />
-            <Link to='/tourHome' className='d-block mx-auto btn btn-primary localSpotsDetailBtn' >Visit More Spots</Link>
-            <br />
-            <br />
+                <div className='local_spot_cart'>
+                    {
+                        homeEvents?.slice(0, 2)?.map((event) => {
+                            return (
+                                <div className='local_spot_cart_detail' key={event?._id}
+                                    onClick={() => navigate(`/spotDetail/${event?._id}`)}
+                                >
+                                    <img src={event?.img} alt="" />
+                                    <div className='local_spot_cart_detail_backShadow' >
+                                        <div className='local_spot_cart_detail_backShadow_container' >
+                                            <h3>{event.name}</h3>
+                                            <div className="local_spot_cart_detail_backShadow_container_hoverEffect">
+                                                <div className='l_s_c_d_b_c_h_container'>
+                                                    <hr />
+                                                    <p>Duration: {event?.stayLong}</p>
+                                                    <p>Price/person: {event?.price}</p>
+                                                    <p>Last Date of Registration: {event?.tourLastDate}</p>
+                                                    <p>Tour Last Date: {event?.tourDate}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className='local_spot_cart'>
+                    {
+                        homeEvents?.slice(1, 4)?.map((event) => {
+                            return (
+                                <div className='local_spot_cart_detail' key={event?._id}
+                                    onClick={() => navigate(`/spotDetail/${event?._id}`)}
+                                >
+                                    <img src={event?.img} alt="" />
+                                    <div className='local_spot_cart_detail_backShadow' >
+                                        <div className='local_spot_cart_detail_backShadow_container' >
+                                            <h3>{event.name}</h3>
+                                            <div className="local_spot_cart_detail_backShadow_container_hoverEffect">
+                                                <div className='l_s_c_d_b_c_h_container'>
+                                                    <hr />
+                                                    <p>Duration: {event?.stayLong}</p>
+                                                    <p>Price/person: {event?.price}</p>
+                                                    <p>Last Date of Registration: {event?.tourLastDate}</p>
+                                                    <p>Tour Last Date: {event?.tourDate}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className='local_spot_footer'>
+                    <button onClick={() => navigate('/tourHome')} className='btn btn-primary fw-bold '>VISIT MORE</button>
+                </div>
+            </main>
         </div>
-
-
-
     );
 };
 
 export default LocalSpots;
+
+

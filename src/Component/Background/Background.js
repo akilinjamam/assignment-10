@@ -36,7 +36,6 @@ const Background = () => {
 
     };
 
-
     return (
         <div className='mainBackground'>
             <div className='background'>

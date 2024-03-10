@@ -1,43 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
-
-.HeaderMain {
-    font-family: "Oswald", sans-serif;
+.navMain{
     width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 20;
+    height: 120px;
+    background-color: rgb(1, 1, 65);
+    font-family: "Oswald", sans-serif;
 }
 
-.headerContainer {
+.navContainer{
+    width: 90%;
+    height: 120px;
+    margin: auto;
+    /* background-color: red; */
+}
+
+.navConOne,.navConTwo{
     width: 100%;
     height: 60px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
 
-.headerCover {
-    width: 100%;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.headerOne {
-    width: 40%;
-    height: 65px;
-    display: flex;
-    align-items: center;
-}
-
-.headerTwo {
-    height: 65px;
-    min-width: 35%;
+.navConOne{
+    /* background-color: violet; */
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
+
+.navConTwo{
+    /* background-color: antiquewhite; */
+}
+
+.navConOneLeft{
+    width: 30%;
+    height: 60px;
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.navConOneRight{
+    width: 190px;
+    height: 60px;
+    /* background-color: blue;  */
+    display: flex;
+    align-items: center;
+    
+}
+
+/* old css */
 
 .uil-user {
     color: white;
@@ -47,23 +58,7 @@
     cursor: pointer;
 }
 
-.googlePhoto {
-    border-radius: 50%;
-    border: 1px solid white;
-    padding: 5px;
-}
 
-.userInfo {
-    width: 300px;
-    height: 320px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-}
-
-.uil-user-square {
-    font-size: 80px;
-    color: wheat;
-    font-weight: 100;
-}
 
 .visibleInfo {
     position: absolute;
@@ -79,53 +74,17 @@
     transition: 0.7s ease-in-out;
 }
 
-.headerCoverRes {
-    display: none;
-}
-
-.headerMenuContainerRes {
-    display: none;
-}
-
-.cart_container{
-    width: 65px;
-    text-align: left;
-    position: relative;
-}
-
-
-.hide{
-    display: none;
-}
-
-.view{
-    display: inline-block;
-}
-
-.cartNo{
-    width: 20px;
-    height:20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: red;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-
-}
-
 
 .headerPopup {
     width: 100%;
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-    position: absolute;
+    position: fixed;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 30;
 
 }
 
@@ -155,61 +114,41 @@
     cursor: pointer;
 }
 
-.uil-times {
-    color: white;
-    font-weight: bold;
+.navConOneRightRes{
+    display: none;
 }
 
-
-
-@media screen and (max-width: 991px) {
-    .headerCover {
+@media screen and (max-width: 900px) {
+    .navConOneRight{
         display: none;
     }
 
-    .headerCoverRes {
+    .navConOneRightRes{
         display: block;
-        width: 180%;
-        padding-top: 10px;
-        font-size: 25px;
-        cursor: pointer;
+        width: 190px;
+        height: 60px;
+        /* background-color: blue;  */
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
     }
 
-    .headerMenuContainerRes {
-        height: 100vh;
-        width: 250px;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    .navConOneRightResPopup{
+        width: 200px;
+        height: auto;
+        background-color: white;
+        border-radius: 10px;
         position: absolute;
-    }
-
-    .headerMenuContainerRes p {
-        text-align: left;
-        border-bottom: 1px solid white;
-    }
-
-    .headerMenuContainerRes {
-        display: block;
-    }
-
-    .visible {
+        top:50px;
         right: 0;
-        top: 60px;
-        transition: 1s ease-in-out;
+        z-index: 20;
+        padding: 10px;
+        text-align: left;
     }
 
-    .hidden {
-        right: -400px;
-        top: 60px;
-        transition: 1s ease-in-out;
+    .navConTwo{
+        display: none;
     }
-
-    .uil-user-square {
-        margin-left: 10px;
-    }
-
-    .cartNumber {
-        position: absolute;
-        top: 475px;
-    }
-
+    
 }
