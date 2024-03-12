@@ -1,45 +1,45 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Test.css'
 
-const Test = () => {
-    const [data, setData] = useState('');
-
-    const handleData = (value) => {
-        setData(value)
-    }
+const Test = ({ deleteData, message, id, setId, setMessage }) => {
 
 
-    const openRef = useRef(null);
+    // const openRef = useRef(null);
     const closeRef = useRef(null);
 
-    openRef?.current?.addEventListener('click', () => {
-        document.getElementsByClassName('popup')[0].classList.add('active')
-    })
+
+    useEffect(() => {
+        if (message) {
+            document?.getElementsByClassName('popup')[0].classList.add('active')
+        }
+    }, [message, id])
+
 
     closeRef?.current?.addEventListener('click', () => {
-        document.getElementsByClassName('popup')[0].classList.remove('active')
+        document.getElementsByClassName('popup')[0].classList.remove('active');
+        setId('');
+        setMessage('')
+
     })
 
     return (
-        <div>
+        <div className='main_modal'>
             <div className="popup center" >
-                <div className="icon">
-                    <p>check icon</p>
-                </div>
+
                 <div className="title">
-                    {data}
-                </div>
-                <div className="description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores nulla sunt incidunt! Dolores beatae dolorum debitis vero in veritatis, quaerat nesciunt, minima repellendus, fugiat cum amet obcaecati. Facilis, maiores magni?
 
                 </div>
+                <div className="description">
+                    <p>Are you sure to delete {message}</p>
+                </div>
                 <div className="dismiss-btn">
-                    <button ref={closeRef} id="dismiss-popup-btn">dismiss</button>
+                    <button ref={closeRef} id="dismiss-popup-btn">cancel</button>
+                    <button onClick={() => deleteData(id)} id="dismiss-popup-btn">delete</button>
                 </div>
             </div>
-            <div className="center">
+            {/* <div className="center">
                 <button ref={openRef} onClick={() => handleData('its working')} id="open-popup-btn">open popup</button>
-            </div>
+            </div> */}
         </div>
     );
 };

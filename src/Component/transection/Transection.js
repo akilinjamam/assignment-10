@@ -30,6 +30,8 @@ const Transection = () => {
     return (
         <div className={trans.main} >
             <div className={trans.transectionContainer}>
+                <p style={{ textAlign: 'left', fontWeight: 'bold' }}>ALL TRANSECTIONS :</p>
+                <hr />
                 <table className={trans.transTable}>
                     <tr>
                         <th>Order No</th>

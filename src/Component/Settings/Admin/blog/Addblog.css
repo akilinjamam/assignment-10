@@ -1,14 +1,16 @@
 .blogMain {
     width: 80%;
     margin: auto;
-    height: 550px;
+    height: 70vh;
     border: 1px solid lightGray;
     position: relative;
     padding: 10px;
     overflow-x: hidden;
+    margin-top: 50px;
 }
 
 .allblogInputFields{
+   
     text-align: left;
 }
 

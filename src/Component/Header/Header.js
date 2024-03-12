@@ -87,10 +87,10 @@ const Header = () => {
                     setShow(false)
                 }
 
-                if (e.target.className === 'user_popup' || e.target.className === 'user_popup_text' || e.target.className === 'uil uil-bars') {
+                if (e.target.className === 'user_popup' || e.target.className === 'uil uil-bars') {
                     setShow(true)
                 }
-                console.log(e.target.className)
+
             }} className='navMain'>
                 <section className='navContainer'>
                     <div className='navConOne'>

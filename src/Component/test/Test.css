@@ -1,17 +1,21 @@
+.main_modal{
+    width: 100%;
+}
+
 body{
     background: #ddd;
 }
 
 .center{
     position: absolute;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
+    top: 60%;
+    left:60%;
+    transform: translate(-60%, -60%);
 }
 
 .popup{
     width: 350px;
-    height: 280px;
+    height: auto;
     padding: 30px 20px;
     border-radius: 10px;
     background: #f5f5f5;
@@ -40,6 +44,9 @@ body{
 
 .popup .dismiss-btn{
     margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .popup .dismiss-btn button{

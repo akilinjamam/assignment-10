@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
-import fetchBannerData from '../../fetchData/fetchBannerData';
 
 const AddEventsHome = () => {
 
@@ -42,21 +41,15 @@ const AddEventsHome = () => {
     const [message, setMessage] = useState('');
     const [bannerMessage, setBannerMessage] = useState('');
 
-
-
-
     const [count, setCount] = useState(1);
 
     const navigate = useNavigate();
 
     const { data: getForBanner, refetch } = useQuery("getForBanner", () => fetchHomeData())
-
     const [processing, setProcessing] = useState(false)
-
 
     const eventForBanner = getForBanner?.data?.result;
     const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length));
-
 
     const handleBasic = (e) => {
         e.preventDefault();
@@ -73,9 +66,6 @@ const AddEventsHome = () => {
             setView(true);
         };
     };
-
-
-
     const handleDetail = (e) => {
         e.preventDefault();
         if (description === '') {
@@ -128,7 +118,6 @@ const AddEventsHome = () => {
             setCount(5);
         }
 
-
         setAllData({
             name: name,
             img: img,
@@ -147,24 +136,15 @@ const AddEventsHome = () => {
     };
 
     const handleReady = async (e) => {
-
         e.preventDefault();
-
         // send data to server:
-
         try {
             await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents', allData)
                 .then(res => setMessage(res.data));
-
         } catch (error) {
-
             setMessage(error.response.data);
         };
-
-
-
         setCount(count + 1)
-
     };
 
 
@@ -206,6 +186,7 @@ const AddEventsHome = () => {
 
     useEffect(() => {
         if (imgContainer) {
+            console.log(imgContainer)
             const imgStorageKey = 'a7d23ad727734bb709b70dc5aa33543f'
             const formData = new FormData();
             formData.append('image', imgContainer);
@@ -218,6 +199,7 @@ const AddEventsHome = () => {
                 .then(result => {
 
                     setImg(result?.data?.url);
+                    console.log(result?.data?.url)
 
                 })
         }
@@ -262,8 +244,11 @@ const AddEventsHome = () => {
 
     return (
         <div className='addEventsHome'>
-            <p className='homeTitle'>ADD HOME EVENTS :</p>
+            <br />
+            <br />
+            {/* <p className='homeTitle'>ADD HOME EVENTS :</p> */}
             <div className='addEventsHomeMain'>
+
                 <div className='showStepsHome'>
                     <div className={` ${fillBasic ? 'backgroundBlue' : 'gray'} stepHome1`}>
                         <span>Basic Info</span>

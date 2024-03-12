@@ -184,7 +184,7 @@ const UpdateHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents/${updateHomeId}`, allData)
+            await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents/${updateHomeId}`, allData)
                 .then(res => {
                     setMessage(res.data);
                     console.log(res)
@@ -192,7 +192,7 @@ const UpdateHome = () => {
 
 
             if (findBannerForUpdate?._id) {
-                const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
+                await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
                     bannerImg: img,
                     tourPrice: price,
@@ -203,7 +203,7 @@ const UpdateHome = () => {
 
             }
 
-            const updateCart = axios.patch('https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/bulk-update', {
+            axios.patch('https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/bulk-update', {
                 ids: mappedFiltered,
                 data: {
                     tourName: name,
@@ -211,16 +211,10 @@ const UpdateHome = () => {
                     tourPrice: price,
                 }
             }
-            )
-                .then();
-
-
-
-
+            ).then(res => console.log(res));
             refetch();
 
         } catch (error) {
-
             setMessage(error.response.data);
         };
 
@@ -277,6 +271,7 @@ const UpdateHome = () => {
     }, [imgContainer])
     return (
         <div>
+            <br /><br />
             <div className="updateHomeMain">
                 <div className="updateHeading">
                     <div className="updatePart"><span>basic info</span></div>
@@ -291,9 +286,7 @@ const UpdateHome = () => {
                     <div className={`${count === 3 && 'red'} linePart `}></div>
                     <div className={`${count === 4 && 'red'} linePart `}></div>
                     <div className={`${count === 5 && 'red'} linePart `}></div>
-
                 </div>
-
                 <div className='addEventsHomeAllInfo'>
                     {
                         count === 1 &&

@@ -1,9 +1,73 @@
+.dashboardHome_main{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.homeEvents_data{
+    width: 100%;
+    height: auto;
+}
+
+.homeEvents_data_box{
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.homeEvents_data_box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.homeEvents_data_box_hover_area{
+    position: absolute;
+    top: 0;
+    display: none;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.homeEvents_data_box_hover_area p{
+    width: 100%;
+    height: 30px;
+    background-color: red;
+}
+
+.homeEvents_data_box:hover .homeEvents_data_box_hover_area{
+    width: 100%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.homeEvents_data_box:hover .uil-edit{
+    display: block;
+}
+
+.homeEvents_data_box:hover .uil-trash{
+    display: block;
+}
+
+
+
+/* old css */
 .dashboardHomePlatform {
     position: relative;
 }
 
 .dashboardHomeContainer {
-    width: 90%;
+    width: 100%;
     height: 70vh;
     margin: auto;
     background-color: #4158D0;
@@ -24,23 +88,24 @@
 
 }
 
-.homeEvents {
+/* .homeEvents {
     width: 100%;
     min-height: 32vh;
     max-height: auto;
-    margin: 10px;
-}
 
-.homeEvents div,
+} */
+
+/* .homeEvents div,
 .globalEvents div {
     width: 180px;
     height: 180px;
-    background: linear-gradient(rgba(248, 248, 252, 0.5), rgba(255, 255, 255, 0.2));
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-}
+    border: 1px solid gray;
+    border-radius: 10px;
+} */
 
 .dashboardData {
     width: 100%;
@@ -67,7 +132,7 @@
     height: 60px;
     position: absolute;
     top: 60px;
-    color: white;
+    color: black;
     background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
     cursor: pointer;
 }
@@ -99,43 +164,38 @@
 
 h6 {
     text-align: left;
-    color: white;
-    margin: 10px;
-    width: 160px;
-    padding-bottom: 10px;
+    color: black;
 }
 
-.uil-plus {
-    color: white;
-    font-size: 50px;
-}
 
 .uil-edit {
     position: absolute;
-    top: -60px;
+    top: 0;
     left: 5px;
     font-size: 30px;
     color: yellow;
     background: linear-gradient(rgba(55, 55, 255, .5), rgba(230, 4, 4, 0.2));
     cursor: pointer;
+    display: none;
 }
 
 .uil-trash {
     position: absolute;
-    top: -60px;
+    top: 0;
     right: 5px;
     font-size: 30px;
     color: red;
     background: linear-gradient(rgba(55, 55, 255, .2), rgba(230, 4, 4, 0.2));
     cursor: pointer;
+    display: none;
 }
 
 .deletePopup {
     position: absolute;
+    width: 100%;
+    height: 100vh;
     top: 0;
-    left: 55px;
-    width: 90%;
-    height: 70vh;
+    left: 0;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(7, 7, 7, 0.2));
     display: flex;
     align-items: center;

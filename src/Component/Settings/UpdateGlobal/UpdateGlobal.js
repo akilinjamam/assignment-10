@@ -182,11 +182,11 @@ const UpdateHome = () => {
         // send data to server:
 
         try {
-            const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/globalEvents/${updateGlobalId}`, allData)
+            await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/globalEvents/${updateGlobalId}`, allData)
                 .then(res => setMessage(res.data));
 
             if (findBannerForUpdate?._id) {
-                const res = await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
+                await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
                     bannerImg: img,
                     tourPrice: price,
@@ -196,7 +196,7 @@ const UpdateHome = () => {
                     .then(res => setMessage(res.data));
             }
 
-            const updateCart = axios.patch('https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/bulk-update', {
+            axios.patch('https://asssignment-10-server-delta.vercel.app/api/v1/userCarts/bulk-update', {
                 ids: mappedFiltered,
                 data: {
                     tourName: name,
@@ -204,18 +204,12 @@ const UpdateHome = () => {
                     tourPrice: price,
                 }
             })
-
             refetch();
-
         } catch (error) {
-
             setMessage(error.response.data);
         };
-
         setCount(count + 1)
-
     };
-
 
     const finalMessage = (e) => {
         e.preventDefault();
@@ -241,7 +235,6 @@ const UpdateHome = () => {
             setContentFifth('');
             setView(false)
         };
-
         navigate('/dashboard')
     };
 
@@ -264,9 +257,9 @@ const UpdateHome = () => {
         }
     }, [imgContainer])
 
-
     return (
         <div>
+            <br /><br />
             <div className="updateHomeMain">
                 <div className="updateHeading">
                     <div className="updatePartGl"><span>basic info</span></div>

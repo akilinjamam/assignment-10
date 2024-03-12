@@ -49,6 +49,7 @@ import BlogDetail from './Component/Blogs/BlogDetail';
 import fetchBannerData from './fetchData/fetchBannerData';
 import Testmail from './Component/testmail/Testmail';
 import Test from './Component/test/Test';
+import DashboardNew from './Component/Settings/newDashboard/DashboardNew';
 
 function App() {
 
@@ -97,7 +98,8 @@ function App() {
               }></Route>
               <Route path='/dashboard' element={
                 <RequireAdminEditor>
-                  <Dashboard></Dashboard>
+                  {/* <Dashboard></Dashboard> */}
+                  <DashboardNew />
                 </RequireAdminEditor>}>
                 <Route index element={<DashboardHome></DashboardHome>}></Route>
                 <Route path='addToHome' element={<AddEventsHome></AddEventsHome>}></Route>

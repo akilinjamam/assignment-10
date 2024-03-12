@@ -222,7 +222,7 @@ const AddEventsAbroad = () => {
         // send data to banner server:
 
         try {
-            const resBanner = await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents', {
+            await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents', {
                 name: lastEventForBanner[0].name,
                 bannerImg: lastEventForBanner[0].img,
                 tourType: lastEventForBanner[0].tourArea,
@@ -256,7 +256,7 @@ const AddEventsAbroad = () => {
 
     return (
         <div className='addEventsHome'>
-            <p className='homeTitle'>ADD HOME EVENTS :</p>
+            <br /><br />
             <div className='addEventsHomeMain'>
                 <div className='showStepsAbroad'>
                     <div className={` ${fillBasic ? 'backgroundyellow' : 'gray'} stepAbroad1`}>
