@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './DashboardNew.css';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import fetchUserControllData from '../../../fetchData/fetchUserControllData';
+import ImageModal from '../../../imageModal/ImageModal';
+import { fetchGetUnsplashData } from '../../../fetchData/fetchUnsplashData';
+import noteContext from '../../../Context/noteContext';
 
 const DashboardNew = () => {
     const location = useLocation();
-    console.log(location?.pathname)
+    const [collapse, setCollapse] = useState(false)
+    const [viewText, setviewText] = useState(false)
     const [user] = useAuthState(auth);
     const [slider, setSlider] = useState(true);
     const [view, setView] = useState(false);
+    const [imgData, setImgData] = useState([]);
 
-    console.log(window.history)
 
     const navigate = useNavigate();
 
@@ -31,6 +35,33 @@ const DashboardNew = () => {
             setView(true)
         }
     }
+
+    const handleCollapse = () => {
+        setCollapse(!collapse)
+        setTimeout(() => {
+            if (collapse) {
+                setviewText(false)
+                console.log(viewText)
+            }
+            if (!collapse) {
+                setviewText(true)
+            }
+        }, 500)
+    }
+
+    const state = useContext(noteContext);
+    const open = state.open;
+    const setOpen = state.setOpen;
+    const setSelectedImg = state.setSelectedImg;
+    const searchImg = async (e) => {
+        e.preventDefault();
+
+        const search = e.target.search.value;
+
+        await fetchGetUnsplashData(search)
+            .then(res => setImgData(res?.data?.results))
+    }
+
     return (
         <div>
             <div className='dashboardNew_main'>
@@ -38,9 +69,12 @@ const DashboardNew = () => {
                     <h5>DASHBOARD</h5>
                 </div>
                 <div className="dashboardNew_container only_flex ">
-                    <div className='dashboardPartOne'>
+                    <div style={{ width: `${collapse ? '3%' : '15%'}` }} className='dashboardPartOne'>
                         <br />
-                        <p ><i style={{ fontSize: '20px' }} class="uil uil-ellipsis-v"></i> MENU</p>
+                        <div className='between_flex'>
+                            <p > {!viewText ? <i style={{ fontSize: '20px' }} class="uil uil-ellipsis-v"></i> : <i onClick={handleCollapse} style={{ fontSize: '20px', cursor: 'pointer' }} class="uil uil-eye"></i>} {!viewText && 'MENU'}</p>
+                            {!viewText && <p onClick={handleCollapse}><i style={{ marginRight: '10px', cursor: 'pointer' }} class="uil uil-eye-slash"></i></p>}
+                        </div>
                         <hr />
                         <div className={`${slider ? 'leftSlide' : 'rightSlide'} sectionContainer`}>
                             <div className="editorSection">
@@ -60,7 +94,7 @@ const DashboardNew = () => {
                                         'text-info'
                                         :
                                         'text-light'
-                                        } btnDashboard`}><i style={{ fontSize: '20px' }} class="uil uil-plane-fly"></i> EVENTS</button>
+                                        } btnDashboard`}><i title={viewText && 'EVENTS'} style={{ fontSize: '20px' }} class="uil uil-plane-fly"></i> {!viewText && 'EVENTS'}</button>
                                 <br />
                                 <br />
                                 <button
@@ -73,36 +107,43 @@ const DashboardNew = () => {
                                         'text-info'
                                         :
                                         'text-light'
-                                        } btnDashboard`}><i style={{ fontSize: '20px' }} class="uil uil-document-layout-right"></i> BLOGS</button>
+                                        } btnDashboard`}><i title={viewText && 'BLOGS'} style={{ fontSize: '20px' }} class="uil uil-document-layout-right"></i> {!viewText && 'BLOGS'}</button>
                                 <br />
                                 <br />
-                                <button onClick={() => navigate('/dashboard/feedbackDash')} className={`${location?.pathname === '/dashboard/feedbackDash' ? 'text-info' : 'text-light'} btnDashboard`} ><i style={{ fontSize: '20px' }} class="uil uil-feedback"></i> REVIEW</button>
+                                <button onClick={() => navigate('/dashboard/feedbackDash')} className={`${location?.pathname === '/dashboard/feedbackDash' ? 'text-info' : 'text-light'} btnDashboard`} ><i title={viewText && 'REVIEW'} style={{ fontSize: '20px' }} class="uil uil-feedback"></i> {!viewText && 'REVIEW'}</button>
                                 <br />
                                 <br />
-                                <button onClick={handleAdmin} className='btnDashboard' ><i style={{ fontSize: '20px' }} class="uil uil-user-md"></i> ADMIN</button>
+                                <button onClick={handleAdmin} className='btnDashboard' ><i title={viewText && 'ADMIN'} style={{ fontSize: '20px' }} class="uil uil-user-md"></i> {!viewText && 'ADMIN'}</button>
                                 <br />
                                 <br />
-                                <button onClick={() => navigate('/')} className='btnDashboard' ><i style={{ fontSize: '20px' }} class="uil uil-home"></i> BACK TO HOME</button>
+                                <button onClick={() => navigate('/')} className='btnDashboard' ><i title={viewText && 'BACK TO HOME'} style={{ fontSize: '20px' }} class="uil uil-home"></i> {!viewText && 'BACK TO HOME'}</button>
                             </div>
                             <div className="adminSection">
                                 <br />
                                 <br />
-                                <button onClick={() => navigate('/dashboard/userControll')} className={`${location?.pathname === '/dashboard/userControll' ? 'text-info' : 'text-light'} btnDashboard`} ><i style={{ fontSize: '20px' }} class="uil uil-users-alt"></i> USER CONTROLL</button>
+                                <button onClick={() => navigate('/dashboard/userControll')} className={`${location?.pathname === '/dashboard/userControll' ? 'text-info' : 'text-light'} btnDashboard`} ><i title={viewText && 'USER CONTROLL'} style={{ fontSize: '20px' }} class="uil uil-users-alt"></i> {!viewText && 'USER CONTROLL'}</button>
                                 <br />
                                 <br />
                                 <button
                                     onClick={() => navigate('/dashboard/transection')}
-                                    className={`${location?.pathname === '/dashboard/transection' ? 'text-info' : 'text-light'} btnDashboard`} ><i style={{ fontSize: '20px' }} class="uil uil-transaction"></i> TRANSECTION</button>
+                                    className={`${location?.pathname === '/dashboard/transection' ? 'text-info' : 'text-light'} btnDashboard`} ><i title={viewText && 'TRANSECTION'} style={{ fontSize: '20px' }} class="uil uil-transaction"></i> {!viewText && 'TRANSECTION'}</button>
                                 <br />
                                 <br />
                                 <hr />
 
-                                <button onClick={() => setSlider(true)} className='btnDashboard'><i style={{ fontSize: '20px' }} class="uil uil-step-backward-alt"></i> BACK </button>
+                                <button onClick={() => setSlider(true)} className='btnDashboard'><i title={viewText && 'BACK'} style={{ fontSize: '20px' }} class="uil uil-step-backward-alt"></i>{!viewText && 'BACK'} </button>
                             </div>
                         </div>
                     </div>
-                    <div className="dashboardNew_right ">
+                    <div style={{ width: `${collapse ? '97%' : '85%'}` }} className="dashboardNew_right ">
                         <Outlet></Outlet>
+                        <ImageModal
+                            data={imgData} // it containing array of object with 30 pictures according to search result
+                            turn={open} // it is switch for open modal
+                            btn={setOpen} // it provides onclick function for opening modal
+                            search={searchImg} // this is a function which takes input data for searching
+                            action={setSelectedImg} // from provided images, this function hold selected image.
+                        />
                     </div>
                 </div>
                 <div className={`${view ? 'block' : 'none'}`}>

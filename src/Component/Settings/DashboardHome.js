@@ -119,7 +119,7 @@ const DashboardHome = () => {
                         <i style={{ color: 'black', paddingBottom: '15px', fontSize: '40px' }} className="uil uil-plus"></i>
                     </div>
                     <hr />
-                    <section className="homeEvents_data only_flex">
+                    <section style={{ flexWrap: 'wrap' }} className="homeEvents_data only_flex">
                         {
                             homeDatas?.data?.result?.map(h => {
                                 return (

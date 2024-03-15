@@ -9,6 +9,7 @@ import imgbbConverter from '../../../../imgbbCoverter/imgbbConverter';
 import { useQuery } from 'react-query';
 import { fetchGetBlogData, fetchUpdateBlogData } from '../../../../fetchData/fetchBlogData';
 import { useNavigate, useParams } from 'react-router-dom';
+import cloudinaryImgHolder from '../../../../cloudinaryImgHolder/CloudinaryImgHolder';
 
 const UpdateBlog = () => {
 
@@ -88,7 +89,8 @@ const UpdateBlog = () => {
                     <input className='blogInput' type="file"
                         onChange={(e) => {
                             const imgFile = e.target.files[0];
-                            imgbbConverter(imgFile, setImg);
+                            // imgbbConverter(imgFile, setImg);
+                            cloudinaryImgHolder(imgFile, setImg)
                         }}
                     />
                     <br />

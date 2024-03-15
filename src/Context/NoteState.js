@@ -11,6 +11,8 @@ const NoteState = (props) => {
     const [nameData, setNameData] = useState([]);
     const [formPersonal, setFormPersonal] = useState([]);
     const [blogIdContainer, setBlogIdContainer] = useState('');
+    const [open, setOpen] = useState(false);
+    const [selectedImg, setSelectedImg] = useState('');
 
     return (
         <NoteContext.Provider value={{
@@ -31,7 +33,11 @@ const NoteState = (props) => {
             homeData: homeData,
             setHomeData: setHomeData,
             blogIdContainer: blogIdContainer,
-            setBlogIdContainer: setBlogIdContainer
+            setBlogIdContainer: setBlogIdContainer,
+            open: open,
+            setOpen: setOpen,
+            selectedImg,
+            setSelectedImg
         }}>
             {props.children}
         </NoteContext.Provider>

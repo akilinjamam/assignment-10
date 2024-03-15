@@ -1,15 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './DashboardHomeBlogs.css';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { fetchDeleteBlogData, fetchGetBlogData } from '../../fetchData/fetchBlogData';
 import Loading from '../../Loading/Loading';
-import fetchHomeData from '../../fetchData/fetchHomeData';
-import fetchGlobalData from '../../fetchData/fetchGlobalData';
-import fetchBannerData from '../../fetchData/fetchBannerData';
-import fetchCartData from '../../fetchData/fetchCartData';
-import fetchCartDataDelete from '../../fetchData/fetchCartDataDelete';
-import noteContext from '../../Context/noteContext';
+
 
 const DashboardHomeBlogs = () => {
 
@@ -17,8 +12,6 @@ const DashboardHomeBlogs = () => {
 
 
     const { data: blogDatas, refetch: refetchBlog, isLoading: loadingBlogs } = useQuery("blogDatas", () => fetchGetBlogData());
-    console.log(blogDatas?.data?.result);
-
 
     const [view, setView] = useState(false)
     const [info, setInfo] = useState('');
@@ -48,6 +41,7 @@ const DashboardHomeBlogs = () => {
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
         }
+        setView(false)
 
     };
 
@@ -77,7 +71,7 @@ const DashboardHomeBlogs = () => {
                         <i style={{ color: 'black', paddingBottom: '15px', fontSize: '40px' }} className="uil uil-plus"></i>
                     </div>
                     <hr />
-                    <section className="homeEvents_data only_flex">
+                    <section style={{ flexWrap: 'wrap' }} className="homeEvents_data only_flex">
                         {
                             blogDatas?.data?.result?.map(h => {
                                 return (

@@ -28,13 +28,13 @@
 }
 
 .dashboardNew_left{
-    width: 20%;
+    width: 15%;
     height: 100%;
     background-color: gray;
 }
 
 .dashboardPartOne {
-    width: 20%;
+    /* width: 15%; */
     height: 100%;
     border-right: 1px solid lightgray;
     text-align: left;
@@ -42,7 +42,9 @@
     position: relative;
     overflow-y: hidden;
     overflow-x: hidden;
-
+    transition: 1s ease-in-out;
+    /* transform: translateX(-80%); */
+    
 }
 
 .dashboardPartOne p {
@@ -83,9 +85,10 @@
 }
 
 .dashboardNew_right{
-    width:80%;
+    /* width:85%; */
     height: 100%;
     /* background-color: lightblue; */
+    transition: 1s ease-in-out;
 }
 
 
@@ -145,6 +148,7 @@
         width: 100%;
         height: 78.5vh;
         font-family: "Oswald", sans-serif;
+        font-size: 80%;
         color: red;
     }
 

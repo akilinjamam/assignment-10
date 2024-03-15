@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
+import cloudinaryImgHolder from '../../cloudinaryImgHolder/CloudinaryImgHolder';
 
 const AddEventsHome = () => {
 
@@ -40,6 +41,8 @@ const AddEventsHome = () => {
 
     const [message, setMessage] = useState('');
     const [bannerMessage, setBannerMessage] = useState('');
+
+
 
     const [count, setCount] = useState(1);
 
@@ -183,28 +186,6 @@ const AddEventsHome = () => {
         setCount(1);
     };
 
-
-    useEffect(() => {
-        if (imgContainer) {
-            console.log(imgContainer)
-            const imgStorageKey = 'a7d23ad727734bb709b70dc5aa33543f'
-            const formData = new FormData();
-            formData.append('image', imgContainer);
-            const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
-            fetch(url, {
-                method: 'POST',
-                body: formData,
-            })
-                .then(res => res.json())
-                .then(result => {
-
-                    setImg(result?.data?.url);
-                    console.log(result?.data?.url)
-
-                })
-        }
-    }, [imgContainer])
-
     const addToBanner = async (e) => {
         e.preventDefault();
         // send data to banner server:
@@ -337,7 +318,7 @@ const AddEventsHome = () => {
 
                                                 <input style={{ width: '200px' }} type="file" onChange={(e) => {
                                                     const imgFile = e.target.files[0];
-                                                    setImgContainer(imgFile);
+                                                    cloudinaryImgHolder(imgFile, setImgContainer)
                                                 }} id="" />
                                             </div>
                                         </div>

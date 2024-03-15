@@ -10,6 +10,7 @@ import axios from 'axios';
 import fetchBannerData from '../../../fetchData/fetchBannerData';
 import fetchUserCartData from '../../../fetchData/fetchUserCartData';
 import fetchCartData from '../../../fetchData/fetchCartData';
+import cloudinaryImgHolder from '../../../cloudinaryImgHolder/CloudinaryImgHolder';
 
 const UpdateHome = () => {
 
@@ -190,7 +191,6 @@ const UpdateHome = () => {
                     console.log(res)
                 });
 
-
             if (findBannerForUpdate?._id) {
                 await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
@@ -251,24 +251,6 @@ const UpdateHome = () => {
         navigate('/dashboard')
     };
 
-    useEffect(() => {
-        if (imgContainer) {
-            const imgStorageKey = 'a7d23ad727734bb709b70dc5aa33543f'
-            const formData = new FormData();
-            formData.append('image', imgContainer);
-            const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
-            fetch(url, {
-                method: 'POST',
-                body: formData,
-            })
-                .then(res => res.json())
-                .then(result => {
-
-                    setImg(result?.data?.url);
-
-                })
-        }
-    }, [imgContainer])
     return (
         <div>
             <br /><br />
@@ -340,6 +322,7 @@ const UpdateHome = () => {
                                                 <input style={{ width: '200px' }} type="file" onChange={(e) => {
                                                     const imgFile = e.target.files[0];
                                                     setImgContainer(imgFile);
+                                                    cloudinaryImgHolder(imgFile, setImgContainer)
                                                 }} id="" />
                                             </div>
                                         </div>
