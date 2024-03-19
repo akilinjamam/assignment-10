@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './UpdateHome.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
 import { useEffect } from 'react';
@@ -8,39 +8,60 @@ import fetchHomeData from '../../../fetchData/fetchHomeData';
 import JoditEditor from 'jodit-react';
 import axios from 'axios';
 import fetchBannerData from '../../../fetchData/fetchBannerData';
-import fetchUserCartData from '../../../fetchData/fetchUserCartData';
+
 import fetchCartData from '../../../fetchData/fetchCartData';
 import cloudinaryImgHolder from '../../../cloudinaryImgHolder/CloudinaryImgHolder';
+import noteContext from '../../../Context/noteContext';
 
 const UpdateHome = () => {
+
+    const location = useLocation().pathname;
+    const state = useContext(noteContext);
+    const setPathName = state.setPathName
+
+    const name = state.updateHomeName;
+    const price = state.updateHomePrice;
+    const stayLong = state.updateHomeStayLong;
+    const tourDate = state.updateHomeTourDate;
+    const tourLastDate = state.updateHomeTourLastDate;
+    const tourArea = state.updateHomeTourArea;
+    const itineraries = state.updateHomeItineraries;
+    const terms = state.updateHomeTermsAndConditions;
+    const addition = state.updateHomeAdditionalInfo;
+    const inclusion = state.updateHomeInclusion;
+    const description = state.updateHomeDescription;
+    const updateHomeImg = state.updateHomeImg
+    const setUpdateHomeImg = state.setUpdateHomeImg
+
+    const setName = state.setUpdateHomeName;
+    const setPrice = state.setUpdateHomePrice;
+    const setStayLong = state.setUpdateHomeStayLong;
+    const setTourDate = state.setUpdateHomeTourDate;
+    const setTourLastDate = state.setUpdateHomeTourLastDate;
+    const setTourArea = state.setUpdateHomeTourArea;
+    const setItineraries = state.setUpdateHomeItineraries;
+    const setTerms = state.setUpdateHomeTermsAndConditions;
+    const setAddition = state.setUpdateHomeAdditionalInfo;
+    const setInclusion = state.setUpdateHomeInclusion;
+    const setDescription = state.setUpdateHomeDescription;
+
+    const setContent = state.setUpdateHomeContent;
+    const setContectSecond = state.setUpdateHomeContentSecond;
+    const setContentThird = state.setUpdateHomeContentThird;
+    const setContentFourth = state.setUpdateHomeContentFourth;
+    const setContentFifth = state.setUpdateHomeContentFifth;
 
     const editor = useRef(null);
     const [view, setView] = useState(false);
     const [count, setCount] = useState(1);
 
-    const [content, setContent] = useState('');
-    const [contentSecond, setContectSecond] = useState('');
-    const [contentThird, setContentThird] = useState('');
-    const [contentFourth, setContentFourth] = useState('');
-    const [contentFifth, setContentFifth] = useState('');
+
     const navigate = useNavigate();
     const { updateHomeId } = useParams()
 
-    const [name, setName] = useState('');
-    const [img, setImg] = useState('');
-    const [imgContainer, setImgContainer] = useState('');
-    const [price, setPrice] = useState('');
-    const [stayLong, setStayLong] = useState('');
-    const [tourDate, setTourDate] = useState('');
-    const [tourLastDate, setTourLastDate] = useState('');
-    const [tourArea, setTourArea] = useState('');
-    const [description, setDescription] = useState('');
-    const [itineraries, setItineraries] = useState('');
-    const [terms, setTerms] = useState('')
-    const [addition, setAddition] = useState('');
-    const [inclusion, setInclusion] = useState('');
+
     const [allData, setAllData] = useState({});
-    console.log(allData);
+
 
     const [message, setMessage] = useState('');
 
@@ -71,12 +92,8 @@ const UpdateHome = () => {
 
     const mappedFiltered = filteringCartData?.map(obj => obj._id);
 
-
-
-
     useEffect(() => {
         setName(homeData?.name);
-        setImg(homeData?.img);
         setPrice(homeData?.price);
         setStayLong(homeData?.stayLong);
         setTourDate(homeData?.tourDate);
@@ -87,20 +104,20 @@ const UpdateHome = () => {
         setTerms(homeData?.termsAndConditions);
         setAddition(homeData?.additionalInfo);
         setInclusion(homeData?.inclusion);
-    }, [homeData])
+    }, [homeData, setName, setPrice, setStayLong, setTourArea, setTourDate, setTourLastDate, setDescription, setItineraries, setTerms, setAddition, setInclusion])
 
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
+        if (name === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
             setCount(1);
-        } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
+        } else if (name && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
             setView(false);
 
         }
 
-        if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
     };
@@ -158,10 +175,11 @@ const UpdateHome = () => {
             setCount(5);
         }
 
+        const updateImg = updateHomeImg ? updateHomeImg : homeData?.img;
 
         setAllData({
             name: name,
-            img: img,
+            img: updateImg,
             price: price,
             stayLong: stayLong,
             tourDate: tourDate,
@@ -188,13 +206,13 @@ const UpdateHome = () => {
             await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/homeEvents/${updateHomeId}`, allData)
                 .then(res => {
                     setMessage(res.data);
-                    console.log(res)
                 });
 
             if (findBannerForUpdate?._id) {
+                const updateImg = updateHomeImg ? updateHomeImg : homeData?.img
                 await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
-                    bannerImg: img,
+                    bannerImg: updateImg,
                     tourPrice: price,
                     tourDate: tourDate,
                     tourLastDate: tourLastDate
@@ -226,10 +244,9 @@ const UpdateHome = () => {
     const finalMessage = (e) => {
         e.preventDefault();
 
-        if (name && img && imgContainer && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
+        if (name && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion && updateHomeImg) {
             setName('');
-            setImg('');
-            setImgContainer('');
+            setUpdateHomeImg('')
             setPrice('');
             setStayLong('');
             setTourDate('');
@@ -247,7 +264,6 @@ const UpdateHome = () => {
             setContentFifth('');
             setView(false)
         };
-
         navigate('/dashboard')
     };
 
@@ -321,17 +337,19 @@ const UpdateHome = () => {
 
                                                 <input style={{ width: '200px' }} type="file" onChange={(e) => {
                                                     const imgFile = e.target.files[0];
-                                                    setImgContainer(imgFile);
-                                                    cloudinaryImgHolder(imgFile, setImgContainer)
+                                                    cloudinaryImgHolder(imgFile, setUpdateHomeImg)
                                                 }} id="" />
                                             </div>
                                         </div>
                                         <br />
                                         <div>
-                                            <div></div>
-                                            {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file....</p>}
-
+                                            <button onClick={() => {
+                                                setPathName(location);
+                                                navigate('/dashboard/unsplash')
+                                            }} className='btn btn-primary'>Add Unsplash Image</button>
                                         </div>
+                                        <br />
+
                                     </div>
                                     <div className='basicInfoPartTwo'>
 

@@ -1,23 +1,45 @@
 import JoditEditor from 'jodit-react';
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './AddEventsAbroad.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import fetchGlobalData from '../../fetchData/fetchGlobalData';
-import fetchBannerData from '../../fetchData/fetchBannerData';
 import cloudinaryImgHolder from '../../cloudinaryImgHolder/CloudinaryImgHolder';
+import noteContext from '../../Context/noteContext';
 
 const AddEventsAbroad = () => {
+
+    const location = useLocation().pathname;
+
+    const state = useContext(noteContext);
+    const allInputAbroadEventData = state.allInputAbroadEventData;
+    const setAllInputAbroadEventData = state.setAllInputAbroadEventData;
+
+    const name = allInputAbroadEventData.name;
+    const price = allInputAbroadEventData.price;
+    const stayLong = allInputAbroadEventData.stayLong;
+    const tourDate = allInputAbroadEventData.tourDate;
+    const tourLastDate = allInputAbroadEventData.tourLastDate;
+    const tourArea = allInputAbroadEventData.tourArea;
+    const description = allInputAbroadEventData.description;
+    const itineraries = allInputAbroadEventData.itineraries;
+    const terms = allInputAbroadEventData.termsAndConditions;
+    const addition = allInputAbroadEventData.additionalInfo;
+    const inclusion = allInputAbroadEventData.inclusion;
+    const content = allInputAbroadEventData.content;
+    const contentSecond = allInputAbroadEventData.contentSecond;
+    const contentThird = allInputAbroadEventData.contentThird;
+    const contentFourth = allInputAbroadEventData.contentFourth;
+    const contentFifth = allInputAbroadEventData.contentFifth;
+    const setAddGlobalImg = state.setAddGlobalImg
+    const addGlobalImg = state.addGlobalImg
+    const setPathName = state.setPathName;
+
     const editor = useRef(null);
-    const [content, setContent] = useState('');
-    const [contentSecond, setContectSecond] = useState('');
-    const [contentThird, setContentThird] = useState('');
-    const [contentFourth, setContentFourth] = useState('');
-    const [contentFifth, setContentFifth] = useState('');
 
     const [allData, setAllData] = useState({})
     const [view, setView] = useState(false);
@@ -26,20 +48,6 @@ const AddEventsAbroad = () => {
     const [fillItineraries, setFillItineraries] = useState(false);
     const [fillTerms, setFillTerms] = useState(false);
     const [fillAdditionIn, setFillAdditionIn] = useState(false);
-
-    const [name, setName] = useState('');
-    const [img, setImg] = useState('');
-    const [imgContainer, setImgContainer] = useState();
-    const [price, setPrice] = useState('');
-    const [stayLong, setStayLong] = useState('');
-    const [tourDate, setTourDate] = useState('');
-    const [tourLastDate, setTourLastDate] = useState('');
-    const [tourArea, setTourArea] = useState('');
-    const [description, setDescription] = useState('');
-    const [itineraries, setItineraries] = useState('');
-    const [terms, setTerms] = useState('')
-    const [addition, setAddition] = useState('');
-    const [inclusion, setInclusion] = useState('');
 
     const [message, setMessage] = useState('');
     const [bannerMessage, setBannerMessage] = useState('');
@@ -50,10 +58,9 @@ const AddEventsAbroad = () => {
     const navigate = useNavigate();
 
     const { data: getForBanner, refetch } = useQuery("getForBanner", () => fetchGlobalData())
-    const { data: getBanner } = useQuery("getBanner", () => fetchBannerData())
+
     const [processing, setProcessing] = useState(false)
-    const eventBanner = getBanner?.data?.result;
-    ;
+
     const eventForBanner = getForBanner?.data?.result;
     const lastEventForBanner = eventForBanner?.slice((eventForBanner.length - 1), (eventForBanner.length))
 
@@ -61,15 +68,15 @@ const AddEventsAbroad = () => {
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '' && imgContainer === '') {
+        if (name === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '' && addGlobalImg === '') {
             setCount(1);
-        } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong && imgContainer) {
+        } else if (name && addGlobalImg && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
             setView(false);
             setFillBasic(true);
         }
 
-        if (name === '' || img === '' || imgContainer === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '' || imgContainer === '') {
+        if (name === '' || addGlobalImg === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
     }
@@ -125,11 +132,9 @@ const AddEventsAbroad = () => {
             setView(true);
             setCount(5);
         }
-
-
         setAllData({
             name: name,
-            img: img,
+            img: addGlobalImg,
             price: price,
             stayLong: stayLong,
             tourDate: tourDate,
@@ -162,38 +167,38 @@ const AddEventsAbroad = () => {
 
     };
 
-
     const finalMessage = (e) => {
         e.preventDefault();
 
-        if (name && img && imgContainer && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
-            setName('');
-            setImg('');
-            setImgContainer('');
-            setPrice('');
-            setStayLong('');
-            setTourDate('');
-            setTourArea('');
-            setTourLastDate('');
-            setItineraries('');
-            setDescription('');
-            setTerms('');
-            setAddition('');
-            setInclusion('');
-            setContent('');
-            setContectSecond('');
-            setContentThird('');
-            setContentFourth('');
-            setContentFifth('');
-            setView(false)
-        };
+        if (name && addGlobalImg && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
 
+            setAllInputAbroadEventData({
+                ...allInputAbroadEventData,
+                name: '',
+                price: '',
+                stayLong: '',
+                tourDate: '',
+                tourArea: '',
+                tourLastDate: '',
+                itineraries: '',
+                description: '',
+                termsAndConditions: '',
+                additionalInfo: '',
+                inclusion: '',
+                content: '',
+                contentSecond: '',
+                contentThird: '',
+                contentFourth: '',
+                contentFifth: '',
+            })
+            setView(false)
+            setAddGlobalImg('')
+        };
         setFillBasic(false);
         setFillDes(false);
         setFillItineraries(false);
         setFillTerms(false);
         setFillAdditionIn(false);
-
 
         setCount(1);
     };
@@ -201,7 +206,6 @@ const AddEventsAbroad = () => {
     const addToBanner = async (e) => {
         e.preventDefault();
         // send data to banner server:
-
         try {
             await axios.post('https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents', {
                 name: lastEventForBanner[0].name,
@@ -219,7 +223,6 @@ const AddEventsAbroad = () => {
         };
 
     };
-
     useEffect(() => {
         if (count === 7) {
             setProcessing(true);
@@ -230,10 +233,6 @@ const AddEventsAbroad = () => {
             }, 4000)
         }
     }, [count, refetch]);
-    ;
-
-
-
 
     return (
         <div className='addEventsHome'>
@@ -273,9 +272,7 @@ const AddEventsAbroad = () => {
 
                     </div>
                 </div>
-
                 <hr />
-
 
                 <div className='addEventsHomeAllInfo'>
                     {
@@ -287,18 +284,21 @@ const AddEventsAbroad = () => {
                                         <div>
                                             <label htmlFor="">Tour Name :</label>
                                             <div>
-                                                <input required type="text" name="tourName" value={name} onChange={(e) => setName(e.target.value)} id="" />
-
+                                                <input required type="text" name="tourName" value={name} onChange={(e) => {
+                                                    setAllInputAbroadEventData({ ...allInputAbroadEventData, name: e.target.value })
+                                                }} id="" />
                                             </div>
                                         </div>
                                         {(view && name === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
-
                                         <br />
                                         <div>
                                             <label htmlFor="">Tour Price :</label>
                                             <div>
-                                                <input required type="text" name="tourPrice" value={price
-                                                } onChange={(e) => setPrice(e.target.value)} id="" />
+                                                <input required type="text" name="tourPrice" value={price} id=""
+                                                    onChange={(e) => {
+                                                        setAllInputAbroadEventData({ ...allInputAbroadEventData, price: e.target.value })
+                                                    }}
+                                                />
 
                                             </div>
                                         </div>
@@ -308,7 +308,9 @@ const AddEventsAbroad = () => {
                                             <label htmlFor="">Tour Duration :</label>
                                             <div>
                                                 <input required type="text" name="tourDuration" value={stayLong
-                                                } onChange={(e) => setStayLong(e.target.value)} id="" />
+                                                } onChange={(e) => {
+                                                    setAllInputAbroadEventData({ ...allInputAbroadEventData, stayLong: e.target.value })
+                                                }} id="" />
 
                                             </div>
                                         </div>
@@ -317,7 +319,9 @@ const AddEventsAbroad = () => {
                                         <div>
                                             <label htmlFor="">Tour Date :</label>
                                             <div>
-                                                <input style={{ width: '195px' }} value={tourDate} onChange={(e) => setTourDate(e.target.value)} type="date" name="" id="" />
+                                                <input style={{ width: '195px' }} value={tourDate} onChange={(e) => {
+                                                    setAllInputAbroadEventData({ ...allInputAbroadEventData, tourDate: e.target.value })
+                                                }} type="date" name="" id="" />
 
                                             </div>
                                         </div>
@@ -326,24 +330,31 @@ const AddEventsAbroad = () => {
                                         <div>
                                             <label htmlFor="">Tour Image :</label>
                                             <div>
-
                                                 <input style={{ width: '200px' }} type="file" onChange={(e) => {
                                                     const imgFile = e.target.files[0];
-                                                    cloudinaryImgHolder(imgFile, setImgContainer)
+                                                    cloudinaryImgHolder(imgFile, setAddGlobalImg)
                                                 }} id="" />
                                             </div>
                                         </div>
                                         <br />
                                         <div>
+                                            <button onClick={() => {
+                                                setPathName(location)
+                                                navigate('/dashboard/unsplash')
+                                            }} className='btn btn-primary' >Add Unsplash Image</button>
+                                        </div>
+                                        <br />
+                                        <div>
                                             <div></div>
-                                            {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file...</p>}
-
+                                            {(view && addGlobalImg === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file...</p>}
                                         </div>
                                     </div>
                                     <div className='basicInfoPartTwo'>
                                         <div>
                                             <label htmlFor="">Tour Registration Last Date :</label>
-                                            <input style={{ width: '45%' }} value={tourLastDate} onChange={(e) => setTourLastDate(e.target.value)} type="date" name="" id="" />
+                                            <input style={{ width: '45%' }} value={tourLastDate} onChange={(e) => {
+                                                setAllInputAbroadEventData({ ...allInputAbroadEventData, tourLastDate: e.target.value })
+                                            }} type="date" name="" id="" />
                                         </div>
                                         {(view && tourLastDate === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />
@@ -352,7 +363,7 @@ const AddEventsAbroad = () => {
                                             <div>
                                                 <select required name="" id="" onChange={(e) => {
                                                     const option = e.target.value;
-                                                    setTourArea(option);
+                                                    setAllInputAbroadEventData({ ...allInputAbroadEventData, tourArea: option })
                                                 }}>
                                                     <option value="">select...</option>
                                                     <option value="global">global</option>
@@ -362,15 +373,10 @@ const AddEventsAbroad = () => {
                                         </div>
                                         {(view && tourArea === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please choose any option...</p>}
                                         <br />
-
-
                                     </div>
-
                                 </div>
-
                                 <input style={{ position: 'absolute', bottom: '10px', left: '20px' }} onClick={() => navigate('/dashboard')} className='btn btn-primary' type="submit" value="BACK" />
                                 <button style={{ position: 'absolute', bottom: '10px', right: '30px' }} onClick={handleBasic} className='btn btn-primary btnHomeBasic'>NEXT</button>
-
                             </form>
 
                         </div>
@@ -384,8 +390,8 @@ const AddEventsAbroad = () => {
 
                                     ref={editor}
                                     value={content}
-                                    onBlur={newContent => setContent(newContent)}
-                                    onChange={newContent => { setDescription(newContent) }}
+                                    onBlur={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, content: newContent }) }}
+                                    onChange={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, description: newContent }) }}
                                 />
                                 <br />
                                 {(view && description === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -411,8 +417,8 @@ const AddEventsAbroad = () => {
 
                                     ref={editor}
                                     value={contentSecond}
-                                    onBlur={newContent => setContectSecond(newContent)}
-                                    onChange={newContent => { setItineraries(newContent) }}
+                                    onBlur={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, contentSecond: newContent }) }}
+                                    onChange={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, itineraries: newContent }) }}
                                 />
                                 <br />
                                 {(view && itineraries === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -435,8 +441,8 @@ const AddEventsAbroad = () => {
 
                                     ref={editor}
                                     value={contentThird}
-                                    onBlur={newContent => setContentThird(newContent)}
-                                    onChange={newContent => { setTerms(newContent) }}
+                                    onBlur={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, contentThird: newContent }) }}
+                                    onChange={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, termsAndConditions: newContent }) }}
                                 />
                                 <br />
                                 {(view && terms === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -463,8 +469,8 @@ const AddEventsAbroad = () => {
 
                                     ref={editor}
                                     value={contentFourth}
-                                    onBlur={newContent => setContentFourth(newContent)}
-                                    onChange={newContent => { setAddition(newContent) }}
+                                    onBlur={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, contentFourth: newContent }) }}
+                                    onChange={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, additionalInfo: newContent }) }}
                                 />
                                 <br />
                                 {(view && addition === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -476,8 +482,8 @@ const AddEventsAbroad = () => {
 
                                     ref={editor}
                                     value={contentFifth}
-                                    onBlur={newContent => setContentFifth(newContent)}
-                                    onChange={newContent => { setInclusion(newContent) }}
+                                    onBlur={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, contentFifth: newContent }) }}
+                                    onChange={newContent => { setAllInputAbroadEventData({ ...allInputAbroadEventData, inclusion: newContent }) }}
                                 />
                                 <br />
                                 {(view && inclusion === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}

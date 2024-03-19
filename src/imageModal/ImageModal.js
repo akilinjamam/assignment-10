@@ -1,27 +1,57 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import imageModal from './ImageModal.module.css';
 import Pagination from '../pagination/Pagination';
 import noteContext from '../Context/noteContext';
-const ImageModal = ({ turn = false, search, data, action }) => {
+import { useNavigate } from 'react-router-dom';
+const ImageModal = ({ turn = true, search, data }) => {
 
     const state = useContext(noteContext);
-    const btn = state.setOpen;
+    const pathName = state.pathName;
+    const setPathName = state.setPathName;
+    const setAddBlogImg = state.setAddBlogImg;
+    const setUpdateBlogImg = state.setUpdateBlogImg;
+    const setAddHomeImg = state.setAddHomeImg;
+    const setAddGlobalImg = state.setAddGlobalImg;
+    const setUpdateHomeImg = state.setUpdateHomeImg;
+    const setUpdateGlobalImg = state.setUpdateGlobalImg;
 
     const [paginatedData, setPaginatedData] = useState([]);
     const [pageNumber, setPageNumber] = useState();
-
+    const navigate = useNavigate();
     const handleSelecedImg = (value) => {
-        action(value);
-        btn(false);
-    }
+        if (pathName === '/dashboard/addToBlog') {
+            setAddBlogImg(value);
+        }
+        if (pathName.slice(0, 21) === '/dashboard/updateBlog') {
+            setUpdateBlogImg(value);
+        }
+        if (pathName === '/dashboard/addToHome') {
+            setAddHomeImg(value)
+        }
+        if (pathName === '/dashboard/addToAbroad') {
+            setAddGlobalImg(value);
+        }
+        if (pathName.slice(0, 21) === '/dashboard/updateHome') {
+            setUpdateHomeImg(value);
+        }
+        if (pathName.slice(0, 23) === '/dashboard/updateGlobal') {
+            setUpdateGlobalImg(value);
+            console.log(true)
+        }
+        navigate(`${pathName}`);
+        setPathName('')
 
+    }
     return (
         <div className={`${imageModal.main} ${turn ? imageModal.block : imageModal.none}`}
         >
             <div className={`${imageModal.container} flex`}>
                 <div className={`${imageModal.modal} `}>
                     <div className={`${imageModal.modalBtn} right_flex`}>
-                        <i style={{ cursor: 'pointer', }} onClick={() => btn(false)} className="uil uil-times"></i>
+                        <i style={{ cursor: 'pointer', }} onClick={() => {
+                            navigate(`${pathName}`);
+                            setPathName('')
+                        }} className="uil uil-times"></i>
                     </div>
                     <form onSubmit={search} action="">
                         <div className={`${imageModal.modalSearch} flex_between`}>

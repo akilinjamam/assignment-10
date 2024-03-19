@@ -1,56 +1,64 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './UpdateBlog.css';
 import JoditEditor from 'jodit-react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../../firebase.init';
 import { useState } from 'react';
 import { useRef } from 'react';
-import imgbbConverter from '../../../../imgbbCoverter/imgbbConverter';
 import { useQuery } from 'react-query';
 import { fetchGetBlogData, fetchUpdateBlogData } from '../../../../fetchData/fetchBlogData';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import cloudinaryImgHolder from '../../../../cloudinaryImgHolder/CloudinaryImgHolder';
+import noteContext from '../../../../Context/noteContext';
 
 const UpdateBlog = () => {
+
+    const location = useLocation().pathname;
+    const state = useContext(noteContext);
+
+    const setPathName = state.setPathName;
+
+    const title = state.blogUpdateTitle
+    const setTitle = state.setBlogUpdateTitle
+    const description = state.blogUpdateDescription
+    const setDescription = state.setBlogUpdateDescription
+    const content = state.blogUpdatContent
+    const setContent = state.setBlogUpdatContent
+    const bloggerName = state.blogUpdateBloggerName
+    const setBloggerName = state.setBlogUpdateBloggerName
+    const updateBlogImg = state.updateBlogImg;
+    const setUpdateBlogImg = state.setUpdateBlogImg;
 
     const navigate = useNavigate();
 
     const { updateBlogId } = useParams();
-
-    const user = useAuthState(auth);
     const editor = useRef(null);
-    const [title, setTitle] = useState('');
-    const [blogger, setBlogger] = useState('');
 
-    const [content, setContent] = useState('');
     const [img, setImg] = useState('');
-    const [description, setDescription] = useState('');
 
+    console.log(updateBlogImg)
 
     const { data: updateBlogs } = useQuery("updateBlogs", () => fetchGetBlogData());
-
     const allBlogs = updateBlogs?.data?.result;
 
     const findblogs = allBlogs?.find(f => {
         return f?._id === updateBlogId
     });
 
-    console.log(findblogs);
 
     useEffect(() => {
         setTitle(findblogs?.title);
-        setBlogger(findblogs?.bloggerName);
-        setImg(findblogs?.blogImg);
-    }, [findblogs])
+        setBloggerName(findblogs?.bloggerName);
+        // setUpdateBlogImg(findblogs?.blogImg);
+    }, [findblogs, setTitle, setBloggerName, setUpdateBlogImg])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
         const updateBlog = {
             title: title,
-            bloggerName: blogger,
-            blogImg: img,
+            bloggerName: bloggerName,
+            blogImg: updateBlogImg,
             description: description
         }
 
@@ -59,10 +67,7 @@ const UpdateBlog = () => {
                 navigate('/dashboard/dashboardHomeBlogs')
             }
         })
-
-
     }
-
 
     return (
         <div className='blogMain'>
@@ -78,9 +83,9 @@ const UpdateBlog = () => {
                     <br />
                     <label className='blogLabel' htmlFor="">Blogger Name:</label>
                     <br />
-                    <input value={blogger} className='blogInput' type="text" required
+                    <input value={bloggerName} className='blogInput' type="text" required
                         onChange={(e) => {
-                            setBlogger(e.target.value)
+                            setBloggerName(e.target.value)
                         }}
                     />
                     <br />
@@ -90,9 +95,14 @@ const UpdateBlog = () => {
                         onChange={(e) => {
                             const imgFile = e.target.files[0];
                             // imgbbConverter(imgFile, setImg);
-                            cloudinaryImgHolder(imgFile, setImg)
+                            cloudinaryImgHolder(imgFile, setUpdateBlogImg)
                         }}
                     />
+                    <br />
+                    <button onClick={() => {
+                        navigate('/dashboard/unsplash');
+                        setPathName(location);
+                    }} className='btn btn-primary'>Add Unsplash Image</button>
                     <br />
                     <label className='blogLabel' htmlFor="">Add Description:</label>
                     <br />

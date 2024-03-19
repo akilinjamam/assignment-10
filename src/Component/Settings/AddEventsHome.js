@@ -1,21 +1,46 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useState } from 'react';
 import JoditEditor from 'jodit-react';
 import './AddEventsHome.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import fetchHomeData from '../../fetchData/fetchHomeData';
 import cloudinaryImgHolder from '../../cloudinaryImgHolder/CloudinaryImgHolder';
+import noteContext from '../../Context/noteContext';
+
 
 const AddEventsHome = () => {
+    const location = useLocation().pathname;
+    const state = useContext(noteContext);
+    const allInputHomeEventData = state.allInputHomeEventData;
+    const setAllInputHomeEventData = state.setAllInputHomeEventData;
+
+    const addHomeImg = state.addHomeImg
+
+    const setAddHomeImg = state.setAddHomeImg
+    const setPathName = state.setPathName;
+
+    const name = allInputHomeEventData.name;
+    const price = allInputHomeEventData.price;
+    const stayLong = allInputHomeEventData.stayLong;
+    const tourDate = allInputHomeEventData.tourDate;
+    const tourLastDate = allInputHomeEventData.tourLastDate;
+    const tourArea = allInputHomeEventData.tourArea;
+    const description = allInputHomeEventData.description;
+    const itineraries = allInputHomeEventData.itineraries;
+    const terms = allInputHomeEventData.termsAndConditions;
+    console.log(terms)
+    const addition = allInputHomeEventData.additionalInfo;
+    const inclusion = allInputHomeEventData.inclusion;
+    const content = allInputHomeEventData.content;
+    const contentSecond = allInputHomeEventData.contentSecond;
+    const contentThird = allInputHomeEventData.contentThird;
+    const contentFourth = allInputHomeEventData.contentFourth;
+    const contentFifth = allInputHomeEventData.contentFifth;
 
     const editor = useRef(null);
-    const [content, setContent] = useState('');
-    const [contentSecond, setContectSecond] = useState('');
-    const [contentThird, setContentThird] = useState('');
-    const [contentFourth, setContentFourth] = useState('');
-    const [contentFifth, setContentFifth] = useState('');
+
 
     const [allData, setAllData] = useState({})
     const [view, setView] = useState(false);
@@ -25,24 +50,8 @@ const AddEventsHome = () => {
     const [fillTerms, setFillTerms] = useState(false);
     const [fillAdditionIn, setFillAdditionIn] = useState(false);
 
-    const [name, setName] = useState('');
-    const [img, setImg] = useState('');
-    const [imgContainer, setImgContainer] = useState();
-    const [price, setPrice] = useState('');
-    const [stayLong, setStayLong] = useState('');
-    const [tourDate, setTourDate] = useState('');
-    const [tourLastDate, setTourLastDate] = useState('');
-    const [tourArea, setTourArea] = useState('');
-    const [description, setDescription] = useState('');
-    const [itineraries, setItineraries] = useState('');
-    const [terms, setTerms] = useState('')
-    const [addition, setAddition] = useState('');
-    const [inclusion, setInclusion] = useState('');
-
     const [message, setMessage] = useState('');
     const [bannerMessage, setBannerMessage] = useState('');
-
-
 
     const [count, setCount] = useState(1);
 
@@ -57,15 +66,15 @@ const AddEventsHome = () => {
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && price === '' && img === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '' && imgContainer === '') {
+        if (name === '' && price === '' && setAddHomeImg === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '' && addHomeImg === '') {
             setCount(1);
-        } else if (name && price && img && tourDate && tourLastDate && tourArea && stayLong && imgContainer) {
+        } else if (name && price && addHomeImg && tourDate && tourLastDate && tourArea && stayLong && addHomeImg) {
             setCount(count + 1);
             setView(false);
             setFillBasic(true);
         }
 
-        if (name === '' || img === '' || imgContainer === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || setAddHomeImg === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '' || addHomeImg === '') {
             setView(true);
         };
     };
@@ -123,7 +132,7 @@ const AddEventsHome = () => {
 
         setAllData({
             name: name,
-            img: img,
+            img: addHomeImg,
             price: price,
             stayLong: stayLong,
             tourDate: tourDate,
@@ -154,26 +163,28 @@ const AddEventsHome = () => {
     const finalMessage = (e) => {
         e.preventDefault();
 
-        if (name && img && imgContainer && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
-            setName('');
-            setImg('');
-            setImgContainer('');
-            setPrice('');
-            setStayLong('');
-            setTourDate('');
-            setTourArea('');
-            setTourLastDate('');
-            setItineraries('');
-            setDescription('');
-            setTerms('');
-            setAddition('');
-            setInclusion('');
-            setContent('');
-            setContectSecond('');
-            setContentThird('');
-            setContentFourth('');
-            setContentFifth('');
-            setView(false)
+        if (name && addHomeImg && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
+            setAllInputHomeEventData({
+                ...allInputHomeEventData,
+                name: '',
+                price: '',
+                stayLong: '',
+                tourDate: '',
+                tourArea: '',
+                tourLastDate: '',
+                itineraries: '',
+                description: '',
+                additionalInfo: '',
+                termsAndConditions: '',
+                inclusion: '',
+                content: '',
+                contentSecond: '',
+                contentThird: '',
+                contentFourth: '',
+                contentFifth: ''
+            });
+            setView(false);
+            setAddHomeImg('');
         };
 
         setFillBasic(false);
@@ -201,7 +212,6 @@ const AddEventsHome = () => {
                 tourLastDate: lastEventForBanner[0].tourLastDate
             }).then(res => {
                 setBannerMessage(res.data);
-                console.log(res)
             });
 
         } catch (error) {
@@ -221,7 +231,6 @@ const AddEventsHome = () => {
             }, 4000)
         }
     }, [count, refetch]);
-
 
     return (
         <div className='addEventsHome'>
@@ -277,7 +286,9 @@ const AddEventsHome = () => {
                                         <div>
                                             <label htmlFor="">Tour Name :</label>
                                             <div>
-                                                <input required type="text" name="tourName" value={name} onChange={(e) => setName(e.target.value)} id="" />
+                                                <input required type="text" name="tourName" value={name} onChange={(e) => {
+                                                    setAllInputHomeEventData({ ...allInputHomeEventData, name: e.target.value })
+                                                }} id="" />
 
                                             </div>
                                         </div>
@@ -287,7 +298,9 @@ const AddEventsHome = () => {
                                             <label htmlFor="">Tour Price :</label>
                                             <div>
                                                 <input required type="text" name="tourPrice" value={price
-                                                } onChange={(e) => setPrice(e.target.value)} id="" />
+                                                } onChange={(e) => {
+                                                    setAllInputHomeEventData({ ...allInputHomeEventData, price: e.target.value })
+                                                }} id="" />
 
                                             </div>
                                         </div>
@@ -297,7 +310,9 @@ const AddEventsHome = () => {
                                             <label htmlFor="">Tour Duration :</label>
                                             <div>
                                                 <input required type="text" name="tourDuration" value={stayLong
-                                                } onChange={(e) => setStayLong(e.target.value)} id="" />
+                                                } onChange={(e) => {
+                                                    setAllInputHomeEventData({ ...allInputHomeEventData, stayLong: e.target.value })
+                                                }} id="" />
 
                                             </div>
                                         </div>
@@ -306,7 +321,9 @@ const AddEventsHome = () => {
                                         <div>
                                             <label htmlFor="">Tour Date :</label>
                                             <div>
-                                                <input style={{ width: '195px' }} value={tourDate} onChange={(e) => setTourDate(e.target.value)} type="date" name="" id="" />
+                                                <input style={{ width: '195px' }} value={tourDate} onChange={(e) => {
+                                                    setAllInputHomeEventData({ ...allInputHomeEventData, tourDate: e.target.value })
+                                                }} type="date" name="" id="" />
 
                                             </div>
                                         </div>
@@ -318,22 +335,29 @@ const AddEventsHome = () => {
 
                                                 <input style={{ width: '200px' }} type="file" onChange={(e) => {
                                                     const imgFile = e.target.files[0];
-                                                    cloudinaryImgHolder(imgFile, setImgContainer)
+                                                    cloudinaryImgHolder(imgFile, setAddHomeImg)
                                                 }} id="" />
                                             </div>
                                         </div>
                                         <br />
                                         <div>
                                             <div></div>
-                                            {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file....</p>}
-
+                                            {(view && addHomeImg === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image....</p>}
                                         </div>
-
+                                        <div>
+                                            <button onClick={() => {
+                                                setPathName(location)
+                                                navigate('/dashboard/unsplash')
+                                            }} className='btn btn-primary' >Add Unsplash Image</button>
+                                        </div>
+                                        <br />
                                     </div>
                                     <div className='basicInfoPartTwo'>
                                         <div>
                                             <label htmlFor="">Tour Registration Last Date :</label>
-                                            <input style={{ width: '45%' }} value={tourLastDate} onChange={(e) => setTourLastDate(e.target.value)} type="date" name="" id="" />
+                                            <input style={{ width: '45%' }} value={tourLastDate} onChange={(e) => {
+                                                setAllInputHomeEventData({ ...allInputHomeEventData, tourLastDate: e.target.value })
+                                            }} type="date" name="" id="" />
                                         </div>
                                         {(view && tourLastDate === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
                                         <br />
@@ -342,7 +366,7 @@ const AddEventsHome = () => {
                                             <div>
                                                 <select required name="" id="" onChange={(e) => {
                                                     const option = e.target.value;
-                                                    setTourArea(option);
+                                                    setAllInputHomeEventData({ ...allInputHomeEventData, tourArea: option });
                                                 }}>
                                                     <option value="">select...</option>
                                                     <option value="home">Home</option>
@@ -372,8 +396,8 @@ const AddEventsHome = () => {
 
                                     ref={editor}
                                     value={content}
-                                    onBlur={newContent => setContent(newContent)}
-                                    onChange={newContent => { setDescription(newContent) }}
+                                    onBlur={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, content: newContent }) }}
+                                    onChange={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, description: newContent }) }}
                                 />
                                 <br />
                                 {(view && description === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -397,8 +421,8 @@ const AddEventsHome = () => {
 
                                     ref={editor}
                                     value={contentSecond}
-                                    onBlur={newContent => setContectSecond(newContent)}
-                                    onChange={newContent => { setItineraries(newContent) }}
+                                    onBlur={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, contentSecond: newContent }) }}
+                                    onChange={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, itineraries: newContent }) }}
                                 />
                                 <br />
                                 {(view && itineraries === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -421,8 +445,8 @@ const AddEventsHome = () => {
 
                                     ref={editor}
                                     value={contentThird}
-                                    onBlur={newContent => setContentThird(newContent)}
-                                    onChange={newContent => { setTerms(newContent) }}
+                                    onBlur={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, contentThird: newContent }) }}
+                                    onChange={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, termsAndConditions: newContent }) }}
                                 />
                                 <br />
                                 {(view && terms === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -449,8 +473,8 @@ const AddEventsHome = () => {
 
                                     ref={editor}
                                     value={contentFourth}
-                                    onBlur={newContent => setContentFourth(newContent)}
-                                    onChange={newContent => { setAddition(newContent) }}
+                                    onBlur={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, contentFourth: newContent }) }}
+                                    onChange={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, additionalInfo: newContent }) }}
                                 />
                                 <br />
                                 {(view && addition === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}
@@ -462,8 +486,8 @@ const AddEventsHome = () => {
 
                                     ref={editor}
                                     value={contentFifth}
-                                    onBlur={newContent => setContentFifth(newContent)}
-                                    onChange={newContent => { setInclusion(newContent) }}
+                                    onBlur={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, contentFifth: newContent }) }}
+                                    onChange={newContent => { setAllInputHomeEventData({ ...allInputHomeEventData, inclusion: newContent }) }}
                                 />
                                 <br />
                                 {(view && inclusion === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please fillup the field...</p>}

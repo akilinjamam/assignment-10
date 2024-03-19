@@ -1,13 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './DashboardNew.css';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import fetchUserControllData from '../../../fetchData/fetchUserControllData';
-import ImageModal from '../../../imageModal/ImageModal';
-import { fetchGetUnsplashData } from '../../../fetchData/fetchUnsplashData';
-import noteContext from '../../../Context/noteContext';
+
 
 const DashboardNew = () => {
     const location = useLocation();
@@ -16,7 +14,7 @@ const DashboardNew = () => {
     const [user] = useAuthState(auth);
     const [slider, setSlider] = useState(true);
     const [view, setView] = useState(false);
-    const [imgData, setImgData] = useState([]);
+
 
 
     const navigate = useNavigate();
@@ -49,18 +47,7 @@ const DashboardNew = () => {
         }, 500)
     }
 
-    const state = useContext(noteContext);
-    const open = state.open;
-    const setOpen = state.setOpen;
-    const setSelectedImg = state.setSelectedImg;
-    const searchImg = async (e) => {
-        e.preventDefault();
 
-        const search = e.target.search.value;
-
-        await fetchGetUnsplashData(search)
-            .then(res => setImgData(res?.data?.results))
-    }
 
     return (
         <div>
@@ -137,13 +124,7 @@ const DashboardNew = () => {
                     </div>
                     <div style={{ width: `${collapse ? '97%' : '85%'}` }} className="dashboardNew_right ">
                         <Outlet></Outlet>
-                        <ImageModal
-                            data={imgData} // it containing array of object with 30 pictures according to search result
-                            turn={open} // it is switch for open modal
-                            btn={setOpen} // it provides onclick function for opening modal
-                            search={searchImg} // this is a function which takes input data for searching
-                            action={setSelectedImg} // from provided images, this function hold selected image.
-                        />
+
                     </div>
                 </div>
                 <div className={`${view ? 'block' : 'none'}`}>

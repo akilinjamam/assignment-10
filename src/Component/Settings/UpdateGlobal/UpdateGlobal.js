@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import '../updateHome/UpdateHome.css'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useEffect } from 'react';
 import JoditEditor from 'jodit-react';
@@ -9,34 +9,71 @@ import fetchGlobalData from '../../../fetchData/fetchGlobalData';
 import fetchBannerData from '../../../fetchData/fetchBannerData';
 import fetchCartData from '../../../fetchData/fetchCartData';
 import cloudinaryImgHolder from '../../../cloudinaryImgHolder/CloudinaryImgHolder';
+import noteContext from '../../../Context/noteContext';
 
 const UpdateHome = () => {
+
+    const location = useLocation().pathname;
+    const state = useContext(noteContext);
+    const setPathName = state.setPathName
+
+    const name = state.updateGlobalName;
+    const price = state.updateGlobalPrice;
+    const stayLong = state.updateGlobalStayLong;
+    const tourDate = state.updateGlobalTourDate;
+    const tourLastDate = state.updateGlobalTourLastDate;
+    const tourArea = state.updateGlobalTourArea;
+    const itineraries = state.updateGlobalItineraries;
+    const terms = state.updateGlobalTermsAndConditions;
+    const addition = state.updateGlobalAdditionalInfo;
+    const inclusion = state.updateGlobalInclusion;
+    const description = state.updateGlobalDescription;
+    const updateGlobalImg = state.updateGlobalImg
+    const setUpdateGlobalImg = state.setUpdateGlobalImg
+
+    const setName = state.setUpdateGlobalName;
+    const setPrice = state.setUpdateGlobalPrice;
+    const setStayLong = state.setUpdateGlobalStayLong;
+    const setTourDate = state.setUpdateGlobalTourDate;
+    const setTourLastDate = state.setUpdateGlobalTourLastDate;
+    const setTourArea = state.setUpdateGlobalTourArea;
+    const setItineraries = state.setUpdateGlobalItineraries;
+    const setTerms = state.setUpdateGlobalTermsAndConditions;
+    const setAddition = state.setUpdateGlobalAdditionalInfo;
+    const setInclusion = state.setUpdateGlobalInclusion;
+    const setDescription = state.setUpdateGlobalDescription;
+
+    const setContent = state.setUpdateGlobalContent;
+    const setContectSecond = state.setUpdateGlobalContentSecond;
+    const setContentThird = state.setUpdateGlobalContentThird;
+    const setContentFourth = state.setUpdateGlobalContentFourth;
+    const setContentFifth = state.setUpdateGlobalContentFifth;
 
     const editor = useRef(null);
     const [view, setView] = useState(false);
     const [count, setCount] = useState(1);
 
-    const [content, setContent] = useState('');
-    const [contentSecond, setContectSecond] = useState('');
-    const [contentThird, setContentThird] = useState('');
-    const [contentFourth, setContentFourth] = useState('');
-    const [contentFifth, setContentFifth] = useState('');
+    // const [content, setContent] = useState('');
+    // const [contentSecond, setContectSecond] = useState('');
+    // const [contentThird, setContentThird] = useState('');
+    // const [contentFourth, setContentFourth] = useState('');
+    // const [contentFifth, setContentFifth] = useState('');
     const navigate = useNavigate();
     const { updateGlobalId } = useParams()
 
-    const [name, setName] = useState('');
+    // const [name, setName] = useState('');
     const [img, setImg] = useState('');
     const [imgContainer, setImgContainer] = useState('');
-    const [price, setPrice] = useState('');
-    const [stayLong, setStayLong] = useState('');
-    const [tourDate, setTourDate] = useState('');
-    const [tourLastDate, setTourLastDate] = useState('');
-    const [tourArea, setTourArea] = useState('');
-    const [description, setDescription] = useState('');
-    const [itineraries, setItineraries] = useState('');
-    const [terms, setTerms] = useState('')
-    const [addition, setAddition] = useState('');
-    const [inclusion, setInclusion] = useState('');
+    // const [price, setPrice] = useState('');
+    // const [stayLong, setStayLong] = useState('');
+    // const [tourDate, setTourDate] = useState('');
+    // const [tourLastDate, setTourLastDate] = useState('');
+    // const [tourArea, setTourArea] = useState('');
+    // const [description, setDescription] = useState('');
+    // const [itineraries, setItineraries] = useState('');
+    // const [terms, setTerms] = useState('')
+    // const [addition, setAddition] = useState('');
+    // const [inclusion, setInclusion] = useState('');
     const [allData, setAllData] = useState({})
 
     const [message, setMessage] = useState('');
@@ -75,7 +112,6 @@ const UpdateHome = () => {
 
     useEffect(() => {
         setName(globalData?.name);
-        setImg(globalData?.img);
         setPrice(globalData?.price);
         setStayLong(globalData?.stayLong);
         setTourDate(globalData?.tourDate);
@@ -86,20 +122,20 @@ const UpdateHome = () => {
         setTerms(globalData?.termsAndConditions);
         setAddition(globalData?.additionalInfo);
         setInclusion(globalData?.inclusion);
-    }, [globalData])
+    }, [globalData, setName, setPrice, setStayLong, setTourArea, setTourDate, setTourLastDate, setDescription, setItineraries, setTerms, setAddition, setInclusion])
 
     const handleBasic = (e) => {
         e.preventDefault();
 
-        if (name === '' && img === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
+        if (name === '' && price === '' && tourDate === '' && tourLastDate === '' && tourArea === '' && stayLong === '') {
             setCount(1);
-        } else if (name && img && price && tourDate && tourLastDate && tourArea && stayLong) {
+        } else if (name && price && tourDate && tourLastDate && tourArea && stayLong) {
             setCount(count + 1);
             setView(false);
 
         }
 
-        if (name === '' || img === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
+        if (name === '' || price === '' || tourDate === '' || tourLastDate === '' || tourArea === '' || stayLong === '') {
             setView(true);
         }
     };
@@ -137,8 +173,6 @@ const UpdateHome = () => {
             setCount(count + 1);
             setView(false);
         }
-
-
     };
 
     const handleAddition = (e) => {
@@ -157,10 +191,11 @@ const UpdateHome = () => {
             setCount(5);
         }
 
+        const updateImg = updateGlobalImg ? updateGlobalImg : globalData?.img
 
         setAllData({
             name: name,
-            img: img,
+            img: updateImg,
             price: price,
             stayLong: stayLong,
             tourDate: tourDate,
@@ -187,9 +222,10 @@ const UpdateHome = () => {
                 .then(res => setMessage(res.data));
 
             if (findBannerForUpdate?._id) {
+                const updateImg = updateGlobalImg ? updateGlobalImg : globalData?.img
                 await axios.patch(`https://asssignment-10-server-delta.vercel.app/api/v1/bannerEvents/${findBannerForUpdate?._id}`, {
                     name: name,
-                    bannerImg: img,
+                    bannerImg: updateImg,
                     tourPrice: price,
                     tourDate: tourDate,
                     tourLastDate: tourLastDate
@@ -215,10 +251,9 @@ const UpdateHome = () => {
     const finalMessage = (e) => {
         e.preventDefault();
 
-        if (name && img && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
+        if (name && updateGlobalImg && price && tourDate && tourLastDate && tourArea && stayLong && description && itineraries && terms && addition && inclusion) {
             setName('');
-            setImg('');
-            setImgContainer();
+            setUpdateGlobalImg('')
             setPrice('');
             setStayLong('');
             setTourDate('');
@@ -238,25 +273,6 @@ const UpdateHome = () => {
         };
         navigate('/dashboard')
     };
-
-    // useEffect(() => {
-    //     if (imgContainer) {
-    //         const imgStorageKey = 'a7d23ad727734bb709b70dc5aa33543f'
-    //         const formData = new FormData();
-    //         formData.append('image', imgContainer);
-    //         const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
-    //         fetch(url, {
-    //             method: 'POST',
-    //             body: formData,
-    //         })
-    //             .then(res => res.json())
-    //             .then(result => {
-
-    //                 setImg(result?.data?.url);
-
-    //             })
-    //     }
-    // }, [imgContainer])
 
     return (
         <div>
@@ -332,16 +348,19 @@ const UpdateHome = () => {
                                                 <input style={{ width: '200px' }} type="file" onChange={(e) => {
                                                     const imgFile = e.target.files[0];
 
-                                                    cloudinaryImgHolder(imgFile, setImgContainer)
+                                                    cloudinaryImgHolder(imgFile, setUpdateGlobalImg)
                                                 }} id="" />
                                             </div>
                                         </div>
                                         <br />
                                         <div>
-                                            <div></div>
-                                            {(view && img === '') && <p style={{ textAlign: 'left', color: 'red', margin: '0', padding: '0', fontWeight: '200', fontSize: '13px' }}>please select image from local file....</p>}
-
+                                            <button onClick={() => {
+                                                setPathName(location);
+                                                navigate('/dashboard/unsplash')
+                                            }} className='btn btn-primary'>Add Unsplash Image</button>
                                         </div>
+                                        <br />
+
                                     </div>
                                     <div className='basicInfoPartTwo'>
 

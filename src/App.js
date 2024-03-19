@@ -50,6 +50,7 @@ import fetchBannerData from './fetchData/fetchBannerData';
 import Testmail from './Component/testmail/Testmail';
 import Test from './Component/test/Test';
 import DashboardNew from './Component/Settings/newDashboard/DashboardNew';
+import Unsplash from './unsplash/Unsplash';
 
 function App() {
 
@@ -114,6 +115,8 @@ function App() {
                 <Route path='updateBlog/:updateBlogId' element={<UpdateBlog></UpdateBlog>}>
                 </Route>
                 <Route path='transection' element={<Transection></Transection>}>
+                </Route>
+                <Route path='unsplash' element={<Unsplash />}>
                 </Route>
               </Route>
 

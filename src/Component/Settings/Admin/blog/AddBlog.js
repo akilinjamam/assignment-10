@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import './Addblog.css';
 import JoditEditor from 'jodit-react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -6,54 +6,51 @@ import auth from '../../../../firebase.init';
 
 
 import cloudinaryImgHolder from '../../../../cloudinaryImgHolder/CloudinaryImgHolder';
-import noteContext from '../../../../Context/noteContext';
+
 import { fetchPostBlogData } from '../../../../fetchData/fetchBlogData';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import noteContext from '../../../../Context/noteContext';
+
 
 const AddBlog = () => {
 
-    const navigate = useNavigate();
     const state = useContext(noteContext);
-    const setOpen = state.setOpen;
-    const selectedImg = state.selectedImg;
 
+    const allInputBlogData = state.allInputBlogData;
+    const setAllInputBlogData = state.setAllInputBlogData;
 
+    const setPathName = state.setPathName;
+    const addBlogImg = state.addBlogImg;
+    const setAddBlogImg = state.setAddBlogImg;
+
+    const navigate = useNavigate();
+    const location = useLocation().pathname;
 
     const user = useAuthState(auth);
     const editor = useRef(null);
-    const [content, setContent] = useState('');
-    const [img, setImg] = useState('');
 
-    const [description, setDescription] = useState('');
-
-    useEffect(() => {
-        setImg(selectedImg);
-    }, [selectedImg])
-
-    // const [imgHolder,setImgHolder] = useState('')
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(img);
-        if (img) {
+        console.log(addBlogImg);
+
+        if (addBlogImg) {
             const allblogData = {
-                title: e.target.title.value,
-                blogImg: img,
-                bloggerName: e.target.bloggerName.value,
+                title: allInputBlogData.title,
+                blogImg: addBlogImg,
+                bloggerName: allInputBlogData.bloggerName,
                 bloggerEmail: user?.[0]?.email,
-                description: description
+                description: allInputBlogData.description
             }
 
             await fetchPostBlogData(allblogData).then(res => {
                 if (res?.data?.status === 'success') {
                     navigate('/dashboard/dashboardHomeBlogs');
+                    setAddBlogImg('');
+                    setAllInputBlogData('')
                 }
             })
         }
-
-
-
-
     }
 
 
@@ -63,34 +60,40 @@ const AddBlog = () => {
                 <form onSubmit={handleSubmit}>
                     <label className='blogLabel' htmlFor="">Title:</label>
                     <br />
-                    <input name='title' className='blogInput' type="text" required />
+                    <input value={allInputBlogData?.title} name='title' className='blogInput' type="text" required
+                        onChange={(e) => setAllInputBlogData({ ...allInputBlogData, title: e.target.value })}
+                    />
                     <br />
                     <label className='blogLabel' htmlFor="">Blogger Name:</label>
                     <br />
-                    <input name='bloggerName' className='blogInput' type="text" required />
+                    <input value={allInputBlogData.bloggerName} name='bloggerName' className='blogInput' type="text" required
+                        onChange={(e) => setAllInputBlogData({ ...allInputBlogData, bloggerName: e.target.value })}
+                    />
                     <br />
                     <label className='blogLabel' htmlFor="">Add Image:</label>
                     <br />
                     <input className='blogInput' type="file"
                         onChange={(e) => {
                             const imgFile = e.target.files[0];
-                            cloudinaryImgHolder(imgFile, setImg)
+                            cloudinaryImgHolder(imgFile, setAddBlogImg)
                         }}
                     />
                     <br />
-                    <button onClick={() => setOpen(true)} className='btn btn-primary'>Add Unsplash Image</button>
+                    <button onClick={() => {
+                        setPathName(location)
+                        navigate('/dashboard/unsplash')
+                    }} className='btn btn-primary'>Add Unsplash Image</button>
                     <br />
                     <label className='blogLabel' htmlFor="">Add Description:</label>
                     <br />
                     <JoditEditor
                         ref={editor}
-                        value={content}
-                        onBlur={newContent => setContent(newContent)}
-                        onChange={newContent => { setDescription(newContent) }}
+                        value={allInputBlogData.content}
+                        onBlur={(newContent) => setAllInputBlogData({ ...allInputBlogData, content: newContent })}
+                        onChange={(newContent) => setAllInputBlogData({ ...allInputBlogData, description: newContent })}
                     />
                     <br />
                     <button className='btn btn-primary' type='submit'>Post Blog</button>
-
                 </form>
             </div>
 
