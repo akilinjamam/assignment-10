@@ -1,0 +1,27 @@
+.personal_detail{
+    width: 100%;
+    height: 100%;
+}
+
+.personal_title{
+    text-align: left;
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.personal_title img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+}
+
+.personal_title p{
+    color: gray;
+}
+
+.personal_detail{
+    display: grid;
+    grid-template-columns: 30% 60% 10%;
+    text-align: left;
+}

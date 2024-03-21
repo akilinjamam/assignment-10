@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 const LocalSpots = () => {
 
     const state = useContext(noteContext);
@@ -27,7 +28,7 @@ const LocalSpots = () => {
     }
 
     return (
-        <div className='local_spot_main'>
+        <div style={{ padding: '20px 0' }} className='local_spot_main'>
             <main className='local_spot_container'>
                 <div className='local_spot_title'>
                     <h3>Local Trending Spot</h3>
@@ -63,7 +64,7 @@ const LocalSpots = () => {
                 </div>
                 <div className='local_spot_cart'>
                     {
-                        homeEvents?.slice(1, 4)?.map((event) => {
+                        homeEvents?.slice(2, 5)?.map((event) => {
                             return (
                                 <div className='local_spot_cart_detail' key={event?._id}
                                     onClick={() => navigate(`/spotDetail/${event?._id}`)}

@@ -17,11 +17,10 @@ const Unsplash = () => {
             .then(res => setImgData(res?.data?.results))
     }
     return (
-        <div>
+        <div style={{ width: '100%', height: '95vh' }} className='middle_flex'>
             <ImageModal
                 data={imgData} // it containing array of object with 30 pictures according to search result
                 search={searchImg} // this is a function which takes input data for searching
-
             />
         </div>
     );

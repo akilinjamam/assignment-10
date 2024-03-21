@@ -56,7 +56,7 @@ const DashboardNew = () => {
                     <h5>DASHBOARD</h5>
                 </div>
                 <div className="dashboardNew_container only_flex ">
-                    <div style={{ width: `${collapse ? '3%' : '15%'}` }} className='dashboardPartOne'>
+                    <div style={{ width: `${collapse ? '4%' : '15%'}` }} className='dashboardPartOne'>
                         <br />
                         <div className='between_flex'>
                             <p > {!viewText ? <i style={{ fontSize: '20px' }} class="uil uil-ellipsis-v"></i> : <i onClick={handleCollapse} style={{ fontSize: '20px', cursor: 'pointer' }} class="uil uil-eye"></i>} {!viewText && 'MENU'}</p>
@@ -122,7 +122,7 @@ const DashboardNew = () => {
                             </div>
                         </div>
                     </div>
-                    <div style={{ width: `${collapse ? '97%' : '85%'}` }} className="dashboardNew_right ">
+                    <div style={{ width: `${collapse ? '96%' : '85%'}` }} className="dashboardNew_right ">
                         <Outlet></Outlet>
 
                     </div>

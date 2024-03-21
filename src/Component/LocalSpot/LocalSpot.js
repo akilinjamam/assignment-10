@@ -29,13 +29,9 @@ const LocalSpot = ({ localSpot }) => {
                 <br />
                 <div className='localSpotDetail'>
                     <h4>{name}</h4>
-
                     <h5 style={{ color: 'green' }}>Benefits:</h5>
-
                     <h6 style={{ color: 'blue' }}>{stayLong}</h6>
-
                     <p style={{ fontWeight: 'bold' }} className='text-danger '>Price {price}/person</p>
-
                     <button onClick={() => handleBook(_id, tourArea)} style={{ background: 'crimson', color: 'white', width: '100%' }} className="btn  d-block ">Visit Details</button>
                 </div>
             </div>

@@ -61,7 +61,7 @@ const TourAbroad = () => {
         <div className='tourAreaMain'>
 
             <section className='partOne'>
-                <br /><br /><br />
+
                 <div className='viewAllButton'>
                     <button onClick={handleView} className='btn btn-primary'>VIEW ALL</button>
                 </div>
@@ -125,7 +125,7 @@ const TourAbroad = () => {
                 <br />
             </section>
             <section className='partTwo'>
-                <br /><br /><br />
+
                 <h6 style={{ color: 'black' }}>WORLD TOUR</h6>
                 <hr />
 

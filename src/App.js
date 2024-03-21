@@ -51,6 +51,8 @@ import Testmail from './Component/testmail/Testmail';
 import Test from './Component/test/Test';
 import DashboardNew from './Component/Settings/newDashboard/DashboardNew';
 import Unsplash from './unsplash/Unsplash';
+import Profile from './Component/profile/profile/Profile';
+import PersonalDetail from './Component/profile/personal_detail/PersonalDetail';
 
 function App() {
 
@@ -99,7 +101,6 @@ function App() {
               }></Route>
               <Route path='/dashboard' element={
                 <RequireAdminEditor>
-                  {/* <Dashboard></Dashboard> */}
                   <DashboardNew />
                 </RequireAdminEditor>}>
                 <Route index element={<DashboardHome></DashboardHome>}></Route>
@@ -118,6 +119,9 @@ function App() {
                 </Route>
                 <Route path='unsplash' element={<Unsplash />}>
                 </Route>
+              </Route>
+              <Route path='/profile' element={<Profile />}>
+                <Route index element={<PersonalDetail></PersonalDetail>}></Route>
               </Route>
 
               <Route path='/login' element={<Login></Login>}></Route>

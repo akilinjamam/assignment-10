@@ -28,7 +28,7 @@ const GlobalSpots = () => {
     }
     return (
 
-        <div className='global_spot_main'>
+        <div style={{ padding: '20px 0' }} className='global_spot_main'>
             <main className='global_spot_container'>
                 <div className='global_spot_title'>
                     <h3>Worldwide Trending Spot</h3>

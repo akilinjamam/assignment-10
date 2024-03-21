@@ -3,6 +3,7 @@
 }
 .local_spot_title{
     text-align: left;
+    font-weight: bold;
 }
 
 .local_spot_container{
@@ -55,7 +56,6 @@
     width: 100%; 
     height: 600px;
     overflow: hidden;
-   
 }
 
 .l_s_c_d_b_c_h_container{
