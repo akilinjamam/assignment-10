@@ -65,8 +65,6 @@ const Header = () => {
             postUserInfo();
         }, 3000)
 
-
-
     }, [user, findEmail, refetchUserControl])
 
     const handleSignOut = () => {

@@ -49,20 +49,13 @@ const Login = () => {
     }
 
     if (loading) {
-
         return <Loading></Loading>
-
-        // theLoading = <div>
-        //     <p>Loading...</p>
-        // </div>
-
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const email = emailRef.current.value
         const password = passwordRef.current.value;
-
 
         signInWithEmailAndPassword(email, password)
 
