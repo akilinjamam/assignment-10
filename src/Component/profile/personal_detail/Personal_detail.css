@@ -25,3 +25,20 @@
     grid-template-columns: 30% 60% 10%;
     text-align: left;
 }
+
+.switch_drawer_responsive{
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .switch_drawer_responsive{
+        display: block;
+        text-align: right;
+    }
+
+    .personal_detail{
+        display: grid;
+        grid-template-columns: 30% 50% 20%;
+        text-align: left;
+    }
+}

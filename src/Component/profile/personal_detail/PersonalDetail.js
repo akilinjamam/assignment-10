@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Personal_detail.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import usePersonalDetails from './usePersonalDetails';
+import noteContext from '../../../Context/noteContext';
 
 const PersonalDetail = () => {
+    const state = useContext(noteContext);
+    const setSlideDrawer = state.setSlideDrawer;
     const [user] = useAuthState(auth);
 
     const [allInfo, allData, setAllData, viewEdit, setViewEdit, idHolder, setIdHolder, handleUpdate, isLoading, viewUpdating, setViewUpdating] = usePersonalDetails(user);
@@ -19,6 +22,9 @@ const PersonalDetail = () => {
                 <div className='right_flex'>
                     {user?.photoURL ? <img src={user?.photoURL} alt="" /> : <i style={{ fontSize: '40px' }} class="uil uil-image-upload"></i>}
                 </div>
+            </div>
+            <div className='switch_drawer_responsive'>
+                <i onClick={() => setSlideDrawer(true)} class="uil uil-bars" style={{ cursor: 'pointer' }}></i>
             </div>
             <hr />
             {

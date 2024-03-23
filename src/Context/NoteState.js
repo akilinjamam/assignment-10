@@ -102,6 +102,8 @@ const NoteState = (props) => {
     const [blogUpdateDescription, setBlogUpdateDescription] = useState('');
     const [blogUpdateContent, setBlogUpdateContent] = useState('');
 
+    const [slideDrawer, setSlideDrawer] = useState(false);
+
     return (
         <NoteContext.Provider value={{
 
@@ -226,6 +228,10 @@ const NoteState = (props) => {
             setUpdateHomeContentFifth,
             setUpdateHomeStayLong,
             updateHomeStayLong,
+
+            // slideDrawer switch for responsivness in profile section
+            slideDrawer,
+            setSlideDrawer
         }}>
             {props.children}
         </NoteContext.Provider>

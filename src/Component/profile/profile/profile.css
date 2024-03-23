@@ -20,13 +20,6 @@
     padding: 20px;
     box-sizing: border-box;
     text-align: left;
-}
-
-.profile_part1_container{
-    width: 100%;
-    height: 100%;
-    /* border: 1px solid gray; */
-    border-radius: 10px;
     padding: 10px 10px;
 }
 
@@ -40,4 +33,34 @@
     padding: 10px 20px;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.profile_drawer_responsive{
+    display: none;
+}
+
+
+@media screen and (max-width: 900px) {
+    .profile_part1{
+        display: none;
+    }
+
+    .profile_part2{
+        width: 100%;
+    }
+
+    .profile_drawer_responsive{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 75px 10px;
+        box-sizing: border-box;
+        color: white;
+        text-align: left;
+        transition: 1s ease-in-out;
+    }
 }
