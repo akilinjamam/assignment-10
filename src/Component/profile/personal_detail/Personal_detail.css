@@ -24,6 +24,7 @@
     display: grid;
     grid-template-columns: 30% 60% 10%;
     text-align: left;
+    z-index: 10;
 }
 
 .switch_drawer_responsive{
@@ -38,7 +39,17 @@
 
     .personal_detail{
         display: grid;
-        grid-template-columns: 30% 50% 20%;
+        grid-template-columns: 30% 40% 30%;
         text-align: left;
+    }
+
+    .personal_detail_value input{
+        width: 60%;
+    }
+    .slideDrawer_swith_responsive{
+        width: 100%;
+    }
+    .slideDrawer_swith_responsive i{
+        cursor: pointer;
     }
 }

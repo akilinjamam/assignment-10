@@ -17,7 +17,7 @@ const usePersonalDetails = (user) => {
         return f?.email === user?.email;
     });
 
-    console.log(findUser)
+
 
 
     const [allData, setAllData] = useState({
@@ -61,7 +61,7 @@ const usePersonalDetails = (user) => {
             id: 2,
             title: 'Email Address',
             updatedValue: findUser?.email,
-            emailVarified: user.emailVerified,
+            emailVarified: user?.emailVerified,
             editableValue: allData.emailAddress,
             buttonEdit: 'Edit',
             buttonSave: 'save',

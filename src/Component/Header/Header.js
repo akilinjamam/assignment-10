@@ -80,7 +80,6 @@ const Header = () => {
 
     return (
         <div>
-
             <div onClick={(e) => {
                 if (e.target.className !== 'uil uil-user') {
                     setShow(false)

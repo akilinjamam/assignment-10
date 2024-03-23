@@ -7,7 +7,9 @@ import noteContext from '../../../Context/noteContext';
 
 const PersonalDetail = () => {
     const state = useContext(noteContext);
+
     const setSlideDrawer = state.setSlideDrawer;
+
     const [user] = useAuthState(auth);
 
     const [allInfo, allData, setAllData, viewEdit, setViewEdit, idHolder, setIdHolder, handleUpdate, isLoading, viewUpdating, setViewUpdating] = usePersonalDetails(user);
@@ -23,8 +25,8 @@ const PersonalDetail = () => {
                     {user?.photoURL ? <img src={user?.photoURL} alt="" /> : <i style={{ fontSize: '40px' }} class="uil uil-image-upload"></i>}
                 </div>
             </div>
-            <div className='switch_drawer_responsive'>
-                <i onClick={() => setSlideDrawer(true)} class="uil uil-bars" style={{ cursor: 'pointer' }}></i>
+            <div className="slideDrawer_swith_responsive right_flex">
+                <i onClick={() => setSlideDrawer(true)} class="uil uil-bars"></i>
             </div>
             <hr />
             {
@@ -34,7 +36,6 @@ const PersonalDetail = () => {
                             <div className="personal_detail">
                                 <div className="personal_detail_title">
                                     <p>{info.title}</p>
-
                                 </div>
                                 <div className="personal_detail_value">
                                     <p style={{ display: `${(viewEdit && (info.id === idHolder)) ? 'none' : 'block'}` }}>

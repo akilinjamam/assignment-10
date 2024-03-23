@@ -4,12 +4,12 @@
     height: 100vh;
     position: absolute;
     top: 0;
-    z-index: -1;
+    z-index: 0;
     font-family: "Oswald", sans-serif;
 }
 
 .profile_container{
-    padding-top: 70px;
+    /* padding-top: 70px; */
     height: 100%;
     background-color: white;
 }
@@ -20,47 +20,65 @@
     padding: 20px;
     box-sizing: border-box;
     text-align: left;
+}
+
+.profile_part1_container{
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid gray; */
+    border-radius: 10px;
     padding: 10px 10px;
 }
 
 .profile_part1_container i{
     font-size: 18px;
 }
+.profile_part1_container p{
+    cursor: pointer;
+}
 .profile_part2{
-    width: 80%;
+    width: 100%;
     height: 100%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
     overflow-x: hidden;
     overflow-y: scroll;
+    z-index: 10;
 }
 
-.profile_drawer_responsive{
+.profile_part2_slidDrawer_responsive{
     display: none;
 }
-
 
 @media screen and (max-width: 900px) {
     .profile_part1{
         display: none;
     }
-
     .profile_part2{
         width: 100%;
     }
 
-    .profile_drawer_responsive{
+    .profile_part2_slidDrawer_responsive{
         display: block;
         width: 100%;
         height: 100%;
+        padding: 5px 10px;
         background-color: gray;
         position: absolute;
         top: 0;
         left: 0;
-        padding: 75px 10px;
-        box-sizing: border-box;
         color: white;
         text-align: left;
         transition: 1s ease-in-out;
+    }
+
+    .profile_part2_slidDrawer_responsive i {
+        text-align: right;
+       
+        font-size: 25px;
+    }
+
+    .profile_part2_slidDrawer_responsive_title{
+        width: 100%;
     }
 }

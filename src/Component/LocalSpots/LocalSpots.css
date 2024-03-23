@@ -87,6 +87,10 @@
     .local_spot_cart_detail{
         width: 100%;
     }
+
+    .local_spot_title{
+        text-align: center;
+    }
 }
 @media screen and ( min-width: 501px) and ( max-width: 900px) {
     .local_spot_cart{
@@ -95,5 +99,5 @@
     }
     .local_spot_cart_detail{
         width: 100%;
-    }
+    } 
 }
