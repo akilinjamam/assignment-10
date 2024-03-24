@@ -29,17 +29,6 @@ const Login = () => {
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
         auth);
 
-
-    // get user controll data from server;
-
-
-
-    // const handleForgetPassword = async () => {
-    //     const email = emailRef.current.value
-    //     await sendPasswordResetEmail(email)
-    //     alert('sent email')
-
-    // }
     if (error || sending) {
 
         errorElement = <div>
@@ -48,9 +37,9 @@ const Login = () => {
 
     }
 
-    if (loading) {
-        return <Loading></Loading>
-    }
+    // if (loading) {
+    //     return <Loading></Loading>
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();

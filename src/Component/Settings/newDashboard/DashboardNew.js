@@ -5,6 +5,7 @@ import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import fetchUserControllData from '../../../fetchData/fetchUserControllData';
+import useDashboard from './useDashboard';
 
 
 const DashboardNew = () => {
@@ -15,8 +16,6 @@ const DashboardNew = () => {
     const [slider, setSlider] = useState(true);
     const [view, setView] = useState(false);
 
-
-
     const navigate = useNavigate();
 
     const { data: queryUserForAdminVarify } = useQuery("queryUserForAdminVarify", () => fetchUserControllData());
@@ -25,6 +24,7 @@ const DashboardNew = () => {
         return a?.email === user?.email
     });
 
+    const [allButtons] = useDashboard(location)
 
     const handleAdmin = () => {
         if (findUserAdmin?.userRoll === 'admin') {
@@ -48,6 +48,27 @@ const DashboardNew = () => {
     }
 
 
+    const handleButton = (value, path) => {
+
+        if (value === 'navigate') {
+            navigate(path.one || path.two || path.three || path.four || path.five)
+        } else if (value === 'handleAdmin') {
+            handleAdmin();
+        } else if (value === 'setSlider') {
+            setSlider(true)
+        }
+
+    }
+
+    const getButtonClassName = (button, location) => {
+        const { link } = button;
+        const { pathname } = location;
+
+        const linkPaths = [link?.one, link?.two, link?.three, link?.four, link?.five];
+        const isActive = linkPaths.some(path => pathname === path);
+
+        return isActive ? 'text-info btnDashboard' : 'text-light btnDashboard';
+    };
 
     return (
         <div>
@@ -66,65 +87,46 @@ const DashboardNew = () => {
                         <div className={`${slider ? 'leftSlide' : 'rightSlide'} sectionContainer`}>
                             <div className="editorSection">
                                 <br />
-                                <button
-                                    onClick={() => navigate('/dashboard')}
-                                    className={`${(location?.pathname === '/dashboard')
-                                        ||
-                                        (location?.pathname === '/dashboard/addToHome')
-                                        ||
-                                        (location?.pathname === '/dashboard/addToAbroad')
-                                        ||
-                                        (location?.pathname?.slice(0, 21) === '/dashboard/updateHome')
-                                        ||
-                                        (location?.pathname?.slice(0, 23) === '/dashboard/updateGlobal')
-                                        ?
-                                        'text-info'
-                                        :
-                                        'text-light'
-                                        } btnDashboard`}><i title={viewText && 'EVENTS'} style={{ fontSize: '20px' }} class="uil uil-plane-fly"></i> {!viewText && 'EVENTS'}</button>
+                                {
+                                    allButtons?.slice(0, 5)?.map(button => {
+                                        const buttonClassName = getButtonClassName(button, location);
+                                        return (
+                                            <button
+                                                onClick={() => handleButton(button.functionType, button.link)}
+                                                style={{ display: 'block', marginBottom: '20px' }}
+                                                className={buttonClassName}
+                                            >
+                                                <i title={viewText && button.value} style={{ fontSize: '20px' }} className={button?.iconName}></i> {!viewText && button?.value}
+                                            </button>
+                                        )
+                                    })
+                                }
                                 <br />
                                 <br />
-                                <button
-                                    onClick={() => navigate('/dashboard/dashboardHomeBlogs')} className={`${(location?.pathname === '/dashboard/dashboardHomeBlogs')
-                                        ||
-                                        (location?.pathname === '/dashboard/addToBlog')
-                                        ||
-                                        (location?.pathname?.slice(0, 21) === '/dashboard/updateBlog')
-                                        ?
-                                        'text-info'
-                                        :
-                                        'text-light'
-                                        } btnDashboard`}><i title={viewText && 'BLOGS'} style={{ fontSize: '20px' }} class="uil uil-document-layout-right"></i> {!viewText && 'BLOGS'}</button>
-                                <br />
-                                <br />
-                                <button onClick={() => navigate('/dashboard/feedbackDash')} className={`${location?.pathname === '/dashboard/feedbackDash' ? 'text-info' : 'text-light'} btnDashboard`} ><i title={viewText && 'REVIEW'} style={{ fontSize: '20px' }} class="uil uil-feedback"></i> {!viewText && 'REVIEW'}</button>
-                                <br />
-                                <br />
-                                <button onClick={handleAdmin} className='btnDashboard' ><i title={viewText && 'ADMIN'} style={{ fontSize: '20px' }} class="uil uil-user-md"></i> {!viewText && 'ADMIN'}</button>
-                                <br />
-                                <br />
-                                <button onClick={() => navigate('/')} className='btnDashboard' ><i title={viewText && 'BACK TO HOME'} style={{ fontSize: '20px' }} class="uil uil-home"></i> {!viewText && 'BACK TO HOME'}</button>
+
                             </div>
                             <div className="adminSection">
                                 <br />
                                 <br />
-                                <button onClick={() => navigate('/dashboard/userControll')} className={`${location?.pathname === '/dashboard/userControll' ? 'text-info' : 'text-light'} btnDashboard`} ><i title={viewText && 'USER CONTROLL'} style={{ fontSize: '20px' }} class="uil uil-users-alt"></i> {!viewText && 'USER CONTROLL'}</button>
-                                <br />
-                                <br />
-                                <button
-                                    onClick={() => navigate('/dashboard/transection')}
-                                    className={`${location?.pathname === '/dashboard/transection' ? 'text-info' : 'text-light'} btnDashboard`} ><i title={viewText && 'TRANSECTION'} style={{ fontSize: '20px' }} class="uil uil-transaction"></i> {!viewText && 'TRANSECTION'}</button>
-                                <br />
-                                <br />
-                                <hr />
-
-                                <button onClick={() => setSlider(true)} className='btnDashboard'><i title={viewText && 'BACK'} style={{ fontSize: '20px' }} class="uil uil-step-backward-alt"></i>{!viewText && 'BACK'} </button>
+                                {
+                                    allButtons?.slice(5)?.map(button => {
+                                        const buttonClassName = getButtonClassName(button, location);
+                                        return (
+                                            <button
+                                                onClick={() => handleButton(button.functionType, button.link)}
+                                                style={{ display: 'block', marginBottom: '20px' }}
+                                                className={buttonClassName}
+                                            >
+                                                <i title={viewText && button.value} style={{ fontSize: '20px' }} className={button?.iconName}></i> {!viewText && button?.value}
+                                            </button>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>
                     <div style={{ width: `${collapse ? '96%' : '85%'}` }} className="dashboardNew_right ">
                         <Outlet></Outlet>
-
                     </div>
                 </div>
                 <div className={`${view ? 'block' : 'none'}`}>
