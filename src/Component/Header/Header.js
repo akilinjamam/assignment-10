@@ -174,7 +174,7 @@ const Header = () => {
                                         <CustomLink to='/tourAbroad'>
                                             <span style={{ color: 'black' }} ><i style={{ fontSize: '18px' }} class="uil uil-globe"></i> World Tour</span>
                                         </CustomLink>
-                                        <CustomLink to='/blogs'>
+                                        <CustomLink to='/blogsNew'>
                                             <span style={{ color: 'black' }} ><i style={{ fontSize: '18px' }} class="uil uil-document-layout-right"></i> Blogs</span>
                                         </CustomLink>
                                         <hr />
@@ -213,7 +213,7 @@ const Header = () => {
                                     <CustomLink to='/tourAbroad'>
                                         <span style={{ marginLeft: '15px' }} ><i style={{ fontSize: '18px' }} class="uil uil-globe"></i> World Tour</span>
                                     </CustomLink>
-                                    <CustomLink to='/blogs'>
+                                    <CustomLink to='/blogsNew'>
                                         <span style={{ marginLeft: '15px' }} ><i style={{ fontSize: '18px' }} class="uil uil-document-layout-right"></i> Blogs</span>
                                     </CustomLink>
                                 </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from '../../logo-img/fav-for-assignment-10.png';
 import './Footer.css';
+import useFooter from './useFooter';
 
 const Footer = () => {
 
-    const today = new Date()
-    const year = today.getFullYear()
+    const [footerOptions, year] = useFooter()
 
     return (
         <div className='bg-dark footer_main bottom_flex'>
@@ -13,41 +13,23 @@ const Footer = () => {
                 <div class="footer_grid_container">
                     <div class="footer_column1">
                         <div class="footer_column1_grid_container">
-                            <div class="sub_column1">
-                                <h5>Solutions</h5>
-                                <br />
-                                <p>Marketing</p>
-                                <p>Analytics</p>
-                                <p>Commerce</p>
-                                <p>Insights</p>
-                            </div>
-                            <div class="sub_column2">
-
-                                <h5>Supports</h5>
-                                <br />
-                                <p>Pricing</p>
-                                <p>Documentation</p>
-                                <p>Guides</p>
-                                <p>API status</p>
-                            </div>
-                            <div class="sub_column3">
-
-                                <h5>Company</h5>
-                                <br />
-                                <p>About</p>
-                                <p>Blog</p>
-                                <p>Jobs</p>
-                                <p>Press</p>
-                            </div>
-                            <div class="sub_column4">
-
-                                <h5>Company</h5>
-                                <br />
-                                <p>About</p>
-                                <p>Blog</p>
-                                <p>Jobs</p>
-                                <p>Press</p>
-                            </div>
+                            {
+                                footerOptions.map((option, index) => {
+                                    return (
+                                        <div className={`sub_column${index + 1}`}>
+                                            <h5>{option.title}</h5>
+                                            <br />
+                                            {
+                                                option?.topic?.map(option_topic => {
+                                                    return (
+                                                        <p>{option_topic}</p>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
 
                     </div>

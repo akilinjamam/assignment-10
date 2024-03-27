@@ -53,6 +53,8 @@ import DashboardNew from './Component/Settings/newDashboard/DashboardNew';
 import Unsplash from './unsplash/Unsplash';
 import Profile from './Component/profile/profile/Profile';
 import PersonalDetail from './Component/profile/personal_detail/PersonalDetail';
+import BlogsNew from './Component/Blogs/newBlogs/BlogsNew';
+import BlogsNewDetails from './Component/Blogs/newBlogs/BlogsNewDetails';
 
 function App() {
 
@@ -127,8 +129,10 @@ function App() {
               <Route path='/login' element={<Login></Login>}></Route>
               <Route path='/register' element={<Register></Register>}></Route>
               <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
-              <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-              <Route path='/blogsDetail/:blogId' element={<BlogDetail />}></Route>
+              <Route path='/blogsNew' element={<BlogsNew />}></Route>
+              <Route path='/blogsNewDetail/:id' element={<BlogsNewDetails />}></Route>
+              {/* <Route path='/blogs' element={<Blogs></Blogs>}></Route> */}
+              {/* <Route path='/blogsDetail/:blogId' element={<BlogDetail />}></Route> */}
               <Route path='/packages' element={<Packages></Packages>}></Route>
               <Route path='/contact' element={<Contact></Contact>}></Route>
               <Route path='/visaGuide' element={<VisaGuilde></VisaGuilde>}></Route>

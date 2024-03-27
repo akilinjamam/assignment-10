@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import { fetchGetcommentData, fetchPostcommentData } from '../../fetchData/fetchCommentData';
 import LoadingBlog from '../../Loading/LoadingBlog';
 import { useContext } from 'react';
-import NoteState from '../../Context/NoteState';
 import noteContext from '../../Context/noteContext';
 
 
@@ -22,10 +21,6 @@ const Blogs = () => {
     const [popup, setPopup] = useState(false);
     const [comment, setComment] = useState('');
     const [blogIdContainer, setBlogIdContainer] = useState('');
-
-    const filteredBlog = allBlogs?.filter(f => {
-        return f?._id === state?.blogIdContainer
-    })
 
     const { data: getLikeData, refetch } = useQuery("getLikeData", () => fetchGetLikeData());
     const getAllLike = getLikeData?.data?.result;
