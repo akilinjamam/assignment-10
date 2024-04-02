@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './LocalSpots.css'
@@ -17,7 +17,7 @@ const LocalSpots = () => {
     const navigate = useNavigate();
     // fetch home data:
     const { data, isLoading } = useQuery("localSpots", () => fetchHomeData());
-    const homeEvents = data?.data?.result;
+    const homeEvents = useMemo(() => data?.data?.result, [data])
     useEffect(() => {
         state.setHomeData(homeEvents);
 

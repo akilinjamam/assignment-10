@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './DashboardHomeBlogs.css';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchDeleteBlogData, fetchGetBlogData } from '../../fetchData/fetchBlogData';
 import Loading from '../../Loading/Loading';
+import ImageComponent from '../../blur-image/ImageComponent';
+import noteContext from '../../Context/noteContext';
 
 
 
 const DashboardHomeBlogs = () => {
 
-    const navigate = useNavigate();
 
+    const state = useContext(noteContext);
+    const setPathName = state.setPathName;
+    const navigate = useNavigate();
+    const location = useLocation().pathname;
 
 
     const { data: blogDatas, refetch: refetchBlog, isLoading: loadingBlogs } = useQuery("blogDatas", () => fetchGetBlogData());
@@ -19,9 +24,6 @@ const DashboardHomeBlogs = () => {
     const [info, setInfo] = useState('');
 
     const [id, setId] = useState('');
-
-
-
 
     const handlePopup = (id, title) => {
         setView(true);
@@ -48,9 +50,9 @@ const DashboardHomeBlogs = () => {
     };
 
     const handleUpdate = (id) => {
-        navigate(`/dashboard/updateBlog/${id}`)
+        navigate(`/dashboard/updateBlog/${id}`);
+        setPathName(location)
     }
-
 
 
     const handleBlog = () => {
@@ -58,7 +60,7 @@ const DashboardHomeBlogs = () => {
     };
 
     const handleNavigate = (id) => {
-        navigate(`/blogsDetail/${id}`);
+        navigate(`/blogsNewDetail/${id}`)
     };
 
     if (loadingBlogs) {
@@ -73,12 +75,35 @@ const DashboardHomeBlogs = () => {
                         <i style={{ color: 'black', paddingBottom: '15px', fontSize: '40px' }} className="uil uil-plus"></i>
                     </div>
                     <hr />
+                    <p style={{ textAlign: 'left' }}>APPROVED BLOGS :</p>
+
                     <section style={{ flexWrap: 'wrap' }} className="homeEvents_data only_flex">
                         {
-                            blogDatas?.data?.result?.map(h => {
+                            blogDatas?.data?.result?.filter(f => f?.isApproved)?.map(h => {
                                 return (
                                     <div className='homeEvents_data_box'>
-                                        <img src={h.blogImg} alt="" />
+                                        <ImageComponent src={h?.blogImg} width={200} height={200} />
+
+                                        <div className='homeEvents_data_box_hover_area'>
+                                            <p title={h.title} onClick={() => handleNavigate(h._id)}>{h.title.length > 20 ? <span>{h.title.slice(0, 20)}..</span> : <span>{h.title}</span>}</p>
+                                        </div>
+                                        <i onClick={() => handleUpdate(h._id)} class="uil uil-edit"></i>
+                                        <i onClick={() => handlePopup(h._id, h.title)} class="uil uil-trash"></i>
+                                    </div>
+                                )
+                            })
+                        }
+
+                    </section>
+
+                    <p style={{ textAlign: 'left' }}>PENDING BLOGS :</p>
+
+                    <section style={{ flexWrap: 'wrap' }} className="homeEvents_data only_flex">
+                        {
+                            blogDatas?.data?.result?.filter(f => !f?.isApproved)?.map(h => {
+                                return (
+                                    <div className='homeEvents_data_box'>
+                                        <ImageComponent src={h?.blogImg} width={200} height={200} />
 
                                         <div className='homeEvents_data_box_hover_area'>
                                             <p title={h.title} onClick={() => handleNavigate(h._id)}>{h.title.length > 20 ? <span>{h.title.slice(0, 20)}..</span> : <span>{h.title}</span>}</p>

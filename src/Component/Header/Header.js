@@ -153,7 +153,13 @@ const Header = () => {
                                         <div style={{ height: 'auto', width: '190px', position: 'absolute', top: '70px', right: '97px', zIndex: '20', borderRadius: '10px', border: '1px solid green', backgroundColor: 'white', display: `${show ? 'block' : 'none'}` }}>
 
                                             <div className='user_popup' style={{ textAlign: 'left', padding: '5px 10px' }}>
-                                                <p onClick={() => navigate('/profile')} className='user_popup_text' style={{ cursor: 'pointer' }}><i class="uil uil-users-alt"></i> Profile</p>
+                                                <p onClick={() => {
+                                                    if (user?.email) {
+                                                        navigate('/profile')
+                                                    } else {
+                                                        navigate('/login')
+                                                    }
+                                                }} className='user_popup_text' style={{ cursor: 'pointer' }}><i class="uil uil-users-alt"></i> Profile</p>
                                                 <p className='user_popup_text' style={{ cursor: 'pointer' }} onClick={handleControlPanel}><i className="uil uil-create-dashboard"></i> Dashboard</p>
                                             </div>
 
@@ -191,7 +197,13 @@ const Header = () => {
                                         </div>
                                         <div style={{ cursor: 'pointer' }}>
                                             <i style={{ color: 'black', fontSize: '18px', marginLeft: '15px', }} class="uil uil-users-alt"></i>
-                                            <span onClick={() => navigate('/profile')}> Profile</span>
+                                            <span onClick={() => {
+                                                if (user?.email) {
+                                                    navigate('/profile')
+                                                } else {
+                                                    navigate('/login')
+                                                }
+                                            }}> Profile</span>
                                         </div>
                                         <div style={{ cursor: 'pointer' }} onClick={handleControlPanel}>
                                             <i style={{ color: 'black', fontSize: '18px', marginLeft: '15px', }} class="uil uil-create-dashboard"></i>

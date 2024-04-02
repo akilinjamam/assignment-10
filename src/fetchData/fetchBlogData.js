@@ -13,7 +13,7 @@ export const fetchGetBlogData = async () => {
 export const fetchPostBlogData = async (data) => {
     try {
         const result = await axios.post(`https://asssignment-10-server-delta.vercel.app/api/v1/blogs/create-blog`, data);
-
+        console.log(result)
         return result;
     } catch (error) {
 

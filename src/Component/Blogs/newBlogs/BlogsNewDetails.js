@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import blogDetails from './BlogsNewDetails.module.css';
 import useBlogs from './useBlogs';
 import { fetchPostcommentData } from '../../../fetchData/fetchCommentData';
 import LoadingBlog from '../../../Loading/LoadingBlog';
 import { fetchDeleteLikeData, fetchPostLikeData } from '../../../fetchData/fetchLikeData';
+import ImageComponent from '../../../blur-image/ImageComponent';
+import { fetchUpdateBlogData } from '../../../fetchData/fetchBlogData';
 const BlogsNewDetails = () => {
 
     const [popup, setPopup] = useState(false);
     const [blogIdContainer, setBlogIdContainer] = useState();
     const [comment, setComment] = useState('');
     const navigate = useNavigate();
+
     const { id } = useParams();
-    const [getBlogs, getLikeData, refetch, getCommentData, refetchComment, user] = useBlogs();
+    const { getBlogs, getLikeData, refetch, getCommentData, refetchComment, user, findAdmin } = useBlogs();
     const findBlogs = getBlogs?.data?.result?.find(f => {
         return f?._id === id
     });
@@ -83,10 +86,49 @@ const BlogsNewDetails = () => {
         }
     }
 
+    const routerPath = useLocation();
+    const onTop = () => {
+        window.scrollTo(0, 0);
+    }
+
+    useEffect(() => {
+        onTop()
+    }, [routerPath]);
+
     if (getBlogs?.data?.status !== 'success') {
         return <LoadingBlog></LoadingBlog>
     }
 
+    const handlePublish = async (publishId) => {
+
+        const updateData = {
+            isApproved: true
+        }
+
+        await fetchUpdateBlogData(publishId, updateData).then(res => {
+
+            if (res?.data?.status === 'success') {
+                navigate('/dashboard/dashboardHomeBlogs')
+            }
+        })
+
+    }
+
+    const handleCancelPublication = async (publishId) => {
+        const updateData = {
+            isApproved: false
+        };
+
+        await fetchUpdateBlogData(publishId, updateData).then(res => {
+            if (res?.data?.status === 'success') {
+                navigate('/dashboard/dashboardHomeBlogs')
+            }
+        })
+    }
+
+    const getAccess = () => {
+        return (findAdmin === 'admin' || findAdmin === 'editor') ? 'block' : 'none'
+    }
 
     return (
         <div className={blogDetails.main}>
@@ -128,10 +170,19 @@ const BlogsNewDetails = () => {
                 <hr />
                 <br />
                 <div className={`${blogDetails?.blogsDetail_image}`}>
-                    <img src={findBlogs?.blogImg} alt="" />
+                    {/* <img src={findBlogs?.blogImg} alt="" /> */}
+                    <ImageComponent src={findBlogs?.blogImg} width='100%' height={500} />
                 </div>
                 <br />
                 <p dangerouslySetInnerHTML={{ __html: findBlogs?.description }}></p>
+                <div style={{ display: getAccess() }}>
+                    {
+                        !findBlogs?.isApproved && <p onClick={() => handlePublish(findBlogs?._id)} className='btn btn-primary'>PUBLISH</p>
+                    }
+                    {
+                        findBlogs?.isApproved && <p onClick={() => handleCancelPublication(findBlogs?._id)} className='btn btn-primary'>Hide</p>
+                    }
+                </div>
             </div>
             <div className={popup ? `${blogDetails.block}` : `${blogDetails.none}`}>
                 <div className={blogDetails.commentPopup}>

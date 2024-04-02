@@ -10,6 +10,7 @@ import fetchBannerData from '../../fetchData/fetchBannerData';
 import Loading from '../../Loading/Loading';
 import fetchCartData from '../../fetchData/fetchCartData';
 import fetchCartDataDelete from '../../fetchData/fetchCartDataDelete';
+import ImageComponent from '../../blur-image/ImageComponent';
 
 const DashboardHome = () => {
 
@@ -124,7 +125,8 @@ const DashboardHome = () => {
                             homeDatas?.data?.result?.map(h => {
                                 return (
                                     <div className='homeEvents_data_box'>
-                                        <img src={h.img} alt="" />
+
+                                        <ImageComponent src={h?.img} width={200} height={200} />
 
                                         <div className='homeEvents_data_box_hover_area'>
                                             <p onClick={() => handleNavigate(h._id, h.tourArea)}>{h.name}</p>
@@ -149,8 +151,8 @@ const DashboardHome = () => {
                             globalDatas?.data?.result?.map(h => {
                                 return (
                                     <div className='homeEvents_data_box'>
-                                        <img src={h.img} alt="" />
 
+                                        <ImageComponent src={h?.img} width={200} height={200} />
                                         <div className='homeEvents_data_box_hover_area'>
                                             <p onClick={() => handleNavigate(h._id, h.tourArea)}>{h.name}</p>
                                         </div>

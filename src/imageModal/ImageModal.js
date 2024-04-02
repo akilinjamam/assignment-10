@@ -22,6 +22,9 @@ const ImageModal = ({ turn = true, search, data }) => {
         if (pathName === '/dashboard/addToBlog') {
             setAddBlogImg(value);
         }
+        if (pathName === '/writeBlog') {
+            setAddBlogImg(value);
+        }
         if (pathName.slice(0, 21) === '/dashboard/updateBlog') {
             setUpdateBlogImg(value);
         }

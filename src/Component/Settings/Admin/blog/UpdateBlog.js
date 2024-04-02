@@ -8,6 +8,7 @@ import { fetchGetBlogData, fetchUpdateBlogData } from '../../../../fetchData/fet
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import cloudinaryImgHolder from '../../../../cloudinaryImgHolder/CloudinaryImgHolder';
 import noteContext from '../../../../Context/noteContext';
+import extractTextFromHTML from '../../../../extractTextFormHTML/extractTextFromHTML';
 
 const UpdateBlog = () => {
 
@@ -15,7 +16,7 @@ const UpdateBlog = () => {
     const state = useContext(noteContext);
 
     const setPathName = state.setPathName;
-
+    const pathName = state.pathName;
     const title = state.blogUpdateTitle
     const setTitle = state.setBlogUpdateTitle
     const description = state.blogUpdateDescription
@@ -29,10 +30,11 @@ const UpdateBlog = () => {
 
     const navigate = useNavigate();
 
+
     const { updateBlogId } = useParams();
     const editor = useRef(null);
 
-    const [img, setImg] = useState('');
+
 
     console.log(updateBlogImg)
 
@@ -50,21 +52,23 @@ const UpdateBlog = () => {
         // setUpdateBlogImg(findblogs?.blogImg);
     }, [findblogs, setTitle, setBloggerName, setUpdateBlogImg])
 
-
+    const text = extractTextFromHTML(editor?.current?.value)
+    console.log(pathName)
     const handleSubmit = async (e) => {
         e.preventDefault();
-
 
         const updateBlog = {
             title: title,
             bloggerName: bloggerName,
-            blogImg: updateBlogImg,
-            description: description
+            blogImg: updateBlogImg ? updateBlogImg : findblogs?.blogImg,
+            description: description,
+            plainDescription: text
         }
 
         await fetchUpdateBlogData(updateBlogId, updateBlog).then(res => {
             if (res?.data?.status === 'success') {
-                navigate('/dashboard/dashboardHomeBlogs')
+                navigate(`${pathName}`);
+                setUpdateBlogImg('')
             }
         })
     }

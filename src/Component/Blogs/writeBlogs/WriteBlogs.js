@@ -1,24 +1,22 @@
 import React, { useContext, useRef } from 'react';
-import './Addblog.css';
-import JoditEditor from 'jodit-react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../../firebase.init';
-
-
-import cloudinaryImgHolder from '../../../../cloudinaryImgHolder/CloudinaryImgHolder';
-
-import { fetchPostBlogData } from '../../../../fetchData/fetchBlogData';
+import { fetchPostBlogData } from '../../../fetchData/fetchBlogData';
 import { useLocation, useNavigate } from 'react-router-dom';
-import noteContext from '../../../../Context/noteContext';
-import extractTextFromHTML from '../../../../extractTextFormHTML/extractTextFromHTML';
+import auth from '../../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import JoditEditor from 'jodit-react';
+import cloudinaryImgHolder from '../../../cloudinaryImgHolder/CloudinaryImgHolder';
+import noteContext from '../../../Context/noteContext';
+import extractTextFromHTML from '../../../extractTextFormHTML/extractTextFromHTML';
 
-
-const AddBlog = () => {
+const WriteBlogs = () => {
 
     const state = useContext(noteContext);
 
     const allInputBlogData = state.allInputBlogData;
     const setAllInputBlogData = state.setAllInputBlogData;
+
+
+    console.log(allInputBlogData.title)
 
     const setPathName = state.setPathName;
     const addBlogImg = state.addBlogImg;
@@ -30,9 +28,11 @@ const AddBlog = () => {
     const user = useAuthState(auth);
     const editor = useRef(null);
 
+
+
     const text = extractTextFromHTML(editor?.current?.value)
 
-    const handleSubmit = async (e) => {
+    const handleSubmitBlog = async (e) => {
         e.preventDefault();
 
         console.log(addBlogImg);
@@ -44,29 +44,24 @@ const AddBlog = () => {
                 bloggerName: allInputBlogData.bloggerName,
                 bloggerEmail: user?.[0]?.email,
                 description: allInputBlogData.description,
-                plainDescription: text,
-                isApproved: true
+                plainDescription: text
             }
 
             console.log(allblogData)
 
             await fetchPostBlogData(allblogData).then(res => {
                 if (res?.data?.status === 'success') {
-                    navigate('/dashboard/dashboardHomeBlogs');
+                    navigate('/blogsNew');
                     setAddBlogImg('');
                     setAllInputBlogData('')
                 }
-            }).catch(err => {
-                console.log(err.message)
             })
         }
     }
-
-
     return (
-        <div className='blogMain'>
+        <div style={{ backgroundColor: 'white' }} className='blogMain'>
             <div className='allblogInputFields'>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmitBlog}>
                     <label className='blogLabel' htmlFor="">Title:</label>
                     <br />
                     <input value={allInputBlogData?.title} name='title' className='blogInput' type="text" required
@@ -90,7 +85,7 @@ const AddBlog = () => {
                     <br />
                     <button onClick={() => {
                         setPathName(location)
-                        navigate('/dashboard/unsplash')
+                        navigate('/writeBlogUnsplash')
                     }} className='btn btn-primary'>Add Unsplash Image</button>
                     <br />
                     <label className='blogLabel' htmlFor="">Add Description:</label>
@@ -103,6 +98,11 @@ const AddBlog = () => {
                     />
                     <br />
                     <button className='btn btn-primary' type='submit'>Post Blog</button>
+
+
+                    <br />
+                    <br />
+                    <button onClick={() => navigate('/blogsNew')} className='btn btn-primary' type='submit'>Back</button>
                 </form>
             </div>
 
@@ -110,4 +110,4 @@ const AddBlog = () => {
     );
 };
 
-export default AddBlog;
+export default WriteBlogs;

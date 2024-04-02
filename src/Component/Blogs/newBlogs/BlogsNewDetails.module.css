@@ -5,13 +5,21 @@
     max-width: auto;
     background-color: white;
     font-family: "Oswald", sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .bogDetails_container{
-    width: 900px;
-    padding: 20px 0;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px 10px;
     text-align: left;
     margin: auto;
+    height: auto;
+}
+
+.bogDetails_container i{
+  cursor: pointer;
 }
 
 .blogsDetail_image img{

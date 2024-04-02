@@ -16,7 +16,7 @@ const Gallery = () => {
 
     const handleNavigate = (id) => {
         state.setBlogIdContainer(id);
-        navigate(`/blogsDetail/${id}`);
+        navigate(`/blogsNewDetail/${id}`);
     }
 
     return (

@@ -22,6 +22,7 @@ const NoteState = (props) => {
         title: '',
         bloggerName: '',
         description: '',
+        plainDescription: '',
         content: ''
 
     })

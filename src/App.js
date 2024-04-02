@@ -55,6 +55,8 @@ import Profile from './Component/profile/profile/Profile';
 import PersonalDetail from './Component/profile/personal_detail/PersonalDetail';
 import BlogsNew from './Component/Blogs/newBlogs/BlogsNew';
 import BlogsNewDetails from './Component/Blogs/newBlogs/BlogsNewDetails';
+import WriteBlogs from './Component/Blogs/writeBlogs/WriteBlogs';
+import ManageBlogs from './Component/profile/manage_blogs/ManageBlogs';
 
 function App() {
 
@@ -68,6 +70,8 @@ function App() {
         <RiseLoader color={color} size={20} />
       </div>
     </div>
+
+
   }
 
   return (
@@ -79,7 +83,6 @@ function App() {
 
             <Routes>
               <Route path='/' element={<Home></Home>}></Route>
-              {/* <Route path='/home' element={<Home></Home>}></Route> */}
 
               <Route path='/checkout/:checkoutId' element={
                 <RequireAuth>
@@ -113,17 +116,17 @@ function App() {
                 <Route path='dashboardHomeBlogs' element={<DashboardHomeBlogs></DashboardHomeBlogs>}></Route>
                 <Route path='userControll' element={<RequireAdmin><UserControll></UserControll></RequireAdmin>}></Route>
                 <Route path='updateHome/:updateHomeId' element={<UpdateHome></UpdateHome>}></Route>
-                <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}>
-                </Route>
-                <Route path='updateBlog/:updateBlogId' element={<UpdateBlog></UpdateBlog>}>
-                </Route>
-                <Route path='transection' element={<Transection></Transection>}>
-                </Route>
+                <Route path='updateGlobal/:updateGlobalId' element={<UpdateGlobal></UpdateGlobal>}></Route>
+                <Route path='updateBlog/:updateBlogId' element={<UpdateBlog></UpdateBlog>}></Route>
+                <Route path='transection' element={<Transection></Transection>}></Route>
                 <Route path='unsplash' element={<Unsplash />}>
                 </Route>
+
               </Route>
-              <Route path='/profile' element={<Profile />}>
+              <Route path='/profile' element={<RequireAdmin><Profile /></RequireAdmin>}>
                 <Route index element={<PersonalDetail></PersonalDetail>}></Route>
+                <Route path='manageBlogs' element={<ManageBlogs />}></Route>
+                <Route path='updateBlog/:updateBlogId' element={<UpdateBlog />}></Route>
               </Route>
 
               <Route path='/login' element={<Login></Login>}></Route>
@@ -131,8 +134,7 @@ function App() {
               <Route path='/visitingspot' element={<VisitingSpots></VisitingSpots>}></Route>
               <Route path='/blogsNew' element={<BlogsNew />}></Route>
               <Route path='/blogsNewDetail/:id' element={<BlogsNewDetails />}></Route>
-              {/* <Route path='/blogs' element={<Blogs></Blogs>}></Route> */}
-              {/* <Route path='/blogsDetail/:blogId' element={<BlogDetail />}></Route> */}
+
               <Route path='/packages' element={<Packages></Packages>}></Route>
               <Route path='/contact' element={<Contact></Contact>}></Route>
               <Route path='/visaGuide' element={<VisaGuilde></VisaGuilde>}></Route>
@@ -144,6 +146,9 @@ function App() {
               <Route path='/tourHome' element={<TourHome></TourHome>}></Route>
               <Route path='/tourAbroad' element={<TourAbroad></TourAbroad>}></Route>
               <Route path='/spotDetail/:spotdetailId' element={<SpotDetail></SpotDetail>}></Route>
+              <Route path='/writeBlog' element={<RequireAuth><WriteBlogs /></RequireAuth>}></Route>
+              <Route path='/updateBlog' element={<UpdateBlog />}></Route>
+              <Route path='/writeBlogUnsplash' element={<RequireAuth><Unsplash /></RequireAuth>}></Route>
               <Route path='/testmail' element={<Testmail></Testmail>}></Route>
               <Route path='/test' element={<Test />}></Route>
               <Route path='*' element={<NotFound></NotFound>}></Route>
