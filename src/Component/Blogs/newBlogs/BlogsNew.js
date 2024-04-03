@@ -11,7 +11,7 @@ const BlogsNew = () => {
     const navigate = useNavigate();
 
     const allBlogs = getBlogs?.data?.result;
-    const filteredData = allBlogs?.filter(item => item.title.startsWith(filterValue) || item.plainDescription.startsWith(filterValue));
+    const filteredData = allBlogs?.filter(item => item.title.startsWith(filterValue) || item?.plainDescription?.toLowerCase()?.startsWith(filterValue?.toLowerCase()));
 
     const getAllLike = getLikeData?.data?.result;
 

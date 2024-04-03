@@ -13,6 +13,7 @@
     padding: 5px 10px;
     border-bottom: 1px solid lightgray;
     position: relative;
+   
 }
 
 .search_suggesion{
@@ -46,6 +47,7 @@
 .title_input_area i {
     font-size: 25px;
     color: white;
+    cursor: pointer;
 }
 
 .title_icon_part{
@@ -56,6 +58,7 @@
 }
 .title_icon_part i {
     font-size: 24px;
+    cursor: pointer;
 }
 
 .detail{
