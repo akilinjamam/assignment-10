@@ -3,20 +3,29 @@ import LoadingBlog from '../../../Loading/LoadingBlog';
 import { useNavigate } from 'react-router-dom';
 import useBlogs from './useBlogs';
 import ImageComponent from '../../../blur-image/ImageComponent';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { fetchGetBlogDataByQuery } from '../../../fetchData/fetchBlogData';
 const BlogsNew = () => {
 
     const { getBlogs, getLikeData, getCommentData } = useBlogs();
+    const [filteredData, setFilteredData] = useState([]);
+    console.log(filteredData)
     const [filterValue, setFilterValue] = useState();
     const navigate = useNavigate();
 
     const allBlogs = getBlogs?.data?.result;
-    const filteredData = allBlogs?.filter(item => item.title.startsWith(filterValue) || item?.plainDescription?.toLowerCase()?.startsWith(filterValue?.toLowerCase()));
-
     const getAllLike = getLikeData?.data?.result;
-
     const allCommentData = getCommentData?.data?.result;
 
+
+    useEffect(() => {
+        const getQueryFunction = async () => {
+            const result = await fetchGetBlogDataByQuery(filterValue);
+            console.log(result)
+            setFilteredData(result?.data?.result)
+        };
+        getQueryFunction();
+    }, [filterValue])
 
     if (getBlogs?.data?.status !== 'success') {
         return <LoadingBlog></LoadingBlog>
@@ -32,7 +41,7 @@ const BlogsNew = () => {
                 <div className={`${blogs.title_input_area} around_flex`}>
                     <i className="uil uil-search"></i>
                     <input type="text"
-                        onChange={(e) => setFilterValue(e.target.value.trim())}
+                        onChange={(e) => setFilterValue(e.target.value)}
                     />
                 </div>
                 <div className={`${blogs.title_icon_part} around_flex`}>

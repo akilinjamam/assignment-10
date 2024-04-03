@@ -9,6 +9,14 @@ export const fetchGetBlogData = async () => {
 
     }
 }
+export const fetchGetBlogDataByQuery = async (value) => {
+    try {
+        const result = await axios.get(`https://asssignment-10-server-delta.vercel.app/api/v1/blogs?search=${value}`)
+        return result
+    } catch (error) {
+
+    }
+}
 
 export const fetchPostBlogData = async (data) => {
     try {
