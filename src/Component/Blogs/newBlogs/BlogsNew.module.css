@@ -56,7 +56,6 @@
 }
 .title_icon_part i {
     font-size: 24px;
-    cursor: pointer;
 }
 
 .detail{
@@ -72,7 +71,6 @@
     margin: auto;
     display: grid;
     grid-template-columns: 60% 40%;
-    cursor: pointer;
     padding: 10px;
     box-sizing: border-box;
 }

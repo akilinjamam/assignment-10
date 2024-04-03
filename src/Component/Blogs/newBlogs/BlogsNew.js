@@ -11,9 +11,7 @@ const BlogsNew = () => {
     const navigate = useNavigate();
 
     const allBlogs = getBlogs?.data?.result;
-    const filteredData = allBlogs?.filter(item => item.title.startsWith(filterValue));
-
-    console.log(allBlogs)
+    const filteredData = allBlogs?.filter(item => item.title.startsWith(filterValue) || item.plainDescription.startsWith(filterValue));
 
     const getAllLike = getLikeData?.data?.result;
 
@@ -63,12 +61,20 @@ const BlogsNew = () => {
                                     <div className={`${blogs.detail_container_bloggerName}`}>
                                         <span>{blog.bloggerName} {blog.createdAt?.slice(0, 10)}</span>
                                     </div>
-                                    <div onClick={() => navigate(`/blogsNewDetail/${blog._id}`)} className={`${blogs.detail_container_title}`}>
+                                    <div className={`${blogs.detail_container_title}`}>
                                         <h3>{blog.title}</h3>
                                     </div>
-                                    <div onClick={() => navigate(`/blogsNewDetail/${blog._id}`)} className={`${blogs.detail_container_description}`}
-                                        dangerouslySetInnerHTML={{ __html: blog?.description?.length > 1200 ? blog?.description?.slice(0, 1200) : blog?.description }}
-                                    >
+                                    <div
+                                        className={`${blogs.detail_container_description}`}>
+                                        {
+                                            blog?.plainDescription?.length > 550 ?
+                                                <p>{blog?.plainDescription?.slice(0, 550)} <span
+                                                    onClick={() => navigate(`/blogsNewDetail/${blog._id}`)}
+                                                    style={{ color: 'blue', cursor: 'pointer' }}
+                                                >...read more</span></p>
+                                                :
+                                                <p>{blog?.plainDescription}</p>
+                                        }
 
                                     </div>
                                     <span style={{ marginRight: '20px' }}><i class="uil uil-thumbs-up"></i> {
