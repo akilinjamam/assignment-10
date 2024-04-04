@@ -52,7 +52,7 @@ const BlogsNew = () => {
                         filteredData?.length > 0 ?
                             filteredData?.map(data => {
                                 return (
-                                    <p>{data?.title}</p>
+                                    <p onClick={() => navigate(`/blogsNewDetail/${data?._id}`)}>{data?.title}</p>
                                 )
                             })
                             :

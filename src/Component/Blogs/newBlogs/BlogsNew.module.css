@@ -27,6 +27,7 @@
     background-color: whitesmoke;
     text-align: left;
     padding: 5px 10px;
+    cursor: pointer;
 }
 
 .title_input_area{
